@@ -4,7 +4,7 @@ you would include information such as the information below:
 Installation and Setup
 ======================
 
-Install ``LustitelskaDB`` using the setup.py script::
+Install ``LustitelskaDB`` using the setup.py script (optional)::
 
     $ cd LustitelskaDB
     $ python setup.py develop
@@ -20,5 +20,9 @@ Start the paste http server::
 While developing you may want the server to reload after changes in package files (or its dependencies) are saved. This can be achieved easily by adding the --reload option::
 
     $ gearbox serve --reload --debug
+
+    or optionally (if you don't used setup.py script for install)::
+
+    $ gearbox serve --relative --reload --debug
 
 Then you are ready to go.
