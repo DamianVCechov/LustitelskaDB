@@ -4,6 +4,14 @@ you would include information such as the information below:
 Installation and Setup
 ======================
 
+Create configuration::
+
+	$ cp development.ini.template development.ini
+
+Edit configuration file for you DB etc. (optional), i.e.::
+
+	$ editor development.ini
+
 Install ``LustitelskaDB`` using the setup.py script (optional)::
 
     $ cd LustitelskaDB
