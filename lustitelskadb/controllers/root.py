@@ -38,7 +38,7 @@ class RootController(BaseController):
     error = ErrorController()
 
     def _before(self, *args, **kw):
-        tmpl_context.project_name = "lustitelskadb"
+        tmpl_context.project_name = "LustitelskaDB"
 
     @expose('lustitelskadb.templates.index')
     def index(self):
