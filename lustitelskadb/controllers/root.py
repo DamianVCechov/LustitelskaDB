@@ -32,7 +32,7 @@ class RootController(BaseController):
     must be wrapped around with :class:`tg.controllers.WSGIAppController`.
 
     """
-    secc = SecureController()
+    # secc = SecureController()
     admin = AdminController(model, DBSession, config_type=TGAdminConfig)
 
     error = ErrorController()
@@ -44,35 +44,11 @@ class RootController(BaseController):
     def index(self):
         """Handle the front-page."""
         return dict(page='index')
+
     @expose('lustitelskadb.templates.about')
     def about(self):
         """Handle the 'about' page."""
         return dict(page='about')
-
-    @expose('lustitelskadb.templates.environ')
-    def environ(self):
-        """This method showcases TG's access to the wsgi environment."""
-        return dict(page='environ', environment=request.environ)
-
-    @expose('lustitelskadb.templates.data')
-    @expose('json')
-    def data(self, **kw):
-        """
-        This method showcases how you can use the same controller
-        for a data page and a display page.
-        """
-        return dict(page='data', params=kw)
-    @expose('lustitelskadb.templates.index')
-    @require(predicates.has_permission('manage', msg=l_('Only for managers')))
-    def manage_permission_only(self, **kw):
-        """Illustrate how a page for managers only works."""
-        return dict(page='managers stuff')
-
-    @expose('lustitelskadb.templates.index')
-    @require(predicates.is_user('editor', msg=l_('Only for the editor')))
-    def editor_user_only(self, **kw):
-        """Illustrate how a page exclusive for the editor works."""
-        return dict(page='editor stuff')
 
     @expose('lustitelskadb.templates.login')
     def login(self, came_from=lurl('/'), failure=None, login=''):
