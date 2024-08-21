@@ -8,10 +8,14 @@ It's perfectly fine to re-use this definition in the LustitelskaDB application,
 though.
 
 """
+
 import os
 from datetime import datetime
 from hashlib import sha256
+
+
 __all__ = ['User', 'Group', 'Permission']
+
 
 from sqlalchemy import Table, ForeignKey, Column
 from sqlalchemy.types import Unicode, Integer, DateTime
@@ -20,51 +24,96 @@ from sqlalchemy.orm import relation, synonym
 from lustitelskadb.model import DeclarativeBase, metadata, DBSession
 
 
-# This is the association table for the many-to-many relationship between
-# groups and permissions.
-group_permission_table = Table('tg_group_permission', metadata,
-                               Column('group_id', Integer,
-                                      ForeignKey('tg_group.group_id',
-                                                 onupdate="CASCADE",
-                                                 ondelete="CASCADE"),
-                                      primary_key=True),
-                               Column('permission_id', Integer,
-                                      ForeignKey('tg_permission.permission_id',
-                                                 onupdate="CASCADE",
-                                                 ondelete="CASCADE"),
-                                      primary_key=True))
+class GroupPermission(DeclarativeBase):
+    """
+    Group-Permission Table definition.
+
+    This is the association table for the many-to-many
+
+    relationship between groups and permissions.
+    """
+
+    __tablename__ = 'tg_group_permission'
+    __table_args__ = {
+                      'mysql_engine': 'InnoDB',
+                      'mysql_charset': 'utf8mb4'
+    }
+
+    group_id = Column(
+        Integer,
+        ForeignKey(
+            'tg_group.group_id',
+            onupdate="CASCADE",
+            ondelete="CASCADE"
+        ),
+        primary_key=True
+    )
+
+    permission_id = Column(
+        Integer,
+        ForeignKey(
+            'tg_permission.permission_id',
+            onupdate="CASCADE",
+            ondelete="CASCADE"
+        ),
+        primary_key=True
+    )
 
 
-# This is the association table for the many-to-many relationship between
-# groups and members - this is, the memberships.
-user_group_table = Table('tg_user_group', metadata,
-                         Column('user_id', Integer,
-                                ForeignKey('tg_user.user_id',
-                                           onupdate="CASCADE",
-                                           ondelete="CASCADE"),
-                                primary_key=True),
-                         Column('group_id', Integer,
-                                ForeignKey('tg_group.group_id',
-                                           onupdate="CASCADE",
-                                           ondelete="CASCADE"),
-                                primary_key=True))
+class UserGroup(DeclarativeBase):
+    """
+    Uset-Group Table definition.
+
+    This is the association table for the many-to-many relationship
+
+    between groups and members - this is, the memberships.
+    """
+
+    __tablename__ = 'tg_user_group'
+    __table_args__ = {
+                      'mysql_engine': 'InnoDB',
+                      'mysql_charset': 'utf8mb4'
+    }
+
+    user_id = Column(
+        Integer,
+        ForeignKey(
+            'tg_user.user_id',
+            onupdate="CASCADE",
+            ondelete="CASCADE"
+        ),
+        primary_key=True
+    )
+
+    group_id = Column(
+        Integer,
+        ForeignKey(
+            'tg_group.group_id',
+            onupdate="CASCADE",
+            ondelete="CASCADE"
+        ),
+        primary_key=True
+    )
 
 
 class Group(DeclarativeBase):
     """
-    Group definition
+    Group Table definition.
 
     Only the ``group_name`` column is required.
-
     """
 
     __tablename__ = 'tg_group'
+    __table_args__ = {
+                      'mysql_engine': 'InnoDB',
+                      'mysql_charset': 'utf8mb4'
+    }
 
     group_id = Column(Integer, autoincrement=True, primary_key=True)
     group_name = Column(Unicode(16), unique=True, nullable=False)
     display_name = Column(Unicode(255))
     created = Column(DateTime, default=datetime.now)
-    users = relation('User', secondary=user_group_table, backref='groups')
+    users = relation('User', secondary='tg_user_group', backref='groups')
 
     def __repr__(self):
         return '<Group: name=%s>' % repr(self.group_name)
@@ -75,13 +124,17 @@ class Group(DeclarativeBase):
 
 class User(DeclarativeBase):
     """
-    User definition.
+    User Table definition.
 
     This is the user definition used by :mod:`repoze.who`, which requires at
     least the ``user_name`` column.
 
     """
     __tablename__ = 'tg_user'
+    __table_args__ = {
+                      'mysql_engine': 'InnoDB',
+                      'mysql_charset': 'utf8mb4'
+    }
 
     user_id = Column(Integer, autoincrement=True, primary_key=True)
     user_name = Column(Unicode(16), unique=True, nullable=False)
@@ -131,7 +184,6 @@ class User(DeclarativeBase):
 
         password = salt + hash
 
-
         return password
 
     def _set_password(self, password):
@@ -164,19 +216,22 @@ class User(DeclarativeBase):
 
 class Permission(DeclarativeBase):
     """
-    Permission definition.
+    Permission Table definition.
 
     Only the ``permission_name`` column is required.
-
     """
 
     __tablename__ = 'tg_permission'
+    __table_args__ = {
+                      'mysql_engine': 'InnoDB',
+                      'mysql_charset': 'utf8mb4'
+    }
 
     permission_id = Column(Integer, autoincrement=True, primary_key=True)
     permission_name = Column(Unicode(63), unique=True, nullable=False)
     description = Column(Unicode(255))
 
-    groups = relation(Group, secondary=group_permission_table,
+    groups = relation(Group, secondary='tg_group_permission',
                       backref='permissions')
 
     def __repr__(self):
