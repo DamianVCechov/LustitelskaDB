@@ -1,0 +1,5 @@
+[gearbox.plugins]
+turbogears-devtools = tg.devtools
+
+[paste.app_factory]
+main = lustitelskadb.config.application:make_app

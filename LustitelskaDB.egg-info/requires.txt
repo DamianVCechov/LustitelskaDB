@@ -1,0 +1,17 @@
+Babel
+Beaker>=1.8.0
+Kajiki>=0.6.3
+TurboGears2>=2.4.3
+WebHelpers2
+alembic
+repoze.who
+sqlalchemy
+tgext.admin>=0.6.1
+tw2.forms
+zope.sqlalchemy>=1.2
+
+[testing]
+WebTest>=1.2.3
+coverage
+gearbox
+nose

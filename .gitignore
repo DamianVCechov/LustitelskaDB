@@ -1,0 +1,6 @@
+/.settings/
+.directory
+*.py[cod]
+__pycache__
+/development.ini
+/.mypy_cache/
