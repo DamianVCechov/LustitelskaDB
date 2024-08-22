@@ -33,7 +33,7 @@ class RootController(BaseController):
 
     """
     # secc = SecureController()
-    admin = AdminController(model, DBSession, config_type=TGAdminConfig)
+    dbadmin = AdminController(model, DBSession, config_type=TGAdminConfig)
 
     error = ErrorController()
 
