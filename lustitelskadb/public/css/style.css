@@ -40,3 +40,7 @@
     margin-bottom: 0;
     color: #555;
 }
+
+.crud-sidebar {
+	display: list-item;
+}
