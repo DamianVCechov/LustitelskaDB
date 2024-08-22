@@ -158,3 +158,9 @@ try:
     plug(base_config, 'tgapppermissions')
 except ImportError:
     pass
+
+try:
+    # Enable User Registration if available, install tgapp-registration to turn it on
+    plug(base_config, 'registration')
+except ImportError:
+    pass
