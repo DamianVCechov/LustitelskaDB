@@ -164,3 +164,9 @@ try:
     plug(base_config, 'registration')
 except ImportError:
     pass
+
+try:
+    # Enable Reset Password if available, install tgapp-resetpassword to turn it on
+    plug(base_config, 'resetpassword')
+except ImportError:
+    pass
