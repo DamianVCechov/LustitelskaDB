@@ -1,0 +1,18 @@
+<html py:extends="master.xhtml" py:strip="True">
+<head py:block="head" py:strip="True">
+<title py:block="master_title">${getattr(tmpl_context, 'project_name', 'turbogears2')} | Administration panel</title>
+</head>
+
+<body py:block="body" py:strip="True">
+	<h1 class="mb-5">Administration</h1>
+
+	<div class="row">
+		<div class="col-md-2">
+			<div class="text-center position-relative bg-light p-1 rounded">
+				<div class="display-1 text-secondary">${h.icon('list-alt')}</div>
+				<a href="${tg.url('/dbadmin')}" class="stretched-link link-secondary h5">DB admin</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
