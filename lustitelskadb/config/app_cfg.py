@@ -6,6 +6,7 @@ This file complements development/deployment.ini.
 
 """
 from tg import FullStackApplicationConfigurator
+from tgext.pluggable import plug
 
 import lustitelskadb
 from lustitelskadb import model, lib
@@ -56,7 +57,10 @@ base_config.update_blueprint({
 })
 # This tells to TurboGears how to retrieve the data for your user
 from tg.configuration.auth import TGAuthMetadata
+
+
 class ApplicationAuthMetadata(TGAuthMetadata):
+
     def __init__(self, dbsession, user_class):
         self.dbsession = dbsession
         self.user_class = user_class
@@ -106,6 +110,7 @@ class ApplicationAuthMetadata(TGAuthMetadata):
     def get_permissions(self, identity, userid):
         return [p.permission_name for p in identity['user'].permissions]
 
+
 # Configure the authentication backend
 base_config.update_blueprint({
     'auth_backend': 'sqlalchemy',
@@ -121,7 +126,7 @@ base_config.update_blueprint({
     # You may optionally define a page where you want users
     # to be redirected to on logout:
     'sa_auth.post_logout_url': '/post_logout',
-    
+
     # In case ApplicationAuthMetadata didn't find the user discard the whole identity.
     # This might happen if logged-in users are deleted.
     'identity.allow_missing_user': False,
@@ -129,20 +134,27 @@ base_config.update_blueprint({
     # override this if you would like to provide a different who plugin for
     # managing login and logout of your application
     'sa_auth.form_plugin': None,
-    
+
     # You can use a different repoze.who Authenticator if you want to
     # change the way users can login
     # 'sa_auth.authenticators': [('myauth', SomeAuthenticator()],
-    
+
     # You can add more repoze.who metadata providers to fetch
     # user metadata.
     # Remember to set 'sa_auth.authmetadata' to None
     # to disable authmetadata and use only your own metadata providers
     # 'sa_auth.mdproviders': [('myprovider', SomeMDProvider()],
 })
+
 try:
     # Enable DebugBar if available, install tgext.debugbar to turn it on
     from tgext.debugbar import enable_debugbar
     enable_debugbar(base_config)
+except ImportError:
+    pass
+
+try:
+    # Enable TGapp Permissions if available, install tgapp-permissions to turn it on
+    plug(base_config, 'tgapppermissions')
 except ImportError:
     pass
