@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Administration controller module."""
 
-from tg import expose, redirect, validate, flash, url, require
+from tg import expose, redirect, validate, flash, url, require, tmpl_context
 from tg.i18n import ugettext as _, lazy_ugettext as l_
 from tg.predicates import has_permission, has_any_permission
 
@@ -14,6 +14,9 @@ __all__ = ['AdministrationController']
 class AdministrationController(BaseController):
     # Uncomment this line if your controller requires an authenticated user
     # allow_only = not_anonymous()
+
+    def _before(self, *args, **kw):
+        tmpl_context.project_name = "LustitelskaDB"
 
     @expose('lustitelskadb.templates.admin')
     @require(has_any_permission('manage', 'dashboard', msg=l_('Only for users with appropriate permissions')))
