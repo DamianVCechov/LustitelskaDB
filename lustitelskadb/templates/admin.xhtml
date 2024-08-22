@@ -4,6 +4,7 @@
 </head>
 
 <body py:block="body" py:strip="True">
+<?py from tgext.pluggable import plugged ?>
 	<h1 class="mb-5">Administration</h1>
 
 	<div class="row">
@@ -11,6 +12,12 @@
 			<div class="text-center position-relative bg-light p-1 rounded">
 				<div class="display-1 text-secondary">${h.icon('list-alt')}</div>
 				<a href="${tg.url('/dbadmin')}" class="stretched-link link-secondary h5">DB admin</a>
+			</div>
+		</div>
+		<div class="col-md-2" py:for="plug in plugged()">
+			<div class="text-center position-relative bg-light p-1 rounded">
+				<div class="display-1 text-secondary">${h.icon('gift')}</div>
+				<a href="${h.plug_url(plug, '/')}" class="stretched-link link-secondary h5">${plug}</a>
 			</div>
 		</div>
 	</div>
