@@ -170,3 +170,9 @@ try:
     plug(base_config, 'resetpassword')
 except ImportError:
     pass
+
+try:
+    # Enable User Profile if available, install tgapp-userprofile to turn it on
+    plug(base_config, 'userprofile')
+except ImportError:
+    pass
