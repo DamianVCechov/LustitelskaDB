@@ -21,7 +21,7 @@ class AdministrationController(BaseController):
     def _before(self, *args, **kw):
         tmpl_context.project_name = "LustitelskaDB"
 
-    @expose('lustitelskadb.templates.admin')
+    @expose('lustitelskadb.templates.administration.index')
     @require(has_any_permission('manage', 'dashboard', msg=l_('Only for users with appropriate permissions')))
     def index(self, **kw):
-        return dict(page='administration-index')
+        return dict(page='administration/index')
