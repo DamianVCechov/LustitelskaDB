@@ -1,0 +1,408 @@
+# Translations template for LustitelskaDB.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the LustitelskaDB project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: LustitelskaDB 0.1\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-08-23 02:15+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: lustitelskadb/controllers/admin.py:25
+msgid "Only for users with appropriate permissions"
+msgstr ""
+
+#: lustitelskadb/controllers/root.py:61
+msgid "Form filled with errors!"
+msgstr ""
+
+#: lustitelskadb/controllers/root.py:72
+msgid "Result successfully added"
+msgstr ""
+
+#: lustitelskadb/controllers/root.py:85
+msgid "User not found"
+msgstr ""
+
+#: lustitelskadb/controllers/root.py:87
+msgid "Invalid Password"
+msgstr ""
+
+#: lustitelskadb/controllers/root.py:91
+msgid "Wrong credentials"
+msgstr ""
+
+#: lustitelskadb/controllers/root.py:108
+#, python-format
+msgid "Welcome back, %s!"
+msgstr ""
+
+#: lustitelskadb/controllers/root.py:121
+msgid "We hope to see you soon!"
+msgstr ""
+
+#: lustitelskadb/lib/forms.py:46
+msgid "Nickname"
+msgstr ""
+
+#: lustitelskadb/lib/forms.py:47
+msgid "Please Enter your nickname (required)"
+msgstr ""
+
+#: lustitelskadb/lib/forms.py:48
+msgid "Your nickname"
+msgstr ""
+
+#: lustitelskadb/lib/forms.py:58 lustitelskadb/lib/forms.py:60
+msgid "Game result"
+msgstr ""
+
+#: lustitelskadb/lib/forms.py:59
+msgid "Please Enter your game result (required)"
+msgstr ""
+
+#: lustitelskadb/lib/forms.py:69
+msgid "Wednesday challenge"
+msgstr ""
+
+#: lustitelskadb/lib/forms.py:70
+msgid "Please check it if you play wednesday challenge"
+msgstr ""
+
+#: lustitelskadb/lib/forms.py:76 lustitelskadb/lib/forms.py:78
+msgid "Comments"
+msgstr ""
+
+#: lustitelskadb/lib/forms.py:77
+msgid "Please Enter any comments (optional)"
+msgstr ""
+
+#: lustitelskadb/lib/forms.py:88
+msgid "Save"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:3
+msgid " | About page"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:7
+msgid "About "
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:8
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed quam nec "
+"nulla tincidunt convallis id ac mauris. Etiam non ipsum sed libero porta "
+"condimentum auctor ac mauris. Nunc varius elit in elementum suscipit. Aliquam"
+" fringilla ac elit ac maximus. Proin eu risus tortor. Etiam venenatis finibus"
+" elit, quis scelerisque nisi blandit nec. Integer nulla justo, ullamcorper at"
+" mauris et, sagittis ultrices lacus. Quisque pharetra quis ligula at gravida."
+" Etiam tempor fermentum enim. Aliquam consequat sed nunc ac lacinia. Nam "
+"finibus tempus magna."
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:10
+msgid ""
+"Pellentesque sit amet justo at diam porta congue. Proin sed condimentum "
+"libero. Fusce iaculis dui at dignissim finibus. Orci varius natoque penatibus"
+" et magnis dis parturient montes, nascetur ridiculus mus. Praesent ultricies "
+"porta rutrum. Aliquam facilisis non arcu ut luctus. Aliquam erat volutpat. "
+"Suspendisse potenti. Etiam dolor nibh, rhoncus nec hendrerit eu, consectetur "
+"vitae leo. Proin et iaculis metus. Vestibulum pellentesque feugiat "
+"vestibulum."
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:12
+msgid ""
+"Nullam eget arcu et felis aliquet malesuada quis eu turpis. Nam nisl nulla, "
+"pharetra non rutrum sit amet, consequat in dolor. Nullam congue faucibus "
+"imperdiet. Maecenas ut laoreet tellus. Proin mollis rutrum urna at rhoncus. "
+"Integer porta dapibus turpis et sollicitudin. Ut lacus urna, euismod non "
+"lacus in, finibus tincidunt sem. Pellentesque habitant morbi tristique "
+"senectus et netus et malesuada fames ac turpis egestas. Proin non turpis id "
+"lorem placerat tempor id vitae sem. Pellentesque mollis orci ultricies "
+"lobortis condimentum. In ullamcorper non felis id imperdiet. Phasellus "
+"rhoncus nisi sed nunc imperdiet dictum. Sed suscipit erat mauris, sed "
+"tincidunt massa pulvinar a. Orci varius natoque penatibus et magnis dis "
+"parturient montes, nascetur ridiculus mus. Proin dapibus vel enim ut porta. "
+"Ut nibh massa, aliquam eu mollis vitae, varius eget ante."
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:14
+msgid ""
+"Aenean sagittis, lacus vel dapibus lobortis, magna nunc bibendum tellus, ac "
+"condimentum metus odio sed elit. Nulla elit odio, varius vitae diam finibus, "
+"dictum porttitor nisi. Vivamus et mollis lectus. Etiam quis leo nisi. Vivamus"
+" non sagittis mi. Maecenas euismod at nunc in fermentum. Aliquam viverra, "
+"nulla cursus consequat laoreet, est neque suscipit eros, quis porttitor nunc "
+"massa in sapien. Cras orci felis, dapibus id rutrum eu, rhoncus sed tellus."
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:16
+msgid ""
+"In ut vulputate massa, eget consequat lorem. Vivamus vehicula pellentesque "
+"felis ut tincidunt. Cras vehicula condimentum porta. Maecenas et pulvinar "
+"urna. Cras vehicula ipsum eget metus pharetra, ut hendrerit mauris hendrerit."
+" Donec et suscipit nibh, vehicula eleifend turpis. Quisque suscipit accumsan "
+"sem quis pulvinar. Mauris in augue risus. Quisque ut sagittis odio. Phasellus"
+" molestie aliquet ante nec eleifend. Duis eros nisl, mollis sit amet posuere "
+"non, egestas non metus. Donec non efficitur lectus. Curabitur nec arcu quis "
+"libero tincidunt blandit ac id mi. In porttitor eros lacus. Pellentesque "
+"justo tellus, vestibulum non efficitur nec, accumsan sit amet neque."
+msgstr ""
+
+#: lustitelskadb/templates/admin.xhtml:3
+msgid " | Administration panel"
+msgstr ""
+
+#: lustitelskadb/templates/admin.xhtml:8
+msgid "Administration"
+msgstr ""
+
+#: lustitelskadb/templates/admin.xhtml:14
+msgid "DB admin"
+msgstr ""
+
+#: lustitelskadb/templates/error.xhtml:3
+msgid "A "
+msgstr ""
+
+#: lustitelskadb/templates/error.xhtml:3
+msgid " error has Occurred"
+msgstr ""
+
+#: lustitelskadb/templates/error.xhtml:7
+msgid "Error "
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:3
+msgid " | Welcome"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:7
+msgid "LustiteleDB"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:13
+msgid "#"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:14
+msgid "First"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:15
+msgid "Last"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:16
+msgid "Handle"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:21 lustitelskadb/templates/index.xhtml:74
+msgid "1"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:22
+msgid "Mark"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:23
+msgid "Otto"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:24
+msgid "@mdo"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:27 lustitelskadb/templates/index.xhtml:73
+msgid "2"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:28
+msgid "Jacob"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:29
+msgid "Thornton"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:30
+msgid "@fat"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:33
+msgid "3"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:34
+msgid "Larry the Bird"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:35
+msgid "@twitter"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:38
+msgid "4"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:39
+msgid "Fanfan"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:40
+msgid "@fufo"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:43
+msgid "5"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:44
+msgid "Seagull"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:45
+msgid "@seagull"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:48
+msgid "6"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:49
+msgid "Atari"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:50
+msgid "@fuji"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:53
+msgid "7"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:54
+msgid "Valli"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:55
+msgid "@valli"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:58
+msgid "8"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:59
+msgid "Mastermind"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:60
+msgid "@mmm"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:68
+msgid "«"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:69
+msgid "950"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:70
+msgid "949"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:71
+msgid "948"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:72
+msgid ".."
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:75
+msgid "»"
+msgstr ""
+
+#: lustitelskadb/templates/login.xhtml:3 lustitelskadb/templates/login.xhtml:7
+#: lustitelskadb/templates/login.xhtml:36 lustitelskadb/templates/master.xhtml:39
+msgid "Login"
+msgstr ""
+
+#: lustitelskadb/templates/login.xhtml:14
+msgid "Username:"
+msgstr ""
+
+#: lustitelskadb/templates/login.xhtml:20
+msgid "Password:"
+msgstr ""
+
+#: lustitelskadb/templates/login.xhtml:29
+msgid "remember me"
+msgstr ""
+
+#: lustitelskadb/templates/master.xhtml:26
+msgid "Welcome"
+msgstr ""
+
+#: lustitelskadb/templates/master.xhtml:27
+msgid "About"
+msgstr ""
+
+#: lustitelskadb/templates/master.xhtml:28
+msgid "Dropdown"
+msgstr ""
+
+#: lustitelskadb/templates/master.xhtml:30
+msgid "Action"
+msgstr ""
+
+#: lustitelskadb/templates/master.xhtml:31
+msgid "Another action"
+msgstr ""
+
+#: lustitelskadb/templates/master.xhtml:33
+msgid "Something else here"
+msgstr ""
+
+#: lustitelskadb/templates/master.xhtml:35
+#: lustitelskadb/templates/newresult.xhtml:7
+msgid "New result"
+msgstr ""
+
+#: lustitelskadb/templates/master.xhtml:36
+msgid "Statistic"
+msgstr ""
+
+#: lustitelskadb/templates/master.xhtml:40
+msgid "Logout"
+msgstr ""
+
+#: lustitelskadb/templates/master.xhtml:41
+msgid "Admin"
+msgstr ""
+
+#: lustitelskadb/templates/master.xhtml:64
+msgid "Copyright © "
+msgstr ""
+
+#: lustitelskadb/templates/master.xhtml:8
+msgid "Your generic title goes here"
+msgstr ""
+
+#: lustitelskadb/templates/newresult.xhtml:3
+msgid " | New result"
+msgstr ""
+
