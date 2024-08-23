@@ -47,7 +47,7 @@ class ResultForm(twf.Form):
             help_text=l_(u'Please Enter your nickname (required)'),
             placeholder=l_(u'Your nickname'),
             validator=validators.ByteString(min=2,max=64),
-            minlenght=2,
+            minlength=2,
             maxlength=64,
             autofocus=True,
             required=True,
