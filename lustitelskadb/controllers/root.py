@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 """Main Controller"""
 
+import logging
+log = logging.getLogger(__name__)
+
 from tg import expose, flash, require, url, lurl
-from tg import request, redirect, tmpl_context
+from tg import request, redirect, tmpl_context, validate
 from tg.i18n import ugettext as _, lazy_ugettext as l_
 from tg.exceptions import HTTPFound
 from tg import predicates
@@ -14,6 +17,8 @@ from tgext.admin.controller import AdminController
 
 from lustitelskadb.lib.base import BaseController
 from lustitelskadb.controllers.error import ErrorController
+
+import lustitelskadb.lib.forms as appforms
 
 __all__ = ['RootController']
 
@@ -45,6 +50,27 @@ class RootController(BaseController):
     def index(self):
         """Handle the front-page."""
         return dict(page='index')
+
+    @expose('lustitelskadb.templates.newresult')
+    def newresult(self, **kw):
+        """Handle page with registering new user game result."""
+        tmpl_context.form = appforms.ResultForm()
+
+        if request.validation.errors:
+            tmpl_context.form.value = kw
+            tmpl_context.form.error_msg = l_("Form filled with errors!")
+            for key, value in request.validation.errors.items():
+                if value:
+                    getattr(tmpl_context.form.child.children, key).error_msg = value
+
+        return dict(page='newresult')
+
+    @expose()
+    @validate(form=appforms.ResultForm(), error_handler=newresult)
+    def save_result(self, **kw):
+        """Save result."""
+        flash(l_(u"Result successfully added"))
+        return redirect('/')
 
     @expose('lustitelskadb.templates.about')
     def about(self):

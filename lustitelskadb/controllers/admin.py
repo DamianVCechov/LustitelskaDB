@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 """Administration controller module."""
 
+import logging
+log = logging.getLogger(__name__)
+
 from tg import expose, redirect, validate, flash, url, require, tmpl_context
 from tg.i18n import ugettext as _, lazy_ugettext as l_
 from tg.predicates import has_permission, has_any_permission
