@@ -2,6 +2,7 @@
 """Main Controller"""
 
 import logging
+from numba.cuda import args
 log = logging.getLogger(__name__)
 
 from tg import expose, flash, require, url, lurl
@@ -9,6 +10,8 @@ from tg import request, redirect, tmpl_context, validate
 from tg.i18n import ugettext as _, lazy_ugettext as l_
 from tg.exceptions import HTTPFound
 from tg import predicates
+from tg.decorators import paginate
+
 from lustitelskadb import model
 from lustitelskadb.controllers.admin import AdministrationController
 from lustitelskadb.model import DBSession
@@ -46,6 +49,19 @@ class RootController(BaseController):
     def _before(self, *args, **kw):
         tmpl_context.project_name = "LustitelskaDB"
 
+        tmpl_context.pager_params = dict(
+            format=u"$link_first $link_previous ~2~ $link_next $link_last",
+            symbol_first=u"«",
+            symbol_last=u"»",
+            symbol_previous=u"‹",
+            symbol_next=u"›",
+            dotdot_attr={'class': 'page-item'},
+            link_attr={'class': 'page-link'},
+            curpage_attr={'class':'page-item active', 'aria-current': 'page'},
+            page_link_template=u'<li class="page-item"><a%s>%s</a></li>',
+            page_plain_template=u'<li%s><a class="page-link">%s</a></li>'
+        )
+
     @expose('lustitelskadb.templates.index')
     def index(self):
         """Handle the front-page."""
@@ -71,6 +87,18 @@ class RootController(BaseController):
         """Save result."""
         flash(l_(u"Result successfully added"))
         return redirect('/')
+
+    @expose('lustitelskadb.templates.libriciphers')
+    @paginate('libriciphers', items_per_page=1)
+    def libriciphers(self, *args):
+        """Handle LibriCiphers game"""
+        libriciphers = DBSession.query(model.LibriCipher)
+        if len(args):
+            if args[0].isnumeric():
+                libriciphers = libriciphers.filter(model.LibriCipher.uid == args[0])
+        libriciphers = libriciphers.order_by(model.LibriCipher.uid.desc())
+
+        return dict(page='libriciphers', libriciphers=libriciphers)
 
     @expose('lustitelskadb.templates.about')
     def about(self):

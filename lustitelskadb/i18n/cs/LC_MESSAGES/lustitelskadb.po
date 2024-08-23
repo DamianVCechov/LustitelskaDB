@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-08-23 02:15+0200\n"
-"PO-Revision-Date: 2024-08-23 02:21+0200\n"
+"POT-Creation-Date: 2024-08-23 04:47+0200\n"
+"PO-Revision-Date: 2024-08-23 04:48+0200\n"
 "Last-Translator: Jaroslav Mikulík <jaroslav.mikulik@runtech.cz>\n"
 "Language: cs\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -25,32 +25,32 @@ msgstr ""
 msgid "Only for users with appropriate permissions"
 msgstr "Pouze pro uživatele s odpovídajícími oprávněními"
 
-#: lustitelskadb/controllers/root.py:61
+#: lustitelskadb/controllers/root.py:77
 msgid "Form filled with errors!"
 msgstr "Formulář vyplněn s chybami!"
 
-#: lustitelskadb/controllers/root.py:72
+#: lustitelskadb/controllers/root.py:88
 msgid "Result successfully added"
 msgstr "Výsledek úspěšně přidán"
 
-#: lustitelskadb/controllers/root.py:85
+#: lustitelskadb/controllers/root.py:113
 msgid "User not found"
 msgstr "Uživatel nenalezen"
 
-#: lustitelskadb/controllers/root.py:87
+#: lustitelskadb/controllers/root.py:115
 msgid "Invalid Password"
 msgstr "Neplatné heslo"
 
-#: lustitelskadb/controllers/root.py:91
+#: lustitelskadb/controllers/root.py:119
 msgid "Wrong credentials"
 msgstr "Nesprávné přihlašovací údaje"
 
-#: lustitelskadb/controllers/root.py:108
+#: lustitelskadb/controllers/root.py:136
 #, python-format
 msgid "Welcome back, %s!"
 msgstr "Vítejte zpět, uživateli %s!"
 
-#: lustitelskadb/controllers/root.py:121
+#: lustitelskadb/controllers/root.py:149
 msgid "We hope to see you soon!"
 msgstr "Těšíme se příště!"
 
@@ -96,7 +96,7 @@ msgstr "Uložit"
 
 #: lustitelskadb/templates/about.xhtml:3
 msgid " | About page"
-msgstr ""
+msgstr "| Stránka o aplikaci"
 
 #: lustitelskadb/templates/about.xhtml:7
 msgid "About "
@@ -192,6 +192,7 @@ msgid "Error "
 msgstr "Chyba "
 
 #: lustitelskadb/templates/index.xhtml:3
+#: lustitelskadb/templates/libriciphers.xhtml:3
 msgid " | Welcome"
 msgstr " | Vítejte"
 
@@ -342,12 +343,42 @@ msgid ".."
 msgstr ""
 
 #: lustitelskadb/templates/index.xhtml:75
+#: lustitelskadb/templates/libriciphers.xhtml:25
 msgid "»"
 msgstr ""
 
+#: lustitelskadb/templates/libriciphers.xhtml:7
+#: lustitelskadb/templates/master.xhtml:29
+msgid "Libri Ciphers"
+msgstr "Libri Šifry"
+
+#: lustitelskadb/templates/libriciphers.xhtml:10
+msgid "This Quiz question doesn't exist, you can display"
+msgstr "Taková kvízová otázka neexistuje, můžete si zobrazit"
+
+#: lustitelskadb/templates/libriciphers.xhtml:10
+msgid "last one"
+msgstr "nejnovější"
+
+#: lustitelskadb/templates/libriciphers.xhtml:10
+msgid "."
+msgstr "."
+
+#: lustitelskadb/templates/libriciphers.xhtml:20
+msgid "Part:"
+msgstr "Díl:"
+
+#: lustitelskadb/templates/libriciphers.xhtml:25
+msgid "Permanent link"
+msgstr "Trvalý odkaz"
+
+#: lustitelskadb/templates/libriciphers.xhtml:27
+msgid "Show answer"
+msgstr "Zobrazit odpověď"
+
 #: lustitelskadb/templates/login.xhtml:3 lustitelskadb/templates/login.xhtml:7
 #: lustitelskadb/templates/login.xhtml:36
-#: lustitelskadb/templates/master.xhtml:39
+#: lustitelskadb/templates/master.xhtml:40
 msgid "Login"
 msgstr "Přihlášení"
 
@@ -372,39 +403,39 @@ msgid "About"
 msgstr "O aplikaci"
 
 #: lustitelskadb/templates/master.xhtml:28
-msgid "Dropdown"
-msgstr ""
-
-#: lustitelskadb/templates/master.xhtml:30
-msgid "Action"
-msgstr "Akce"
-
-#: lustitelskadb/templates/master.xhtml:31
-msgid "Another action"
-msgstr ""
-
-#: lustitelskadb/templates/master.xhtml:33
-msgid "Something else here"
-msgstr ""
-
-#: lustitelskadb/templates/master.xhtml:35
 #: lustitelskadb/templates/newresult.xhtml:7
 msgid "New result"
 msgstr "Nový výsledek"
 
-#: lustitelskadb/templates/master.xhtml:36
+#: lustitelskadb/templates/master.xhtml:30
 msgid "Statistic"
 msgstr "Statistika"
 
-#: lustitelskadb/templates/master.xhtml:40
+#: lustitelskadb/templates/master.xhtml:31
+msgid "Dropdown"
+msgstr ""
+
+#: lustitelskadb/templates/master.xhtml:33
+msgid "Action"
+msgstr "Akce"
+
+#: lustitelskadb/templates/master.xhtml:34
+msgid "Another action"
+msgstr ""
+
+#: lustitelskadb/templates/master.xhtml:36
+msgid "Something else here"
+msgstr ""
+
+#: lustitelskadb/templates/master.xhtml:41
 msgid "Logout"
 msgstr "Odhlášení"
 
-#: lustitelskadb/templates/master.xhtml:41
+#: lustitelskadb/templates/master.xhtml:42
 msgid "Admin"
 msgstr "Admin"
 
-#: lustitelskadb/templates/master.xhtml:64
+#: lustitelskadb/templates/master.xhtml:65
 msgid "Copyright © "
 msgstr ""
 

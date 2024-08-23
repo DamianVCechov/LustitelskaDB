@@ -1,0 +1,40 @@
+<html py:extends="master.xhtml" py:strip="True">
+<head py:block="head" py:strip="True">
+<title py:block="master_title">${getattr(tmpl_context, 'project_name', 'turbogears2')} | Welcome</title>
+</head>
+
+<body py:block="body" py:strip="True">
+	<h1>Libri Ciphers</h1>
+
+	<div class="display-1 body-bg-tertialy rounded" py:if="not libriciphers">
+		This Quiz question doesn't exist, you can display <a href="${tg.url('/libricipher')}" class="btn btn-outline-secondary">last one</a>.
+	</div>
+
+	<nav aria-label="Pagination">
+		<ul class="pagination justify-content-center my-4" py:if="tmpl_context.paginators.libriciphers.page_count > 1">${tmpl_context.paginators.libriciphers.pager(**tmpl_context.pager_params)}
+		</ul>
+	</nav>
+
+	<div class="card text-center" py:if="libriciphers" py:for="libricipher in libriciphers">
+		<div class="card-header">
+			<span>Part:</span> ${libricipher.part}
+		</div>
+		<div class="card-body">
+			<h5 class="card-title">${libricipher.question}</h5>
+			<p class="card-text">${Markup(libricipher.description)}</p>
+			<p class="card-text text-end mt-2"><a class="link-secondary" href="${tg.url('/libriciphers/{}'.format(libricipher.uid))}"><span>Permanent link</span> &raquo;</a></p>
+			<button class="btn btn-outline-success" onclick="$('div.card-footer>span').toggleClass('invisible')">
+				${h.icon('eye-open')} <span>Show answer</span>
+			</button>
+		</div>
+		<div class="card-footer text-body-secondary">
+			<span class="invisible">${libricipher.answer}</span>
+		</div>
+	</div>
+
+	<nav aria-label="Pagination">
+		<ul class="pagination justify-content-center my-4" py:if="tmpl_context.paginators.libriciphers.page_count > 1">${tmpl_context.paginators.libriciphers.pager(**tmpl_context.pager_params)}
+		</ul>
+	</nav>
+</body>
+</html>
