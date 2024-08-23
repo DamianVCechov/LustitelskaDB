@@ -45,6 +45,12 @@
 	display: list-item;
 }
 
+.pagination li a {
+	padding: .5rem;
+	margin: .25rem;
+	border: 1px solid #a5a5a5;
+}
+
 form li {
 	margin-top: 2rem;
 }
