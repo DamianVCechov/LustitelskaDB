@@ -45,7 +45,7 @@
 	display: list-item;
 }
 
-.pagination li a {
+.pagination.pull-sm-right li a {
 	padding: .5rem;
 	margin: .25rem;
 	border: 1px solid #a5a5a5;
