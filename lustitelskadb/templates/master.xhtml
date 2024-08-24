@@ -49,7 +49,7 @@
 		<!-- Flash messages -->
 		<py:with vars="flash=tg.flash_obj.render('flash', use_js=False)">
 			<div class="row">
-				<div class="col-md-8 col-md-offset-2">
+				<div class="col-md-8 offset-md-2">
 					<div py:if="flash" py:replace="Markup(flash)" />
 				</div>
 			</div>
