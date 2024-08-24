@@ -26,6 +26,6 @@ class LibriCipher(DeclarativeBase):
 
     question = Column(Unicode(100), nullable=False, default="")
 
-    description = Column(UnicodeText)
+    description = Column(UnicodeText(2**32-1))
 
-    answer = Column(UnicodeText)
+    answer = Column(UnicodeText(2**32-1))
