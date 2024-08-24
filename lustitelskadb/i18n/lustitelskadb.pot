@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-08-23 04:47+0200\n"
+"POT-Creation-Date: 2024-08-24 21:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,12 +17,89 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: lustitelskadb/controllers/admin.py:25
+#: lustitelskadb/controllers/admin.py:29
+#: lustitelskadb/controllers/libricipher.py:53
+#: lustitelskadb/controllers/libricipher.py:105
+#: lustitelskadb/controllers/libricipher.py:129
+#: lustitelskadb/controllers/libricipher.py:153
+#: lustitelskadb/controllers/libricipher.py:168
 msgid "Only for users with appropriate permissions"
 msgstr ""
 
+#: lustitelskadb/controllers/libricipher.py:59
+msgid "Actions"
+msgstr ""
+
+#: lustitelskadb/controllers/libricipher.py:61
+msgid "Add Libri Ciphers item"
+msgstr ""
+
+#: lustitelskadb/controllers/libricipher.py:62
+msgid "Refresh Libri Ciphers"
+msgstr ""
+
+#: lustitelskadb/controllers/libricipher.py:67
+#: lustitelskadb/controllers/libricipher.py:72
+msgid "Edit"
+msgstr ""
+
+#: lustitelskadb/controllers/libricipher.py:68
+#: lustitelskadb/controllers/libricipher.py:73
+msgid "Detail"
+msgstr ""
+
+#: lustitelskadb/controllers/libricipher.py:69
+#: lustitelskadb/controllers/libricipher.py:74
+msgid "Delete"
+msgstr ""
+
+#: lustitelskadb/controllers/libricipher.py:69
+#: lustitelskadb/controllers/libricipher.py:74
+msgid "Really delete?"
+msgstr ""
+
+#: lustitelskadb/controllers/libricipher.py:79 lustitelskadb/lib/forms.py:102
+#: lustitelskadb/lib/forms.py:104
+msgid "Part"
+msgstr ""
+
+#: lustitelskadb/controllers/libricipher.py:83 lustitelskadb/lib/forms.py:112
+#: lustitelskadb/lib/forms.py:114
+msgid "Question"
+msgstr ""
+
+#: lustitelskadb/controllers/libricipher.py:90 lustitelskadb/lib/forms.py:132
+#: lustitelskadb/lib/forms.py:134
+msgid "Answer"
+msgstr ""
+
+#: lustitelskadb/controllers/libricipher.py:112
 #: lustitelskadb/controllers/root.py:77
 msgid "Form filled with errors!"
+msgstr ""
+
+#: lustitelskadb/controllers/libricipher.py:120
+#: lustitelskadb/controllers/libricipher.py:135
+#: lustitelskadb/controllers/libricipher.py:162
+#: lustitelskadb/controllers/libricipher.py:177
+msgid "Requested Libri Cipher not found"
+msgstr ""
+
+#: lustitelskadb/controllers/libricipher.py:141
+msgid "Libri Cipher item successfully modified"
+msgstr ""
+
+#: lustitelskadb/controllers/libricipher.py:146
+msgid "Libri Cipher item successfully created"
+msgstr ""
+
+#: lustitelskadb/controllers/libricipher.py:157
+#: lustitelskadb/controllers/libricipher.py:172
+msgid "Missing unique ID of Libri Cipher"
+msgstr ""
+
+#: lustitelskadb/controllers/libricipher.py:183
+msgid "Libri Cipher item successfully deleted"
 msgstr ""
 
 #: lustitelskadb/controllers/root.py:88
@@ -86,8 +163,28 @@ msgstr ""
 msgid "Please Enter any comments (optional)"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:88
+#: lustitelskadb/lib/forms.py:88 lustitelskadb/lib/forms.py:144
 msgid "Save"
+msgstr ""
+
+#: lustitelskadb/lib/forms.py:103
+msgid "Please Enter part number (required)"
+msgstr ""
+
+#: lustitelskadb/lib/forms.py:113
+msgid "Please Enter Question (required)"
+msgstr ""
+
+#: lustitelskadb/lib/forms.py:122 lustitelskadb/lib/forms.py:124
+msgid "Description"
+msgstr ""
+
+#: lustitelskadb/lib/forms.py:123
+msgid "Please Enter description (required)"
+msgstr ""
+
+#: lustitelskadb/lib/forms.py:133
+msgid "Please Enter Answer (required)"
 msgstr ""
 
 #: lustitelskadb/templates/about.xhtml:3
@@ -158,18 +255,6 @@ msgid ""
 "non, egestas non metus. Donec non efficitur lectus. Curabitur nec arcu quis "
 "libero tincidunt blandit ac id mi. In porttitor eros lacus. Pellentesque "
 "justo tellus, vestibulum non efficitur nec, accumsan sit amet neque."
-msgstr ""
-
-#: lustitelskadb/templates/admin.xhtml:3
-msgid " | Administration panel"
-msgstr ""
-
-#: lustitelskadb/templates/admin.xhtml:8
-msgid "Administration"
-msgstr ""
-
-#: lustitelskadb/templates/admin.xhtml:14
-msgid "DB admin"
 msgstr ""
 
 #: lustitelskadb/templates/error.xhtml:3
@@ -338,6 +423,7 @@ msgstr ""
 msgid "»"
 msgstr ""
 
+#: lustitelskadb/templates/administration/index.xhtml:14
 #: lustitelskadb/templates/libriciphers.xhtml:7
 #: lustitelskadb/templates/master.xhtml:29
 msgid "Libri Ciphers"
@@ -355,6 +441,7 @@ msgstr ""
 msgid "."
 msgstr ""
 
+#: lustitelskadb/templates/administration/libricipher/detail.xhtml:20
 #: lustitelskadb/templates/libriciphers.xhtml:20
 msgid "Part:"
 msgstr ""
@@ -435,5 +522,51 @@ msgstr ""
 
 #: lustitelskadb/templates/newresult.xhtml:3
 msgid " | New result"
+msgstr ""
+
+#: lustitelskadb/templates/administration/index.xhtml:3
+msgid " | Administration panel"
+msgstr ""
+
+#: lustitelskadb/templates/administration/index.xhtml:8
+msgid "Administration"
+msgstr ""
+
+#: lustitelskadb/templates/administration/index.xhtml:20
+msgid "DB admin"
+msgstr ""
+
+#: lustitelskadb/templates/administration/libricipher/detail.xhtml:3
+#: lustitelskadb/templates/administration/libricipher/edit.xhtml:3
+#: lustitelskadb/templates/administration/libricipher/index.xhtml:3
+msgid " | Manage Libri Cipher"
+msgstr ""
+
+#: lustitelskadb/templates/administration/libricipher/detail.xhtml:7
+msgid "Libri Cipher detail"
+msgstr ""
+
+#: lustitelskadb/templates/administration/libricipher/detail.xhtml:20
+msgid " - "
+msgstr ""
+
+#: lustitelskadb/templates/administration/libricipher/detail.xhtml:24
+msgid "Answer:"
+msgstr ""
+
+#: lustitelskadb/templates/administration/libricipher/edit.xhtml:7
+msgid "Edit Libri Cipher"
+msgstr ""
+
+#: lustitelskadb/templates/administration/libricipher/index.xhtml:7
+msgid "Manage Libri Ciphers"
+msgstr ""
+
+#: lustitelskadb/templates/administration/libricipher/index.xhtml:10
+msgid "No records found, you can"
+msgstr ""
+
+#: lustitelskadb/templates/administration/libricipher/index.xhtml:10
+msgid "add some."
 msgstr ""
 

@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-08-23 04:47+0200\n"
-"PO-Revision-Date: 2024-08-23 04:48+0200\n"
+"POT-Creation-Date: 2024-08-24 21:18+0200\n"
+"PO-Revision-Date: 2024-08-24 21:24+0200\n"
 "Last-Translator: Jaroslav Mikulík <jaroslav.mikulik@runtech.cz>\n"
 "Language: cs\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -21,13 +21,97 @@ msgstr ""
 "Generated-By: Babel 2.10.3\n"
 "X-Generator: Lokalize 22.12.3\n"
 
-#: lustitelskadb/controllers/admin.py:25
+#: lustitelskadb/controllers/admin.py:29
+#: lustitelskadb/controllers/libricipher.py:53
+#: lustitelskadb/controllers/libricipher.py:105
+#: lustitelskadb/controllers/libricipher.py:129
+#: lustitelskadb/controllers/libricipher.py:153
+#: lustitelskadb/controllers/libricipher.py:168
 msgid "Only for users with appropriate permissions"
 msgstr "Pouze pro uživatele s odpovídajícími oprávněními"
 
+#: lustitelskadb/controllers/libricipher.py:59
+#| msgid "Action"
+msgid "Actions"
+msgstr "Akce"
+
+#: lustitelskadb/controllers/libricipher.py:61
+#| msgid "Libri Ciphers"
+msgid "Add Libri Ciphers item"
+msgstr "Přidat položku do Libri Šifry"
+
+#: lustitelskadb/controllers/libricipher.py:62
+#| msgid "Libri Ciphers"
+msgid "Refresh Libri Ciphers"
+msgstr "Obnovit Libri Šifry"
+
+#: lustitelskadb/controllers/libricipher.py:67
+#: lustitelskadb/controllers/libricipher.py:72
+msgid "Edit"
+msgstr "Upravit"
+
+#: lustitelskadb/controllers/libricipher.py:68
+#: lustitelskadb/controllers/libricipher.py:73
+msgid "Detail"
+msgstr "Detail"
+
+#: lustitelskadb/controllers/libricipher.py:69
+#: lustitelskadb/controllers/libricipher.py:74
+msgid "Delete"
+msgstr "Smazat"
+
+#: lustitelskadb/controllers/libricipher.py:69
+#: lustitelskadb/controllers/libricipher.py:74
+msgid "Really delete?"
+msgstr "Opravdu smazat?"
+
+#: lustitelskadb/controllers/libricipher.py:79 lustitelskadb/lib/forms.py:102
+#: lustitelskadb/lib/forms.py:104
+#| msgid "Part:"
+msgid "Part"
+msgstr "Díl"
+
+#: lustitelskadb/controllers/libricipher.py:83 lustitelskadb/lib/forms.py:112
+#: lustitelskadb/lib/forms.py:114
+msgid "Question"
+msgstr "Otázka"
+
+#: lustitelskadb/controllers/libricipher.py:90 lustitelskadb/lib/forms.py:132
+#: lustitelskadb/lib/forms.py:134
+#| msgid "Show answer"
+msgid "Answer"
+msgstr "Odpověď"
+
+#: lustitelskadb/controllers/libricipher.py:112
 #: lustitelskadb/controllers/root.py:77
 msgid "Form filled with errors!"
 msgstr "Formulář vyplněn s chybami!"
+
+#: lustitelskadb/controllers/libricipher.py:120
+#: lustitelskadb/controllers/libricipher.py:135
+#: lustitelskadb/controllers/libricipher.py:162
+#: lustitelskadb/controllers/libricipher.py:177
+msgid "Requested Libri Cipher not found"
+msgstr "Požadovaná Libri Šifry nenalezena"
+
+#: lustitelskadb/controllers/libricipher.py:141
+msgid "Libri Cipher item successfully modified"
+msgstr "Libri Šifry položka úspěšně upravena"
+
+#: lustitelskadb/controllers/libricipher.py:146
+#| msgid "Result successfully added"
+msgid "Libri Cipher item successfully created"
+msgstr "Libri Šifry položka úspěšně vytvořena"
+
+#: lustitelskadb/controllers/libricipher.py:157
+#: lustitelskadb/controllers/libricipher.py:172
+msgid "Missing unique ID of Libri Cipher"
+msgstr "Chybí unikátní ID Libri Šifry"
+
+#: lustitelskadb/controllers/libricipher.py:183
+#| msgid "Result successfully added"
+msgid "Libri Cipher item successfully deleted"
+msgstr "Libri Šifry položka úspěšně smazána"
 
 #: lustitelskadb/controllers/root.py:88
 msgid "Result successfully added"
@@ -90,9 +174,33 @@ msgstr "Komentáře"
 msgid "Please Enter any comments (optional)"
 msgstr "Vložte prosím libovolné sdělení (volitelné)"
 
-#: lustitelskadb/lib/forms.py:88
+#: lustitelskadb/lib/forms.py:88 lustitelskadb/lib/forms.py:144
 msgid "Save"
 msgstr "Uložit"
+
+#: lustitelskadb/lib/forms.py:103
+#| msgid "Please Enter your nickname (required)"
+msgid "Please Enter part number (required)"
+msgstr "Vložte prosím číslo dílu (povinné)"
+
+#: lustitelskadb/lib/forms.py:113
+#| msgid "Please Enter your game result (required)"
+msgid "Please Enter Question (required)"
+msgstr "Vložte prosím otázku (povinné)"
+
+#: lustitelskadb/lib/forms.py:122 lustitelskadb/lib/forms.py:124
+msgid "Description"
+msgstr "Popis"
+
+#: lustitelskadb/lib/forms.py:123
+#| msgid "Please Enter your nickname (required)"
+msgid "Please Enter description (required)"
+msgstr "Vložte prosím popis položky (povinné)"
+
+#: lustitelskadb/lib/forms.py:133
+#| msgid "Please Enter your nickname (required)"
+msgid "Please Enter Answer (required)"
+msgstr "Vložte prosím otázku (povinné)"
 
 #: lustitelskadb/templates/about.xhtml:3
 msgid " | About page"
@@ -166,18 +274,6 @@ msgid ""
 "blandit ac id mi. In porttitor eros lacus. Pellentesque justo tellus, "
 "vestibulum non efficitur nec, accumsan sit amet neque."
 msgstr ""
-
-#: lustitelskadb/templates/admin.xhtml:3
-msgid " | Administration panel"
-msgstr " | Administrační panel"
-
-#: lustitelskadb/templates/admin.xhtml:8
-msgid "Administration"
-msgstr "Administrace"
-
-#: lustitelskadb/templates/admin.xhtml:14
-msgid "DB admin"
-msgstr "DB admin"
 
 #: lustitelskadb/templates/error.xhtml:3
 msgid "A "
@@ -347,6 +443,7 @@ msgstr ""
 msgid "»"
 msgstr ""
 
+#: lustitelskadb/templates/administration/index.xhtml:14
 #: lustitelskadb/templates/libriciphers.xhtml:7
 #: lustitelskadb/templates/master.xhtml:29
 msgid "Libri Ciphers"
@@ -364,6 +461,7 @@ msgstr "nejnovější"
 msgid "."
 msgstr "."
 
+#: lustitelskadb/templates/administration/libricipher/detail.xhtml:20
 #: lustitelskadb/templates/libriciphers.xhtml:20
 msgid "Part:"
 msgstr "Díl:"
@@ -446,4 +544,54 @@ msgstr ""
 #: lustitelskadb/templates/newresult.xhtml:3
 msgid " | New result"
 msgstr " | Nový výsledek"
+
+#: lustitelskadb/templates/administration/index.xhtml:3
+msgid " | Administration panel"
+msgstr " | Administrační panel"
+
+#: lustitelskadb/templates/administration/index.xhtml:8
+msgid "Administration"
+msgstr "Administrace"
+
+#: lustitelskadb/templates/administration/index.xhtml:20
+msgid "DB admin"
+msgstr "DB admin"
+
+#: lustitelskadb/templates/administration/libricipher/detail.xhtml:3
+#: lustitelskadb/templates/administration/libricipher/edit.xhtml:3
+#: lustitelskadb/templates/administration/libricipher/index.xhtml:3
+msgid " | Manage Libri Cipher"
+msgstr ""
+
+#: lustitelskadb/templates/administration/libricipher/detail.xhtml:7
+#| msgid "Libri Ciphers"
+msgid "Libri Cipher detail"
+msgstr "Libri Šifry detail"
+
+#: lustitelskadb/templates/administration/libricipher/detail.xhtml:20
+msgid " - "
+msgstr " - "
+
+#: lustitelskadb/templates/administration/libricipher/detail.xhtml:24
+#| msgid "Show answer"
+msgid "Answer:"
+msgstr "Odpověď:"
+
+#: lustitelskadb/templates/administration/libricipher/edit.xhtml:7
+#| msgid "Libri Ciphers"
+msgid "Edit Libri Cipher"
+msgstr "Upravit Libri Šifry"
+
+#: lustitelskadb/templates/administration/libricipher/index.xhtml:7
+#| msgid "Libri Ciphers"
+msgid "Manage Libri Ciphers"
+msgstr "Správa Libri Šifry"
+
+#: lustitelskadb/templates/administration/libricipher/index.xhtml:10
+msgid "No records found, you can"
+msgstr "Nebyly nalezeny žádné záznamy, můžete"
+
+#: lustitelskadb/templates/administration/libricipher/index.xhtml:10
+msgid "add some."
+msgstr "nějaké přidat."
 
