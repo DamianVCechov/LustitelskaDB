@@ -91,7 +91,7 @@ class LibriCipherController(BaseController):
             ),
             (
                 l_(u"Answer"),
-                'answer'
+                lambda obj: html.literal(obj.answer)
             )
         ]
 
