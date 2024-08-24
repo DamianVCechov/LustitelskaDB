@@ -19,9 +19,10 @@
 	<h2>
 		<span>Part:</span> ${libricipher.part} - ${libricipher.question}
 	</h2>
-	<p>${libricipher.description}</p>
-	<h5>
-		<span>Answer:</span> ${libricipher.answer}
-	</h5>
+
+	<div>${Markup(libricipher.description)}</div>
+
+	<h5>Answer:</h5>
+	<div>${Markup(libricipher.answer)}</div>
 </body>
 </html>

@@ -125,7 +125,7 @@ class LibriCipherForm(twf.Form):
             validator=validators.ByteString(),
             required=True,
             rows=5,
-            css_class="form-control my-1"
+            css_class="form-control my-1 tinymce-override"
         )
 
         answer = twf.TextArea(
@@ -135,7 +135,7 @@ class LibriCipherForm(twf.Form):
             validator=validators.ByteString(),
             required=True,
             rows=5,
-            css_class="form-control my-1"
+            css_class="form-control my-1 tinymce-override"
         )
 
     action = lurl('/admin/libricipher/save')

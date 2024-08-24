@@ -4,8 +4,8 @@
 import logging
 log = logging.getLogger(__name__)
 
-from tg import expose, redirect, validate, flash, url, require, request, tmpl_context
-from tg.i18n import ugettext as _, lazy_ugettext as l_
+from tg import expose, config, redirect, validate, flash, url, require, request, tmpl_context
+from tg.i18n import ugettext as _, lazy_ugettext as l_, get_lang
 from tg.predicates import has_permission, has_any_permission
 from tg.decorators import paginate
 
@@ -14,6 +14,7 @@ from lustitelskadb.lib.base import BaseController
 from lustitelskadb.model import DBSession
 
 import lustitelskadb.lib.forms as appforms
+import lustitelskadb.lib.injects as appinjects
 
 try:
     from webhelpers2 import html
@@ -22,6 +23,8 @@ except (ImportError, ModuleNotFoundError, SyntaxError):
         from webhelpers import html
     except:
         log.error("WebHelpers(2) helpers not available with this Python Version")
+
+import os
 
 import tw2.core as twc
 import tw2.forms as twf
@@ -121,6 +124,17 @@ class LibriCipherController(BaseController):
                 redirect('/admin/libricipher')
 
             tmpl_context.form.value = libricipher.__dict__
+
+        tinymce_langs = os.listdir(os.path.join(config.get('paths').get('static_files'), u'js/tinymce/langs'))
+        tinymce_init_src = twc.JSSource(
+            src=appinjects.tinymce_init % {
+                'lang': get_lang()[0] if get_lang()[0]+'.js' in tinymce_langs else 'en',
+                'skin_styles_title': _('Skin styles'),
+                'content_css': config.get('tinymce.content_css')
+            }
+        )
+        appinjects.tinymce_link.inject()
+        tinymce_init_src.inject()
 
         return dict(page='libricipher-administration-edit')
 
