@@ -149,7 +149,7 @@ class LibriCipherController(BaseController):
 
         return redirect('/admin/libricipher')
 
-    @expose()
+    @expose('lustitelskadb.templates.administration.libricipher.detail')
     @require(has_any_permission('manage', 'libricipher', msg=l_('Only for users with appropriate permissions')))
     def detail(self, uid=None, *args, **kw):
         """Libri Cipher detail view"""
