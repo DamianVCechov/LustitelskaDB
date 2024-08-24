@@ -1,0 +1,27 @@
+<html py:extends="master.xhtml" py:strip="True">
+<head py:block="head" py:strip="True">
+<title py:block="master_title">${getattr(tmpl_context, 'project_name', 'turbogears2')} | Manage Libri Cipher</title>
+</head>
+
+<body py:block="body" py:strip="True">
+	<h1 class="mb-5">Libri Cipher detail</h1>
+
+	<div class="btn-toolbar mb-5" role="toolbar" aria-label="Libri Cipher Toolbar">
+		<div class="btn-group me-2" role="group" aria-label="Edit group">
+			<a href="${tg.url('/admin/libricipher/edit/{}'.format(libricipher.uid))}" class="btn btn-outline-secondary">${h.icon('pencil')}</a>
+			<a href="${tg.url('/admin/libricipher/delete/{}'.format(libricipher.uid))}" class="btn btn-outline-danger" py:attrs="{'onclick': 'return confirm(\'{}\')'.format(_('Really delete?'))}">${h.icon('trash')}</a>
+		</div>
+		<div class="btn-group" role="group" aria-label="Navigation group">
+			<a href="${tg.url('/admin/libricipher')}" class="btn btn-outline-success">${h.icon('arrow-left')}</a>
+		</div>
+	</div>
+
+	<h2>
+		<span>Part:</span> ${libricipher.part} - ${libricipher.question}
+	</h2>
+	<p>${libricipher.description}</p>
+	<h5>
+		<span>Answer:</span> ${libricipher.answer}
+	</h5>
+</body>
+</html>

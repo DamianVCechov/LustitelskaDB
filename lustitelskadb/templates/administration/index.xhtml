@@ -9,13 +9,19 @@
 
 	<div class="row">
 		<div class="col-md-2">
-			<div class="text-center position-relative bg-light p-1 rounded">
+			<div class="text-center position-relative bg-light p-1 rounded mb-3">
+				<div class="display-1 text-secondary">${h.icon('question-sign')}</div>
+				<a href="${tg.url('/admin/libricipher')}" class="stretched-link link-secondary h5">Libri Ciphers</a>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="text-center position-relative bg-light p-1 rounded mb-3">
 				<div class="display-1 text-secondary">${h.icon('list-alt')}</div>
 				<a href="${tg.url('/dbadmin')}" class="stretched-link link-secondary h5">DB admin</a>
 			</div>
 		</div>
 		<div class="col-md-2" py:for="plug in plugged()">
-			<div class="text-center position-relative bg-light p-1 rounded">
+			<div class="text-center position-relative bg-light p-1 rounded mb-3">
 				<div class="display-1 text-secondary">${h.icon('gift')}</div>
 				<a href="${h.plug_url(plug, '/')}" class="stretched-link link-secondary h5">${plug}</a>
 			</div>

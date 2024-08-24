@@ -8,6 +8,8 @@ from tg import expose, redirect, validate, flash, url, require, tmpl_context
 from tg.i18n import ugettext as _, lazy_ugettext as l_
 from tg.predicates import has_permission, has_any_permission
 
+from lustitelskadb.controllers.libricipher import LibriCipherController
+
 from lustitelskadb.lib.base import BaseController
 # from lustitelskadb.model import DBSession
 
@@ -17,6 +19,8 @@ __all__ = ['AdministrationController']
 class AdministrationController(BaseController):
     # Uncomment this line if your controller requires an authenticated user
     # allow_only = not_anonymous()
+
+    libricipher = LibriCipherController()
 
     def _before(self, *args, **kw):
         tmpl_context.project_name = "LustitelskaDB"

@@ -33,7 +33,7 @@ except (ImportError, ModuleNotFoundError, SyntaxError):
     except:
         log.error("WebHelpers(2) helpers not available with this Python Version")
 
-__all__ = ['ResultForm']
+__all__ = ['ResultForm', 'LibriCipherForm']
 
 
 class ResultForm(twf.Form):
@@ -83,6 +83,62 @@ class ResultForm(twf.Form):
         )
 
     action = lurl('/save_result')
+
+    submit = twf.SubmitButton(
+        value=l_(u'Save'),
+        css_class='btn btn-outline-secondary btn-lg'
+    )
+
+
+class LibriCipherForm(twf.Form):
+
+    class child(twf.ListLayout):
+
+        css_class = 'list-unstyled bg-light p-3'
+
+        uid = twf.HiddenField()
+
+        part = twf.NumberField(
+            label=l_(u'Part'),
+            help_text=l_(u'Please Enter part number (required)'),
+            placeholder=l_(u'Part'),
+            validator=validators.Int(min=1),
+            autofocus=True,
+            required=True,
+            css_class="form-control my-1"
+        )
+
+        question = twf.TextField(
+            label=l_(u'Question'),
+            help_text=l_(u'Please Enter Question (required)'),
+            placeholder=l_(u'Question'),
+            validator=validators.ByteString(max=100),
+            manlength=30,
+            required=True,
+            css_class="form-control my-1"
+        )
+
+        description = twf.TextArea(
+            label=l_(u'Description'),
+            help_text=l_(u'Please Enter description (required)'),
+            placeholder=l_(u'Description'),
+            validator=validators.ByteString(),
+            required=True,
+            rows=5,
+            css_class="form-control my-1"
+        )
+
+        answer = twf.TextArea(
+            label=l_(u'Answer'),
+            help_text=l_(u'Please Enter Answer (required)'),
+            placeholder=l_(u'Answer'),
+            validator=validators.ByteString(),
+            required=True,
+            rows=5,
+            css_class="form-control my-1"
+        )
+
+    action = lurl('/admin/libricipher/save')
 
     submit = twf.SubmitButton(
         value=l_(u'Save'),
