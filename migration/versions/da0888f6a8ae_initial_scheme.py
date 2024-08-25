@@ -15,7 +15,21 @@ import sqlalchemy as sa
 
 
 def upgrade():
-    pass
+    conn = op.get_bind()
+    inspector = sa.engine.reflection.Inspector.from_engine(conn)
+    tables = inspector.get_table_names()
+
+    if 'libriciphers' not in tables:
+        op.create_table(
+            'libriciphers',
+            sa.Column('uid', sa.Integer, autoincrement=True, primary_key=True),
+            sa.Column('part', sa.Integer, nullable=False, index=True, default=0),
+            sa.Column('question', sa.Unicode(100), nullable=False, default=""),
+            sa.Column('description', sa.UnicodeText(2 ** 32 - 1)),
+            sa.Column('answer', sa.UnicodeText(2 ** 32 - 1)),
+            mysql_engine='InnoDB',
+            mysql_charset='utf8mb4'
+        )
 
 
 def downgrade():
