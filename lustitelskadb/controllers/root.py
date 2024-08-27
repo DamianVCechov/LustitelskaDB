@@ -6,7 +6,7 @@ from numba.cuda import args
 log = logging.getLogger(__name__)
 
 from tg import expose, flash, require, url, lurl
-from tg import request, redirect, tmpl_context, validate
+from tg import request, redirect, tmpl_context, validate, session, config
 from tg.i18n import ugettext as _, lazy_ugettext as l_
 from tg.exceptions import HTTPFound
 from tg import predicates
@@ -17,6 +17,19 @@ from lustitelskadb.controllers.admin import AdministrationController
 from lustitelskadb.model import DBSession
 from tgext.admin.tgadminconfig import BootstrapTGAdminConfig as TGAdminConfig
 from tgext.admin.controller import AdminController
+
+from requests_oauthlib import OAuth1Session
+
+try:
+    import ujson as json
+except (ImportError, ModuleNotFoundError, SyntaxError):
+    try:
+        import simplejson as json
+    except (ImportError, ModuleNotFoundError, SyntaxError):
+        try:
+            import json
+        except:
+            log.error("Any of known JSON module not available (ujson, simplejson, json)")
 
 from lustitelskadb.lib.base import BaseController
 from lustitelskadb.controllers.error import ErrorController
@@ -67,10 +80,101 @@ class RootController(BaseController):
         """Handle the front-page."""
         return dict(page='index')
 
+    @expose()
+    def xauthorize(self, **kw):
+        """Authorize via X/Twitter."""
+        if not session.has_key('xauthorized.redirect.url'):
+            flash(_("Unknown source for authorization, canceled"))
+            redirect('/')
+
+        if session.has_key('me_on_xtwitter'):
+            return redirect(url('/xauthorized'))
+
+        oauth = OAuth1Session(
+            config.get('xtwitter.consumer_key', ''),
+            client_secret=config.get('xtwitter.consumer_secret', '')
+        )
+
+        try:
+            fetch_response = oauth.fetch_request_token(config.get('xtwitter.request_token_url', "https://api.x.com/oauth/request_token"))
+        except ValueError:
+            log.error("There may have been an issue with the consumer_key or consumer_secret you entered.")
+            flash(_(u"There may have been an issue with the consumer_key or consumer_secret in application"))
+            return redirect('/xerror')
+
+        session['resource_owner_key'] = fetch_response.get("oauth_token")
+        session['resource_owner_secret'] = fetch_response.get("oauth_token_secret")
+        session.save()
+
+        log.debug("Got OAuth token: %s" % session['resource_owner_key'])
+
+        return redirect(oauth.authorization_url(config.get('twittertools.base_authorization.url', "https://api.x.com/oauth/authorize")))
+
+    @expose()
+    def xauthorized(self, **kw):
+        """Callback URL when is authorized via X/Twitter."""
+        oauth = OAuth1Session(
+            config.get('xtwitter.consumer_key', ''),
+            client_secret=config.get('xtwitter.consumer_secret', ''),
+            resource_owner_key=session.get('resource_owner_key'),
+            resource_owner_secret=session.get('resource_owner_secret'),
+            verifier=kw.get('oauth_verifier')
+        )
+        oauth_tokens = oauth.fetch_access_token(config.get('xtwitter.access_token.url', "https://api.x.com/oauth/access_token"))
+
+        session['access_token'] = oauth_tokens["oauth_token"]
+        session['access_token_secret'] = oauth_tokens["oauth_token_secret"]
+
+        # User fields are adjustable, options include:
+        # created_at, description, entities, id, location, most_recent_tweet_id,
+        # name, pinned_tweet_id, profile_image_url, protected,
+        # public_metrics, url, username, verified, verified_type and withheld
+
+        fields = "created_at,description,entities,id,location,most_recent_tweet_id,name,pinned_tweet_id,profile_image_url,protected,public_metrics,url,username,verified,verified_type,withheld"
+        params = {
+            "user.fields": fields
+        }
+
+        response = oauth.get("https://api.x.com/2/users/me", params=params)
+
+        if response.status_code != 200:
+            log.error("Request returned an error: {} {}".format(response.status_code, response.text))
+            flash(_(u"Can't get user info from Twitter"))
+            session.delete()
+            redirect('/xerror')
+
+        session['me_on_xtwitter'] = response.json()
+        del(session['resource_owner_key'])
+        del(session['resource_owner_secret'])
+        session.save()
+
+        log.debug(json.dumps(response.json(), indent=4, sort_keys=True))
+
+        if not session.has_key('xauthorized.redirect.url'):
+            flash(_("Successfully authorized"))
+            return redirect(session.get('xauthorized.redirect.url'))
+        else:
+            flash(_("Succesfully authorized, but missing landing URL"))
+            return redirect('/')
+
+    @expose('lustitelskadb.templates.xerror')
+    def xerror(self, **kw):
+        """Landing URL when error raised while authentication via X/Twitter"""
+        return dict(page='xerror')
+
     @expose('lustitelskadb.templates.newresult')
     def newresult(self, **kw):
         """Handle page with registering new user game result."""
         tmpl_context.form = appforms.ResultForm()
+
+        if not session.has_key('me_on_xtwitter'):
+            session['xauthorized.redirect.url'] = url('/newresult')
+            session.save()
+            redirect('/xauthorize')
+        else:
+            if session.has_key('xauthorized.redirect.url'):
+                del(session['xauthorized.redirect.url'])
+                session.save()
 
         if request.validation.errors:
             tmpl_context.form.value = kw
@@ -78,6 +182,12 @@ class RootController(BaseController):
             for key, value in request.validation.errors.items():
                 if value:
                     getattr(tmpl_context.form.child.children, key).error_msg = value
+        else:
+            tmpl_context.form.value = {
+                'xtwitter_uid': session['me_on_xtwitter']['data']['id'],
+                'xtwitter_username': session['me_on_xtwitter']['data']['username'],
+                'xtwitter_displayname': session['me_on_xtwitter']['data']['name']
+            }
 
         return dict(page='newresult')
 

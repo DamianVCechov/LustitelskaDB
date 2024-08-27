@@ -42,17 +42,9 @@ class ResultForm(twf.Form):
 
         css_class = 'list-unstyled bg-light p-3'
 
-        nickname = twf.TextField(
-            label=l_(u'Nickname'),
-            help_text=l_(u'Please Enter your nickname (required)'),
-            placeholder=l_(u'Your nickname'),
-            validator=validators.ByteString(min=2,max=64),
-            minlength=2,
-            maxlength=64,
-            autofocus=True,
-            required=True,
-            css_class="form-control my-3"
-        )
+        xtwitter_uid = twf.HiddenField()
+        xtwitter_username = twf.HiddenField()
+        xtwitter_displayname = twf.HiddenField()
 
         game_result = twf.TextArea(
             label=l_(u'Game result'),
@@ -62,6 +54,9 @@ class ResultForm(twf.Form):
             minlength=30,
             required=True,
             rows=12,
+            attrs={
+                'autofocus': True
+            },
             css_class="form-control font-monospace fs-4 my-3"
         )
 
