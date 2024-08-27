@@ -150,7 +150,7 @@ class RootController(BaseController):
 
         log.debug(json.dumps(response.json(), indent=4, sort_keys=True))
 
-        if not session.has_key('xauthorized.redirect.url'):
+        if session.has_key('xauthorized.redirect.url'):
             flash(_("Successfully authorized"))
             return redirect(session.get('xauthorized.redirect.url'))
         else:
