@@ -36,6 +36,9 @@
 							<li><a class="dropdown-item" href="#">Something else here</a></li>
 						</ul></li>
 				</ul>
+				<ul class="navbar-nav" py:if="session.has_key('me_on_xtwitter')">
+					<li class="nav-item"><a class="nav-link" href="${tg.url('/xdetach')}"><img class="img-responsive rounded-circle" style="max-height: 24px;" src="${session['me_on_xtwitter']['data']['profile_image_url']}" alt="${session['me_on_xtwitter']['data']['name']} @${session['me_on_xtwitter']['data']['username']}" py:if="'profile_image_url' in session['me_on_xtwitter']['data']" /> <span>Detach</span> <span py:if="'username' in session['me_on_xtwitter']['data']">@${session['me_on_xtwitter']['data']['username']}</span></a></li>
+				</ul>
 				<ul class="navbar-nav" py:if="tg.auth_stack_enabled">
 					<li class="nav-item" py:if="not request.identity"><a class="nav-link" href="${tg.url('/login')}">Login</a></li>
 					<li class="nav-item" py:if="request.identity"><a class="nav-link" href="${tg.url('/logout_handler')}">Logout</a></li>

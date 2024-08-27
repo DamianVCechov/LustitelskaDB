@@ -162,6 +162,13 @@ class RootController(BaseController):
         """Landing URL when error raised while authentication via X/Twitter"""
         return dict(page='xerror')
 
+    @expose()
+    def xdetach(self, **kw):
+        """Detach authorization from Twitter"""
+        session.delete()
+        flash(_("Successfully detached from X/Twitter"))
+        return redirect('/')
+
     @expose('lustitelskadb.templates.newresult')
     def newresult(self, **kw):
         """Handle page with registering new user game result."""
