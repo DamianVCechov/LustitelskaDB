@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-08-24 21:18+0200\n"
+"POT-Creation-Date: 2024-08-27 11:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,172 +18,190 @@ msgstr ""
 "Generated-By: Babel 2.10.3\n"
 
 #: lustitelskadb/controllers/admin.py:29
-#: lustitelskadb/controllers/libricipher.py:53
-#: lustitelskadb/controllers/libricipher.py:105
-#: lustitelskadb/controllers/libricipher.py:129
-#: lustitelskadb/controllers/libricipher.py:153
-#: lustitelskadb/controllers/libricipher.py:168
+#: lustitelskadb/controllers/libricipher.py:56
+#: lustitelskadb/controllers/libricipher.py:108
+#: lustitelskadb/controllers/libricipher.py:143
+#: lustitelskadb/controllers/libricipher.py:167
+#: lustitelskadb/controllers/libricipher.py:182
 msgid "Only for users with appropriate permissions"
 msgstr ""
 
-#: lustitelskadb/controllers/libricipher.py:59
+#: lustitelskadb/controllers/libricipher.py:62
 msgid "Actions"
 msgstr ""
 
-#: lustitelskadb/controllers/libricipher.py:61
+#: lustitelskadb/controllers/libricipher.py:64
 msgid "Add Libri Ciphers item"
 msgstr ""
 
-#: lustitelskadb/controllers/libricipher.py:62
+#: lustitelskadb/controllers/libricipher.py:65
 msgid "Refresh Libri Ciphers"
 msgstr ""
 
-#: lustitelskadb/controllers/libricipher.py:67
-#: lustitelskadb/controllers/libricipher.py:72
+#: lustitelskadb/controllers/libricipher.py:70
+#: lustitelskadb/controllers/libricipher.py:75
 msgid "Edit"
 msgstr ""
 
-#: lustitelskadb/controllers/libricipher.py:68
-#: lustitelskadb/controllers/libricipher.py:73
+#: lustitelskadb/controllers/libricipher.py:71
+#: lustitelskadb/controllers/libricipher.py:76
 msgid "Detail"
 msgstr ""
 
-#: lustitelskadb/controllers/libricipher.py:69
-#: lustitelskadb/controllers/libricipher.py:74
+#: lustitelskadb/controllers/libricipher.py:72
+#: lustitelskadb/controllers/libricipher.py:77
 msgid "Delete"
 msgstr ""
 
-#: lustitelskadb/controllers/libricipher.py:69
-#: lustitelskadb/controllers/libricipher.py:74
+#: lustitelskadb/controllers/libricipher.py:72
+#: lustitelskadb/controllers/libricipher.py:77
 msgid "Really delete?"
 msgstr ""
 
-#: lustitelskadb/controllers/libricipher.py:79 lustitelskadb/lib/forms.py:102
-#: lustitelskadb/lib/forms.py:104
+#: lustitelskadb/controllers/libricipher.py:82 lustitelskadb/lib/forms.py:97
+#: lustitelskadb/lib/forms.py:99
 msgid "Part"
 msgstr ""
 
-#: lustitelskadb/controllers/libricipher.py:83 lustitelskadb/lib/forms.py:112
-#: lustitelskadb/lib/forms.py:114
+#: lustitelskadb/controllers/libricipher.py:86 lustitelskadb/lib/forms.py:107
+#: lustitelskadb/lib/forms.py:109
 msgid "Question"
 msgstr ""
 
-#: lustitelskadb/controllers/libricipher.py:90 lustitelskadb/lib/forms.py:132
-#: lustitelskadb/lib/forms.py:134
+#: lustitelskadb/controllers/libricipher.py:93 lustitelskadb/lib/forms.py:127
+#: lustitelskadb/lib/forms.py:129
 msgid "Answer"
 msgstr ""
 
-#: lustitelskadb/controllers/libricipher.py:112
-#: lustitelskadb/controllers/root.py:77
+#: lustitelskadb/controllers/libricipher.py:115
+#: lustitelskadb/controllers/root.py:188
 msgid "Form filled with errors!"
 msgstr ""
 
-#: lustitelskadb/controllers/libricipher.py:120
-#: lustitelskadb/controllers/libricipher.py:135
-#: lustitelskadb/controllers/libricipher.py:162
-#: lustitelskadb/controllers/libricipher.py:177
+#: lustitelskadb/controllers/libricipher.py:123
+#: lustitelskadb/controllers/libricipher.py:149
+#: lustitelskadb/controllers/libricipher.py:176
+#: lustitelskadb/controllers/libricipher.py:191
 msgid "Requested Libri Cipher not found"
 msgstr ""
 
-#: lustitelskadb/controllers/libricipher.py:141
+#: lustitelskadb/controllers/libricipher.py:132
+msgid "Skin styles"
+msgstr ""
+
+#: lustitelskadb/controllers/libricipher.py:155
 msgid "Libri Cipher item successfully modified"
 msgstr ""
 
-#: lustitelskadb/controllers/libricipher.py:146
+#: lustitelskadb/controllers/libricipher.py:160
 msgid "Libri Cipher item successfully created"
 msgstr ""
 
-#: lustitelskadb/controllers/libricipher.py:157
-#: lustitelskadb/controllers/libricipher.py:172
+#: lustitelskadb/controllers/libricipher.py:171
+#: lustitelskadb/controllers/libricipher.py:186
 msgid "Missing unique ID of Libri Cipher"
 msgstr ""
 
-#: lustitelskadb/controllers/libricipher.py:183
+#: lustitelskadb/controllers/libricipher.py:197
 msgid "Libri Cipher item successfully deleted"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:88
+#: lustitelskadb/controllers/root.py:87
+msgid "Unknown source for authorization, canceled"
+msgstr ""
+
+#: lustitelskadb/controllers/root.py:102
+msgid ""
+"There may have been an issue with the consumer_key or consumer_secret in "
+"application"
+msgstr ""
+
+#: lustitelskadb/controllers/root.py:142
+msgid "Can't get user info from Twitter"
+msgstr ""
+
+#: lustitelskadb/controllers/root.py:154
+msgid "Successfully authorized"
+msgstr ""
+
+#: lustitelskadb/controllers/root.py:157
+msgid "Succesfully authorized, but missing landing URL"
+msgstr ""
+
+#: lustitelskadb/controllers/root.py:169
+msgid "Successfully detached from X/Twitter"
+msgstr ""
+
+#: lustitelskadb/controllers/root.py:205
 msgid "Result successfully added"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:113
+#: lustitelskadb/controllers/root.py:230
 msgid "User not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:115
+#: lustitelskadb/controllers/root.py:232
 msgid "Invalid Password"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:119
+#: lustitelskadb/controllers/root.py:236
 msgid "Wrong credentials"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:136
+#: lustitelskadb/controllers/root.py:253
 #, python-format
 msgid "Welcome back, %s!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:149
+#: lustitelskadb/controllers/root.py:266
 msgid "We hope to see you soon!"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:46
-msgid "Nickname"
-msgstr ""
-
-#: lustitelskadb/lib/forms.py:47
-msgid "Please Enter your nickname (required)"
-msgstr ""
-
-#: lustitelskadb/lib/forms.py:48
-msgid "Your nickname"
-msgstr ""
-
-#: lustitelskadb/lib/forms.py:58 lustitelskadb/lib/forms.py:60
+#: lustitelskadb/lib/forms.py:50 lustitelskadb/lib/forms.py:52
 msgid "Game result"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:59
+#: lustitelskadb/lib/forms.py:51
 msgid "Please Enter your game result (required)"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:69
+#: lustitelskadb/lib/forms.py:64
 msgid "Wednesday challenge"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:70
+#: lustitelskadb/lib/forms.py:65
 msgid "Please check it if you play wednesday challenge"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:76 lustitelskadb/lib/forms.py:78
+#: lustitelskadb/lib/forms.py:71 lustitelskadb/lib/forms.py:73
 msgid "Comments"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:77
+#: lustitelskadb/lib/forms.py:72
 msgid "Please Enter any comments (optional)"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:88 lustitelskadb/lib/forms.py:144
+#: lustitelskadb/lib/forms.py:83 lustitelskadb/lib/forms.py:139
 msgid "Save"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:103
+#: lustitelskadb/lib/forms.py:98
 msgid "Please Enter part number (required)"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:113
+#: lustitelskadb/lib/forms.py:108
 msgid "Please Enter Question (required)"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:122 lustitelskadb/lib/forms.py:124
+#: lustitelskadb/lib/forms.py:117 lustitelskadb/lib/forms.py:119
 msgid "Description"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:123
+#: lustitelskadb/lib/forms.py:118
 msgid "Please Enter description (required)"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:133
+#: lustitelskadb/lib/forms.py:128
 msgid "Please Enter Answer (required)"
 msgstr ""
 
@@ -271,6 +289,7 @@ msgstr ""
 
 #: lustitelskadb/templates/index.xhtml:3
 #: lustitelskadb/templates/libriciphers.xhtml:3
+#: lustitelskadb/templates/xerror.xhtml:3
 msgid " | Welcome"
 msgstr ""
 
@@ -455,7 +474,7 @@ msgid "Show answer"
 msgstr ""
 
 #: lustitelskadb/templates/login.xhtml:3 lustitelskadb/templates/login.xhtml:7
-#: lustitelskadb/templates/login.xhtml:36 lustitelskadb/templates/master.xhtml:40
+#: lustitelskadb/templates/login.xhtml:36 lustitelskadb/templates/master.xhtml:43
 msgid "Login"
 msgstr ""
 
@@ -480,7 +499,7 @@ msgid "About"
 msgstr ""
 
 #: lustitelskadb/templates/master.xhtml:28
-#: lustitelskadb/templates/newresult.xhtml:7
+#: lustitelskadb/templates/newresult.xhtml:12
 msgid "New result"
 msgstr ""
 
@@ -504,15 +523,24 @@ msgstr ""
 msgid "Something else here"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:41
+#: lustitelskadb/templates/master.xhtml:40
+msgid "Detach"
+msgstr ""
+
+#: lustitelskadb/templates/master.xhtml:40
+#: lustitelskadb/templates/newresult.xhtml:18
+msgid "@"
+msgstr ""
+
+#: lustitelskadb/templates/master.xhtml:44
 msgid "Logout"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:42
+#: lustitelskadb/templates/master.xhtml:45
 msgid "Admin"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:65
+#: lustitelskadb/templates/master.xhtml:68
 msgid "Copyright © "
 msgstr ""
 
@@ -522,6 +550,28 @@ msgstr ""
 
 #: lustitelskadb/templates/newresult.xhtml:3
 msgid " | New result"
+msgstr ""
+
+#: lustitelskadb/templates/newresult.xhtml:24
+msgid "Joined"
+msgstr ""
+
+#: lustitelskadb/templates/newresult.xhtml:27
+msgid "Following"
+msgstr ""
+
+#: lustitelskadb/templates/newresult.xhtml:28
+msgid "Followers"
+msgstr ""
+
+#: lustitelskadb/templates/xerror.xhtml:7
+msgid "X/Twitter authorization error"
+msgstr ""
+
+#: lustitelskadb/templates/xerror.xhtml:10
+msgid ""
+"Something went wrong during authorization via X/Twitter. You can try it again"
+" later or you can browse other parts of this website."
 msgstr ""
 
 #: lustitelskadb/templates/administration/index.xhtml:3
@@ -550,7 +600,7 @@ msgstr ""
 msgid " - "
 msgstr ""
 
-#: lustitelskadb/templates/administration/libricipher/detail.xhtml:24
+#: lustitelskadb/templates/administration/libricipher/detail.xhtml:25
 msgid "Answer:"
 msgstr ""
 
