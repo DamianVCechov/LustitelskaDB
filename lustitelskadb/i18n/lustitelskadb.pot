@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-08-27 11:03+0200\n"
+"POT-Creation-Date: 2024-08-31 18:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,6 +24,10 @@ msgstr ""
 #: lustitelskadb/controllers/libricipher.py:167
 #: lustitelskadb/controllers/libricipher.py:182
 msgid "Only for users with appropriate permissions"
+msgstr ""
+
+#: lustitelskadb/controllers/error.py:33
+msgid "We're sorry but we weren't able to process this request."
 msgstr ""
 
 #: lustitelskadb/controllers/libricipher.py:62
@@ -283,8 +287,8 @@ msgstr ""
 msgid " error has Occurred"
 msgstr ""
 
-#: lustitelskadb/templates/error.xhtml:7
-msgid "Error "
+#: lustitelskadb/templates/error.xhtml:16
+msgid "Error"
 msgstr ""
 
 #: lustitelskadb/templates/index.xhtml:3

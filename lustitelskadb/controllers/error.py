@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Error controller"""
 from tg import request, expose
+from tg.i18n import ugettext as _
 from lustitelskadb.lib.base import BaseController
 
 __all__ = ['ErrorController']
@@ -29,8 +30,7 @@ class ErrorController(BaseController):
             message = None
 
         if not message:
-            message = ("We're sorry but we weren't able to process "
-                       " this request.")
+            message = _("We're sorry but we weren't able to process this request.")
 
         values = dict(prefix=request.environ.get('SCRIPT_NAME', ''),
                       code=request.params.get('code', resp.status_int if resp else 400),

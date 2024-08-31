@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-08-27 11:03+0200\n"
-"PO-Revision-Date: 2024-08-27 11:04+0200\n"
+"POT-Creation-Date: 2024-08-31 18:13+0200\n"
+"PO-Revision-Date: 2024-08-31 18:14+0200\n"
 "Last-Translator: Jaroslav Mikulík <jaroslav.mikulik@runtech.cz>\n"
 "Language: cs\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -29,6 +29,10 @@ msgstr ""
 #: lustitelskadb/controllers/libricipher.py:182
 msgid "Only for users with appropriate permissions"
 msgstr "Pouze pro uživatele s odpovídajícími oprávněními"
+
+#: lustitelskadb/controllers/error.py:33
+msgid "We're sorry but we weren't able to process this request."
+msgstr "Omlouváme se, ale tento požadavek nemůžeme splnit."
 
 # | msgid "Action"
 #: lustitelskadb/controllers/libricipher.py:62
@@ -304,9 +308,10 @@ msgstr "Nějaká"
 msgid " error has Occurred"
 msgstr " chyba se vyskytla"
 
-#: lustitelskadb/templates/error.xhtml:7
-msgid "Error "
-msgstr "Chyba "
+# | msgid "Error "
+#: lustitelskadb/templates/error.xhtml:16
+msgid "Error"
+msgstr "Chyba"
 
 #: lustitelskadb/templates/index.xhtml:3
 #: lustitelskadb/templates/libriciphers.xhtml:3
@@ -570,7 +575,7 @@ msgstr ""
 
 #: lustitelskadb/templates/master.xhtml:8
 msgid "Your generic title goes here"
-msgstr ""
+msgstr "Tady se objeví váš konkrétní titulek"
 
 #: lustitelskadb/templates/newresult.xhtml:3
 msgid " | New result"
