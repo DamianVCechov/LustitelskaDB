@@ -42,7 +42,7 @@
 				<ul class="navbar-nav" py:if="tg.auth_stack_enabled">
 					<li class="nav-item" py:if="not request.identity"><a class="nav-link${' active' if tg.request.url.startswith(tg.url('/login', qualified=True)) else ''}" href="${tg.url('/login')}">Login</a></li>
 					<li class="nav-item" py:if="request.identity"><a class="nav-link" href="${tg.url('/logout_handler')}">Logout</a></li>
-					<li class="nav-item" py:if="request.identity"><a class="nav-link{' active' if tg.request.url.startswith(tg.url('/admin', qualified=True)) else ''}" href="${tg.url('/admin')}">Admin</a></li>
+					<li class="nav-item" py:if="request.identity"><a class="nav-link${' active' if tg.request.url.startswith(tg.url('/admin', qualified=True)) else ''}" href="${tg.url('/admin')}">Admin</a></li>
 				</ul>
 			</div>
 		</div>
