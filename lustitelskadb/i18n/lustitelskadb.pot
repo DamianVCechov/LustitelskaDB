@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-08-31 18:45+0200\n"
+"POT-Creation-Date: 2024-08-31 23:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -520,19 +520,19 @@ msgid "Statistic"
 msgstr ""
 
 #: lustitelskadb/templates/master.xhtml:31
-msgid "Dropdown"
+msgid "Other"
 msgstr ""
 
 #: lustitelskadb/templates/master.xhtml:33
-msgid "Action"
+msgid "Czech Wordle Game"
 msgstr ""
 
 #: lustitelskadb/templates/master.xhtml:34
-msgid "Another action"
+msgid "Our X/Twitter"
 msgstr ""
 
 #: lustitelskadb/templates/master.xhtml:36
-msgid "Something else here"
+msgid "Misc"
 msgstr ""
 
 #: lustitelskadb/templates/master.xhtml:40

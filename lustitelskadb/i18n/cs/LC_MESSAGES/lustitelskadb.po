@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-08-31 18:45+0200\n"
-"PO-Revision-Date: 2024-08-31 18:46+0200\n"
+"POT-Creation-Date: 2024-08-31 23:03+0200\n"
+"PO-Revision-Date: 2024-08-31 23:05+0200\n"
 "Last-Translator: Jaroslav Mikulík <jaroslav.mikulik@runtech.cz>\n"
 "Language: cs\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -511,8 +511,8 @@ msgstr "Přihlášení"
 msgid "Username:"
 msgstr "Uživatel:"
 
+# | msgid "Username:"
 #: lustitelskadb/templates/login.xhtml:16
-#| msgid "Username:"
 msgid "username"
 msgstr "uživatel"
 
@@ -520,8 +520,8 @@ msgstr "uživatel"
 msgid "Password:"
 msgstr "Heslo:"
 
+# | msgid "Password:"
 #: lustitelskadb/templates/login.xhtml:22
-#| msgid "Password:"
 msgid "password"
 msgstr "heslo"
 
@@ -547,20 +547,20 @@ msgid "Statistic"
 msgstr "Statistika"
 
 #: lustitelskadb/templates/master.xhtml:31
-msgid "Dropdown"
-msgstr ""
+msgid "Other"
+msgstr "Ostatní"
 
 #: lustitelskadb/templates/master.xhtml:33
-msgid "Action"
-msgstr "Akce"
+msgid "Czech Wordle Game"
+msgstr "Hra HádejSlova"
 
 #: lustitelskadb/templates/master.xhtml:34
-msgid "Another action"
-msgstr ""
+msgid "Our X/Twitter"
+msgstr "Náš X/Twitter"
 
 #: lustitelskadb/templates/master.xhtml:36
-msgid "Something else here"
-msgstr ""
+msgid "Misc"
+msgstr "Různé"
 
 #: lustitelskadb/templates/master.xhtml:40
 msgid "Detach"
@@ -569,7 +569,7 @@ msgstr "Odpojit"
 #: lustitelskadb/templates/master.xhtml:40
 #: lustitelskadb/templates/newresult.xhtml:18
 msgid "@"
-msgstr ""
+msgstr "@"
 
 #: lustitelskadb/templates/master.xhtml:44
 msgid "Logout"
@@ -581,7 +581,7 @@ msgstr "Admin"
 
 #: lustitelskadb/templates/master.xhtml:68
 msgid "Copyright © "
-msgstr ""
+msgstr "Copyright © "
 
 #: lustitelskadb/templates/master.xhtml:8
 msgid "Your generic title goes here"
@@ -673,4 +673,16 @@ msgstr "nějaké přidat."
 
 #~ msgid "Your nickname"
 #~ msgstr "Vaše přezdívka"
+
+#~ msgid "Dropdown"
+#~ msgstr ""
+
+#~ msgid "Action"
+#~ msgstr "Akce"
+
+#~ msgid "Another action"
+#~ msgstr ""
+
+#~ msgid "Something else here"
+#~ msgstr ""
 
