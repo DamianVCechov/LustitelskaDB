@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-08-31 18:13+0200\n"
+"POT-Creation-Date: 2024-08-31 18:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -478,7 +478,7 @@ msgid "Show answer"
 msgstr ""
 
 #: lustitelskadb/templates/login.xhtml:3 lustitelskadb/templates/login.xhtml:7
-#: lustitelskadb/templates/login.xhtml:36 lustitelskadb/templates/master.xhtml:43
+#: lustitelskadb/templates/login.xhtml:34 lustitelskadb/templates/master.xhtml:43
 msgid "Login"
 msgstr ""
 
@@ -486,11 +486,19 @@ msgstr ""
 msgid "Username:"
 msgstr ""
 
+#: lustitelskadb/templates/login.xhtml:16
+msgid "username"
+msgstr ""
+
 #: lustitelskadb/templates/login.xhtml:20
 msgid "Password:"
 msgstr ""
 
-#: lustitelskadb/templates/login.xhtml:29
+#: lustitelskadb/templates/login.xhtml:22
+msgid "password"
+msgstr ""
+
+#: lustitelskadb/templates/login.xhtml:28
 msgid "remember me"
 msgstr ""
 
