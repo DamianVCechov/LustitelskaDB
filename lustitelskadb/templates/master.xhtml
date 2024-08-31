@@ -15,34 +15,34 @@
 
 <body>
 	<!-- Navbar -->
-	<nav class="navbar navbar-expand-lg bg-body-tertiary">
+	<nav class="navbar navbar-expand-lg sticky-top bg-success fw-bolder" data-bs-theme="dark">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="${tg.url('/')}"><img src="${tg.url('/img/turbogears_logo.png')}" height="20" class="d-inline-block align-text-top img-fluid" alt="Logo" /> ${getattr(tmpl_context, 'project_name', 'turbogears2')}</a>
+			<a class="navbar-brand link-warning" href="${tg.url('/')}"><img src="${tg.url('/img/turbogears_logo.png')}" height="20" class="d-inline-block align-text-top img-fluid" alt="Logo" /> ${getattr(tmpl_context, 'project_name', 'turbogears2')}</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link active" aria-current="page" href="${tg.url('/')}">Welcome</a></li>
-					<li class="nav-item"><a class="nav-link" href="${tg.url('/about')}">About</a></li>
-					<li class="nav-item"><a class="nav-link" href="${tg.url('/newresult')}" aria-disabled="true">New result</a></li>
-					<li class="nav-item"><a class="nav-link" href="${tg.url('/libriciphers')}" aria-disabled="true">Libri Ciphers</a></li>
-					<li class="nav-item"><a class="nav-link disabled" aria-disabled="true">Statistic</a></li>
-					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Dropdown </a>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#">Action</a></li>
-							<li><a class="dropdown-item" href="#">Another action</a></li>
+					<li class="nav-item"><a class="nav-link${' active' if tg.request.url == tg.url('/', qualified=True) else ''}" aria-current="page" href="${tg.url('/')}">Welcome</a></li>
+					<li class="nav-item"><a class="nav-link${' active' if tg.request.url.startswith(tg.url('/about', qualified=True)) else ''}" href="${tg.url('/about')}">About</a></li>
+					<li class="nav-item"><a class="nav-link${' active' if tg.request.url.startswith(tg.url('/newresult', qualified=True)) else ''}" href="${tg.url('/newresult')}" aria-disabled="true">New result</a></li>
+					<li class="nav-item"><a class="nav-link${' active' if tg.request.url.startswith(tg.url('/libriciphers', qualified=True)) else ''}" href="${tg.url('/libriciphers')}" aria-disabled="true">Libri Ciphers</a></li>
+					<li class="nav-item"><a class="nav-link disabled${' active' if tg.request.url.startswith(tg.url('/stats', qualified=True)) else ''}" href="${tg.url('/stats')}" aria-disabled="true">Statistic</a></li>
+					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span>Other</span></a>
+						<ul class="dropdown-menu bg-success">
+							<li><a class="dropdown-item" href="${tg.url('http://hadejslova.cz')}" target="_blank">Czech Wordle Game</a></li>
+							<li><a class="dropdown-item" href="${tg.url('http://x.com/Lustitele')}" target="_blank">Our X/Twitter</a></li>
 							<li><hr class="dropdown-divider" /></li>
-							<li><a class="dropdown-item" href="#">Something else here</a></li>
+							<li><a class="dropdown-item disabled" href="#">Misc</a></li>
 						</ul></li>
 				</ul>
 				<ul class="navbar-nav" py:if="session.has_key('me_on_xtwitter')">
 					<li class="nav-item"><a class="nav-link" href="${tg.url('/xdetach')}"><img class="img-responsive rounded-circle" style="max-height: 24px;" src="${session['me_on_xtwitter']['data']['profile_image_url']}" alt="${session['me_on_xtwitter']['data']['name']} @${session['me_on_xtwitter']['data']['username']}" py:if="'profile_image_url' in session['me_on_xtwitter']['data']" /> <span>Detach</span> <span py:if="'username' in session['me_on_xtwitter']['data']">@${session['me_on_xtwitter']['data']['username']}</span></a></li>
 				</ul>
 				<ul class="navbar-nav" py:if="tg.auth_stack_enabled">
-					<li class="nav-item" py:if="not request.identity"><a class="nav-link" href="${tg.url('/login')}">Login</a></li>
+					<li class="nav-item" py:if="not request.identity"><a class="nav-link${' active' if tg.request.url.startswith(tg.url('/login', qualified=True)) else ''}" href="${tg.url('/login')}">Login</a></li>
 					<li class="nav-item" py:if="request.identity"><a class="nav-link" href="${tg.url('/logout_handler')}">Logout</a></li>
-					<li class="nav-item" py:if="request.identity"><a class="nav-link" href="${tg.url('/admin')}">Admin</a></li>
+					<li class="nav-item" py:if="request.identity"><a class="nav-link{' active' if tg.request.url.startswith(tg.url('/admin', qualified=True)) else ''}" href="${tg.url('/admin')}">Admin</a></li>
 				</ul>
 			</div>
 		</div>
