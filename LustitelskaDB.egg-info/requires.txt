@@ -1,14 +1,14 @@
 Babel
 Beaker>=1.8.0
 Kajiki>=0.6.3
-TurboGears2>=2.4.3
+TurboGears2>=2.4.0
 WebHelpers2
 alembic
 repoze.who
 sqlalchemy
 tgext.admin>=0.6.1
 tw2.forms
-zope.sqlalchemy>=1.2
+zope.sqlalchemy>=1.1
 
 [testing]
 WebTest>=1.2.3

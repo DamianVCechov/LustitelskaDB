@@ -34,10 +34,10 @@ testpkgs = [
 ]
 
 install_requires = [
-    "TurboGears2 >= 2.4.3",
+    "TurboGears2 >= 2.4.0",
     "Beaker >= 1.8.0",
     "Kajiki >= 0.6.3",
-    "zope.sqlalchemy >= 1.2",
+    "zope.sqlalchemy >= 1.1",
     "sqlalchemy",
     "alembic",
     "repoze.who",
