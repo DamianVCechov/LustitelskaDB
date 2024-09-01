@@ -2,7 +2,6 @@
 """Main Controller"""
 
 import logging
-from numba.cuda import args
 log = logging.getLogger(__name__)
 
 from tg import expose, flash, require, url, lurl
