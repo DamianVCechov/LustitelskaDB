@@ -112,6 +112,9 @@ class RootController(BaseController):
     @expose()
     def xauthorized(self, **kw):
         """Callback URL when is authorized via X/Twitter."""
+        if kw.has_key('denied'):
+            redirect('/xdenied', params=kw)
+
         oauth = OAuth1Session(
             config.get('xtwitter.consumer_key', ''),
             client_secret=config.get('xtwitter.consumer_secret', ''),
@@ -156,9 +159,14 @@ class RootController(BaseController):
             flash(_("Succesfully authorized, but missing landing URL"))
             return redirect('/')
 
+    @expose('lustitelskadb.templates.xdenied')
+    def xdenied(self, **kw):
+        """Landing URL when user denied authorization."""
+        return dict(page='xerror', denied=kw.get('denied', None))
+
     @expose('lustitelskadb.templates.xerror')
     def xerror(self, **kw):
-        """Landing URL when error raised while authentication via X/Twitter"""
+        """Landing URL when error raised while authentication via X/Twitter."""
         return dict(page='xerror')
 
     @expose()

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-08-31 23:03+0200\n"
+"POT-Creation-Date: 2024-09-01 22:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,7 +78,7 @@ msgid "Answer"
 msgstr ""
 
 #: lustitelskadb/controllers/libricipher.py:115
-#: lustitelskadb/controllers/root.py:188
+#: lustitelskadb/controllers/root.py:192
 msgid "Form filled with errors!"
 msgstr ""
 
@@ -110,54 +110,54 @@ msgstr ""
 msgid "Libri Cipher item successfully deleted"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:87
+#: lustitelskadb/controllers/root.py:86
 msgid "Unknown source for authorization, canceled"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:102
+#: lustitelskadb/controllers/root.py:101
 msgid ""
 "There may have been an issue with the consumer_key or consumer_secret in "
 "application"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:142
+#: lustitelskadb/controllers/root.py:141
 msgid "Can't get user info from Twitter"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:154
+#: lustitelskadb/controllers/root.py:153
 msgid "Successfully authorized"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:157
+#: lustitelskadb/controllers/root.py:156
 msgid "Succesfully authorized, but missing landing URL"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:169
+#: lustitelskadb/controllers/root.py:173
 msgid "Successfully detached from X/Twitter"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:205
+#: lustitelskadb/controllers/root.py:209
 msgid "Result successfully added"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:230
+#: lustitelskadb/controllers/root.py:234
 msgid "User not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:232
+#: lustitelskadb/controllers/root.py:236
 msgid "Invalid Password"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:236
+#: lustitelskadb/controllers/root.py:240
 msgid "Wrong credentials"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:253
+#: lustitelskadb/controllers/root.py:257
 #, python-format
 msgid "Welcome back, %s!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:266
+#: lustitelskadb/controllers/root.py:270
 msgid "We hope to see you soon!"
 msgstr ""
 
@@ -293,7 +293,6 @@ msgstr ""
 
 #: lustitelskadb/templates/index.xhtml:3
 #: lustitelskadb/templates/libriciphers.xhtml:3
-#: lustitelskadb/templates/xerror.xhtml:3
 msgid " | Welcome"
 msgstr ""
 
@@ -574,6 +573,24 @@ msgstr ""
 
 #: lustitelskadb/templates/newresult.xhtml:28
 msgid "Followers"
+msgstr ""
+
+#: lustitelskadb/templates/xdenied.xhtml:3
+msgid " | X/Twitter Denied"
+msgstr ""
+
+#: lustitelskadb/templates/xdenied.xhtml:7
+msgid "X/Twitter authorization denied"
+msgstr ""
+
+#: lustitelskadb/templates/xdenied.xhtml:10
+msgid ""
+"User denied authorization via X/Twitter. You can't use functions that depends"
+" on it."
+msgstr ""
+
+#: lustitelskadb/templates/xerror.xhtml:3
+msgid " | X/Twitter Error"
 msgstr ""
 
 #: lustitelskadb/templates/xerror.xhtml:7
