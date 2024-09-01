@@ -5,7 +5,7 @@
 
 <body py:block="body" py:strip="True">
 <?py
-from datetime import datetime
+from aniso8601 import parse_datetime
 
 htmlbr = '<br>'
 ?>
@@ -21,7 +21,7 @@ htmlbr = '<br>'
 		<p class="lead text-muted">
 			<span class="text-nowrap ms-2" py:if="'location' in session['me_on_xtwitter']['data']">${h.icon('map-marker')} ${session['me_on_xtwitter']['data']['location']}</span>
 			<span class="text-nowrap ms-2" py:if="'entities' in session['me_on_xtwitter']['data'] and 'url' in session['me_on_xtwitter']['data']['entities']">${h.icon('link')} <a class="text-decoration-none" href="${session['me_on_xtwitter']['data']['entities']['url']['urls'][0]['expanded_url']}">${session['me_on_xtwitter']['data']['entities']['url']['urls'][0]['display_url']}</a></span>
-			<span class="text-nowrap ms-2" py:if="'created_at' in session['me_on_xtwitter']['data']">${h.icon('calendar')} ${"{} {}".format(_('Joined'), datetime.fromisoformat(session['me_on_xtwitter']['data']['created_at']).strftime("%d.%m.%Y %H:%M:%S"))}</span>
+			<span class="text-nowrap ms-2" py:if="'created_at' in session['me_on_xtwitter']['data']">${h.icon('calendar')} ${"{} {}".format(_('Joined'), parse_datetime(session['me_on_xtwitter']['data']['created_at']).strftime("%d.%m.%Y %H:%M:%S"))}</span>
 		</p>
 		<p class="lead text-muted" py:if="'public_metrics' in session['me_on_xtwitter']['data']">
 			<span class="text-dark fw-bold" py:if="'following_count' in session['me_on_xtwitter']['data']['public_metrics']">${session['me_on_xtwitter']['data']['public_metrics']['following_count']}</span> <span>Following</span>
