@@ -9,17 +9,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-09-01 22:12+0200\n"
+"POT-Creation-Date: 2024-09-01 22:48+0200\n"
 "PO-Revision-Date: 2024-09-01 22:14+0200\n"
 "Last-Translator: Jaroslav Mikulík <jaroslav.mikulik@runtech.cz>\n"
 "Language: cs\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
-"X-Generator: Lokalize 22.12.3\n"
 
 #: lustitelskadb/controllers/admin.py:29
 #: lustitelskadb/controllers/libricipher.py:56
@@ -87,7 +86,7 @@ msgid "Answer"
 msgstr "Odpověď"
 
 #: lustitelskadb/controllers/libricipher.py:115
-#: lustitelskadb/controllers/root.py:192
+#: lustitelskadb/controllers/root.py:195
 msgid "Form filled with errors!"
 msgstr "Formulář vyplněn s chybami!"
 
@@ -133,45 +132,45 @@ msgstr ""
 "Je možné, že došlo k problému s consumer_key nebo consumer_secret v "
 "aplikaci"
 
-#: lustitelskadb/controllers/root.py:141
+#: lustitelskadb/controllers/root.py:144
 msgid "Can't get user info from Twitter"
 msgstr "Nelze získat informace o uživateli z Twitteru"
 
 # | msgid "Result successfully added"
-#: lustitelskadb/controllers/root.py:153
+#: lustitelskadb/controllers/root.py:156
 msgid "Successfully authorized"
 msgstr "Úspěšně autorizováno"
 
-#: lustitelskadb/controllers/root.py:156
+#: lustitelskadb/controllers/root.py:159
 msgid "Succesfully authorized, but missing landing URL"
 msgstr "Úspěšně autorizováno, ale chybí cílové URL"
 
-#: lustitelskadb/controllers/root.py:173
+#: lustitelskadb/controllers/root.py:176
 msgid "Successfully detached from X/Twitter"
 msgstr "Úspěšně odpojeno z X/Twitteru"
 
-#: lustitelskadb/controllers/root.py:209
+#: lustitelskadb/controllers/root.py:212
 msgid "Result successfully added"
 msgstr "Výsledek úspěšně přidán"
 
-#: lustitelskadb/controllers/root.py:234
+#: lustitelskadb/controllers/root.py:237
 msgid "User not found"
 msgstr "Uživatel nenalezen"
 
-#: lustitelskadb/controllers/root.py:236
+#: lustitelskadb/controllers/root.py:239
 msgid "Invalid Password"
 msgstr "Neplatné heslo"
 
-#: lustitelskadb/controllers/root.py:240
+#: lustitelskadb/controllers/root.py:243
 msgid "Wrong credentials"
 msgstr "Nesprávné přihlašovací údaje"
 
-#: lustitelskadb/controllers/root.py:257
+#: lustitelskadb/controllers/root.py:260
 #, python-format
 msgid "Welcome back, %s!"
 msgstr "Vítejte zpět, uživateli %s!"
 
-#: lustitelskadb/controllers/root.py:270
+#: lustitelskadb/controllers/root.py:273
 msgid "We hope to see you soon!"
 msgstr "Těšíme se příště!"
 
@@ -232,7 +231,8 @@ msgid " | About page"
 msgstr "| Stránka o aplikaci"
 
 #: lustitelskadb/templates/about.xhtml:7
-msgid "About "
+#: lustitelskadb/templates/master.xhtml:27
+msgid "About"
 msgstr "O aplikaci"
 
 #: lustitelskadb/templates/about.xhtml:8
@@ -532,10 +532,6 @@ msgstr "trvalé přihlášení"
 msgid "Welcome"
 msgstr "Vítejte"
 
-#: lustitelskadb/templates/master.xhtml:27
-msgid "About"
-msgstr "O aplikaci"
-
 #: lustitelskadb/templates/master.xhtml:28
 #: lustitelskadb/templates/newresult.xhtml:12
 msgid "New result"
@@ -606,8 +602,8 @@ msgstr "Sledující"
 msgid " | X/Twitter Denied"
 msgstr " | X/Twitter odepřeno"
 
+# | msgid "X/Twitter authorization error"
 #: lustitelskadb/templates/xdenied.xhtml:7
-#| msgid "X/Twitter authorization error"
 msgid "X/Twitter authorization denied"
 msgstr "X/Twitter odepřena autorizace"
 
@@ -616,8 +612,8 @@ msgid ""
 "User denied authorization via X/Twitter. You can't use functions that "
 "depends on it."
 msgstr ""
-"Uživatel odepřel autorizace přes X/Twitter. Nemůžete používat funkce, které "
-"na ni závisí."
+"Uživatel odepřel autorizace přes X/Twitter. Nemůžete používat funkce, "
+"které na ni závisí."
 
 #: lustitelskadb/templates/xerror.xhtml:3
 msgid " | X/Twitter Error"
@@ -705,4 +701,7 @@ msgstr "nějaké přidat."
 
 #~ msgid "Something else here"
 #~ msgstr ""
+
+#~ msgid "About "
+#~ msgstr "O aplikaci"
 
