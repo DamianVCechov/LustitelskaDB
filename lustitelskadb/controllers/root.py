@@ -210,7 +210,7 @@ class RootController(BaseController):
         """Handle LibriCiphers game"""
         libriciphers = DBSession.query(model.LibriCipher)
         if len(args):
-            if args[0].isnumeric():
+            if args[0].isdigit():
                 libriciphers = libriciphers.filter(model.LibriCipher.uid == args[0])
         libriciphers = libriciphers.order_by(model.LibriCipher.uid.desc())
 
