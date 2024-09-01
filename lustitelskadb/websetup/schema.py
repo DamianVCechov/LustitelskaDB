@@ -5,7 +5,11 @@ from __future__ import print_function
 from tg import config
 from tgext.pluggable import plugged
 import transaction
-import alembic.config
+
+try:
+    ModuleNotFoundError
+except:
+    ModuleNotFoundError = ImportError
 
 
 def setup_schema(command, conf, vars):
@@ -23,12 +27,14 @@ def setup_schema(command, conf, vars):
     transaction.commit()
 
     print('Initializing Migrations')
+    import alembic.config
     alembic_cfg = alembic.config.Config()
     alembic_cfg.set_main_option("script_location", "migration")
     alembic_cfg.set_main_option("sqlalchemy.url", config['sqlalchemy.url'])
     import alembic.command
     alembic.command.stamp(alembic_cfg, "head")
 
+    import alembic.util
     for plugapp in plugged():
         try:
             __import__("{}.migration".format(plugapp))
