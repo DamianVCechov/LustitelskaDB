@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.2\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-09-01 22:48+0200\n"
+"POT-Creation-Date: 2024-09-03 11:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -296,153 +296,32 @@ msgstr ""
 msgid " | Welcome"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:7
+#: lustitelskadb/templates/index.xhtml:8
 msgid "LustiteleDB"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:13
-msgid "#"
+#: lustitelskadb/templates/index.xhtml:10
+msgid "Here you will find the upcoming results list of"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:14
-msgid "First"
+#: lustitelskadb/templates/index.xhtml:10
+msgid "HadejSlova"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:15
-msgid "Last"
+#: lustitelskadb/templates/index.xhtml:10
+msgid ""
+"players. Before that happens, you can test the other features of the site and"
+" see what features are gradually added here. Until then, you can find the "
+"results table on the"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:16
-msgid "Handle"
+#: lustitelskadb/templates/index.xhtml:10
+msgid "original website"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:21 lustitelskadb/templates/index.xhtml:74
-msgid "1"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:22
-msgid "Mark"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:23
-msgid "Otto"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:24
-msgid "@mdo"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:27 lustitelskadb/templates/index.xhtml:73
-msgid "2"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:28
-msgid "Jacob"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:29
-msgid "Thornton"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:30
-msgid "@fat"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:33
-msgid "3"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:34
-msgid "Larry the Bird"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:35
-msgid "@twitter"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:38
-msgid "4"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:39
-msgid "Fanfan"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:40
-msgid "@fufo"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:43
-msgid "5"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:44
-msgid "Seagull"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:45
-msgid "@seagull"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:48
-msgid "6"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:49
-msgid "Atari"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:50
-msgid "@fuji"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:53
-msgid "7"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:54
-msgid "Valli"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:55
-msgid "@valli"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:58
-msgid "8"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:59
-msgid "Mastermind"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:60
-msgid "@mmm"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:68
-msgid "«"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:69
-msgid "950"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:70
-msgid "949"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:71
-msgid "948"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:72
-msgid ".."
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:75
-#: lustitelskadb/templates/libriciphers.xhtml:25
-msgid "»"
+#: lustitelskadb/templates/index.xhtml:10
+#: lustitelskadb/templates/libriciphers.xhtml:10
+msgid "."
 msgstr ""
 
 #: lustitelskadb/templates/administration/index.xhtml:14
@@ -459,10 +338,6 @@ msgstr ""
 msgid "last one"
 msgstr ""
 
-#: lustitelskadb/templates/libriciphers.xhtml:10
-msgid "."
-msgstr ""
-
 #: lustitelskadb/templates/administration/libricipher/detail.xhtml:20
 #: lustitelskadb/templates/libriciphers.xhtml:20
 msgid "Part:"
@@ -470,6 +345,10 @@ msgstr ""
 
 #: lustitelskadb/templates/libriciphers.xhtml:25
 msgid "Permanent link"
+msgstr ""
+
+#: lustitelskadb/templates/libriciphers.xhtml:25
+msgid "»"
 msgstr ""
 
 #: lustitelskadb/templates/libriciphers.xhtml:27
