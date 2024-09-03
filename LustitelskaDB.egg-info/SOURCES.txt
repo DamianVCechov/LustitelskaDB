@@ -78,6 +78,7 @@ lustitelskadb/public/fonts/glyphicons/glyphicons-halflings-regular.svg
 lustitelskadb/public/fonts/glyphicons/glyphicons-halflings-regular.ttf
 lustitelskadb/public/fonts/glyphicons/glyphicons-halflings-regular.woff
 lustitelskadb/public/fonts/glyphicons/glyphicons-halflings-regular.woff2
+lustitelskadb/public/img/lustitele-preview.png
 lustitelskadb/public/img/turbogears_logo.png
 lustitelskadb/public/img/turbogears_logo_big.png
 lustitelskadb/public/img/under_the_hood_blue.png

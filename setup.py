@@ -52,7 +52,7 @@ if py_version != (3, 2):
 
 setup(
     name='LustitelskaDB',
-    version='0.2',
+    version='0.3',
     description='',
     author='',
     author_email='',
