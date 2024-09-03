@@ -220,7 +220,7 @@ class RootController(BaseController):
             "entry.1818535534": "__other_option__"
         }
         if kw.get('wednesday_challenge', False):
-            data["__other_option__"] = "✅"
+            data["entry.2012937700"] = "✅"
 
         rsess = requests.Session()
         rsess.get(viewform_url)
