@@ -18,6 +18,7 @@ from tgext.admin.tgadminconfig import BootstrapTGAdminConfig as TGAdminConfig
 from tgext.admin.controller import AdminController
 
 from requests_oauthlib import OAuth1Session
+import requests
 
 try:
     import ujson as json
@@ -209,7 +210,29 @@ class RootController(BaseController):
     @validate(form=appforms.ResultForm(), error_handler=newresult)
     def save_result(self, **kw):
         """Save result."""
-        flash(l_(u"Result successfully added"))
+        viewform_url = "https://docs.google.com/forms/d/e/1FAIpQLSdHcMlAmXKOODsG0hZCc687_8oVZpFbv_GJXfA5P9aHn2IJgg/viewform"
+        formaction_url = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdHcMlAmXKOODsG0hZCc687_8oVZpFbv_GJXfA5P9aHn2IJgg/formResponse"
+
+        data = {
+            "entry.1414922346": kw.get('game_result', '').replace('\n', ' '),
+            "entry.125941353": kw.get('comment', ''),
+            "entry.1818535534.other_option_response": kw.get('xtwitter_username', ''),
+            "entry.1818535534": "__other_option__"
+        }
+        if kw.get('wednesday_challenge', False):
+            data["__other_option__"] = "✅"
+
+        rsess = requests.Session()
+        rsess.get(viewform_url)
+        r = rsess.post(formaction_url, data=data)
+
+        if r.ok:
+            flash(l_(u"Your result has been successfully sent to the original website"))
+        else:
+            flash(l_(u"An error occurred while submitting the result from the form. It may have been filled in incorrectly. You can try again or submit the results on the original site."), 'error')
+
+        rsess.close()
+
         return redirect('/')
 
     @expose('lustitelskadb.templates.libriciphers')
