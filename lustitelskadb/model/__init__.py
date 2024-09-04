@@ -60,5 +60,6 @@ def init_model(engine):
 # Import your model modules here.
 from lustitelskadb.model.auth import User, Group, Permission
 from lustitelskadb.model.libriciphers import LibriCipher
+from lustitelskadb.model.sns import XTwitter
 
-__all__ = ('User', 'Group', 'Permission', 'LibriCipher')
+__all__ = ('User', 'Group', 'Permission', 'LibriCipher', 'XTwitter')
