@@ -113,7 +113,7 @@ class RootController(BaseController):
     @expose()
     def xauthorized(self, **kw):
         """Callback URL when is authorized via X/Twitter."""
-        if kw.has_key('denied'):
+        if 'denied' in kw:
             redirect('/xdenied', params=kw)
 
         oauth = OAuth1Session(
@@ -150,6 +150,23 @@ class RootController(BaseController):
         del(session['resource_owner_key'])
         del(session['resource_owner_secret'])
         session.save()
+
+        xuser = DBSession.query(model.XTwitter).filter(model.XTwitter.xid == session['me_on_xtwitter']['data']['id']).first()
+        if xuser:
+            xuser.user_name = session['me_on_xtwitter']['data']['username']
+            xuser.user_info = json.dumps(session['me_on_xtwitter'])
+            if request.identity:
+                xuser.user = request.identity['user']
+        else:
+            xuser = model.XTwitter(
+                xid=session['me_on_xtwitter']['data']['id'],
+                user_name=session['me_on_xtwitter']['data']['username'],
+                user_info=json.dumps(session['me_on_xtwitter'])
+            )
+            if request.identity:
+                xuser.user = request.identity['user']
+            DBSession.add(xuser)
+        DBSession.flush()
 
         log.debug(json.dumps(response.json(), indent=4, sort_keys=True))
 
