@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-# -*- coding: utf-8 -*-
 """LibriCiphers model module."""
 from sqlalchemy import *
 from sqlalchemy import Table, ForeignKey, Column
