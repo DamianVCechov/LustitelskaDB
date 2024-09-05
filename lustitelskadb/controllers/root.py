@@ -125,7 +125,8 @@ class RootController(BaseController):
 
             authorization_url, state = oauth.authorization_url(
                 config.get('xtwitter.base_authorization.oauth2.url', "https://x.com/i/oauth2/authorize"),
-                code_challenge=challenge
+                code_challenge=challenge,
+                code_challenge_method='plain'
             )
 
             session['xoauth2_challenge'] = challenge
