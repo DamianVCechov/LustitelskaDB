@@ -37,6 +37,7 @@ lustitelskadb/model/__init__.py
 lustitelskadb/model/auth.py
 lustitelskadb/model/libriciphers.py
 lustitelskadb/model/model.py.template
+lustitelskadb/model/sns.py
 lustitelskadb/public/favicon.ico
 lustitelskadb/public/css/bootstrap-glyphicons.css
 lustitelskadb/public/css/bootstrap-glyphicons.min.css
