@@ -23,6 +23,12 @@ from requests_oauthlib import OAuth1Session, OAuth2Session
 import random
 import string
 
+# Python 2 compatibility hack
+try:
+    ModuleNotFoundError
+except:
+    ModuleNotFoundError = ImportError
+
 try:
     import ujson as json
 except (ImportError, ModuleNotFoundError, SyntaxError):
