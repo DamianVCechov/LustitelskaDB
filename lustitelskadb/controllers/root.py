@@ -176,13 +176,18 @@ class RootController(BaseController):
                 state=session['xoauth2_state']
             )
 
-            oauth2_token = oauth.fetch_token(
-                token_url=config.get('xtwitter.oauth2_token.url', 'https://api.x.com/2/oauth2/token'),
-                client_id=config.get('xtwitter.client_id', ''),
-                client_secret=config.get('xtwitter.client_secret', ''),
-                code=kw.get('code', None),
-                code_verifier=session['xoauth2_challenge']
-            )
+            try:
+                oauth2_token = oauth.fetch_token(
+                    token_url=config.get('xtwitter.oauth2_token.url', 'https://api.x.com/2/oauth2/token'),
+                    client_id=config.get('xtwitter.client_id', ''),
+                    client_secret=config.get('xtwitter.client_secret', ''),
+                    code=kw.get('code', None),
+                    code_verifier=session['xoauth2_challenge']
+                )
+            except:
+                log.error(u"Can't fetch access token")
+                flash(_(u"Can't fetch access token"), 'error')
+                redirect('/')
 
             session['xoauth2_token'] = oauth2_token
             session.save()
