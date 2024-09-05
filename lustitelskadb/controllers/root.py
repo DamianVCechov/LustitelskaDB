@@ -2,6 +2,7 @@
 """Main Controller"""
 
 import logging
+from httpie.cli.definition import sessions
 log = logging.getLogger(__name__)
 
 from tg import expose, flash, require, url, lurl
@@ -157,11 +158,21 @@ class RootController(BaseController):
 
         if config.get('xtwitter.oauth.type', 'oauth1').lower() == 'oauth1':
 
+            if not session.has_key('resource_owner_key') or not session.has_key('resource_owner_secret'):
+                flash(_(u"I cannot find the keys needed to continue "
+                        u"in authorization process in the session. "
+                        u"Maybe you are using a light version of "
+                        u"the browser that cannot maintain a session "
+                        u"or you have disabled the saving of cookies. "
+                        u"Try to switch to a full-fledged browser or "
+                        u"turn on the saving of cookies."), 'warning')
+                redirect('/')
+
             oauth = OAuth1Session(
                 config.get('xtwitter.consumer_key', ''),
                 client_secret=config.get('xtwitter.consumer_secret', ''),
-                resource_owner_key=session.get('resource_owner_key'),
-                resource_owner_secret=session.get('resource_owner_secret'),
+                resource_owner_key=session.get('resource_owner_key', ''),
+                resource_owner_secret=session.get('resource_owner_secret', ''),
                 verifier=kw.get('oauth_verifier')
             )
             oauth_tokens = oauth.fetch_access_token(config.get('xtwitter.access_token.url', "https://api.x.com/oauth/access_token"))
@@ -169,6 +180,7 @@ class RootController(BaseController):
             session['access_token'] = oauth_tokens["oauth_token"]
             session['access_token_secret'] = oauth_tokens["oauth_token_secret"]
             session.save()
+
         elif config.get('xtwitter.oauth.type', 'oauth1').lower() == 'oauth2':
             oauth = OAuth2Session(
                 client_id=config.get('xtwitter.client_id', ''),
@@ -176,13 +188,23 @@ class RootController(BaseController):
                 state=session['xoauth2_state']
             )
 
+            if not session.has_key('xoauth2_challenge'):
+                flash(_(u"I cannot find the data needed to validate "
+                        u"the authorization challenge in the session. "
+                        u"Maybe you are using a light version of "
+                        u"the browser that cannot maintain a session "
+                        u"or you have disabled the saving of cookies. "
+                        u"Try to switch to a full-fledged browser or "
+                        u"turn on the saving of cookies."), 'warning')
+                redirect('/')
+
             try:
                 oauth2_token = oauth.fetch_token(
                     token_url=config.get('xtwitter.oauth2_token.url', 'https://api.x.com/2/oauth2/token'),
                     client_id=config.get('xtwitter.client_id', ''),
                     client_secret=config.get('xtwitter.client_secret', ''),
                     code=kw.get('code', None),
-                    code_verifier=session['xoauth2_challenge']
+                    code_verifier=session.get('xoauth2_challenge', '')
                 )
             except:
                 log.error(u"Can't fetch access token")
