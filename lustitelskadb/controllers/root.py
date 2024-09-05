@@ -17,8 +17,11 @@ from lustitelskadb.model import DBSession
 from tgext.admin.tgadminconfig import BootstrapTGAdminConfig as TGAdminConfig
 from tgext.admin.controller import AdminController
 
-from requests_oauthlib import OAuth1Session
 import requests
+from requests_oauthlib import OAuth1Session, OAuth2Session
+
+import random
+import string
 
 try:
     import ujson as json
@@ -90,43 +93,91 @@ class RootController(BaseController):
         if session.has_key('me_on_xtwitter'):
             return redirect(url('/xauthorized'))
 
-        oauth = OAuth1Session(
-            config.get('xtwitter.consumer_key', ''),
-            client_secret=config.get('xtwitter.consumer_secret', '')
-        )
+        if config.get('xtwitter.oauth.type', 'oauth1').lower() == 'oauth1':
+            oauth = OAuth1Session(
+                config.get('xtwitter.consumer_key', ''),
+                client_secret=config.get('xtwitter.consumer_secret', '')
+            )
 
-        try:
-            fetch_response = oauth.fetch_request_token(config.get('xtwitter.request_token_url', "https://api.x.com/oauth/request_token"))
-        except ValueError:
-            log.error("There may have been an issue with the consumer_key or consumer_secret you entered.")
-            flash(_(u"There may have been an issue with the consumer_key or consumer_secret in application"))
-            return redirect('/xerror')
+            try:
+                fetch_response = oauth.fetch_request_token(config.get('xtwitter.request_token_url', "https://api.x.com/oauth/request_token"))
+            except ValueError:
+                log.error("There may have been an issue with the consumer_key or consumer_secret you entered.")
+                flash(_(u"There may have been an issue with the consumer_key or consumer_secret in application"))
+                return redirect('/xerror')
 
-        session['resource_owner_key'] = fetch_response.get("oauth_token")
-        session['resource_owner_secret'] = fetch_response.get("oauth_token_secret")
-        session.save()
+            session['resource_owner_key'] = fetch_response.get("oauth_token")
+            session['resource_owner_secret'] = fetch_response.get("oauth_token_secret")
+            session.save()
 
-        log.debug("Got OAuth token: %s" % session['resource_owner_key'])
+            log.debug("Got OAuth token: %s" % session['resource_owner_key'])
 
-        return redirect(oauth.authorization_url(config.get('twittertools.base_authorization.url', "https://api.x.com/oauth/authorize")))
+            return redirect(oauth.authorization_url(config.get('twittertools.base_authorization.url', "https://api.x.com/oauth/authorize")))
+        elif config.get('xtwitter.oauth.type', 'oauth1').lower() == 'oauth2':
+            oauth = OAuth2Session(
+                client_id=config.get('xtwitter.client_id', ''),
+                scope=['users.read', 'tweet.read'],
+                redirect_uri=url('/xauthorized', qualified=True)
+            )
+
+            challenge = ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(64))
+            session.save()
+
+            authorization_url, state = oauth.authorization_url(
+                config.get('xtwitter.base_authorization.oauth2.url', "https://x.com/i/oauth2/authorize"),
+                code_challenge=challenge
+            )
+
+            session['xoauth2_challenge'] = challenge
+            session['xoauth2_state'] = state
+            session.save()
+
+            return redirect(authorization_url)
+        else:
+            flash(_(u"Unknown type of OAuth in config"), 'error')
+
+            if session.has_key('xauthorized.redirect.url'):
+                del(session['xauthorized.redirect.url'])
+                session.save()
+
+            return redirect('/')
 
     @expose()
     def xauthorized(self, **kw):
         """Callback URL when is authorized via X/Twitter."""
-        if 'denied' in kw:
+        if 'denied' in kw or kw.get('error', None) == 'access_denied':
             redirect('/xdenied', params=kw)
 
-        oauth = OAuth1Session(
-            config.get('xtwitter.consumer_key', ''),
-            client_secret=config.get('xtwitter.consumer_secret', ''),
-            resource_owner_key=session.get('resource_owner_key'),
-            resource_owner_secret=session.get('resource_owner_secret'),
-            verifier=kw.get('oauth_verifier')
-        )
-        oauth_tokens = oauth.fetch_access_token(config.get('xtwitter.access_token.url', "https://api.x.com/oauth/access_token"))
+        if config.get('xtwitter.oauth.type', 'oauth1').lower() == 'oauth1':
 
-        session['access_token'] = oauth_tokens["oauth_token"]
-        session['access_token_secret'] = oauth_tokens["oauth_token_secret"]
+            oauth = OAuth1Session(
+                config.get('xtwitter.consumer_key', ''),
+                client_secret=config.get('xtwitter.consumer_secret', ''),
+                resource_owner_key=session.get('resource_owner_key'),
+                resource_owner_secret=session.get('resource_owner_secret'),
+                verifier=kw.get('oauth_verifier')
+            )
+            oauth_tokens = oauth.fetch_access_token(config.get('xtwitter.access_token.url', "https://api.x.com/oauth/access_token"))
+
+            session['access_token'] = oauth_tokens["oauth_token"]
+            session['access_token_secret'] = oauth_tokens["oauth_token_secret"]
+            session.save()
+        elif config.get('xtwitter.oauth.type', 'oauth1').lower() == 'oauth2':
+            oauth = OAuth2Session(
+                client_id=config.get('xtwitter.client_id', ''),
+                redirect_uri=url('/xauthorized', qualified=True),
+                state=session['xoauth2_state']
+            )
+
+            oauth2_token = oauth.fetch_token(
+                token_url=config.get('xtwitter.oauth2_token.url', 'https://api.x.com/2/oauth2/token'),
+                client_secret=config.get('xtwitter.client_secret', ''),
+                code=kw.get('code', None),
+                code_verifier=session['xoauth2_challenge']
+            )
+
+            session['xoauth2_token'] = oauth2_token
+            session.save()
 
         # User fields are adjustable, options include:
         # created_at, description, entities, id, location, most_recent_tweet_id,
@@ -147,9 +198,10 @@ class RootController(BaseController):
             redirect('/xerror')
 
         session['me_on_xtwitter'] = response.json()
-        del(session['resource_owner_key'])
-        del(session['resource_owner_secret'])
-        session.save()
+        if config.get('xtwitter.oauth.type', 'oauth1').lower() == 'oauth1':
+            del(session['resource_owner_key'])
+            del(session['resource_owner_secret'])
+            session.save()
 
         xuser = DBSession.query(model.XTwitter).filter(model.XTwitter.xid == session['me_on_xtwitter']['data']['id']).first()
         if xuser:
@@ -191,7 +243,7 @@ class RootController(BaseController):
     def xdetach(self, **kw):
         """Detach authorization from Twitter"""
         session.delete()
-        flash(_("Successfully detached from X/Twitter"))
+        flash(_("Successfully detached from X/Twitter, the access token has been discarded"))
         return redirect('/')
 
     @expose('lustitelskadb.templates.newresult')
