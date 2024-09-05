@@ -206,6 +206,7 @@ class RootController(BaseController):
         xuser = DBSession.query(model.XTwitter).filter(model.XTwitter.xid == session['me_on_xtwitter']['data']['id']).first()
         if xuser:
             xuser.user_name = session['me_on_xtwitter']['data']['username']
+            xuser.display_name = session['me_on_xtwitter']['data']['name']
             xuser.user_info = json.dumps(session['me_on_xtwitter'])
             if request.identity:
                 xuser.user = request.identity['user']
@@ -213,6 +214,7 @@ class RootController(BaseController):
             xuser = model.XTwitter(
                 xid=session['me_on_xtwitter']['data']['id'],
                 user_name=session['me_on_xtwitter']['data']['username'],
+                display_name=session['me_on_xtwitter']['data']['name'],
                 user_info=json.dumps(session['me_on_xtwitter'])
             )
             if request.identity:
