@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-09-03 11:46+0200\n"
-"PO-Revision-Date: 2024-09-03 11:48+0200\n"
+"POT-Creation-Date: 2024-09-05 14:07+0200\n"
+"PO-Revision-Date: 2024-09-05 14:09+0200\n"
 "Last-Translator: Jaroslav Mikulík <jaroslav.mikulik@runtech.cz>\n"
 "Language: cs\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -87,7 +87,7 @@ msgid "Answer"
 msgstr "Odpověď"
 
 #: lustitelskadb/controllers/libricipher.py:115
-#: lustitelskadb/controllers/root.py:196
+#: lustitelskadb/controllers/root.py:267
 msgid "Form filled with errors!"
 msgstr "Formulář vyplněn s chybami!"
 
@@ -121,11 +121,11 @@ msgstr "Chybí unikátní ID Libri Šifry"
 msgid "Libri Cipher item successfully deleted"
 msgstr "Libri Šifry položka úspěšně smazána"
 
-#: lustitelskadb/controllers/root.py:87
+#: lustitelskadb/controllers/root.py:90
 msgid "Unknown source for authorization, canceled"
 msgstr "Neznámý zdroj k autorizaci, přerušeno"
 
-#: lustitelskadb/controllers/root.py:102
+#: lustitelskadb/controllers/root.py:106
 msgid ""
 "There may have been an issue with the consumer_key or consumer_secret in "
 "application"
@@ -133,55 +133,60 @@ msgstr ""
 "Je možné, že došlo k problému s consumer_key nebo consumer_secret v "
 "aplikaci"
 
-#: lustitelskadb/controllers/root.py:145
+#: lustitelskadb/controllers/root.py:137
+msgid "Unknown type of OAuth in config"
+msgstr "Neznámý typ OAuth v konfiguraci"
+
+#: lustitelskadb/controllers/root.py:196
 msgid "Can't get user info from Twitter"
 msgstr "Nelze získat informace o uživateli z Twitteru"
 
 # | msgid "Result successfully added"
-#: lustitelskadb/controllers/root.py:157
+#: lustitelskadb/controllers/root.py:228
 msgid "Successfully authorized"
 msgstr "Úspěšně autorizováno"
 
-#: lustitelskadb/controllers/root.py:160
+#: lustitelskadb/controllers/root.py:231
 msgid "Succesfully authorized, but missing landing URL"
 msgstr "Úspěšně autorizováno, ale chybí cílové URL"
 
-#: lustitelskadb/controllers/root.py:177
-msgid "Successfully detached from X/Twitter"
-msgstr "Úspěšně odpojeno z X/Twitteru"
+#: lustitelskadb/controllers/root.py:248
+#| msgid "Successfully detached from X/Twitter"
+msgid ""
+"Successfully detached from X/Twitter, the access token has been discarded"
+msgstr "Úspěšně odpojeno z X/Twitteru, přístupový žeton byl zahozen"
 
-#: lustitelskadb/controllers/root.py:230
+#: lustitelskadb/controllers/root.py:301
 msgid "Your result has been successfully sent to the original website"
 msgstr "Váš výsledek byl úspěšně odeslán na původní web"
 
-#: lustitelskadb/controllers/root.py:232
+#: lustitelskadb/controllers/root.py:303
 msgid ""
 "An error occurred while submitting the result from the form. It may have "
 "been filled in incorrectly. You can try again or submit the results on "
 "the original site."
 msgstr ""
-"Při odesílání výsledku z formuláře došlo k chybě. Možná "
-"byl nesprávně vyplněn. Můžete to zkusit znovu nebo zaslat výsledky na "
-"původním webu."
+"Při odesílání výsledku z formuláře došlo k chybě. Možná byl nesprávně "
+"vyplněn. Můžete to zkusit znovu nebo zaslat výsledky na původním webu."
 
-#: lustitelskadb/controllers/root.py:260
+#: lustitelskadb/controllers/root.py:331
 msgid "User not found"
 msgstr "Uživatel nenalezen"
 
-#: lustitelskadb/controllers/root.py:262
+#: lustitelskadb/controllers/root.py:333
 msgid "Invalid Password"
 msgstr "Neplatné heslo"
 
-#: lustitelskadb/controllers/root.py:266
+#: lustitelskadb/controllers/root.py:337
 msgid "Wrong credentials"
 msgstr "Nesprávné přihlašovací údaje"
 
-#: lustitelskadb/controllers/root.py:283
+#: lustitelskadb/controllers/root.py:354
 #, python-format
 msgid "Welcome back, %s!"
 msgstr "Vítejte zpět, uživateli %s!"
 
-#: lustitelskadb/controllers/root.py:296
+#: lustitelskadb/controllers/root.py:367
 msgid "We hope to see you soon!"
 msgstr "Těšíme se příště!"
 
