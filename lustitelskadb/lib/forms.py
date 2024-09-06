@@ -108,7 +108,6 @@ class LibriCipherForm(twf.Form):
             help_text=l_(u'Please Enter Question (required)'),
             placeholder=l_(u'Question'),
             validator=validators.ByteString(max=100),
-            manlength=30,
             required=True,
             css_class="form-control my-1"
         )
