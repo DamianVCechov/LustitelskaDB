@@ -14,8 +14,6 @@ from tg.decorators import paginate
 from lustitelskadb import model
 from lustitelskadb.controllers.admin import AdministrationController
 from lustitelskadb.model import DBSession
-from tgext.admin.tgadminconfig import BootstrapTGAdminConfig as TGAdminConfig
-from tgext.admin.controller import AdminController
 
 import requests
 from requests_oauthlib import OAuth1Session, OAuth2Session
@@ -64,7 +62,6 @@ class RootController(BaseController):
     """
 
     admin = AdministrationController()
-    dbadmin = AdminController(model, DBSession, config_type=TGAdminConfig)
 
     error = ErrorController()
 

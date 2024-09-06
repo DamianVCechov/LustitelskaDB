@@ -12,7 +12,12 @@ from lustitelskadb.controllers.libricipher import LibriCipherController
 from lustitelskadb.controllers.xtwitter import XTwitterController
 
 from lustitelskadb.lib.base import BaseController
-# from lustitelskadb.model import DBSession
+
+from tgext.admin.tgadminconfig import BootstrapTGAdminConfig as TGAdminConfig
+from tgext.admin.controller import AdminController
+
+from lustitelskadb import model
+from lustitelskadb.model import DBSession
 
 from pathlib import Path
 
@@ -25,6 +30,8 @@ class AdministrationController(BaseController):
     # Uncomment this line if your controller requires an authenticated user
     # allow_only = not_anonymous()
 
+    dbadmin = AdminController(model, DBSession, config_type=TGAdminConfig)
+
     libricipher = LibriCipherController()
 
     xtwitter = XTwitterController()
@@ -35,7 +42,7 @@ class AdministrationController(BaseController):
     @expose('lustitelskadb.templates.administration.index')
     @require(has_any_permission('manage', 'dashboard', msg=l_('Only for users with appropriate permissions')))
     def index(self, **kw):
-        return dict(page='administration/index', restart_confirmation_msg = _('Do you really want restart application? This will be done immediately!'))
+        return dict(page='administration/index', restart_confirmation_msg=_('Do you really want restart application? This will be done immediately!'))
 
     @expose('lustitelskadb.templates.administration.restart')
     @require(has_any_permission('manage', 'restartapp', msg=l_('Only for users with appropriate permissions')))
