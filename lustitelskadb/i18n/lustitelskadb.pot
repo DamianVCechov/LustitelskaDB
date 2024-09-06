@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: LustitelskaDB 0.5\n"
+"Project-Id-Version: LustitelskaDB 0.6\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-09-06 00:48+0200\n"
+"POT-Creation-Date: 2024-09-06 09:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,13 +17,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: lustitelskadb/controllers/admin.py:29
+#: lustitelskadb/controllers/admin.py:33 lustitelskadb/controllers/admin.py:38
+#: lustitelskadb/controllers/admin.py:72
 #: lustitelskadb/controllers/libricipher.py:56
 #: lustitelskadb/controllers/libricipher.py:108
 #: lustitelskadb/controllers/libricipher.py:143
 #: lustitelskadb/controllers/libricipher.py:167
 #: lustitelskadb/controllers/libricipher.py:182
 msgid "Only for users with appropriate permissions"
+msgstr ""
+
+#: lustitelskadb/controllers/admin.py:77
+msgid "Application successfully restarted"
 msgstr ""
 
 #: lustitelskadb/controllers/error.py:33
@@ -78,7 +83,7 @@ msgid "Answer"
 msgstr ""
 
 #: lustitelskadb/controllers/libricipher.py:115
-#: lustitelskadb/controllers/root.py:302
+#: lustitelskadb/controllers/root.py:301
 msgid "Form filled with errors!"
 msgstr ""
 
@@ -110,21 +115,21 @@ msgstr ""
 msgid "Libri Cipher item successfully deleted"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:97
+#: lustitelskadb/controllers/root.py:96
 msgid "Unknown source for authorization, canceled"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:113
+#: lustitelskadb/controllers/root.py:112
 msgid ""
 "There may have been an issue with the consumer_key or consumer_secret in "
 "application"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:145
+#: lustitelskadb/controllers/root.py:144
 msgid "Unknown type of OAuth in config"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:162
+#: lustitelskadb/controllers/root.py:161
 msgid ""
 "I cannot find the keys needed to continue in authorization process in the "
 "session. Maybe you are using a light version of the browser that cannot "
@@ -132,7 +137,7 @@ msgid ""
 "to a full-fledged browser or turn on the saving of cookies."
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:192
+#: lustitelskadb/controllers/root.py:191
 msgid ""
 "I cannot find the data needed to validate the authorization challenge in the "
 "session. Maybe you are using a light version of the browser that cannot "
@@ -140,55 +145,55 @@ msgid ""
 "to a full-fledged browser or turn on the saving of cookies."
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:211
+#: lustitelskadb/controllers/root.py:210
 msgid "Can't fetch access token"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:231
+#: lustitelskadb/controllers/root.py:230
 msgid "Can't get user info from Twitter"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:263
+#: lustitelskadb/controllers/root.py:262
 msgid "Successfully authorized"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:266
+#: lustitelskadb/controllers/root.py:265
 msgid "Succesfully authorized, but missing landing URL"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:283
+#: lustitelskadb/controllers/root.py:282
 msgid "Successfully detached from X/Twitter, the access token has been discarded"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:336
+#: lustitelskadb/controllers/root.py:335
 msgid "Your result has been successfully sent to the original website"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:338
+#: lustitelskadb/controllers/root.py:337
 msgid ""
 "An error occurred while submitting the result from the form. It may have been"
 " filled in incorrectly. You can try again or submit the results on the "
 "original site."
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:366
+#: lustitelskadb/controllers/root.py:365
 msgid "User not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:368
+#: lustitelskadb/controllers/root.py:367
 msgid "Invalid Password"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:372
+#: lustitelskadb/controllers/root.py:371
 msgid "Wrong credentials"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:389
+#: lustitelskadb/controllers/root.py:388
 #, python-format
 msgid "Welcome back, %s!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:402
+#: lustitelskadb/controllers/root.py:401
 msgid "We hope to see you soon!"
 msgstr ""
 
@@ -510,6 +515,7 @@ msgid ""
 msgstr ""
 
 #: lustitelskadb/templates/administration/index.xhtml:3
+#: lustitelskadb/templates/administration/restart.xhtml:3
 msgid " | Administration panel"
 msgstr ""
 
@@ -519,6 +525,14 @@ msgstr ""
 
 #: lustitelskadb/templates/administration/index.xhtml:20
 msgid "DB admin"
+msgstr ""
+
+#: lustitelskadb/templates/administration/index.xhtml:26
+msgid "Restart APP"
+msgstr ""
+
+#: lustitelskadb/templates/administration/restart.xhtml:8
+msgid "Restarting..."
 msgstr ""
 
 #: lustitelskadb/templates/administration/libricipher/detail.xhtml:3

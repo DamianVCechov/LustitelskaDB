@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-09-06 00:48+0200\n"
-"PO-Revision-Date: 2024-09-06 00:51+0200\n"
+"POT-Creation-Date: 2024-09-06 09:47+0200\n"
+"PO-Revision-Date: 2024-09-06 09:48+0200\n"
 "Last-Translator: Jaroslav Mikulík <jaroslav.mikulik@runtech.cz>\n"
 "Language: cs\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -21,7 +21,8 @@ msgstr ""
 "Generated-By: Babel 2.10.3\n"
 "X-Generator: Lokalize 22.12.3\n"
 
-#: lustitelskadb/controllers/admin.py:29
+#: lustitelskadb/controllers/admin.py:33 lustitelskadb/controllers/admin.py:38
+#: lustitelskadb/controllers/admin.py:72
 #: lustitelskadb/controllers/libricipher.py:56
 #: lustitelskadb/controllers/libricipher.py:108
 #: lustitelskadb/controllers/libricipher.py:143
@@ -29,6 +30,12 @@ msgstr ""
 #: lustitelskadb/controllers/libricipher.py:182
 msgid "Only for users with appropriate permissions"
 msgstr "Pouze pro uživatele s odpovídajícími oprávněními"
+
+# | msgid "Result successfully added"
+#: lustitelskadb/controllers/admin.py:77
+#| msgid "Libri Cipher item successfully created"
+msgid "Application successfully restarted"
+msgstr "Aplikace úspěšně restartována"
 
 #: lustitelskadb/controllers/error.py:33
 msgid "We're sorry but we weren't able to process this request."
@@ -87,7 +94,7 @@ msgid "Answer"
 msgstr "Odpověď"
 
 #: lustitelskadb/controllers/libricipher.py:115
-#: lustitelskadb/controllers/root.py:302
+#: lustitelskadb/controllers/root.py:301
 msgid "Form filled with errors!"
 msgstr "Formulář vyplněn s chybami!"
 
@@ -121,11 +128,11 @@ msgstr "Chybí unikátní ID Libri Šifry"
 msgid "Libri Cipher item successfully deleted"
 msgstr "Libri Šifry položka úspěšně smazána"
 
-#: lustitelskadb/controllers/root.py:97
+#: lustitelskadb/controllers/root.py:96
 msgid "Unknown source for authorization, canceled"
 msgstr "Neznámý zdroj k autorizaci, přerušeno"
 
-#: lustitelskadb/controllers/root.py:113
+#: lustitelskadb/controllers/root.py:112
 msgid ""
 "There may have been an issue with the consumer_key or consumer_secret in "
 "application"
@@ -133,11 +140,11 @@ msgstr ""
 "Je možné, že došlo k problému s consumer_key nebo consumer_secret v "
 "aplikaci"
 
-#: lustitelskadb/controllers/root.py:145
+#: lustitelskadb/controllers/root.py:144
 msgid "Unknown type of OAuth in config"
 msgstr "Neznámý typ OAuth v konfiguraci"
 
-#: lustitelskadb/controllers/root.py:162
+#: lustitelskadb/controllers/root.py:161
 msgid ""
 "I cannot find the keys needed to continue in authorization process in the"
 " session. Maybe you are using a light version of the browser that cannot "
@@ -145,51 +152,51 @@ msgid ""
 "switch to a full-fledged browser or turn on the saving of cookies."
 msgstr ""
 "V relaci nemohu najít klíče potřebné k pokračování v autorizačním  "
-"procesu. Možná používáte odlehčenou verzi prohlížeče, který neumí "
-"relaci udržet nebo máte vypnuté ukládání cookies. Zkuste "
-"přejít na plnohodnotný prohlížeč nebo zapnout ukládání cookies."
+"procesu. Možná používáte odlehčenou verzi prohlížeče, který neumí relaci "
+"udržet nebo máte vypnuté ukládání cookies. Zkuste přejít na plnohodnotný "
+"prohlížeč nebo zapnout ukládání cookies."
 
-#: lustitelskadb/controllers/root.py:192
+#: lustitelskadb/controllers/root.py:191
 msgid ""
 "I cannot find the data needed to validate the authorization challenge in "
 "the session. Maybe you are using a light version of the browser that "
 "cannot maintain a session or you have disabled the saving of cookies. Try"
 " to switch to a full-fledged browser or turn on the saving of cookies."
 msgstr ""
-"V relaci nemohu najít data potřebná pro ověření "
-"autorizační výzvy. Možná používáte odlehčenou verzi prohlížeče, který "
-"neumí relaci udržet nebo máte vypnuté ukládání cookies. Zkuste "
-"přejít na plnohodnotný prohlížeč nebo zapnout ukládání cookies."
+"V relaci nemohu najít data potřebná pro ověření autorizační výzvy. Možná "
+"používáte odlehčenou verzi prohlížeče, který neumí relaci udržet nebo "
+"máte vypnuté ukládání cookies. Zkuste přejít na plnohodnotný prohlížeč "
+"nebo zapnout ukládání cookies."
 
 # | msgid "Can't fetch token"
-#: lustitelskadb/controllers/root.py:211
+#: lustitelskadb/controllers/root.py:210
 msgid "Can't fetch access token"
 msgstr "Nemohu získat přístupový žeton"
 
-#: lustitelskadb/controllers/root.py:231
+#: lustitelskadb/controllers/root.py:230
 msgid "Can't get user info from Twitter"
 msgstr "Nelze získat informace o uživateli z Twitteru"
 
 # | msgid "Result successfully added"
-#: lustitelskadb/controllers/root.py:263
+#: lustitelskadb/controllers/root.py:262
 msgid "Successfully authorized"
 msgstr "Úspěšně autorizováno"
 
-#: lustitelskadb/controllers/root.py:266
+#: lustitelskadb/controllers/root.py:265
 msgid "Succesfully authorized, but missing landing URL"
 msgstr "Úspěšně autorizováno, ale chybí cílové URL"
 
 # | msgid "Successfully detached from X/Twitter"
-#: lustitelskadb/controllers/root.py:283
+#: lustitelskadb/controllers/root.py:282
 msgid ""
 "Successfully detached from X/Twitter, the access token has been discarded"
 msgstr "Úspěšně odpojeno z X/Twitteru, přístupový žeton byl zahozen"
 
-#: lustitelskadb/controllers/root.py:336
+#: lustitelskadb/controllers/root.py:335
 msgid "Your result has been successfully sent to the original website"
 msgstr "Váš výsledek byl úspěšně odeslán na původní web"
 
-#: lustitelskadb/controllers/root.py:338
+#: lustitelskadb/controllers/root.py:337
 msgid ""
 "An error occurred while submitting the result from the form. It may have "
 "been filled in incorrectly. You can try again or submit the results on "
@@ -198,24 +205,24 @@ msgstr ""
 "Při odesílání výsledku z formuláře došlo k chybě. Možná byl nesprávně "
 "vyplněn. Můžete to zkusit znovu nebo zaslat výsledky na původním webu."
 
-#: lustitelskadb/controllers/root.py:366
+#: lustitelskadb/controllers/root.py:365
 msgid "User not found"
 msgstr "Uživatel nenalezen"
 
-#: lustitelskadb/controllers/root.py:368
+#: lustitelskadb/controllers/root.py:367
 msgid "Invalid Password"
 msgstr "Neplatné heslo"
 
-#: lustitelskadb/controllers/root.py:372
+#: lustitelskadb/controllers/root.py:371
 msgid "Wrong credentials"
 msgstr "Nesprávné přihlašovací údaje"
 
-#: lustitelskadb/controllers/root.py:389
+#: lustitelskadb/controllers/root.py:388
 #, python-format
 msgid "Welcome back, %s!"
 msgstr "Vítejte zpět, uživateli %s!"
 
-#: lustitelskadb/controllers/root.py:402
+#: lustitelskadb/controllers/root.py:401
 msgid "We hope to see you soon!"
 msgstr "Těšíme se příště!"
 
@@ -555,6 +562,7 @@ msgstr ""
 "později nebo můžete procházet jiné části tohoto webu."
 
 #: lustitelskadb/templates/administration/index.xhtml:3
+#: lustitelskadb/templates/administration/restart.xhtml:3
 msgid " | Administration panel"
 msgstr " | Administrační panel"
 
@@ -565,6 +573,14 @@ msgstr "Administrace"
 #: lustitelskadb/templates/administration/index.xhtml:20
 msgid "DB admin"
 msgstr "DB admin"
+
+#: lustitelskadb/templates/administration/index.xhtml:26
+msgid "Restart APP"
+msgstr "Restart APP"
+
+#: lustitelskadb/templates/administration/restart.xhtml:8
+msgid "Restarting..."
+msgstr "Restartuji..."
 
 #: lustitelskadb/templates/administration/libricipher/detail.xhtml:3
 #: lustitelskadb/templates/administration/libricipher/edit.xhtml:3
