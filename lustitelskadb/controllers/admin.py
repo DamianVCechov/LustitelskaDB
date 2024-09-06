@@ -32,7 +32,7 @@ class AdministrationController(BaseController):
     @expose('lustitelskadb.templates.administration.index')
     @require(has_any_permission('manage', 'dashboard', msg=l_('Only for users with appropriate permissions')))
     def index(self, **kw):
-        return dict(page='administration/index')
+        return dict(page='administration/index', restart_confirmation_msg = _('Do you really want restart application? This will be done immediately!'))
 
     @expose('lustitelskadb.templates.administration.restart')
     @require(has_any_permission('manage', 'restartapp', msg=l_('Only for users with appropriate permissions')))

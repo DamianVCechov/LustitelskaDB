@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-09-06 09:47+0200\n"
-"PO-Revision-Date: 2024-09-06 09:48+0200\n"
+"POT-Creation-Date: 2024-09-06 10:32+0200\n"
+"PO-Revision-Date: 2024-09-06 10:32+0200\n"
 "Last-Translator: Jaroslav Mikulík <jaroslav.mikulik@runtech.cz>\n"
 "Language: cs\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -31,9 +31,13 @@ msgstr ""
 msgid "Only for users with appropriate permissions"
 msgstr "Pouze pro uživatele s odpovídajícími oprávněními"
 
+#: lustitelskadb/controllers/admin.py:35
+msgid "Do you really want restart application? This will be done immediately!"
+msgstr "Chcete opravdu restartovat aplikaci? Toto bude provedeno okamžitě!"
+
 # | msgid "Result successfully added"
-#: lustitelskadb/controllers/admin.py:77
-#| msgid "Libri Cipher item successfully created"
+# | msgid "Libri Cipher item successfully created"
+#: lustitelskadb/controllers/admin.py:76
 msgid "Application successfully restarted"
 msgstr "Aplikace úspěšně restartována"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.6\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-09-06 09:47+0200\n"
+"POT-Creation-Date: 2024-09-06 10:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,7 +27,11 @@ msgstr ""
 msgid "Only for users with appropriate permissions"
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:77
+#: lustitelskadb/controllers/admin.py:35
+msgid "Do you really want restart application? This will be done immediately!"
+msgstr ""
+
+#: lustitelskadb/controllers/admin.py:76
 msgid "Application successfully restarted"
 msgstr ""
 
