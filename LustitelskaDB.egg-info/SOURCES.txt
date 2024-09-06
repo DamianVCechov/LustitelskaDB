@@ -24,6 +24,7 @@ lustitelskadb/controllers/controller.py.template
 lustitelskadb/controllers/error.py
 lustitelskadb/controllers/libricipher.py
 lustitelskadb/controllers/root.py
+lustitelskadb/controllers/xtwitter.py
 lustitelskadb/i18n/lustitelskadb.pot
 lustitelskadb/i18n/cs/LC_MESSAGES/lustitelskadb.mo
 lustitelskadb/i18n/cs/LC_MESSAGES/lustitelskadb.po
@@ -305,10 +306,13 @@ lustitelskadb/templates/__pycache__/__init__.cpython-311.pyc
 lustitelskadb/templates/__pycache__/__init__.pypy39.pyc
 lustitelskadb/templates/administration/__init__.py
 lustitelskadb/templates/administration/index.xhtml
+lustitelskadb/templates/administration/restart.xhtml
 lustitelskadb/templates/administration/libricipher/__init__.py
 lustitelskadb/templates/administration/libricipher/detail.xhtml
 lustitelskadb/templates/administration/libricipher/edit.xhtml
 lustitelskadb/templates/administration/libricipher/index.xhtml
+lustitelskadb/templates/administration/xtwitter/__init__.py
+lustitelskadb/templates/administration/xtwitter/index.xhtml
 lustitelskadb/tests/__init__.py
 lustitelskadb/tests/functional/__init__.py
 lustitelskadb/tests/functional/test_authentication.py
