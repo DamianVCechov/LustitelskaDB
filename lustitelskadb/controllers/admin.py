@@ -9,6 +9,7 @@ from tg.i18n import ugettext as _, lazy_ugettext as l_
 from tg.predicates import has_permission, has_any_permission
 
 from lustitelskadb.controllers.libricipher import LibriCipherController
+from lustitelskadb.controllers.xtwitter import XTwitterController
 
 from lustitelskadb.lib.base import BaseController
 # from lustitelskadb.model import DBSession
@@ -25,6 +26,8 @@ class AdministrationController(BaseController):
     # allow_only = not_anonymous()
 
     libricipher = LibriCipherController()
+
+    xtwitter = XTwitterController()
 
     def _before(self, *args, **kw):
         tmpl_context.project_name = "LustitelskaDB"

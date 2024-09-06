@@ -33,7 +33,7 @@ except (ImportError, ModuleNotFoundError, SyntaxError):
     except:
         log.error("WebHelpers(2) helpers not available with this Python Version")
 
-__all__ = ['ResultForm', 'LibriCipherForm']
+__all__ = ['ResultForm', 'LibriCipherForm', 'XTwitterPostForm']
 
 
 class ResultForm(twf.Form):
@@ -136,5 +136,33 @@ class LibriCipherForm(twf.Form):
 
     submit = twf.SubmitButton(
         value=l_(u'Save'),
+        css_class='btn btn-outline-secondary btn-lg'
+    )
+
+
+class XTwitterPostForm(twf.Form):
+
+    class child(twf.ListLayout):
+
+        css_class = 'list-unstyled bg-light p-3'
+
+        text = twf.TextArea(
+            label=l_(u'Post text'),
+            help_text=l_(u'Please Enter X/Twitter post text'),
+            placeholder=l_(u'Post text'),
+            validator=validators.ByteString(max=280),
+            maxlength=280,
+            required=True,
+            rows=7,
+            css_class="form-control my-1",
+            attrs={
+                'autofocus': True
+            }
+        )
+
+    action = lurl('/admin/xtwitter/create_post')
+
+    submit = twf.SubmitButton(
+        value=l_(u'Submit'),
         css_class='btn btn-outline-secondary btn-lg'
     )
