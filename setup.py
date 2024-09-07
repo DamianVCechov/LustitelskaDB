@@ -33,6 +33,10 @@ testpkgs = [
     'gearbox'
 ]
 
+full_extras = [
+    'ujson'
+]
+
 install_requires = [
     "TurboGears2 >= 2.4.0",
     "Beaker >= 1.8.0",
@@ -42,8 +46,13 @@ install_requires = [
     "alembic",
     "repoze.who",
     "tw2.forms",
+    "tw2.dynforms",
     "tgext.admin >= 0.6.1",
-    "WebHelpers2"
+    "WebHelpers2",
+    "requests",
+    "requests_oauthlib",
+    "tweepy",
+    "pathlib; python_version < '3.4'"
 ]
 
 if py_version != (3, 2):
@@ -53,17 +62,18 @@ if py_version != (3, 2):
 setup(
     name='LustitelskaDB',
     version='0.8',
-    description='',
-    author='',
-    author_email='',
-    url='',
+    description='Hobby web application for statistics czech Wordle game named HadejSlova',
+    author='ByCzech, DamianVCechov',
+    author_email='byczech@gmail.com, lustitele@gmail.com',
+    url='http://lusteni.nemachybu.cz',
     packages=find_packages(exclude=['ez_setup']),
     install_requires=install_requires,
     include_package_data=True,
     test_suite='nose.collector',
     tests_require=testpkgs,
     extras_require={
-        'testing': testpkgs
+        'testing': testpkgs,
+        'full': full_extras
     },
     package_data={'lustitelskadb': [
         'i18n/*/LC_MESSAGES/*.mo',
