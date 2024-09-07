@@ -140,7 +140,7 @@ class LibriCipherForm(twf.Form):
     )
 
 
-class XTwitterPostForm(twf.Form):
+class XTwitterPostForm(twd.CustomisedForm):
 
     class child(twf.ListLayout):
 
@@ -153,12 +153,22 @@ class XTwitterPostForm(twf.Form):
             validator=validators.ByteString(max=280),
             maxlength=280,
             required=True,
-            rows=7,
+            rows=5,
             css_class="form-control my-1",
             attrs={
                 'autofocus': True
             }
         )
+
+        class medialist(twd.GrowingGridLayout):
+
+            label = l_(u"Media list")
+
+            media = twf.FileField(
+                label='',
+                validator=validators.FieldStorageUploadConverter(),
+                css_class="form-control form-control-sm"
+            )
 
     action = lurl('/admin/xtwitter/create_post')
 

@@ -6,6 +6,16 @@
 <body py:block="body" py:strip="True">
 	<h1 class="mb-5">X/Twitter</h1>
 
-	<div>${tmpl_context.form.display()}</div>
+	<div class="row">
+		<div class="col-lg-4">${tmpl_context.form.display()}</div>
+		<div class="col-lg-8">
+			<div class="row h-100">
+				<div class="col-6 g-2"><div class="xtwitter-img bg-light w-100 h-100 rounded-top-start"></div></div>
+				<div class="col-6 g-2"><div class="xtwitter-img bg-light w-100 h-100 rounded-top-end"></div></div>
+				<div class="col-6 g-2"><div class="xtwitter-img bg-light w-100 h-100 rounded-bottom-start"></div></div>
+				<div class="col-6 g-2"><div class="xtwitter-img bg-light w-100 h-100 rounded-bottom-end"></div></div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
