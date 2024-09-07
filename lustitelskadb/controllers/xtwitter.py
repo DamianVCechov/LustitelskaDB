@@ -61,12 +61,23 @@ class XTwitterController(BaseController):
 
         media_ids = []
         if kw.get('medialist', []):
-            tweepy_auth = tweepy.OAuth1UserHandler(
-                config.get('xtwitter.consumer_key', ''),
-                config.get('xtwitter.consumer_secret', ''),
-                config.get('xtwitter.access_key', ''),
-                config.get('xtwitter.access_secret', '')
-            )
+            if hasattr(tweepy, 'OAuth1UserHandler'):
+                tweepy_auth = tweepy.OAuth1UserHandler(
+                    config.get('xtwitter.consumer_key', ''),
+                    config.get('xtwitter.consumer_secret', ''),
+                    config.get('xtwitter.access_key', ''),
+                    config.get('xtwitter.access_secret', '')
+                )
+            else:
+                tweepy_auth = tweepy.OAuthHandler(
+                    config.get('xtwitter.consumer_key', ''),
+                    config.get('xtwitter.consumer_secret', '')
+                )
+                tweepy_auth.set_access_token(
+                    config.get('xtwitter.access_key', ''),
+                    config.get('xtwitter.access_secret', '')
+                )
+
             tweepy_api = tweepy.API(tweepy_auth)
 
             for media in kw.get('medialist', [])[:4]:
