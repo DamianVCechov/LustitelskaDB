@@ -160,7 +160,8 @@ class XTwitterPostForm(twd.CustomisedForm):
             }
         )
 
-        class medialist(twd.GrowingGridLayout):
+        class MediaList(twd.GrowingGridLayout):
+            """Media list for post."""
 
             label = l_(u"Media list")
 
