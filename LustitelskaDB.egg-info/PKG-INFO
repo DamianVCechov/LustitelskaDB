@@ -1,7 +1,9 @@
 Metadata-Version: 2.1
 Name: LustitelskaDB
-Version: 0.8
-Home-page: 
-Author: 
-Author-email: 
+Version: 0.9
+Summary: Hobby web application for statistics czech Wordle game named HadejSlova
+Home-page: http://lusteni.nemachybu.cz
+Author: ByCzech, DamianVCechov
+Author-email: byczech@gmail.com, lustitele@gmail.com
+Provides-Extra: full
 Provides-Extra: testing

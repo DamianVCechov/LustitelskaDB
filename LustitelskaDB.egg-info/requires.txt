@@ -5,10 +5,20 @@ TurboGears2>=2.4.0
 WebHelpers2
 alembic
 repoze.who
+requests
+requests_oauthlib
 sqlalchemy
 tgext.admin>=0.6.1
+tw2.dynforms
 tw2.forms
+tweepy
 zope.sqlalchemy>=1.1
+
+[:python_version < "3.4"]
+pathlib
+
+[full]
+ujson
 
 [testing]
 WebTest>=1.2.3
