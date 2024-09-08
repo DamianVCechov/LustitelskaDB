@@ -4,15 +4,28 @@
 </head>
 
 <body py:block="body" py:strip="True">
-	<h1><span>About</span> ${getattr(tmpl_context, 'project_name', 'turbogears2')}</h1>
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed quam nec nulla tincidunt convallis id ac mauris. Etiam non ipsum sed libero porta condimentum auctor ac mauris. Nunc varius elit in elementum suscipit. Aliquam fringilla ac elit ac maximus. Proin eu risus tortor. Etiam venenatis finibus elit, quis scelerisque nisi blandit nec. Integer nulla justo, ullamcorper at mauris et, sagittis ultrices lacus. Quisque pharetra quis ligula at gravida. Etiam tempor fermentum enim. Aliquam consequat sed nunc ac lacinia. Nam finibus tempus magna.</p>
+	<h1>
+		<span>About</span> ${getattr(tmpl_context, 'project_name', 'turbogears2')}
+	</h1>
 
-	<p>Pellentesque sit amet justo at diam porta congue. Proin sed condimentum libero. Fusce iaculis dui at dignissim finibus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent ultricies porta rutrum. Aliquam facilisis non arcu ut luctus. Aliquam erat volutpat. Suspendisse potenti. Etiam dolor nibh, rhoncus nec hendrerit eu, consectetur vitae leo. Proin et iaculis metus. Vestibulum pellentesque feugiat vestibulum.</p>
+	<h2 class="mt-5">Dear friends,</h2>
 
-	<p>Nullam eget arcu et felis aliquet malesuada quis eu turpis. Nam nisl nulla, pharetra non rutrum sit amet, consequat in dolor. Nullam congue faucibus imperdiet. Maecenas ut laoreet tellus. Proin mollis rutrum urna at rhoncus. Integer porta dapibus turpis et sollicitudin. Ut lacus urna, euismod non lacus in, finibus tincidunt sem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin non turpis id lorem placerat tempor id vitae sem. Pellentesque mollis orci ultricies lobortis condimentum. In ullamcorper non felis id imperdiet. Phasellus rhoncus nisi sed nunc imperdiet dictum. Sed suscipit erat mauris, sed tincidunt massa pulvinar a. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin dapibus vel enim ut porta. Ut nibh massa, aliquam eu mollis vitae, varius eget ante.</p>
+	<p class="lead mt-5">let me welcome you to our new puzzlers site, where we announce results and keep statistics. So far, the site is only for community purposes of players playing the game <a href="https://hadejslova.cz" target="_blank">HádejSlova</a> and sharing their results on <a href="https://x.com/ByCzech" target="_blank">Twitter</a>. We are community of approx. 2 dozen players who enjoy the game and comparing their results with each other. They have a few extra rules and joys, compared to the original <a href="https://hadejslova.cz" target="_blank">HádejSlova</a> plan.</p>
 
-	<p>Aenean sagittis, lacus vel dapibus lobortis, magna nunc bibendum tellus, ac condimentum metus odio sed elit. Nulla elit odio, varius vitae diam finibus, dictum porttitor nisi. Vivamus et mollis lectus. Etiam quis leo nisi. Vivamus non sagittis mi. Maecenas euismod at nunc in fermentum. Aliquam viverra, nulla cursus consequat laoreet, est neque suscipit eros, quis porttitor nunc massa in sapien. Cras orci felis, dapibus id rutrum eu, rhoncus sed tellus.</p>
+	<p class="lead">When you click to <a href="${tg.url('/newresult')}">"New result"</a> at the top of the menu, you will be asked to authorize via <a href="http://x.com">X/Twitter</a>.You will then be able to enter your result from the game into the web form. In the original <a href="https://hadejslova.cz" target="_blank">HádejSlova</a> game, after playing, just press the SHARE button and insert it into the form either with Ctrl-V, or if you are using a phone, hold it for a long time in the field and press PASTE.</p>
 
-	<p>In ut vulputate massa, eget consequat lorem. Vivamus vehicula pellentesque felis ut tincidunt. Cras vehicula condimentum porta. Maecenas et pulvinar urna. Cras vehicula ipsum eget metus pharetra, ut hendrerit mauris hendrerit. Donec et suscipit nibh, vehicula eleifend turpis. Quisque suscipit accumsan sem quis pulvinar. Mauris in augue risus. Quisque ut sagittis odio. Phasellus molestie aliquet ante nec eleifend. Duis eros nisl, mollis sit amet posuere non, egestas non metus. Donec non efficitur lectus. Curabitur nec arcu quis libero tincidunt blandit ac id mi. In porttitor eros lacus. Pellentesque justo tellus, vestibulum non efficitur nec, accumsan sit amet neque.</p>
+	<p class="lead">Furthermore, nothing prevents you from sharing your result with us in our <a href="http://x.com" target="_blank">Twitter's</a> threads <a href="https://x.com/Lustitele" target="_blank">@Lustitele</a>, which we announce every day after 6 p.m. We would like to see you.</p>
+
+	<p class="lead">If we have the slightest suspicion that you are cheating, we will kick you out. No debate. But otherwise, we are a bunch of nice people. Trust me. 😀</p>
+
+	<p class="lead">We built the original website <a href="https://lustitele.chytrak.cz" target="_blank">lustitele.chytrak.cz</a> with <a href="https://x.com/NocniDuha" target="_blank">@NocniDuha</a> on a green field, when I calculated everything in the <a href="https://workspace.google.com/products/sheets/">GoogleSheets spreadsheet</a> and loaded the results from it using simple scripts. Now we have progressed and thanks to the generous cooperation of <a href="https://x.com/ByCzech" target="_blank">@ByCzech</a> and <a href="https://x.com/Tlucek_P" target="_blank">@Tlucek_P</a> (they built it themselves) we have this amazing site with its own database and simple <a href="http://x.com" target="_blank">Twitter</a> handling. For which I thank them very much.</p>
+
+	<p class="lead">Well, if you don't know how to deal with something, feel free to contact me either on my <a href="http://x.com" target="_blank">X/Twitter</a> profile <a href="https://x.com/DamianVCechov" target="_blank">@DamianVCechov</a> or our joint profile <a href="https://x.com/Lustitele">@Lustitele</a> or you can contact me via email <a href="mailto:lustitele@gmail.com">lustitele@gmail.com</a>.</p>
+
+	<p class="lead text-end">Your friend</p>
+
+	<p class="lead text-end">and table bulletin board administrator</p>
+
+	<p class="lead text-end mt-5">Damian V. Checkhov</p>
 </body>
 </html>

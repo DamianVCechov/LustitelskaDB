@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: LustitelskaDB 0.7\n"
+"Project-Id-Version: LustitelskaDB 0.8\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-09-07 02:32+0200\n"
+"POT-Creation-Date: 2024-09-08 03:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -203,11 +203,11 @@ msgstr ""
 msgid "We hope to see you soon!"
 msgstr ""
 
-#: lustitelskadb/controllers/xtwitter.py:92
+#: lustitelskadb/controllers/xtwitter.py:103
 msgid "Post successfully sent to X/Twitter."
 msgstr ""
 
-#: lustitelskadb/controllers/xtwitter.py:95
+#: lustitelskadb/controllers/xtwitter.py:106
 msgid "Something went wrong, during sending post to X/Twitter. Error Code: {}"
 msgstr ""
 
@@ -279,70 +279,194 @@ msgstr ""
 msgid " | About page"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:7 lustitelskadb/templates/master.xhtml:27
+#: lustitelskadb/templates/about.xhtml:8 lustitelskadb/templates/master.xhtml:27
 msgid "About"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:8
-msgid ""
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed quam nec "
-"nulla tincidunt convallis id ac mauris. Etiam non ipsum sed libero porta "
-"condimentum auctor ac mauris. Nunc varius elit in elementum suscipit. Aliquam"
-" fringilla ac elit ac maximus. Proin eu risus tortor. Etiam venenatis finibus"
-" elit, quis scelerisque nisi blandit nec. Integer nulla justo, ullamcorper at"
-" mauris et, sagittis ultrices lacus. Quisque pharetra quis ligula at gravida."
-" Etiam tempor fermentum enim. Aliquam consequat sed nunc ac lacinia. Nam "
-"finibus tempus magna."
+#: lustitelskadb/templates/about.xhtml:11
+msgid "Dear friends,"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:10
+#: lustitelskadb/templates/about.xhtml:13
 msgid ""
-"Pellentesque sit amet justo at diam porta congue. Proin sed condimentum "
-"libero. Fusce iaculis dui at dignissim finibus. Orci varius natoque penatibus"
-" et magnis dis parturient montes, nascetur ridiculus mus. Praesent ultricies "
-"porta rutrum. Aliquam facilisis non arcu ut luctus. Aliquam erat volutpat. "
-"Suspendisse potenti. Etiam dolor nibh, rhoncus nec hendrerit eu, consectetur "
-"vitae leo. Proin et iaculis metus. Vestibulum pellentesque feugiat "
-"vestibulum."
+"let me welcome you to our new puzzlers site, where we announce results and "
+"keep statistics. So far, the site is only for community purposes of players "
+"playing the game"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:12
-msgid ""
-"Nullam eget arcu et felis aliquet malesuada quis eu turpis. Nam nisl nulla, "
-"pharetra non rutrum sit amet, consequat in dolor. Nullam congue faucibus "
-"imperdiet. Maecenas ut laoreet tellus. Proin mollis rutrum urna at rhoncus. "
-"Integer porta dapibus turpis et sollicitudin. Ut lacus urna, euismod non "
-"lacus in, finibus tincidunt sem. Pellentesque habitant morbi tristique "
-"senectus et netus et malesuada fames ac turpis egestas. Proin non turpis id "
-"lorem placerat tempor id vitae sem. Pellentesque mollis orci ultricies "
-"lobortis condimentum. In ullamcorper non felis id imperdiet. Phasellus "
-"rhoncus nisi sed nunc imperdiet dictum. Sed suscipit erat mauris, sed "
-"tincidunt massa pulvinar a. Orci varius natoque penatibus et magnis dis "
-"parturient montes, nascetur ridiculus mus. Proin dapibus vel enim ut porta. "
-"Ut nibh massa, aliquam eu mollis vitae, varius eget ante."
+#: lustitelskadb/templates/about.xhtml:13 lustitelskadb/templates/about.xhtml:15
+msgid "HádejSlova"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:14
-msgid ""
-"Aenean sagittis, lacus vel dapibus lobortis, magna nunc bibendum tellus, ac "
-"condimentum metus odio sed elit. Nulla elit odio, varius vitae diam finibus, "
-"dictum porttitor nisi. Vivamus et mollis lectus. Etiam quis leo nisi. Vivamus"
-" non sagittis mi. Maecenas euismod at nunc in fermentum. Aliquam viverra, "
-"nulla cursus consequat laoreet, est neque suscipit eros, quis porttitor nunc "
-"massa in sapien. Cras orci felis, dapibus id rutrum eu, rhoncus sed tellus."
+#: lustitelskadb/templates/about.xhtml:13
+msgid "and sharing their results on"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:16
+#: lustitelskadb/templates/about.xhtml:13 lustitelskadb/templates/about.xhtml:21
+msgid "Twitter"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:13
 msgid ""
-"In ut vulputate massa, eget consequat lorem. Vivamus vehicula pellentesque "
-"felis ut tincidunt. Cras vehicula condimentum porta. Maecenas et pulvinar "
-"urna. Cras vehicula ipsum eget metus pharetra, ut hendrerit mauris hendrerit."
-" Donec et suscipit nibh, vehicula eleifend turpis. Quisque suscipit accumsan "
-"sem quis pulvinar. Mauris in augue risus. Quisque ut sagittis odio. Phasellus"
-" molestie aliquet ante nec eleifend. Duis eros nisl, mollis sit amet posuere "
-"non, egestas non metus. Donec non efficitur lectus. Curabitur nec arcu quis "
-"libero tincidunt blandit ac id mi. In porttitor eros lacus. Pellentesque "
-"justo tellus, vestibulum non efficitur nec, accumsan sit amet neque."
+". We are community of approx. 2 dozen players who enjoy the game and "
+"comparing their results with each other. They have a few extra rules and "
+"joys, compared to the original"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:13
+msgid "plan."
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:15
+msgid "When you click to"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:15
+msgid "\"New result\""
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:15
+msgid "at the top of the menu, you will be asked to authorize via"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:15 lustitelskadb/templates/about.xhtml:23
+#: lustitelskadb/templates/administration/index.xhtml:20
+#: lustitelskadb/templates/administration/xtwitter/index.xhtml:7
+msgid "X/Twitter"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:15
+msgid ""
+".You will then be able to enter your result from the game into the web form. "
+"In the original"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:15
+msgid ""
+"game, after playing, just press the SHARE button and insert it into the form "
+"either with Ctrl-V, or if you are using a phone, hold it for a long time in "
+"the field and press PASTE."
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:17
+msgid "Furthermore, nothing prevents you from sharing your result with us in our"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:17
+msgid "Twitter's"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:17
+msgid "threads"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:17 lustitelskadb/templates/about.xhtml:23
+msgid "@Lustitele"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:17
+msgid ", which we announce every day after 6 p.m. We would like to see you."
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:19
+msgid ""
+"If we have the slightest suspicion that you are cheating, we will kick you "
+"out. No debate. But otherwise, we are a bunch of nice people. Trust me. 😀"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:21
+msgid "We built the original website"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:21
+msgid "lustitele.chytrak.cz"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:21
+msgid "with"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:21
+msgid "@NocniDuha"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:21
+msgid "on a green field, when I calculated everything in the"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:21
+msgid "GoogleSheets spreadsheet"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:21
+msgid ""
+"and loaded the results from it using simple scripts. Now we have progressed "
+"and thanks to the generous cooperation of"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:21
+msgid "@ByCzech"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:21
+msgid "and"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:21
+msgid "@Tlucek_P"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:21
+msgid ""
+"(they built it themselves) we have this amazing site with its own database "
+"and simple"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:21
+msgid "handling. For which I thank them very much."
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:23
+msgid ""
+"Well, if you don't know how to deal with something, feel free to contact me "
+"either on my"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:23
+msgid "profile"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:23
+msgid "@DamianVCechov"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:23
+msgid "or our joint profile"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:23
+msgid "or you can contact me via email"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:23
+msgid "lustitele@gmail.com"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:23 lustitelskadb/templates/index.xhtml:10
+#: lustitelskadb/templates/libriciphers.xhtml:10
+msgid "."
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:25
+msgid "Your friend"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:27
+msgid "and table bulletin board administrator"
+msgstr ""
+
+#: lustitelskadb/templates/about.xhtml:29
+msgid "Damian V. Checkhov"
 msgstr ""
 
 #: lustitelskadb/templates/error.xhtml:3
@@ -383,11 +507,6 @@ msgstr ""
 
 #: lustitelskadb/templates/index.xhtml:10
 msgid "original website"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:10
-#: lustitelskadb/templates/libriciphers.xhtml:10
-msgid "."
 msgstr ""
 
 #: lustitelskadb/templates/administration/index.xhtml:14
@@ -551,11 +670,6 @@ msgstr ""
 
 #: lustitelskadb/templates/administration/index.xhtml:8
 msgid "Administration"
-msgstr ""
-
-#: lustitelskadb/templates/administration/index.xhtml:20
-#: lustitelskadb/templates/administration/xtwitter/index.xhtml:7
-msgid "X/Twitter"
 msgstr ""
 
 #: lustitelskadb/templates/administration/index.xhtml:26
