@@ -20,7 +20,7 @@ class XTwitter(DeclarativeBase):
     uid = Column(Integer, primary_key=True)
     xid = Column(String(20), unique=True, nullable=False, default='')
     user_name = Column(Unicode(15), unique=True, nullable=False, default=u'')
-    display_name = Column(Unicode(50), unique=True, nullable=False, default=u'')
+    display_name = Column(Unicode(50), unique=False, nullable=False, default=u'')
     user_info = Column(UnicodeText)
 
     user_id = Column(Integer, ForeignKey('tg_user.user_id'), index=True)
