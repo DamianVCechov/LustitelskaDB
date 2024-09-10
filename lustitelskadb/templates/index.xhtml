@@ -4,14 +4,29 @@
 </head>
 
 <body py:block="body" py:strip="True">
-	<div class="m-5 p-5 bg-light rounded">
-		<h1 class="display-1">LustiteleDB</h1>
-		<p class="lead">
-			Here you will find the upcoming results list of <a href="https://hadejslova.cz" target="_blank">HadejSlova</a> players. Before that happens, you can test the other features of the site and see what features are gradually added here. Until then, you can find the results table on the <a href="http://lustitele.chytrak.cz" target="_blank">original website</a>.
-		</p>
-		<p class="text-center">
-			<a href="http://lustitele.chytrak.cz" target="_blank"><img class="img-fluid" src="${tg.url('/img/lustitele-preview.png')}" alt="Luštitelé" /></a>
-		</p>
+	<div class="text-center mt-5">
+		<a href="http://lustitele.chytrak.cz" target="_blank"><img class="img-fluid" src="${tg.url('/img/lustitele-preview.png')}" alt="Luštitelé" /></a>
+	</div>
+
+	<div id="carouselComments" class="carousel carousel-dark slide bg-light rounded-3 mt-3 p-2" data-bs-ride="carousel">
+		<div class="carousel-inner">
+			<div class="carousel-item${' active' if idx == 0 else ''}" py:for="idx, item in enumerate(comments)">
+				<figure class="my-5">
+					<blockquote class="blockquote">
+						<p class="text-center fs-3">${item.comment}</p>
+					</blockquote>
+					<figcaption class="blockquote-footer text-center fs-5">
+						${item.xtwitter.display_name} <cite title="Source Title">@${item.xtwitter.user_name}</cite>
+					</figcaption>
+				</figure>
+			</div>
+		</div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#carouselComments" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#carouselComments" data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="visually-hidden">Next</span>
+		</button>
 	</div>
 </body>
 </html>

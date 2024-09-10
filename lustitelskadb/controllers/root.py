@@ -15,6 +15,8 @@ from lustitelskadb import model
 from lustitelskadb.controllers.admin import AdministrationController
 from lustitelskadb.model import DBSession
 
+from sqlalchemy.sql.expression import func
+
 import requests
 from requests_oauthlib import OAuth1Session, OAuth2Session
 
@@ -85,7 +87,9 @@ class RootController(BaseController):
     @expose('lustitelskadb.templates.index')
     def index(self):
         """Handle the front-page."""
-        return dict(page='index')
+        comments = DBSession.query(model.GameResult).filter(model.GameResult.comment != None, model.GameResult.comment != '').order_by(func.random()).limit(100).all()
+
+        return dict(page='index', comments=comments)
 
     @expose()
     def xauthorize(self, **kw):
