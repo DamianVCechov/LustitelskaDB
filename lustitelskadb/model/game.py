@@ -19,7 +19,7 @@ class GameResult(DeclarativeBase):
 
     uid = Column(Integer, primary_key=True)
     xtwitter_uid = Column(Integer, ForeignKey('xtwitter.uid'), index=True)
-    xtwitter = relationship('XTwitter', uselist=False, backref=backref('results'), cascade='all, delete-orphan', single_parent=True)
+    xtwitter = relationship('XTwitter', backref=backref('results'))
     game_no = Column(Integer, nullable=False, index=True, default=0)
     game_time = Column(Time, nullable=True, index=True)
     game_rows = Column(Integer, nullable=True, index=True)
