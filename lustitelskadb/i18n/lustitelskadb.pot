@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: LustitelskaDB 0.9\n"
+"Project-Id-Version: LustitelskaDB 0.11\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-09-10 02:13+0200\n"
+"POT-Creation-Date: 2024-09-10 10:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,9 +17,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: lustitelskadb/controllers/admin.py:49 lustitelskadb/controllers/admin.py:54
-#: lustitelskadb/controllers/admin.py:69 lustitelskadb/controllers/admin.py:150
-#: lustitelskadb/controllers/admin.py:184
+#: lustitelskadb/controllers/admin.py:78 lustitelskadb/controllers/admin.py:83
+#: lustitelskadb/controllers/admin.py:98 lustitelskadb/controllers/admin.py:180
+#: lustitelskadb/controllers/admin.py:214
 #: lustitelskadb/controllers/libricipher.py:56
 #: lustitelskadb/controllers/libricipher.py:108
 #: lustitelskadb/controllers/libricipher.py:143
@@ -30,32 +30,32 @@ msgstr ""
 msgid "Only for users with appropriate permissions"
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:51
+#: lustitelskadb/controllers/admin.py:80
 msgid "Do you really want restart application? This will be done immediately!"
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:61
+#: lustitelskadb/controllers/admin.py:90
 #: lustitelskadb/controllers/libricipher.py:115
-#: lustitelskadb/controllers/root.py:298 lustitelskadb/controllers/xtwitter.py:32
+#: lustitelskadb/controllers/root.py:299 lustitelskadb/controllers/xtwitter.py:32
 msgid "Form filled with errors!"
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:74
+#: lustitelskadb/controllers/admin.py:103
 msgid "Missing CSV file for import"
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:143
+#: lustitelskadb/controllers/admin.py:173
 msgid ""
 "The import was successful. {all_count} records processed, {imported_count} "
 "records imported, {duplicity_skipped} duplicate records skipped, and "
 "{added_nicknames} users added."
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:145
+#: lustitelskadb/controllers/admin.py:175
 msgid "The import attempt ended with an error: \"{}\""
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:188
+#: lustitelskadb/controllers/admin.py:218
 msgid "Application successfully restarted"
 msgstr ""
 
@@ -138,21 +138,21 @@ msgstr ""
 msgid "Libri Cipher item successfully deleted"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:93
+#: lustitelskadb/controllers/root.py:94
 msgid "Unknown source for authorization, canceled"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:109
+#: lustitelskadb/controllers/root.py:110
 msgid ""
 "There may have been an issue with the consumer_key or consumer_secret in "
 "application"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:141
+#: lustitelskadb/controllers/root.py:142
 msgid "Unknown type of OAuth in config"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:158
+#: lustitelskadb/controllers/root.py:159
 msgid ""
 "I cannot find the keys needed to continue in authorization process in the "
 "session. Maybe you are using a light version of the browser that cannot "
@@ -160,7 +160,7 @@ msgid ""
 "to a full-fledged browser or turn on the saving of cookies."
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:188
+#: lustitelskadb/controllers/root.py:189
 msgid ""
 "I cannot find the data needed to validate the authorization challenge in the "
 "session. Maybe you are using a light version of the browser that cannot "
@@ -168,55 +168,66 @@ msgid ""
 "to a full-fledged browser or turn on the saving of cookies."
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:207
+#: lustitelskadb/controllers/root.py:208
 msgid "Can't fetch access token"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:227
+#: lustitelskadb/controllers/root.py:228
 msgid "Can't get user info from Twitter"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:259
+#: lustitelskadb/controllers/root.py:260
 msgid "Successfully authorized"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:262
+#: lustitelskadb/controllers/root.py:263
 msgid "Succesfully authorized, but missing landing URL"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:279
+#: lustitelskadb/controllers/root.py:280
 msgid "Successfully detached from X/Twitter, the access token has been discarded"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:332
-msgid "Your result has been successfully sent to the original website"
-msgstr ""
-
 #: lustitelskadb/controllers/root.py:334
-msgid ""
-"An error occurred while submitting the result from the form. It may have been"
-" filled in incorrectly. You can try again or submit the results on the "
-"original site."
+msgid "This game result is already in database"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:362
+#: lustitelskadb/controllers/root.py:352
+msgid ""
+"Something went wrong! Can't save game result to database, so it isn't sent to"
+" legacy website too!"
+msgstr ""
+
+#: lustitelskadb/controllers/root.py:372
+msgid ""
+"Your result has been successfully saved to database and sent to the original "
+"website"
+msgstr ""
+
+#: lustitelskadb/controllers/root.py:374
+msgid ""
+"Your result has been successfully saved to database, but an error occurred "
+"while submitting the result from the form to legacy website. Let us know it!"
+msgstr ""
+
+#: lustitelskadb/controllers/root.py:402
 msgid "User not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:364
+#: lustitelskadb/controllers/root.py:404
 msgid "Invalid Password"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:368
+#: lustitelskadb/controllers/root.py:408
 msgid "Wrong credentials"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:385
+#: lustitelskadb/controllers/root.py:425
 #, python-format
 msgid "Welcome back, %s!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:398
+#: lustitelskadb/controllers/root.py:438
 msgid "We hope to see you soon!"
 msgstr ""
 
@@ -719,14 +730,6 @@ msgstr ""
 
 #: lustitelskadb/templates/administration/index.xhtml:38
 msgid "Restart APP"
-msgstr ""
-
-#: lustitelskadb/templates/administration/legacyimportreport.xhtml:3
-msgid " | Process Legacy Import"
-msgstr ""
-
-#: lustitelskadb/templates/administration/legacyimportreport.xhtml:7
-msgid "Process Legacy Import"
 msgstr ""
 
 #: lustitelskadb/templates/administration/restart.xhtml:8

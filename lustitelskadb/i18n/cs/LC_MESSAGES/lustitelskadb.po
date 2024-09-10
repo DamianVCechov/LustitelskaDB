@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-09-10 02:13+0200\n"
-"PO-Revision-Date: 2024-09-10 02:19+0200\n"
+"POT-Creation-Date: 2024-09-10 10:37+0200\n"
+"PO-Revision-Date: 2024-09-10 10:41+0200\n"
 "Last-Translator: Jaroslav Mikulík <jaroslav.mikulik@runtech.cz>\n"
 "Language: cs\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -21,9 +21,9 @@ msgstr ""
 "Generated-By: Babel 2.10.3\n"
 "X-Generator: Lokalize 22.12.3\n"
 
-#: lustitelskadb/controllers/admin.py:49 lustitelskadb/controllers/admin.py:54
-#: lustitelskadb/controllers/admin.py:69 lustitelskadb/controllers/admin.py:150
-#: lustitelskadb/controllers/admin.py:184
+#: lustitelskadb/controllers/admin.py:78 lustitelskadb/controllers/admin.py:83
+#: lustitelskadb/controllers/admin.py:98 lustitelskadb/controllers/admin.py:180
+#: lustitelskadb/controllers/admin.py:214
 #: lustitelskadb/controllers/libricipher.py:56
 #: lustitelskadb/controllers/libricipher.py:108
 #: lustitelskadb/controllers/libricipher.py:143
@@ -34,39 +34,38 @@ msgstr ""
 msgid "Only for users with appropriate permissions"
 msgstr "Pouze pro uživatele s odpovídajícími oprávněními"
 
-#: lustitelskadb/controllers/admin.py:51
+#: lustitelskadb/controllers/admin.py:80
 msgid "Do you really want restart application? This will be done immediately!"
 msgstr "Chcete opravdu restartovat aplikaci? Toto bude provedeno okamžitě!"
 
-#: lustitelskadb/controllers/admin.py:61
+#: lustitelskadb/controllers/admin.py:90
 #: lustitelskadb/controllers/libricipher.py:115
-#: lustitelskadb/controllers/root.py:298
+#: lustitelskadb/controllers/root.py:299
 #: lustitelskadb/controllers/xtwitter.py:32
 msgid "Form filled with errors!"
 msgstr "Formulář vyplněn s chybami!"
 
-#: lustitelskadb/controllers/admin.py:74
+#: lustitelskadb/controllers/admin.py:103
 msgid "Missing CSV file for import"
 msgstr "Schází CSV soubor k importu"
 
-#: lustitelskadb/controllers/admin.py:143
+#: lustitelskadb/controllers/admin.py:173
 msgid ""
 "The import was successful. {all_count} records processed, "
 "{imported_count} records imported, {duplicity_skipped} duplicate records "
 "skipped, and {added_nicknames} users added."
 msgstr ""
-"Import proběhl úspěšně. {all_count} záznamů zpracováno, "
-"{imported_count} záznamů importováno, {duplicity_skipped} duplicitních"
-" záznamů "
-"přeskočeno a {added_nicknames} uživatelů přidáno."
+"Import proběhl úspěšně. {all_count} záznamů zpracováno, {imported_count} "
+"záznamů importováno, {duplicity_skipped} duplicitních záznamů přeskočeno "
+"a {added_nicknames} uživatelů přidáno."
 
-#: lustitelskadb/controllers/admin.py:145
+#: lustitelskadb/controllers/admin.py:175
 msgid "The import attempt ended with an error: \"{}\""
 msgstr "Pokus o import skončil chybou: \"{}\""
 
 # | msgid "Result successfully added"
 # | msgid "Libri Cipher item successfully created"
-#: lustitelskadb/controllers/admin.py:188
+#: lustitelskadb/controllers/admin.py:218
 msgid "Application successfully restarted"
 msgstr "Aplikace úspěšně restartována"
 
@@ -156,11 +155,11 @@ msgstr "Chybí unikátní ID Libri Šifry"
 msgid "Libri Cipher item successfully deleted"
 msgstr "Libri Šifry položka úspěšně smazána"
 
-#: lustitelskadb/controllers/root.py:93
+#: lustitelskadb/controllers/root.py:94
 msgid "Unknown source for authorization, canceled"
 msgstr "Neznámý zdroj k autorizaci, přerušeno"
 
-#: lustitelskadb/controllers/root.py:109
+#: lustitelskadb/controllers/root.py:110
 msgid ""
 "There may have been an issue with the consumer_key or consumer_secret in "
 "application"
@@ -168,11 +167,11 @@ msgstr ""
 "Je možné, že došlo k problému s consumer_key nebo consumer_secret v "
 "aplikaci"
 
-#: lustitelskadb/controllers/root.py:141
+#: lustitelskadb/controllers/root.py:142
 msgid "Unknown type of OAuth in config"
 msgstr "Neznámý typ OAuth v konfiguraci"
 
-#: lustitelskadb/controllers/root.py:158
+#: lustitelskadb/controllers/root.py:159
 msgid ""
 "I cannot find the keys needed to continue in authorization process in the"
 " session. Maybe you are using a light version of the browser that cannot "
@@ -184,7 +183,7 @@ msgstr ""
 "udržet nebo máte vypnuté ukládání cookies. Zkuste přejít na plnohodnotný "
 "prohlížeč nebo zapnout ukládání cookies."
 
-#: lustitelskadb/controllers/root.py:188
+#: lustitelskadb/controllers/root.py:189
 msgid ""
 "I cannot find the data needed to validate the authorization challenge in "
 "the session. Maybe you are using a light version of the browser that "
@@ -197,60 +196,78 @@ msgstr ""
 "nebo zapnout ukládání cookies."
 
 # | msgid "Can't fetch token"
-#: lustitelskadb/controllers/root.py:207
+#: lustitelskadb/controllers/root.py:208
 msgid "Can't fetch access token"
 msgstr "Nemohu získat přístupový žeton"
 
-#: lustitelskadb/controllers/root.py:227
+#: lustitelskadb/controllers/root.py:228
 msgid "Can't get user info from Twitter"
 msgstr "Nelze získat informace o uživateli z Twitteru"
 
 # | msgid "Result successfully added"
-#: lustitelskadb/controllers/root.py:259
+#: lustitelskadb/controllers/root.py:260
 msgid "Successfully authorized"
 msgstr "Úspěšně autorizováno"
 
-#: lustitelskadb/controllers/root.py:262
+#: lustitelskadb/controllers/root.py:263
 msgid "Succesfully authorized, but missing landing URL"
 msgstr "Úspěšně autorizováno, ale chybí cílové URL"
 
 # | msgid "Successfully detached from X/Twitter"
-#: lustitelskadb/controllers/root.py:279
+#: lustitelskadb/controllers/root.py:280
 msgid ""
 "Successfully detached from X/Twitter, the access token has been discarded"
 msgstr "Úspěšně odpojeno z X/Twitteru, přístupový žeton byl zahozen"
 
-#: lustitelskadb/controllers/root.py:332
-msgid "Your result has been successfully sent to the original website"
-msgstr "Váš výsledek byl úspěšně odeslán na původní web"
-
 #: lustitelskadb/controllers/root.py:334
-msgid ""
-"An error occurred while submitting the result from the form. It may have "
-"been filled in incorrectly. You can try again or submit the results on "
-"the original site."
-msgstr ""
-"Při odesílání výsledku z formuláře došlo k chybě. Možná byl nesprávně "
-"vyplněn. Můžete to zkusit znovu nebo zaslat výsledky na původním webu."
+msgid "This game result is already in database"
+msgstr "Tento herní výsledek už v databázi je"
 
-#: lustitelskadb/controllers/root.py:362
+#: lustitelskadb/controllers/root.py:352
+msgid ""
+"Something went wrong! Can't save game result to database, so it isn't "
+"sent to legacy website too!"
+msgstr ""
+"Něco se pokazilo! Nemohu uložit výsledek do databáze, takže nebude "
+"zaslán ani na původní web!"
+
+#: lustitelskadb/controllers/root.py:372
+#| msgid "Your result has been successfully sent to the original website"
+msgid ""
+"Your result has been successfully saved to database and sent to the "
+"original website"
+msgstr ""
+"Váš výsledek byl úspěšně uložen do databáze a odeslán na původní web na "
+"původní web"
+
+#: lustitelskadb/controllers/root.py:374
+msgid ""
+"Your result has been successfully saved to database, but an error "
+"occurred while submitting the result from the form to legacy website. Let"
+" us know it!"
+msgstr ""
+"Váš výsledek byl úspěšně uložen do databáze, ale došlo "
+"k chybě během odesílání výsledku z formuláře na původní web. Dej "
+" nám to vědět!"
+
+#: lustitelskadb/controllers/root.py:402
 msgid "User not found"
 msgstr "Uživatel nenalezen"
 
-#: lustitelskadb/controllers/root.py:364
+#: lustitelskadb/controllers/root.py:404
 msgid "Invalid Password"
 msgstr "Neplatné heslo"
 
-#: lustitelskadb/controllers/root.py:368
+#: lustitelskadb/controllers/root.py:408
 msgid "Wrong credentials"
 msgstr "Nesprávné přihlašovací údaje"
 
-#: lustitelskadb/controllers/root.py:385
+#: lustitelskadb/controllers/root.py:425
 #, python-format
 msgid "Welcome back, %s!"
 msgstr "Vítejte zpět, uživateli %s!"
 
-#: lustitelskadb/controllers/root.py:398
+#: lustitelskadb/controllers/root.py:438
 msgid "We hope to see you soon!"
 msgstr "Těšíme se příště!"
 
@@ -808,14 +825,6 @@ msgstr "DB admin"
 msgid "Restart APP"
 msgstr "Restart APP"
 
-#: lustitelskadb/templates/administration/legacyimportreport.xhtml:3
-msgid " | Process Legacy Import"
-msgstr " | Zpracuj import starších"
-
-#: lustitelskadb/templates/administration/legacyimportreport.xhtml:7
-msgid "Process Legacy Import"
-msgstr "Zpracuj import starších"
-
 #: lustitelskadb/templates/administration/restart.xhtml:8
 msgid "Restarting..."
 msgstr "Restartuji..."
@@ -1124,4 +1133,22 @@ msgstr " | X/Twitter administrace"
 #~ "phone, hold it for a long time "
 #~ "in the field and press PASTE."
 #~ msgstr ""
+
+#~ msgid ""
+#~ "An error occurred while submitting the"
+#~ " result from the form. It may "
+#~ "have been filled in incorrectly. You "
+#~ "can try again or submit the "
+#~ "results on the original site."
+#~ msgstr ""
+#~ "Při odesílání výsledku z formuláře došlo"
+#~ " k chybě. Možná byl nesprávně "
+#~ "vyplněn. Můžete to zkusit znovu nebo "
+#~ "zaslat výsledky na původním webu."
+
+#~ msgid " | Process Legacy Import"
+#~ msgstr " | Zpracuj import starších"
+
+#~ msgid "Process Legacy Import"
+#~ msgstr "Zpracuj import starších"
 
