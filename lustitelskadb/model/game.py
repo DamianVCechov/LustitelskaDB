@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Game model module."""
 from sqlalchemy import Table, ForeignKey, Column, func
-from sqlalchemy.types import Integer, Unicode, DateTime, Time, UnicodeText
+from sqlalchemy.types import Integer, Unicode, DateTime, Time, UnicodeText, Boolean
 from sqlalchemy.orm import relationship, backref
 
 from lustitelskadb.model import DeclarativeBase, metadata, DBSession
@@ -23,6 +23,7 @@ class GameResult(DeclarativeBase):
     game_no = Column(Integer, nullable=False, index=True, default=0)
     game_time = Column(Time, nullable=True, index=True)
     game_rows = Column(Integer, nullable=True, index=True)
+    wednesday_challenge = Column(Boolean, nullable=True, index=True)
     comment = Column(UnicodeText, nullable=True)
     # Results
     game_result_time = Column(Time, nullable=True, index=True)
