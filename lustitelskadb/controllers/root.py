@@ -20,6 +20,7 @@ from requests_oauthlib import OAuth1Session, OAuth2Session
 
 import random
 import string
+from datetime import timedelta
 
 # Python 2 compatibility hack
 try:
@@ -312,6 +313,45 @@ class RootController(BaseController):
     @validate(form=appforms.ResultForm(), error_handler=newresult)
     def save_result(self, **kw):
         """Save result."""
+
+        parsed_vals = {}
+        sp_result = kw.get('game_result', '').split()
+        for s in sp_result:
+            if s.find('#den') != -1:
+                parsed_vals['game_no'] = int(s.lstrip('#den')) if s.lstrip('#den').isdigit() else None
+            elif s.find('#krok') != -1:
+                parsed_vals['step'] = int(s.lstrip('#krok')) if s.lstrip('#krok').isdigit() else None
+        if sp_result[-2].endswith('min') and sp_result[-1].endswith('s'):
+            parsed_vals['time'] = int(sp_result[-2].rstrip('min')) * 60 + int(sp_result[-1].rstrip('s')) if sp_result[-2].rstrip('min').isdigit() and sp_result[-1].rstrip('s').isdigit() else None
+
+        game_result = DBSession.query(model.GameResult, model.XTwitter).join(model.XTwitter, model.XTwitter.uid == model.GameResult.xtwitter_uid)
+        game_result = game_result.filter(
+            model.GameResult.game_no == parsed_vals['game_no'],
+            model.XTwitter.xid == kw.get('xtwitter_uid', None)
+        ).first()
+
+        if game_result:
+            flash(_(u"This game result is already in database"), 'warning')
+            redirect('/')
+
+        game_result = model.GameResult(
+            xtwitter_uid=kw.get('xtwitter_uid', None),
+            game_no=parsed_vals['game_no'],
+            game_time=timedelta(seconds=parsed_vals['time']) if parsed_vals['time'] and parsed_vals['step'] else None,
+            game_rows=parsed_vals['step'],
+            wednesday_challenged=kw.get('wednesday_challenge', None) if parsed_vals['game_no'] % 7 == 5 else None,
+            comment=kw.get('comment', None) if kw.get('comment', None) else None,
+            game_result_time=timedelta(seconds=parsed_vals['time'] + (parsed_vals['step'] - 1) * 12) if parsed_vals['time'] and parsed_vals['step'] else None,
+            game_raw_data=kw.get('game_result', None)
+        )
+
+        DBSession.add(game_result)
+        try:
+            DBSession.flush()
+        except Exception as e:
+            flash(_(u"Something went wrong! Can't save game result to database, so it isn't sent to legacy website too!"), 'error')
+
+        # Send data to legacy form (temporary function)
         viewform_url = "https://docs.google.com/forms/d/e/1FAIpQLSdHcMlAmXKOODsG0hZCc687_8oVZpFbv_GJXfA5P9aHn2IJgg/viewform"
         formaction_url = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdHcMlAmXKOODsG0hZCc687_8oVZpFbv_GJXfA5P9aHn2IJgg/formResponse"
 
@@ -329,9 +369,9 @@ class RootController(BaseController):
         r = rsess.post(formaction_url, data=data)
 
         if r.ok:
-            flash(l_(u"Your result has been successfully sent to the original website"))
+            flash(l_(u"Your result has been successfully saved to database and sent to the original website"))
         else:
-            flash(l_(u"An error occurred while submitting the result from the form. It may have been filled in incorrectly. You can try again or submit the results on the original site."), 'error')
+            flash(l_(u"Your result has been successfully saved to database, but an error occurred while submitting the result from the form to legacy website. Let us know it!"), 'warning')
 
         rsess.close()
 
