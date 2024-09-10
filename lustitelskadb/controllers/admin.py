@@ -160,7 +160,7 @@ class AdministrationController(BaseController):
                             game_no=parsed_vals['game_no'],
                             game_time=timedelta(seconds=parsed_vals['time']) if parsed_vals['time'] and parsed_vals['step'] else None,
                             game_rows=parsed_vals['step'],
-                            wednesday_challenged={'': None, '✅': True, '❎': False}[row[config.get('legacyimport.colname.wednesdaychallenge')]],
+                            wednesday_challenge={'': None, '✅': True, '❎': False}[row[config.get('legacyimport.colname.wednesdaychallenge')]],
                             comment=row[config.get('legacyimport.colname.comment')],
                             game_result_time=timedelta(seconds=parsed_vals['time'] + (parsed_vals['step'] - 1) * 12) if parsed_vals['time'] and parsed_vals['step'] else None,
                             game_raw_data=row[config.get('legacyimport.colname.result')],

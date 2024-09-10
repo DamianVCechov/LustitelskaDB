@@ -339,7 +339,7 @@ class RootController(BaseController):
             game_no=parsed_vals['game_no'],
             game_time=timedelta(seconds=parsed_vals['time']) if parsed_vals['time'] and parsed_vals['step'] else None,
             game_rows=parsed_vals['step'],
-            wednesday_challenged=kw.get('wednesday_challenge', None) if parsed_vals['game_no'] % 7 == 5 else None,
+            wednesday_challenge=kw.get('wednesday_challenge', None) if parsed_vals['game_no'] % 7 == 5 else None,
             comment=kw.get('comment', None) if kw.get('comment', None) else None,
             game_result_time=timedelta(seconds=parsed_vals['time'] + (parsed_vals['step'] - 1) * 12) if parsed_vals['time'] and parsed_vals['step'] else None,
             game_raw_data=kw.get('game_result', None)
