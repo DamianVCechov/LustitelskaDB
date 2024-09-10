@@ -314,7 +314,11 @@ class RootController(BaseController):
     def save_result(self, **kw):
         """Save result."""
 
-        parsed_vals = {}
+        parsed_vals = {
+            'game_no': None,
+            'step': None,
+            'time': None
+        }
         sp_result = kw.get('game_result', '').split()
         for s in sp_result:
             if s.find('#den') != -1:
