@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-09-08 03:43+0200\n"
-"PO-Revision-Date: 2024-09-08 03:48+0200\n"
+"POT-Creation-Date: 2024-09-10 02:13+0200\n"
+"PO-Revision-Date: 2024-09-10 02:19+0200\n"
 "Last-Translator: Jaroslav Mikulík <jaroslav.mikulik@runtech.cz>\n"
 "Language: cs\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -21,8 +21,9 @@ msgstr ""
 "Generated-By: Babel 2.10.3\n"
 "X-Generator: Lokalize 22.12.3\n"
 
-#: lustitelskadb/controllers/admin.py:43 lustitelskadb/controllers/admin.py:48
-#: lustitelskadb/controllers/admin.py:82
+#: lustitelskadb/controllers/admin.py:49 lustitelskadb/controllers/admin.py:54
+#: lustitelskadb/controllers/admin.py:69 lustitelskadb/controllers/admin.py:150
+#: lustitelskadb/controllers/admin.py:184
 #: lustitelskadb/controllers/libricipher.py:56
 #: lustitelskadb/controllers/libricipher.py:108
 #: lustitelskadb/controllers/libricipher.py:143
@@ -33,13 +34,39 @@ msgstr ""
 msgid "Only for users with appropriate permissions"
 msgstr "Pouze pro uživatele s odpovídajícími oprávněními"
 
-#: lustitelskadb/controllers/admin.py:45
+#: lustitelskadb/controllers/admin.py:51
 msgid "Do you really want restart application? This will be done immediately!"
 msgstr "Chcete opravdu restartovat aplikaci? Toto bude provedeno okamžitě!"
 
+#: lustitelskadb/controllers/admin.py:61
+#: lustitelskadb/controllers/libricipher.py:115
+#: lustitelskadb/controllers/root.py:298
+#: lustitelskadb/controllers/xtwitter.py:32
+msgid "Form filled with errors!"
+msgstr "Formulář vyplněn s chybami!"
+
+#: lustitelskadb/controllers/admin.py:74
+msgid "Missing CSV file for import"
+msgstr "Schází CSV soubor k importu"
+
+#: lustitelskadb/controllers/admin.py:143
+msgid ""
+"The import was successful. {all_count} records processed, "
+"{imported_count} records imported, {duplicity_skipped} duplicate records "
+"skipped, and {added_nicknames} users added."
+msgstr ""
+"Import proběhl úspěšně. {all_count} záznamů zpracováno, "
+"{imported_count} záznamů importováno, {duplicity_skipped} duplicitních"
+" záznamů "
+"přeskočeno a {added_nicknames} uživatelů přidáno."
+
+#: lustitelskadb/controllers/admin.py:145
+msgid "The import attempt ended with an error: \"{}\""
+msgstr "Pokus o import skončil chybou: \"{}\""
+
 # | msgid "Result successfully added"
 # | msgid "Libri Cipher item successfully created"
-#: lustitelskadb/controllers/admin.py:86
+#: lustitelskadb/controllers/admin.py:188
 msgid "Application successfully restarted"
 msgstr "Aplikace úspěšně restartována"
 
@@ -98,12 +125,6 @@ msgstr "Otázka"
 #: lustitelskadb/lib/forms.py:128
 msgid "Answer"
 msgstr "Odpověď"
-
-#: lustitelskadb/controllers/libricipher.py:115
-#: lustitelskadb/controllers/root.py:298
-#: lustitelskadb/controllers/xtwitter.py:32
-msgid "Form filled with errors!"
-msgstr "Formulář vyplněn s chybami!"
 
 #: lustitelskadb/controllers/libricipher.py:123
 #: lustitelskadb/controllers/libricipher.py:149
@@ -303,13 +324,26 @@ msgstr "Text příspěvku"
 msgid "Please Enter X/Twitter post text"
 msgstr "Vloště prosím test X/Twitter příspěvku"
 
-#: lustitelskadb/lib/forms.py:165
+#: lustitelskadb/lib/forms.py:166
 msgid "Media list"
 msgstr "Seznam médií"
 
-#: lustitelskadb/lib/forms.py:176
+#: lustitelskadb/lib/forms.py:177
 msgid "Submit"
 msgstr "Odeslat"
+
+#: lustitelskadb/lib/forms.py:189
+msgid "CSV file with legacy data"
+msgstr "CSV soubor s původními daty"
+
+#: lustitelskadb/lib/forms.py:190
+msgid "Please browse CSV file with legacy data to import it into database"
+msgstr ""
+"Prosím nalistujte CSV soubor s původními daty k jejich importu do databáze"
+
+#: lustitelskadb/lib/forms.py:198
+msgid "Import"
+msgstr "Import"
 
 #: lustitelskadb/templates/about.xhtml:3
 msgid " | About page"
@@ -410,8 +444,8 @@ msgstr "Dále Vám již nic nebrání se o svůj výsledek podělit s námi v na
 
 # | msgid "Our X/Twitter"
 # | msgid "X/Twitter"
+# | msgid "Twitter"
 #: lustitelskadb/templates/about.xhtml:17
-#| msgid "Twitter"
 msgid "Twitter's"
 msgstr "Twitterovských"
 
@@ -435,9 +469,8 @@ msgid ""
 "you out. No debate. But otherwise, we are a bunch of nice people. Trust "
 "me. 😀"
 msgstr ""
-"Budeme-li mít sebemenší podezření, že podvádíte, "
-"vypoklonkujeme Vás. Bez debaty. Ale jinak jsme parta milých lidí. Věrte "
-"mi. 😀"
+"Budeme-li mít sebemenší podezření, že podvádíte, vypoklonkujeme Vás. Bez "
+"debaty. Ale jinak jsme parta milých lidí. Věrte mi. 😀"
 
 # | msgid "original website"
 #: lustitelskadb/templates/about.xhtml:21
@@ -469,8 +502,8 @@ msgid ""
 "and loaded the results from it using simple scripts. Now we have "
 "progressed and thanks to the generous cooperation of"
 msgstr ""
-"a načítal výsledky z něj pomocí jednoduchých skriptů. Nyní jsme pokročili a"
-" máme za vydatné spolupráce"
+"a načítal výsledky z něj pomocí jednoduchých skriptů. Nyní jsme pokročili"
+" a máme za vydatné spolupráce"
 
 #: lustitelskadb/templates/about.xhtml:21
 msgid "@ByCzech"
@@ -501,8 +534,8 @@ msgid ""
 "Well, if you don't know how to deal with something, feel free to contact "
 "me either on my"
 msgstr ""
-"No, kdyby jste si s něčím nevěděli rady, neváhejte se na mne obrátit buď na"
-" mém"
+"No, kdyby jste si s něčím nevěděli rady, neváhejte se na mne obrátit buď "
+"na mém"
 
 #: lustitelskadb/templates/about.xhtml:23
 msgid "profile"
@@ -746,6 +779,14 @@ msgstr ""
 "Něco se pokazilo během autorizace přes X/Twitter. Můžete to zkusit znovu "
 "později nebo můžete procházet jiné části tohoto webu."
 
+#: lustitelskadb/templates/administration/importlegacydata.xhtml:3
+msgid " | Import Legacy Data"
+msgstr " | Import původních dat"
+
+#: lustitelskadb/templates/administration/importlegacydata.xhtml:7
+msgid "Import Legacy Data"
+msgstr "Import původních dat"
+
 #: lustitelskadb/templates/administration/index.xhtml:3
 #: lustitelskadb/templates/administration/restart.xhtml:3
 msgid " | Administration panel"
@@ -756,12 +797,24 @@ msgid "Administration"
 msgstr "Administrace"
 
 #: lustitelskadb/templates/administration/index.xhtml:26
+msgid "Legacy Data Import"
+msgstr "Importuj původní data"
+
+#: lustitelskadb/templates/administration/index.xhtml:32
 msgid "DB admin"
 msgstr "DB admin"
 
-#: lustitelskadb/templates/administration/index.xhtml:32
+#: lustitelskadb/templates/administration/index.xhtml:38
 msgid "Restart APP"
 msgstr "Restart APP"
+
+#: lustitelskadb/templates/administration/legacyimportreport.xhtml:3
+msgid " | Process Legacy Import"
+msgstr " | Zpracuj import starších"
+
+#: lustitelskadb/templates/administration/legacyimportreport.xhtml:7
+msgid "Process Legacy Import"
+msgstr "Zpracuj import starších"
 
 #: lustitelskadb/templates/administration/restart.xhtml:8
 msgid "Restarting..."

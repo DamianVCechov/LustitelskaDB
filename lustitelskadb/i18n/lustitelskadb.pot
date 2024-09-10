@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: LustitelskaDB 0.8\n"
+"Project-Id-Version: LustitelskaDB 0.9\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-09-08 03:43+0200\n"
+"POT-Creation-Date: 2024-09-10 02:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: lustitelskadb/controllers/admin.py:43 lustitelskadb/controllers/admin.py:48
-#: lustitelskadb/controllers/admin.py:82
+#: lustitelskadb/controllers/admin.py:49 lustitelskadb/controllers/admin.py:54
+#: lustitelskadb/controllers/admin.py:69 lustitelskadb/controllers/admin.py:150
+#: lustitelskadb/controllers/admin.py:184
 #: lustitelskadb/controllers/libricipher.py:56
 #: lustitelskadb/controllers/libricipher.py:108
 #: lustitelskadb/controllers/libricipher.py:143
@@ -29,11 +30,32 @@ msgstr ""
 msgid "Only for users with appropriate permissions"
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:45
+#: lustitelskadb/controllers/admin.py:51
 msgid "Do you really want restart application? This will be done immediately!"
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:86
+#: lustitelskadb/controllers/admin.py:61
+#: lustitelskadb/controllers/libricipher.py:115
+#: lustitelskadb/controllers/root.py:298 lustitelskadb/controllers/xtwitter.py:32
+msgid "Form filled with errors!"
+msgstr ""
+
+#: lustitelskadb/controllers/admin.py:74
+msgid "Missing CSV file for import"
+msgstr ""
+
+#: lustitelskadb/controllers/admin.py:143
+msgid ""
+"The import was successful. {all_count} records processed, {imported_count} "
+"records imported, {duplicity_skipped} duplicate records skipped, and "
+"{added_nicknames} users added."
+msgstr ""
+
+#: lustitelskadb/controllers/admin.py:145
+msgid "The import attempt ended with an error: \"{}\""
+msgstr ""
+
+#: lustitelskadb/controllers/admin.py:188
 msgid "Application successfully restarted"
 msgstr ""
 
@@ -86,11 +108,6 @@ msgstr ""
 #: lustitelskadb/controllers/libricipher.py:93 lustitelskadb/lib/forms.py:126
 #: lustitelskadb/lib/forms.py:128
 msgid "Answer"
-msgstr ""
-
-#: lustitelskadb/controllers/libricipher.py:115
-#: lustitelskadb/controllers/root.py:298 lustitelskadb/controllers/xtwitter.py:32
-msgid "Form filled with errors!"
 msgstr ""
 
 #: lustitelskadb/controllers/libricipher.py:123
@@ -267,12 +284,24 @@ msgstr ""
 msgid "Please Enter X/Twitter post text"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:165
+#: lustitelskadb/lib/forms.py:166
 msgid "Media list"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:176
+#: lustitelskadb/lib/forms.py:177
 msgid "Submit"
+msgstr ""
+
+#: lustitelskadb/lib/forms.py:189
+msgid "CSV file with legacy data"
+msgstr ""
+
+#: lustitelskadb/lib/forms.py:190
+msgid "Please browse CSV file with legacy data to import it into database"
+msgstr ""
+
+#: lustitelskadb/lib/forms.py:198
+msgid "Import"
 msgstr ""
 
 #: lustitelskadb/templates/about.xhtml:3
@@ -663,6 +692,14 @@ msgid ""
 " later or you can browse other parts of this website."
 msgstr ""
 
+#: lustitelskadb/templates/administration/importlegacydata.xhtml:3
+msgid " | Import Legacy Data"
+msgstr ""
+
+#: lustitelskadb/templates/administration/importlegacydata.xhtml:7
+msgid "Import Legacy Data"
+msgstr ""
+
 #: lustitelskadb/templates/administration/index.xhtml:3
 #: lustitelskadb/templates/administration/restart.xhtml:3
 msgid " | Administration panel"
@@ -673,11 +710,23 @@ msgid "Administration"
 msgstr ""
 
 #: lustitelskadb/templates/administration/index.xhtml:26
-msgid "DB admin"
+msgid "Legacy Data Import"
 msgstr ""
 
 #: lustitelskadb/templates/administration/index.xhtml:32
+msgid "DB admin"
+msgstr ""
+
+#: lustitelskadb/templates/administration/index.xhtml:38
 msgid "Restart APP"
+msgstr ""
+
+#: lustitelskadb/templates/administration/legacyimportreport.xhtml:3
+msgid " | Process Legacy Import"
+msgstr ""
+
+#: lustitelskadb/templates/administration/legacyimportreport.xhtml:7
+msgid "Process Legacy Import"
 msgstr ""
 
 #: lustitelskadb/templates/administration/restart.xhtml:8

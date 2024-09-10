@@ -33,7 +33,7 @@ except (ImportError, ModuleNotFoundError, SyntaxError):
     except:
         log.error("WebHelpers(2) helpers not available with this Python Version")
 
-__all__ = ['ResultForm', 'LibriCipherForm', 'XTwitterPostForm']
+__all__ = ['ResultForm', 'LibriCipherForm', 'XTwitterPostForm', 'LegacyDataImportForm']
 
 
 class ResultForm(twf.Form):
@@ -175,5 +175,26 @@ class XTwitterPostForm(twd.CustomisedForm):
 
     submit = twf.SubmitButton(
         value=l_(u'Submit'),
+        css_class='btn btn-outline-secondary btn-lg'
+    )
+
+
+class LegacyDataImportForm(twf.Form):
+
+    class child(twf.ListLayout):
+
+        css_class = 'list-unstyled bg-light p-3'
+
+        csv_file = twf.FileField(
+            label=l_('CSV file with legacy data'),
+            help_text=l_(u'Please browse CSV file with legacy data to import it into database'),
+            validator=validators.FieldStorageUploadConverter(),
+            css_class="form-control form-control-lg mt-3"
+        )
+
+    action = lurl('/admin/process_legacy_import')
+
+    submit = twf.SubmitButton(
+        value=l_(u'Import'),
         css_class='btn btn-outline-secondary btn-lg'
     )
