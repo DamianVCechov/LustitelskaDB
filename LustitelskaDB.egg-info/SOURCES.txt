@@ -36,6 +36,7 @@ lustitelskadb/lib/helpers.py
 lustitelskadb/lib/injects.py
 lustitelskadb/model/__init__.py
 lustitelskadb/model/auth.py
+lustitelskadb/model/game.py
 lustitelskadb/model/libriciphers.py
 lustitelskadb/model/model.py.template
 lustitelskadb/model/sns.py
@@ -80,7 +81,9 @@ lustitelskadb/public/fonts/glyphicons/glyphicons-halflings-regular.svg
 lustitelskadb/public/fonts/glyphicons/glyphicons-halflings-regular.ttf
 lustitelskadb/public/fonts/glyphicons/glyphicons-halflings-regular.woff
 lustitelskadb/public/fonts/glyphicons/glyphicons-halflings-regular.woff2
+lustitelskadb/public/img/czech-wordle-game-rules-screenshot.webp
 lustitelskadb/public/img/lustitele-preview.png
+lustitelskadb/public/img/lustitele-twitter-profile.webp
 lustitelskadb/public/img/turbogears_logo.png
 lustitelskadb/public/img/turbogears_logo_big.png
 lustitelskadb/public/img/under_the_hood_blue.png
@@ -305,6 +308,7 @@ lustitelskadb/templates/xerror.xhtml
 lustitelskadb/templates/__pycache__/__init__.cpython-311.pyc
 lustitelskadb/templates/__pycache__/__init__.pypy39.pyc
 lustitelskadb/templates/administration/__init__.py
+lustitelskadb/templates/administration/importlegacydata.xhtml
 lustitelskadb/templates/administration/index.xhtml
 lustitelskadb/templates/administration/restart.xhtml
 lustitelskadb/templates/administration/libricipher/__init__.py
@@ -325,5 +329,6 @@ lustitelskadb/websetup/schema.py
 migration/env.py
 migration/script.py.mako
 migration/versions/8d930c69a0a5_enlarged_libriciphers_description_and_.py
+migration/versions/a00aefdc7189_display_name_changed_to_non_unique.py
 migration/versions/da0888f6a8ae_initial_scheme.py
 migration/versions/empty.txt
