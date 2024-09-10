@@ -2,7 +2,6 @@
 """Administration controller module."""
 
 import logging
-import statistics
 log = logging.getLogger(__name__)
 
 from tg import expose, redirect, validate, flash, url, require, tmpl_context, config, request
