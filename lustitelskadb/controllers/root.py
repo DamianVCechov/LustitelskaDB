@@ -12,7 +12,6 @@ from tg import predicates
 from tg.decorators import paginate
 
 from lustitelskadb import model
-from lustitelskadb.controllers.admin import AdministrationController
 from lustitelskadb.model import DBSession
 
 from sqlalchemy.sql.expression import func
@@ -45,6 +44,8 @@ except (ImportError, ModuleNotFoundError, SyntaxError):
 
 from lustitelskadb.lib.base import BaseController
 from lustitelskadb.controllers.error import ErrorController
+from lustitelskadb.controllers.admin import AdministrationController
+from lustitelskadb.controllers.api import APIController
 
 import lustitelskadb.lib.forms as appforms
 
@@ -67,6 +68,8 @@ class RootController(BaseController):
     """
 
     admin = AdministrationController()
+
+    api = APIController()
 
     error = ErrorController()
 
