@@ -353,7 +353,7 @@ class RootController(BaseController):
                     getattr(tmpl_context.form.child.children, key).error_msg = value
         else:
             tmpl_context.form.value = {
-                'xtwitter_uid': session['me_on_xtwitter']['data']['id'],
+                'xtwitter_xid': session['me_on_xtwitter']['data']['id'],
                 'xtwitter_username': session['me_on_xtwitter']['data']['username'],
                 'xtwitter_displayname': session['me_on_xtwitter']['data']['name']
             }
@@ -388,8 +388,13 @@ class RootController(BaseController):
             flash(_(u"This game result is already in database"), 'warning')
             redirect('/')
 
+        xuser = DBSession.query(model.XTwitter).filter(model.XTwitter.xid == kw.get('xtwitter_uid')).first()
+        if not xuser:
+            flash(_(u"X/Twitter user not found"), 'warning')
+            redirect('/')
+
         game_result = model.GameResult(
-            xtwitter_uid=kw.get('xtwitter_uid', None),
+            xtwitter=xuser,
             game_no=parsed_vals['game_no'],
             game_time=timedelta(seconds=parsed_vals['time']) if parsed_vals['time'] and parsed_vals['step'] else None,
             game_rows=parsed_vals['step'],
@@ -400,10 +405,12 @@ class RootController(BaseController):
         )
 
         DBSession.add(game_result)
+
         try:
             DBSession.flush()
         except Exception as e:
             flash(_(u"Something went wrong! Can't save game result to database, so it isn't sent to legacy website too!"), 'error')
+            redirect('/')
 
         # Send data to legacy form (temporary function)
         viewform_url = "https://docs.google.com/forms/d/e/1FAIpQLSdHcMlAmXKOODsG0hZCc687_8oVZpFbv_GJXfA5P9aHn2IJgg/viewform"
