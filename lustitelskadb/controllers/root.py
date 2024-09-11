@@ -91,6 +91,11 @@ class RootController(BaseController):
         """Handle the front-page."""
         comments = DBSession.query(model.GameResult).filter(model.GameResult.comment != None, model.GameResult.comment != '').order_by(func.random()).limit(100).all()
 
+        last_games = []
+        last_game_nums = DBSession.query(model.GameResult.game_no).order_by(model.GameResult.game_no.desc()).distinct().limit(2).all()
+        for lg in last_game_nums:
+            last_games.append(DBSession.query(model.GameResult).filter(model.GameResult.game_no == lg.game_no).order_by(model.GameResult.game_result_time == None, model.GameResult.game_result_time, model.GameResult.game_rows).all())
+
         closing_deadline_jssrc = twc.JSSource(src='''"use strict";
             function setClosingProgressBar() {
                 let now = new Date();
@@ -128,7 +133,7 @@ class RootController(BaseController):
         ''')
         closing_deadline_jssrc.inject();
 
-        return dict(page='index', comments=comments)
+        return dict(page='index', comments=comments, last_game_nums=last_game_nums, last_games=last_games)
 
     @expose()
     def xauthorize(self, **kw):

@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: LustitelskaDB 0.11\n"
+"Project-Id-Version: LustitelskaDB 0.13\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-09-10 10:37+0200\n"
+"POT-Creation-Date: 2024-09-11 18:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr ""
 
 #: lustitelskadb/controllers/admin.py:90
 #: lustitelskadb/controllers/libricipher.py:115
-#: lustitelskadb/controllers/root.py:299 lustitelskadb/controllers/xtwitter.py:32
+#: lustitelskadb/controllers/root.py:347 lustitelskadb/controllers/xtwitter.py:32
 msgid "Form filled with errors!"
 msgstr ""
 
@@ -138,21 +138,21 @@ msgstr ""
 msgid "Libri Cipher item successfully deleted"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:94
+#: lustitelskadb/controllers/root.py:142
 msgid "Unknown source for authorization, canceled"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:110
+#: lustitelskadb/controllers/root.py:158
 msgid ""
 "There may have been an issue with the consumer_key or consumer_secret in "
 "application"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:142
+#: lustitelskadb/controllers/root.py:190
 msgid "Unknown type of OAuth in config"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:159
+#: lustitelskadb/controllers/root.py:207
 msgid ""
 "I cannot find the keys needed to continue in authorization process in the "
 "session. Maybe you are using a light version of the browser that cannot "
@@ -160,7 +160,7 @@ msgid ""
 "to a full-fledged browser or turn on the saving of cookies."
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:189
+#: lustitelskadb/controllers/root.py:237
 msgid ""
 "I cannot find the data needed to validate the authorization challenge in the "
 "session. Maybe you are using a light version of the browser that cannot "
@@ -168,66 +168,66 @@ msgid ""
 "to a full-fledged browser or turn on the saving of cookies."
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:208
+#: lustitelskadb/controllers/root.py:256
 msgid "Can't fetch access token"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:228
+#: lustitelskadb/controllers/root.py:276
 msgid "Can't get user info from Twitter"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:260
+#: lustitelskadb/controllers/root.py:308
 msgid "Successfully authorized"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:263
+#: lustitelskadb/controllers/root.py:311
 msgid "Succesfully authorized, but missing landing URL"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:280
+#: lustitelskadb/controllers/root.py:328
 msgid "Successfully detached from X/Twitter, the access token has been discarded"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:334
+#: lustitelskadb/controllers/root.py:385
 msgid "This game result is already in database"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:352
+#: lustitelskadb/controllers/root.py:403
 msgid ""
 "Something went wrong! Can't save game result to database, so it isn't sent to"
 " legacy website too!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:372
+#: lustitelskadb/controllers/root.py:423
 msgid ""
 "Your result has been successfully saved to database and sent to the original "
 "website"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:374
+#: lustitelskadb/controllers/root.py:425
 msgid ""
 "Your result has been successfully saved to database, but an error occurred "
 "while submitting the result from the form to legacy website. Let us know it!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:402
+#: lustitelskadb/controllers/root.py:453
 msgid "User not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:404
+#: lustitelskadb/controllers/root.py:455
 msgid "Invalid Password"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:408
+#: lustitelskadb/controllers/root.py:459
 msgid "Wrong credentials"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:425
+#: lustitelskadb/controllers/root.py:476
 #, python-format
 msgid "Welcome back, %s!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:438
+#: lustitelskadb/controllers/root.py:489
 msgid "We hope to see you soon!"
 msgstr ""
 
@@ -492,7 +492,7 @@ msgstr ""
 msgid "lustitele@gmail.com"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:23 lustitelskadb/templates/index.xhtml:10
+#: lustitelskadb/templates/about.xhtml:23
 #: lustitelskadb/templates/libriciphers.xhtml:10
 msgid "."
 msgstr ""
@@ -526,27 +526,45 @@ msgstr ""
 msgid " | Welcome"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:8
-msgid "LustiteleDB"
+#: lustitelskadb/templates/index.xhtml:14
+msgid "Game"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:10
-msgid "Here you will find the upcoming results list of"
+#: lustitelskadb/templates/index.xhtml:18
+msgid "Medal"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:10
-msgid "HadejSlova"
+#: lustitelskadb/templates/index.xhtml:19
+msgid "Gamester"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:10
-msgid ""
-"players. Before that happens, you can test the other features of the site and"
-" see what features are gradually added here. Until then, you can find the "
-"results table on the"
+#: lustitelskadb/templates/index.xhtml:20
+msgid "Time"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:10
-msgid "original website"
+#: lustitelskadb/templates/index.xhtml:21
+msgid "Rows"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:22
+msgid "Result"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:30
+msgid "loose"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:52 lustitelskadb/templates/master.xhtml:40
+#: lustitelskadb/templates/newresult.xhtml:18
+msgid "@"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:59
+msgid "Previous"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:62
+msgid "Next"
 msgstr ""
 
 #: lustitelskadb/templates/administration/index.xhtml:14
@@ -636,11 +654,6 @@ msgstr ""
 
 #: lustitelskadb/templates/master.xhtml:40
 msgid "Detach"
-msgstr ""
-
-#: lustitelskadb/templates/master.xhtml:40
-#: lustitelskadb/templates/newresult.xhtml:18
-msgid "@"
 msgstr ""
 
 #: lustitelskadb/templates/master.xhtml:44

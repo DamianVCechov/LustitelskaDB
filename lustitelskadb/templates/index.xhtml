@@ -4,8 +4,37 @@
 </head>
 
 <body py:block="body" py:strip="True">
-	<div class="text-center mt-1">
-		<a href="http://lustitele.chytrak.cz" target="_blank"><img class="img-fluid" src="${tg.url('/img/lustitele-preview.png')}" alt="Luštitelé" /></a>
+	<div class="row pt-1" py:if="last_games">
+		<div class="col-lg-6" py:for="idx, game in enumerate(last_games)">
+			<div class="table-responsive">
+				<table class="table table-sm">
+					<thead>
+						<tr class="table-dark text-center">
+							<th scope="col" colspan="5">
+								<span>Game</span> ${last_game_nums[idx].game_no}
+							</th>
+						</tr>
+						<tr class="table-dark text-center">
+							<th scope="col">Medal</th>
+							<th scope="col">Gamester</th>
+							<th scope="col">Time</th>
+							<th scope="col">Rows</th>
+							<th scope="col">Result</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr py:for="row in game">
+							<th scope="row" class="text-center">${row.game_rank or '?'}</th>
+							<td class="text-center">${row.xtwitter.display_name}</td>
+							<td class="text-center">${row.game_time}</td>
+							<td class="text-center">${row.game_rows or _('loose')}</td>
+							<td class="text-center">${row.game_result_time}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="col-lg-6"></div>
 	</div>
 
 	<div id="closingDeadlineProgress" class="progress my-4" role="progressbar" aria-label="Closing deadline progress bar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
