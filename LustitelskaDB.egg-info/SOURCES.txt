@@ -20,6 +20,7 @@ lustitelskadb/config/app_cfg.py
 lustitelskadb/config/application.py
 lustitelskadb/controllers/__init__.py
 lustitelskadb/controllers/admin.py
+lustitelskadb/controllers/api.py
 lustitelskadb/controllers/controller.py.template
 lustitelskadb/controllers/error.py
 lustitelskadb/controllers/libricipher.py
