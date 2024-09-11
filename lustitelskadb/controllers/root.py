@@ -17,6 +17,8 @@ from lustitelskadb.model import DBSession
 
 from sqlalchemy.sql.expression import func
 
+import tw2.core as twc
+
 import requests
 from requests_oauthlib import OAuth1Session, OAuth2Session
 
@@ -88,6 +90,43 @@ class RootController(BaseController):
     def index(self):
         """Handle the front-page."""
         comments = DBSession.query(model.GameResult).filter(model.GameResult.comment != None, model.GameResult.comment != '').order_by(func.random()).limit(100).all()
+
+        closing_deadline_jssrc = twc.JSSource(src='''"use strict";
+            function setClosingProgressBar() {
+                let now = new Date();
+                let target = new Date(now);
+                let dayInMillisec = 24 * 60 * 60 * 1000;
+                let leftPercent = 0;
+
+                target.setHours(18);
+                target.setMinutes(0);
+                target.setSeconds(0);
+                target.setMilliseconds(0);
+
+                if (now.getHours() >= 18) {
+                    target = new Date(target.getTime() + dayInMillisec);
+                }
+
+                leftPercent = ((target - now) / dayInMillisec) * 100;
+
+                $('#closingDeadlineProgress.progress').attr('aria-value-now', Math.round(leftPercent));
+                $('#closingDeadlineProgress.progress>.progress-bar').width(String(100 - Math.round(leftPercent)) + '%');
+                if (leftPercent > 50) {
+                    $('#closingDeadlineProgress.progress>.progress-bar').addClass('bg-success').removeClass('bg-warning').removeClass('bg-danger');
+                } else if (leftPercent > 25) {
+                    $('#closingDeadlineProgress.progress>.progress-bar').addClass('bg-warning').removeClass('bg-success').removeClass('bg-danger');
+                } else {
+                    $('#closingDeadlineProgress.progress>.progress-bar').addClass('bg-danger').removeClass('bg-success').removeClass('bg-warning');
+                }
+
+                setTimeout(setClosingProgressBar, 1000);
+            }
+
+            $(() => {
+                setClosingProgressBar();
+            });
+        ''')
+        closing_deadline_jssrc.inject();
 
         return dict(page='index', comments=comments)
 

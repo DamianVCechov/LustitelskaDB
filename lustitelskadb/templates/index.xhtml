@@ -4,8 +4,12 @@
 </head>
 
 <body py:block="body" py:strip="True">
-	<div class="text-center mt-5">
+	<div class="text-center mt-1">
 		<a href="http://lustitele.chytrak.cz" target="_blank"><img class="img-fluid" src="${tg.url('/img/lustitele-preview.png')}" alt="Luštitelé" /></a>
+	</div>
+
+	<div id="closingDeadlineProgress" class="progress my-4" role="progressbar" aria-label="Closing deadline progress bar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+		<div class="progress-bar progress-bar-striped progress-bar-animated"></div>
 	</div>
 
 	<div id="carouselComments" class="carousel carousel-dark slide bg-light rounded-3 mt-3 p-2" data-bs-ride="carousel">
@@ -21,6 +25,7 @@
 				</figure>
 			</div>
 		</div>
+
 		<button class="carousel-control-prev" type="button" data-bs-target="#carouselComments" data-bs-slide="prev">
 			<span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="visually-hidden">Previous</span>
 		</button>
