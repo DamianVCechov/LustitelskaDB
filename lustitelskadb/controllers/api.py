@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """API controller module"""
 
-from tg import expose, redirect, validate, flash, url
+from tg import expose, redirect, validate, flash, url, config
 # from tg.i18n import ugettext as _
 # from tg import predicates
 
@@ -36,7 +36,7 @@ class APIController(BaseController):
             'time': item.game_time,
             'rows': item.game_rows,
             'wchallenge': item.wednesday_challenge,
-            'wchallenge_s': "" if item.wednesday_challenge == None else ("✅" if item.wednesday_challenge else "❎"),
+            'wchallenge_s': config.get('api.wednesday_challenge.map.None', "") if item.wednesday_challenge == None else (config.get('api.wednesday_challenge.map.True', "✅") if item.wednesday_challenge else config.get('api.wednesday_challenge.map.False', "❎")),
             'comment': item.comment,
             'result': item.game_result_time,
             'points': item.game_points,
