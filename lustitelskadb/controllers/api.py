@@ -36,6 +36,7 @@ class APIController(BaseController):
             'time': item.game_time,
             'rows': item.game_rows,
             'wchallenge': item.wednesday_challenge,
+            'wchallenge_s': "" if item.wednesday_challenge == None else ("✅" if item.wednesday_challenge else "❎"),
             'comment': item.comment,
             'result': item.game_result_time,
             'points': item.game_points,
