@@ -158,7 +158,7 @@ class AdministrationController(BaseController):
                     else:
                         game = model.GameResult(
                             game_no=parsed_vals['game_no'],
-                            game_time=timedelta(seconds=parsed_vals['time']) if parsed_vals['time'] and parsed_vals['step'] else None,
+                            game_time=timedelta(seconds=parsed_vals['time']) if parsed_vals['time'] else None,
                             game_rows=parsed_vals['step'],
                             wednesday_challenge={'': None, '✅': True, '❎': False}[row[config.get('legacyimport.colname.wednesdaychallenge')]],
                             comment=row[config.get('legacyimport.colname.comment')],
