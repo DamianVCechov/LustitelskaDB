@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-09-12 02:32+0200\n"
-"PO-Revision-Date: 2024-09-12 02:33+0200\n"
+"POT-Creation-Date: 2024-09-12 17:40+0200\n"
+"PO-Revision-Date: 2024-09-12 17:40+0200\n"
 "Last-Translator: Jaroslav Mikulík <jaroslav.mikulik@runtech.cz>\n"
 "Language: cs\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -223,8 +223,8 @@ msgstr "Úspěšně odpojeno z X/Twitteru, přístupový žeton byl zahozen"
 msgid "This game result is already in database"
 msgstr "Tento herní výsledek už v databázi je"
 
+# | msgid "User not found"
 #: lustitelskadb/controllers/root.py:393
-#| msgid "User not found"
 msgid "X/Twitter user not found"
 msgstr "X/Twitter uživatel nenalezen"
 
@@ -636,8 +636,10 @@ msgstr "Řádků"
 msgid "Result"
 msgstr "Výsledek"
 
+# | msgid "loose"
 #: lustitelskadb/templates/index.xhtml:30
-msgid "loose"
+#| msgid "lose"
+msgid "loss"
 msgstr "prohra"
 
 #: lustitelskadb/templates/index.xhtml:37

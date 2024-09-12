@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: LustitelskaDB 0.15\n"
+"Project-Id-Version: LustitelskaDB 0.16\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-09-12 02:32+0200\n"
+"POT-Creation-Date: 2024-09-12 17:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -555,7 +555,7 @@ msgid "Result"
 msgstr ""
 
 #: lustitelskadb/templates/index.xhtml:30
-msgid "loose"
+msgid "loss"
 msgstr ""
 
 #: lustitelskadb/templates/index.xhtml:37
