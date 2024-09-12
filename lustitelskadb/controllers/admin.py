@@ -181,7 +181,7 @@ class AdministrationController(BaseController):
 
         redirect('/admin')
 
-    # Moje část kodu
+    # Moje část kódu
     @expose('lustitelskadb.templates.administration.recountresults')
     def recount_results(self):
         """Recount game results."""
