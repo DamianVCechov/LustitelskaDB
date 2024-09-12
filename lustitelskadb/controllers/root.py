@@ -353,7 +353,7 @@ class RootController(BaseController):
                     getattr(tmpl_context.form.child.children, key).error_msg = value
         else:
             tmpl_context.form.value = {
-                'xtwitter_xid': session['me_on_xtwitter']['data']['id'],
+                'xtwitter_uid': session['me_on_xtwitter']['data']['id'],
                 'xtwitter_username': session['me_on_xtwitter']['data']['username'],
                 'xtwitter_displayname': session['me_on_xtwitter']['data']['name']
             }
