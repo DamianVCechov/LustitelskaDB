@@ -97,7 +97,13 @@ class RootController(BaseController):
         last_games = []
         last_game_nums = DBSession.query(model.GameResult.game_no).order_by(model.GameResult.game_no.desc()).distinct().limit(2).all()
         for lg in last_game_nums:
-            last_games.append(DBSession.query(model.GameResult).filter(model.GameResult.game_no == lg.game_no).order_by(model.GameResult.game_result_time == None, model.GameResult.game_result_time, model.GameResult.game_rows).all())
+            game = DBSession.query(model.GameResult)
+            game = game.filter(model.GameResult.game_no == lg.game_no)
+            if lg.game_no % 7 == 5:
+                game = game.order_by(model.GameResult.game_result_time == None, model.GameResult.wednesday_challenge.desc(), model.GameResult.game_result_time, model.GameResult.game_rows)
+            else:
+                game = game.order_by(model.GameResult.game_result_time == None, model.GameResult.game_result_time, model.GameResult.game_rows)
+            last_games.append(game.all())
 
         closing_deadline_jssrc = twc.JSSource(src='''"use strict";
             function setClosingProgressBar() {
@@ -396,7 +402,7 @@ class RootController(BaseController):
         game_result = model.GameResult(
             xtwitter=xuser,
             game_no=parsed_vals['game_no'],
-            game_time=timedelta(seconds=parsed_vals['time']) if parsed_vals['time'] and parsed_vals['step'] else None,
+            game_time=timedelta(seconds=parsed_vals['time']) if parsed_vals['time'] else None,
             game_rows=parsed_vals['step'],
             wednesday_challenge=kw.get('wednesday_challenge', None) if parsed_vals['game_no'] % 7 == 5 else None,
             comment=kw.get('comment', None) if kw.get('comment', None) else None,
