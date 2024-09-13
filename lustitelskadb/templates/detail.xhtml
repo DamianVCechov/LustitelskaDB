@@ -1,0 +1,50 @@
+<html py:extends="master.xhtml" py:strip="True">
+<head py:block="head" py:strip="True">
+<title py:block="master_title">${getattr(tmpl_context, 'project_name', 'turbogears2')} | User game result detail</title>
+</head>
+
+<body py:block="body" py:strip="True">
+	<?py
+from aniso8601 import parse_datetime
+
+try:
+	import ujson as json
+except (ImportError, ModuleNotFoundError, SyntaxError):
+	try:
+		import simplejson as json
+	except (ImportError, ModuleNotFoundError, SyntaxError):
+		import json
+
+HTMLBR = '<br>'
+user_xtwitter = json.loads(gameresult.xtwitter.user_info or '{"data":{}}')
+?>
+	<h1>User game result detail</h1>
+
+	<div class="mt-5">
+		<img class="rounded-circle float-start me-3" src="${user_xtwitter['data']['profile_image_url']}" alt="${user_xtwitter['data']['name']} @${user_xtwitter['data']['username']}" py:if="'profile_image_url' in user_xtwitter['data']" />
+		<h5 class="position-relative">
+			<span>${gameresult.xtwitter.display_name}</span> <span py:if="'protected' in user_xtwitter['data'] and user_xtwitter['data']['protected']">${h.icon('lock')}</span> <span py:if="'verified' in user_xtwitter['data'] and user_xtwitter['data']['verified']">${h.icon('certificate')}</span><br /> <span class="small text-muted">@${gameresult.xtwitter.user_name}</span> <a class="stretched-link" href="${'https://x.com/{}'.format(gameresult.xtwitter.user_name)}" target="_blank"></a>
+		</h5>
+		<p class="lead" py:if="'description' in user_xtwitter['data']">${Markup(user_xtwitter['data']['description'].replace('\n', HTMLBR))}</p>
+		<p class="lead text-muted">
+			<span class="text-nowrap ms-2" py:if="'location' in user_xtwitter['data']">${h.icon('map-marker')} ${user_xtwitter['data']['location']}</span> <span class="text-nowrap ms-2" py:if="'entities' in user_xtwitter['data'] and 'url' in user_xtwitter['data']['entities']">${h.icon('link')} <a class="text-decoration-none" href="${user_xtwitter['data']['entities']['url']['urls'][0]['expanded_url']}">${user_xtwitter['data']['entities']['url']['urls'][0]['display_url']}</a></span> <span class="text-nowrap ms-2" py:if="'created_at' in user_xtwitter['data']">${h.icon('calendar')} ${"{} {}".format(_('Joined'), parse_datetime(user_xtwitter['data']['created_at']).strftime("%d.%m.%Y %H:%M:%S"))}</span>
+		</p>
+		<p class="lead text-muted" py:if="'public_metrics' in user_xtwitter['data']">
+			<span class="text-dark fw-bold" py:if="'following_count' in user_xtwitter['data']['public_metrics']">${user_xtwitter['data']['public_metrics']['following_count']}</span> <span>Following</span> <span class="text-dark fw-bold ms-2" py:if="'followers_count' in user_xtwitter['data']['public_metrics']">${user_xtwitter['data']['public_metrics']['followers_count']}</span> <span>Followers</span>
+		</p>
+	</div>
+
+	<div class="mt-5">
+		<pre class="lead">${gameresult.game_raw_data}</pre>
+	</div>
+
+	<figure class="my-5" py:if="gameresult.comment">
+		<blockquote class="blockquote">
+			<p class="fs-3">${gameresult.comment}</p>
+		</blockquote>
+		<figcaption class="blockquote-footer fs-5">
+			${gameresult.xtwitter.display_name} <cite title="Source Title">@${gameresult.xtwitter.user_name}</cite>
+		</figcaption>
+	</figure>
+</body>
+</html>

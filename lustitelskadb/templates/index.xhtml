@@ -4,8 +4,48 @@
 </head>
 
 <body py:block="body" py:strip="True">
-	<div class="text-center mt-5">
-		<a href="http://lustitele.chytrak.cz" target="_blank"><img class="img-fluid" src="${tg.url('/img/lustitele-preview.png')}" alt="Luštitelé" /></a>
+	<div class="row pt-1" py:if="last_games">
+		<div class="col-lg-6" py:for="idx, game in enumerate(last_games)">
+			<div class="table-responsive">
+				<table class="table table-sm table-hover">
+					<thead>
+						<tr class="table-dark text-center">
+							<th class="rounded-top" scope="col" colspan="5">
+								<span>Game</span> ${last_game_nums[idx].game_no}
+							</th>
+						</tr>
+						<tr class="table-dark text-center">
+							<th scope="col">Medal</th>
+							<th scope="col">Gamester</th>
+							<th scope="col">Time</th>
+							<th scope="col">Rows</th>
+							<th scope="col">Result</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr py:attrs="{'class': 'position-relative{}'.format(' table-secondary' if row.wednesday_challenge == False else '')}" py:for="row in game">
+							<th scope="row" class="text-center">${row.game_rank or '?'}<a class="stretched-link" href="${tg.url('/detail/{}'.format(row.uid))}"></a></th>
+							<td class="text-center">${row.xtwitter.display_name}</td>
+							<td class="text-center">${row.game_time}</td>
+							<td class="text-center">${row.game_rows or _('loss')}</td>
+							<td class="text-center">${row.game_result_time}</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr class="table-primary text-center">
+							<th scope="col" colspan="5">
+								<span>Played players</span> ${len(game)}
+							</th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+		<div class="col-lg-6"></div>
+	</div>
+
+	<div id="closingDeadlineProgress" class="progress my-4" role="progressbar" aria-label="Closing deadline progress bar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+		<div class="progress-bar progress-bar-striped progress-bar-animated"></div>
 	</div>
 
 	<div id="carouselComments" class="carousel carousel-dark slide bg-light rounded-3 mt-3 p-2" data-bs-ride="carousel">
@@ -21,6 +61,7 @@
 				</figure>
 			</div>
 		</div>
+
 		<button class="carousel-control-prev" type="button" data-bs-target="#carouselComments" data-bs-slide="prev">
 			<span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="visually-hidden">Previous</span>
 		</button>

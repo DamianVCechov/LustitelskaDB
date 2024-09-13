@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: LustitelskaDB 0.11\n"
+"Project-Id-Version: LustitelskaDB 0.17\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-09-10 10:37+0200\n"
+"POT-Creation-Date: 2024-09-13 05:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,9 +17,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: lustitelskadb/controllers/admin.py:78 lustitelskadb/controllers/admin.py:83
-#: lustitelskadb/controllers/admin.py:98 lustitelskadb/controllers/admin.py:180
-#: lustitelskadb/controllers/admin.py:214
+#: lustitelskadb/controllers/admin.py:126 lustitelskadb/controllers/admin.py:131
+#: lustitelskadb/controllers/admin.py:146 lustitelskadb/controllers/admin.py:228
+#: lustitelskadb/controllers/admin.py:262
 #: lustitelskadb/controllers/libricipher.py:56
 #: lustitelskadb/controllers/libricipher.py:108
 #: lustitelskadb/controllers/libricipher.py:143
@@ -30,32 +30,32 @@ msgstr ""
 msgid "Only for users with appropriate permissions"
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:80
+#: lustitelskadb/controllers/admin.py:128
 msgid "Do you really want restart application? This will be done immediately!"
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:90
+#: lustitelskadb/controllers/admin.py:138
 #: lustitelskadb/controllers/libricipher.py:115
-#: lustitelskadb/controllers/root.py:299 lustitelskadb/controllers/xtwitter.py:32
+#: lustitelskadb/controllers/root.py:370 lustitelskadb/controllers/xtwitter.py:32
 msgid "Form filled with errors!"
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:103
+#: lustitelskadb/controllers/admin.py:151
 msgid "Missing CSV file for import"
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:173
+#: lustitelskadb/controllers/admin.py:221
 msgid ""
 "The import was successful. {all_count} records processed, {imported_count} "
 "records imported, {duplicity_skipped} duplicate records skipped, and "
 "{added_nicknames} users added."
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:175
+#: lustitelskadb/controllers/admin.py:223
 msgid "The import attempt ended with an error: \"{}\""
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:218
+#: lustitelskadb/controllers/admin.py:266
 msgid "Application successfully restarted"
 msgstr ""
 
@@ -138,21 +138,29 @@ msgstr ""
 msgid "Libri Cipher item successfully deleted"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:94
+#: lustitelskadb/controllers/root.py:151
+msgid "Missing unique ID of user game result"
+msgstr ""
+
+#: lustitelskadb/controllers/root.py:156
+msgid "Requested user game result not found"
+msgstr ""
+
+#: lustitelskadb/controllers/root.py:165
 msgid "Unknown source for authorization, canceled"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:110
+#: lustitelskadb/controllers/root.py:181
 msgid ""
 "There may have been an issue with the consumer_key or consumer_secret in "
 "application"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:142
+#: lustitelskadb/controllers/root.py:213
 msgid "Unknown type of OAuth in config"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:159
+#: lustitelskadb/controllers/root.py:230
 msgid ""
 "I cannot find the keys needed to continue in authorization process in the "
 "session. Maybe you are using a light version of the browser that cannot "
@@ -160,7 +168,7 @@ msgid ""
 "to a full-fledged browser or turn on the saving of cookies."
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:189
+#: lustitelskadb/controllers/root.py:260
 msgid ""
 "I cannot find the data needed to validate the authorization challenge in the "
 "session. Maybe you are using a light version of the browser that cannot "
@@ -168,66 +176,70 @@ msgid ""
 "to a full-fledged browser or turn on the saving of cookies."
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:208
+#: lustitelskadb/controllers/root.py:279
 msgid "Can't fetch access token"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:228
+#: lustitelskadb/controllers/root.py:299
 msgid "Can't get user info from Twitter"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:260
+#: lustitelskadb/controllers/root.py:331
 msgid "Successfully authorized"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:263
+#: lustitelskadb/controllers/root.py:334
 msgid "Succesfully authorized, but missing landing URL"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:280
+#: lustitelskadb/controllers/root.py:351
 msgid "Successfully detached from X/Twitter, the access token has been discarded"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:334
+#: lustitelskadb/controllers/root.py:408
 msgid "This game result is already in database"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:352
+#: lustitelskadb/controllers/root.py:413
+msgid "X/Twitter user not found"
+msgstr ""
+
+#: lustitelskadb/controllers/root.py:432
 msgid ""
 "Something went wrong! Can't save game result to database, so it isn't sent to"
 " legacy website too!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:372
+#: lustitelskadb/controllers/root.py:453
 msgid ""
 "Your result has been successfully saved to database and sent to the original "
 "website"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:374
+#: lustitelskadb/controllers/root.py:455
 msgid ""
 "Your result has been successfully saved to database, but an error occurred "
 "while submitting the result from the form to legacy website. Let us know it!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:402
+#: lustitelskadb/controllers/root.py:483
 msgid "User not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:404
+#: lustitelskadb/controllers/root.py:485
 msgid "Invalid Password"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:408
+#: lustitelskadb/controllers/root.py:489
 msgid "Wrong credentials"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:425
+#: lustitelskadb/controllers/root.py:506
 #, python-format
 msgid "Welcome back, %s!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:438
+#: lustitelskadb/controllers/root.py:519
 msgid "We hope to see you soon!"
 msgstr ""
 
@@ -492,7 +504,7 @@ msgstr ""
 msgid "lustitele@gmail.com"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:23 lustitelskadb/templates/index.xhtml:10
+#: lustitelskadb/templates/about.xhtml:23
 #: lustitelskadb/templates/libriciphers.xhtml:10
 msgid "."
 msgstr ""
@@ -507,6 +519,35 @@ msgstr ""
 
 #: lustitelskadb/templates/about.xhtml:29
 msgid "Damian V. Checkhov"
+msgstr ""
+
+#: lustitelskadb/templates/detail.xhtml:3
+msgid " | User game result detail"
+msgstr ""
+
+#: lustitelskadb/templates/detail.xhtml:21
+msgid "User game result detail"
+msgstr ""
+
+#: lustitelskadb/templates/detail.xhtml:26 lustitelskadb/templates/index.xhtml:59
+#: lustitelskadb/templates/master.xhtml:40
+#: lustitelskadb/templates/newresult.xhtml:18
+msgid "@"
+msgstr ""
+
+#: lustitelskadb/templates/detail.xhtml:30
+#: lustitelskadb/templates/newresult.xhtml:24
+msgid "Joined"
+msgstr ""
+
+#: lustitelskadb/templates/detail.xhtml:33
+#: lustitelskadb/templates/newresult.xhtml:27
+msgid "Following"
+msgstr ""
+
+#: lustitelskadb/templates/detail.xhtml:33
+#: lustitelskadb/templates/newresult.xhtml:28
+msgid "Followers"
 msgstr ""
 
 #: lustitelskadb/templates/error.xhtml:3
@@ -526,27 +567,44 @@ msgstr ""
 msgid " | Welcome"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:8
-msgid "LustiteleDB"
+#: lustitelskadb/templates/index.xhtml:14
+msgid "Game"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:10
-msgid "Here you will find the upcoming results list of"
+#: lustitelskadb/templates/index.xhtml:18
+msgid "Medal"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:10
-msgid "HadejSlova"
+#: lustitelskadb/templates/index.xhtml:19
+msgid "Gamester"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:10
-msgid ""
-"players. Before that happens, you can test the other features of the site and"
-" see what features are gradually added here. Until then, you can find the "
-"results table on the"
+#: lustitelskadb/templates/index.xhtml:20
+msgid "Time"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:10
-msgid "original website"
+#: lustitelskadb/templates/index.xhtml:21
+msgid "Rows"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:22
+msgid "Result"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:30
+msgid "loss"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:37
+msgid "Played players"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:66
+msgid "Previous"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:69
+msgid "Next"
 msgstr ""
 
 #: lustitelskadb/templates/administration/index.xhtml:14
@@ -638,11 +696,6 @@ msgstr ""
 msgid "Detach"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:40
-#: lustitelskadb/templates/newresult.xhtml:18
-msgid "@"
-msgstr ""
-
 #: lustitelskadb/templates/master.xhtml:44
 msgid "Logout"
 msgstr ""
@@ -661,18 +714,6 @@ msgstr ""
 
 #: lustitelskadb/templates/newresult.xhtml:3
 msgid " | New result"
-msgstr ""
-
-#: lustitelskadb/templates/newresult.xhtml:24
-msgid "Joined"
-msgstr ""
-
-#: lustitelskadb/templates/newresult.xhtml:27
-msgid "Following"
-msgstr ""
-
-#: lustitelskadb/templates/newresult.xhtml:28
-msgid "Followers"
 msgstr ""
 
 #: lustitelskadb/templates/xdenied.xhtml:3
@@ -747,6 +788,7 @@ msgid "Libri Cipher detail"
 msgstr ""
 
 #: lustitelskadb/templates/administration/libricipher/detail.xhtml:20
+#: lustitelskadb/templates/tgext/admin/bootstrap_crud/get_all.xhtml:4
 msgid " - "
 msgstr ""
 
@@ -772,5 +814,31 @@ msgstr ""
 
 #: lustitelskadb/templates/administration/xtwitter/index.xhtml:3
 msgid " | X/Twitter Administration"
+msgstr ""
+
+#: lustitelskadb/templates/tgext/admin/bootstrap_crud/edit.xhtml:4
+msgid " - Edit "
+msgstr ""
+
+#: lustitelskadb/templates/tgext/admin/bootstrap_crud/edit.xhtml:16
+msgid "Edit "
+msgstr ""
+
+#: lustitelskadb/templates/tgext/admin/bootstrap_crud/get_all.xhtml:4
+#: lustitelskadb/templates/tgext/admin/bootstrap_crud/get_all.xhtml:32
+msgid " Listing"
+msgstr ""
+
+#: lustitelskadb/templates/tgext/admin/bootstrap_crud/get_all.xhtml:36
+#: lustitelskadb/templates/tgext/admin/bootstrap_crud/new.xhtml:16
+msgid "New "
+msgstr ""
+
+#: lustitelskadb/templates/tgext/admin/bootstrap_crud/get_all.xhtml:54
+msgid "Search"
+msgstr ""
+
+#: lustitelskadb/templates/tgext/admin/bootstrap_crud/new.xhtml:4
+msgid " - New "
 msgstr ""
 

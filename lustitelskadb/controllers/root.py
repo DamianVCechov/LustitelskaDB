@@ -12,10 +12,11 @@ from tg import predicates
 from tg.decorators import paginate
 
 from lustitelskadb import model
-from lustitelskadb.controllers.admin import AdministrationController
 from lustitelskadb.model import DBSession
 
 from sqlalchemy.sql.expression import func
+
+import tw2.core as twc
 
 import requests
 from requests_oauthlib import OAuth1Session, OAuth2Session
@@ -43,6 +44,8 @@ except (ImportError, ModuleNotFoundError, SyntaxError):
 
 from lustitelskadb.lib.base import BaseController
 from lustitelskadb.controllers.error import ErrorController
+from lustitelskadb.controllers.admin import AdministrationController
+from lustitelskadb.controllers.api import APIController
 
 import lustitelskadb.lib.forms as appforms
 
@@ -65,6 +68,8 @@ class RootController(BaseController):
     """
 
     admin = AdministrationController()
+
+    api = APIController()
 
     error = ErrorController()
 
@@ -89,7 +94,69 @@ class RootController(BaseController):
         """Handle the front-page."""
         comments = DBSession.query(model.GameResult).filter(model.GameResult.comment != None, model.GameResult.comment != '').order_by(func.random()).limit(100).all()
 
-        return dict(page='index', comments=comments)
+        last_games = []
+        last_game_nums = DBSession.query(model.GameResult.game_no).order_by(model.GameResult.game_no.desc()).distinct().limit(2).all()
+        for lg in last_game_nums:
+            game = DBSession.query(model.GameResult)
+            game = game.filter(model.GameResult.game_no == lg.game_no)
+            if lg.game_no % 7 == 5:
+                game = game.order_by(model.GameResult.game_result_time == None, model.GameResult.wednesday_challenge.desc(), model.GameResult.game_result_time, model.GameResult.game_rows)
+            else:
+                game = game.order_by(model.GameResult.game_result_time == None, model.GameResult.game_result_time, model.GameResult.game_rows)
+            last_games.append(game.all())
+
+        closing_deadline_jssrc = twc.JSSource(src='''"use strict";
+            function setClosingProgressBar() {
+                let now = new Date();
+                let target = new Date(now);
+                let dayInMillisec = 24 * 60 * 60 * 1000;
+                let leftPercent = 0;
+
+                target.setHours(18);
+                target.setMinutes(0);
+                target.setSeconds(0);
+                target.setMilliseconds(0);
+
+                if (now.getHours() >= 18) {
+                    target = new Date(target.getTime() + dayInMillisec);
+                }
+
+                leftPercent = ((target - now) / dayInMillisec) * 100;
+
+                $('#closingDeadlineProgress.progress').attr('aria-value-now', Math.round(leftPercent));
+                $('#closingDeadlineProgress.progress>.progress-bar').width(String(100 - Math.round(leftPercent)) + '%');
+                if (leftPercent > 50) {
+                    $('#closingDeadlineProgress.progress>.progress-bar').addClass('bg-success').removeClass('bg-warning').removeClass('bg-danger');
+                } else if (leftPercent > 25) {
+                    $('#closingDeadlineProgress.progress>.progress-bar').addClass('bg-warning').removeClass('bg-success').removeClass('bg-danger');
+                } else {
+                    $('#closingDeadlineProgress.progress>.progress-bar').addClass('bg-danger').removeClass('bg-success').removeClass('bg-warning');
+                }
+
+                setTimeout(setClosingProgressBar, 1000);
+            }
+
+            $(() => {
+                setClosingProgressBar();
+            });
+        ''')
+        closing_deadline_jssrc.inject();
+
+        return dict(page='index', comments=comments, last_game_nums=last_game_nums, last_games=last_games)
+
+    @expose('lustitelskadb.templates.detail')
+    def detail(self, uid=None, *args, **kw):
+        """Detail of user game result."""
+        if not uid:
+            flash(_("Missing unique ID of user game result"))
+            return redirect('/')
+
+        gameresult = DBSession.query(model.GameResult).filter(model.GameResult.uid == uid).first()
+        if not gameresult:
+            flash(_("Requested user game result not found"))
+            return redirect('/')
+
+        return dict(page="detail", gameresult=gameresult)
 
     @expose()
     def xauthorize(self, **kw):
@@ -341,10 +408,15 @@ class RootController(BaseController):
             flash(_(u"This game result is already in database"), 'warning')
             redirect('/')
 
+        xuser = DBSession.query(model.XTwitter).filter(model.XTwitter.xid == kw.get('xtwitter_uid')).first()
+        if not xuser:
+            flash(_(u"X/Twitter user not found"), 'warning')
+            redirect('/')
+
         game_result = model.GameResult(
-            xtwitter_uid=kw.get('xtwitter_uid', None),
+            xtwitter=xuser,
             game_no=parsed_vals['game_no'],
-            game_time=timedelta(seconds=parsed_vals['time']) if parsed_vals['time'] and parsed_vals['step'] else None,
+            game_time=timedelta(seconds=parsed_vals['time']) if parsed_vals['time'] else None,
             game_rows=parsed_vals['step'],
             wednesday_challenge=kw.get('wednesday_challenge', None) if parsed_vals['game_no'] % 7 == 5 else None,
             comment=kw.get('comment', None) if kw.get('comment', None) else None,
@@ -353,10 +425,12 @@ class RootController(BaseController):
         )
 
         DBSession.add(game_result)
+
         try:
             DBSession.flush()
         except Exception as e:
             flash(_(u"Something went wrong! Can't save game result to database, so it isn't sent to legacy website too!"), 'error')
+            redirect('/')
 
         # Send data to legacy form (temporary function)
         viewform_url = "https://docs.google.com/forms/d/e/1FAIpQLSdHcMlAmXKOODsG0hZCc687_8oVZpFbv_GJXfA5P9aHn2IJgg/viewform"
