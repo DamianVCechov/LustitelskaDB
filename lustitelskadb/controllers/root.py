@@ -144,6 +144,20 @@ class RootController(BaseController):
 
         return dict(page='index', comments=comments, last_game_nums=last_game_nums, last_games=last_games)
 
+    @expose('lustitelskadb.templates.detail')
+    def detail(self, uid=None, *args, **kw):
+        """Detail of user game result."""
+        if not uid:
+            flash(_("Missing unique ID of user game result"))
+            return redirect('/')
+
+        gameresult = DBSession.query(model.GameResult).filter(model.GameResult.uid == uid).first()
+        if not gameresult:
+            flash(_("Requested user game result not found"))
+            return redirect('/')
+
+        return dict(page="detail", gameresult=gameresult)
+
     @expose()
     def xauthorize(self, **kw):
         """Authorize via X/Twitter."""

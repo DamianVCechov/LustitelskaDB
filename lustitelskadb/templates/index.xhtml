@@ -7,7 +7,7 @@
 	<div class="row pt-1" py:if="last_games">
 		<div class="col-lg-6" py:for="idx, game in enumerate(last_games)">
 			<div class="table-responsive">
-				<table class="table table-sm">
+				<table class="table table-sm table-hover">
 					<thead>
 						<tr class="table-dark text-center">
 							<th class="rounded-top" scope="col" colspan="5">
@@ -23,8 +23,8 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr py:attrs="{'class': 'table-secondary'} if row.wednesday_challenge == False else None" py:for="row in game">
-							<th scope="row" class="text-center">${row.game_rank or '?'}</th>
+						<tr py:attrs="{'class': 'position-relative{}'.format(' table-secondary' if row.wednesday_challenge == False else '')}" py:for="row in game">
+							<th scope="row" class="text-center">${row.game_rank or '?'}<a class="stretched-link" href="${tg.url('/detail/{}'.format(row.uid))}"></a></th>
 							<td class="text-center">${row.xtwitter.display_name}</td>
 							<td class="text-center">${row.game_time}</td>
 							<td class="text-center">${row.game_rows or _('loss')}</td>
