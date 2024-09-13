@@ -297,6 +297,7 @@ lustitelskadb/public/js/tinymce/skins/ui/tinymce-5-dark/skin.shadowdom.min.css
 lustitelskadb/public/js/tinymce/themes/silver/theme.min.js
 lustitelskadb/templates/__init__.py
 lustitelskadb/templates/about.xhtml
+lustitelskadb/templates/detail.xhtml
 lustitelskadb/templates/error.xhtml
 lustitelskadb/templates/index.xhtml
 lustitelskadb/templates/libriciphers.xhtml
@@ -318,6 +319,12 @@ lustitelskadb/templates/administration/libricipher/edit.xhtml
 lustitelskadb/templates/administration/libricipher/index.xhtml
 lustitelskadb/templates/administration/xtwitter/__init__.py
 lustitelskadb/templates/administration/xtwitter/index.xhtml
+lustitelskadb/templates/tgext/__init__.py
+lustitelskadb/templates/tgext/admin/__init__.py
+lustitelskadb/templates/tgext/admin/bootstrap_crud/__init__.py
+lustitelskadb/templates/tgext/admin/bootstrap_crud/edit.xhtml
+lustitelskadb/templates/tgext/admin/bootstrap_crud/get_all.xhtml
+lustitelskadb/templates/tgext/admin/bootstrap_crud/new.xhtml
 lustitelskadb/tests/__init__.py
 lustitelskadb/tests/functional/__init__.py
 lustitelskadb/tests/functional/test_authentication.py
