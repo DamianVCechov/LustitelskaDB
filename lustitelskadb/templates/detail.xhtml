@@ -22,8 +22,9 @@ user_xtwitter = json.loads(gameresult.xtwitter.user_info or '{"data":{}}')
 
 	<div class="mt-5">
 		<img class="rounded-circle float-start me-3" src="${user_xtwitter['data']['profile_image_url']}" alt="${user_xtwitter['data']['name']} @${user_xtwitter['data']['username']}" py:if="'profile_image_url' in user_xtwitter['data']" />
-		<h5>
+		<h5 class="position-relative">
 			<span>${gameresult.xtwitter.display_name}</span> <span py:if="'protected' in user_xtwitter['data'] and user_xtwitter['data']['protected']">${h.icon('lock')}</span> <span py:if="'verified' in user_xtwitter['data'] and user_xtwitter['data']['verified']">${h.icon('certificate')}</span><br /> <span class="small text-muted">@${gameresult.xtwitter.user_name}</span>
+			<a class="stretched-link" href="${'https://x.com/{}'.format(gameresult.xtwitter.user_name)}" target="_blank"></a>
 		</h5>
 		<p class="lead" py:if="'description' in user_xtwitter['data']">${Markup(user_xtwitter['data']['description'].replace('\n', htmlbr))}</p>
 		<p class="lead text-muted">
