@@ -23,7 +23,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr py:for="row in game">
+						<tr py:attrs="{'class': 'table-secondary'} if row.wednesday_challenge == False else None" py:for="row in game">
 							<th scope="row" class="text-center">${row.game_rank or '?'}</th>
 							<td class="text-center">${row.xtwitter.display_name}</td>
 							<td class="text-center">${row.game_time}</td>

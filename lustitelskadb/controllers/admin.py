@@ -30,15 +30,31 @@ import csv
 import requests
 
 import tw2.core as twc
+import tw2.forms as twf
 
 __all__ = ['AdministrationController']
+
+
+class CustomCheckbox(twf.CheckBox):
+
+    css_class = "form-check-input h4"
 
 
 class XTwitterAdminCrudConfig(CrudRestControllerConfig):
 
     class defaultCrudRestController(EasyCrudRestController):
         __table_options__ = {
-            '__omit_fields__': ['user_info', 'results']
+            '__omit_fields__': [
+                'user_info',
+                'results'
+            ]
+        }
+
+        __form_options__ = {
+            '__omit_fields__': [
+                'user_info',
+                'results'
+            ]
         }
 
 
@@ -46,13 +62,45 @@ class GameResultsAdminCrudConfig(CrudRestControllerConfig):
 
     class defaultCrudRestController(EasyCrudRestController):
         __table_options__ = {
-            '__omit_fields__': ['game_raw_data']
+            '__omit_fields__': [
+                'game_raw_data'
+            ]
         }
+
+        __form_options__ = {
+            '__omit_fields__': [
+                'game_raw_data',
+                'created',
+                'updated'
+            ],
+            '__field_widgets__': {
+                'wednesday_challenge': CustomCheckbox(
+                    label="Wednesday challenge"
+                )
+            }
+        }
+
+
+class CustomGroupedBootstrapAdminLayout(GroupedBootstrapAdminLayout):
+
+    crud_templates = {
+        'get_all': [
+            'kajiki:lustitelskadb.templates.tgext.admin.bootstrap_crud.get_all'
+        ],
+        'edit': [
+            'kajiki:lustitelskadb.templates.tgext.admin.bootstrap_crud.edit'
+        ],
+        'new': [
+            'kajiki:lustitelskadb.templates.tgext.admin.bootstrap_crud.new'
+        ]
+    }
 
 
 class CustomAdminConfig(TGAdminConfig):
 
-    layout = GroupedBootstrapAdminLayout
+    project_name = "LustitelskaDB"
+
+    layout = CustomGroupedBootstrapAdminLayout
 
     include_left_menu = False
 

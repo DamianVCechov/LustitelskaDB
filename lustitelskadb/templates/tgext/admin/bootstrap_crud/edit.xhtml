@@ -1,0 +1,21 @@
+<html py:extends="master.xhtml" py:strip="True">
+
+<head py:block="head" py:strip="True">
+<title py:block="master_title">${tmpl_context.title} - Edit ${model}</title>
+</head>
+
+<body py:block="body" py:strip="True">
+	<div class="row" py:with="leftmenu=getattr(tmpl_context, 'menu_items', False)">
+		<div py:if="leftmenu" class="col-lg-2">
+			<ul class="nav flex-column crud-sidebar d-none d-md-block">
+				<li class="nav-item" py:for="lower, item in sorted(tmpl_context.menu_items.items())"><a class="${item==model and 'nav-link active' or 'nav-link'}" href="${tmpl_context.crud_helpers.make_link(lower)}">$item</a></li>
+			</ul>
+		</div>
+
+		<div class="${not leftmenu and 'col-lg-12' or 'col-lg-10'}">
+			<h1 class="page-header">Edit $model</h1>
+			${Markup(tmpl_context.widget(value=value, action='./'))}
+		</div>
+	</div>
+</body>
+</html>
