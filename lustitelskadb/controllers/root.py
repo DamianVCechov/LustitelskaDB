@@ -48,6 +48,7 @@ from lustitelskadb.controllers.admin import AdministrationController
 from lustitelskadb.controllers.api import APIController
 
 import lustitelskadb.lib.forms as appforms
+from lustitelskadb.lib.injects import closing_deadline_jssrc
 
 __all__ = ['RootController']
 
@@ -105,49 +106,6 @@ class RootController(BaseController):
                 game = game.order_by(model.GameResult.game_result_time == None, model.GameResult.game_result_time, model.GameResult.game_rows)
             last_games.append(game.all())
 
-        closing_deadline_jssrc = twc.JSSource(src='''"use strict";
-            function setClosingProgressBar() {
-                const now = new Date();
-                let target = new Date(now);
-                let dayInMillisec = 24 * 60 * 60 * 1000;
-                let leftPercent = 0;
-                const formatter = new Intl.DateTimeFormat('cs-CZ',
-                    {
-                        hour: '2-digit',
-                        minute: '2-digit',
-                        second: '2-digit'
-                    }
-                );
-
-                target.setHours(18);
-                target.setMinutes(0);
-                target.setSeconds(0);
-                target.setMilliseconds(0);
-
-                if (now.getHours() >= 18) {
-                    target = new Date(target.getTime() + dayInMillisec);
-                }
-
-                leftPercent = ((target - now) / dayInMillisec) * 100;
-
-                $('#closingDeadlineProgress.progress').attr('aria-value-now', Math.round(leftPercent));
-                $('#closingDeadlineProgress.progress>.progress-bar').width(String(100 - Math.round(leftPercent)) + '%');
-                if (leftPercent > 50) {
-                    $('#closingDeadlineProgress.progress>.progress-bar').addClass('bg-success').removeClass('bg-warning').removeClass('bg-danger');
-                } else if (leftPercent > 25) {
-                    $('#closingDeadlineProgress.progress>.progress-bar').addClass('bg-warning').removeClass('bg-success').removeClass('bg-danger');
-                } else {
-                    $('#closingDeadlineProgress.progress>.progress-bar').addClass('bg-danger').removeClass('bg-success').removeClass('bg-warning');
-                }
-                $('#closingDeadlineProgress.progress>.progress-bar').text(formatter.format(target - now));
-
-                setTimeout(setClosingProgressBar, 1000);
-            }
-
-            $(() => {
-                setClosingProgressBar();
-            });
-        ''')
         closing_deadline_jssrc.inject();
 
         return dict(page='index', comments=comments, last_game_nums=last_game_nums, last_games=last_games)

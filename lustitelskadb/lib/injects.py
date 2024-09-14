@@ -8,7 +8,7 @@ Created on 24. 8. 2024
 from tg import lurl
 from tw2.core import JSLink, JSSource
 
-__all__ = ['tinymce_link', 'tinymce_init']
+__all__ = ['tinymce_link', 'tinymce_init', 'closing_deadline_jssrc']
 
 tinymce_version = '6.8.3'
 
@@ -85,3 +85,46 @@ tinymce.init({
     }*/
 });
 """
+
+closing_deadline_jssrc = JSSource(src='''"use strict";
+function setClosingProgressBar() {
+    const now = new Date();
+    let target = new Date(now);
+    let dayInMillisec = 24 * 60 * 60 * 1000;
+    let leftPercent = 0;
+    const formatter = new Intl.DateTimeFormat('cs-CZ',
+        {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        }
+    );
+
+    target.setHours(18);
+    target.setMinutes(0);
+    target.setSeconds(0);
+    target.setMilliseconds(0);
+
+    if (now.getHours() >= 18) {
+        target = new Date(target.getTime() + dayInMillisec);
+    }
+
+    leftPercent = ((target - now) / dayInMillisec) * 100;
+
+    $('#closingDeadlineProgress.progress').attr('aria-value-now', Math.round(leftPercent));
+    $('#closingDeadlineProgress.progress>.progress-bar').width(String(100 - Math.round(leftPercent)) + '%');
+    if (leftPercent > 50) {
+        $('#closingDeadlineProgress.progress>.progress-bar').addClass('bg-success').removeClass('bg-warning').removeClass('bg-danger');
+    } else if (leftPercent > 25) {
+        $('#closingDeadlineProgress.progress>.progress-bar').addClass('bg-warning').removeClass('bg-success').removeClass('bg-danger');
+    } else {
+        $('#closingDeadlineProgress.progress>.progress-bar').addClass('bg-danger').removeClass('bg-success').removeClass('bg-warning');
+    }
+    $('#closingDeadlineProgress.progress>.progress-bar').text(formatter.format(target - now));
+
+    setTimeout(setClosingProgressBar, 1000);
+}
+
+$(() => {
+    setClosingProgressBar();
+});''')
