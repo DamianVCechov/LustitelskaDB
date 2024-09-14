@@ -107,10 +107,17 @@ class RootController(BaseController):
 
         closing_deadline_jssrc = twc.JSSource(src='''"use strict";
             function setClosingProgressBar() {
-                let now = new Date();
+                const now = new Date();
                 let target = new Date(now);
                 let dayInMillisec = 24 * 60 * 60 * 1000;
                 let leftPercent = 0;
+                const formatter = new Intl.DateTimeFormat('cs-CZ',
+                    {
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit'
+                    }
+                );
 
                 target.setHours(18);
                 target.setMinutes(0);
@@ -132,6 +139,7 @@ class RootController(BaseController):
                 } else {
                     $('#closingDeadlineProgress.progress>.progress-bar').addClass('bg-danger').removeClass('bg-success').removeClass('bg-warning');
                 }
+                $('#closingDeadlineProgress.progress>.progress-bar').text(formatter.format(target - now));
 
                 setTimeout(setClosingProgressBar, 1000);
             }
