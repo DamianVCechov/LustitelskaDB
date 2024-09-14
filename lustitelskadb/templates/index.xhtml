@@ -4,15 +4,14 @@
 </head>
 
 <body py:block="body" py:strip="True">
-	<div class="row pt-1" py:if="last_games">
-		<div class="col-lg-6" py:for="idx, game in enumerate(last_games)">
+<?py from operator import lt, le, gt, ge ?>
+	<div class="row pt-1" py:if="games">
+		<div class="col-lg-6" py:for="idx, game in enumerate(games)">
 			<div class="table-responsive">
 				<table class="table table-sm table-hover">
 					<thead>
 						<tr class="table-dark text-center">
-							<th class="rounded-top" scope="col" colspan="5">
-								<span>Game</span> ${last_game_nums[idx].game_no}
-							</th>
+							<th class="rounded-top" scope="col" colspan="5"><span>Game</span> ${game_nums[idx].game_no}</th>
 						</tr>
 						<tr class="table-dark text-center">
 							<th scope="col">Medal</th>
@@ -33,15 +32,21 @@
 					</tbody>
 					<tfoot>
 						<tr class="table-primary text-center">
-							<th scope="col" colspan="5">
-								<span>Played players</span> ${len(game)}
-							</th>
+							<th scope="col" colspan="5"><span>Played players</span> ${len(game)}</th>
 						</tr>
 					</tfoot>
 				</table>
 			</div>
 		</div>
-		<div class="col-lg-6"></div>
+	</div>
+
+	<div class="row pt-1" py:if="games">
+		<div class="col-6">
+			<a class="btn btn-outline-secondary w-100${' disabled' if le(latest_game.game_no, game_nums[0].game_no) else ''}" href="${tg.url('/{}'.format(game_nums[0].game_no+1 if lt(len(game_nums), 1) else latest_game.game_no))}">&laquo;</a>
+		</div>
+		<div class="col-6">
+			<a class="btn btn-outline-secondary w-100${' disabled' if ge(oldest_game.game_no, game_nums[1].game_no if gt(len(game_nums), 1) else oldest_game.game_no) else ''}" href="${tg.url('/{}'.format(game_nums[1].game_no-1 if gt(len(game_nums), 1) else oldest_game.game_no))}">&raquo;</a>
+		</div>
 	</div>
 
 	<div id="closingDeadlineProgress" class="progress my-4" style="height: 2rem;" role="progressbar" aria-label="Closing deadline progress bar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">

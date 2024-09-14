@@ -91,24 +91,29 @@ class RootController(BaseController):
         )
 
     @expose('lustitelskadb.templates.index')
-    def index(self):
+    def _default(self, game=None, *args, **kw):
         """Handle the front-page."""
         comments = DBSession.query(model.GameResult).filter(model.GameResult.comment != None, model.GameResult.comment != '').order_by(func.random()).limit(100).all()
 
-        last_games = []
-        last_game_nums = DBSession.query(model.GameResult.game_no).order_by(model.GameResult.game_no.desc()).distinct().limit(2).all()
-        for lg in last_game_nums:
-            game = DBSession.query(model.GameResult)
-            game = game.filter(model.GameResult.game_no == lg.game_no)
+        game_nums = DBSession.query(model.GameResult.game_no)
+        if game and game.isdigit():
+            game_nums = game_nums.filter(model.GameResult.game_no <= game)
+        game_nums = game_nums.order_by(model.GameResult.game_no.desc()).distinct().limit(2).all()
+        latest_game = DBSession.query(model.GameResult.game_no).order_by(model.GameResult.game_no.desc()).first()
+        oldest_game = DBSession.query(model.GameResult.game_no).order_by(model.GameResult.game_no).first()
+
+        games = []
+        for lg in game_nums:
+            game = DBSession.query(model.GameResult).filter(model.GameResult.game_no == lg.game_no)
             if lg.game_no % 7 == 5:
                 game = game.order_by(model.GameResult.game_result_time == None, model.GameResult.wednesday_challenge.desc(), model.GameResult.game_result_time, model.GameResult.game_rows)
             else:
                 game = game.order_by(model.GameResult.game_result_time == None, model.GameResult.game_result_time, model.GameResult.game_rows)
-            last_games.append(game.all())
+            games.append(game.all())
 
         closing_deadline_jssrc.inject();
 
-        return dict(page='index', comments=comments, last_game_nums=last_game_nums, last_games=last_games)
+        return dict(page='index', comments=comments, game_nums=game_nums, games=games, latest_game=latest_game, oldest_game=oldest_game)
 
     @expose('lustitelskadb.templates.detail')
     def detail(self, uid=None, *args, **kw):
