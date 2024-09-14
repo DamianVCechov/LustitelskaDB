@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """Error controller"""
-from tg import request, expose
+from tg import request, expose, tmpl_context
 from tg.i18n import ugettext as _
 from lustitelskadb.lib.base import BaseController
 
@@ -18,6 +18,9 @@ class ErrorController(BaseController):
     ErrorDocuments middleware in your config/middleware.py file.
 
     """
+
+    def _before(self, *args, **kw):
+        tmpl_context.project_name = "LustitelskaDB"
 
     @expose('lustitelskadb.templates.error')
     def document(self, *args, **kwargs):
