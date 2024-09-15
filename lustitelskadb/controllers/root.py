@@ -4,7 +4,7 @@
 import logging
 log = logging.getLogger(__name__)
 
-from tg import expose, flash, require, url, lurl
+from tg import expose, flash, require, url, lurl, abort
 from tg import request, redirect, tmpl_context, validate, session, config
 from tg.i18n import ugettext as _, lazy_ugettext as l_
 from tg.exceptions import HTTPFound
@@ -98,7 +98,12 @@ class RootController(BaseController):
         game_nums = DBSession.query(model.GameResult.game_no)
         if game and game.isdigit():
             game_nums = game_nums.filter(model.GameResult.game_no <= game)
+        elif game and not game.isdigit():
+            abort(404)
         game_nums = game_nums.order_by(model.GameResult.game_no.desc()).distinct().limit(2).all()
+        if not game_nums:
+            abort(404)
+
         latest_game = DBSession.query(model.GameResult.game_no).order_by(model.GameResult.game_no.desc()).first()
         oldest_game = DBSession.query(model.GameResult.game_no).order_by(model.GameResult.game_no).first()
 
