@@ -52,6 +52,10 @@ lustitelskadb/public/css/bootstrap-grid.rtl.css
 lustitelskadb/public/css/bootstrap-grid.rtl.css.map
 lustitelskadb/public/css/bootstrap-grid.rtl.min.css
 lustitelskadb/public/css/bootstrap-grid.rtl.min.css.map
+lustitelskadb/public/css/bootstrap-icons.css
+lustitelskadb/public/css/bootstrap-icons.json
+lustitelskadb/public/css/bootstrap-icons.min.css
+lustitelskadb/public/css/bootstrap-icons.scss
 lustitelskadb/public/css/bootstrap-reboot.css
 lustitelskadb/public/css/bootstrap-reboot.css.map
 lustitelskadb/public/css/bootstrap-reboot.min.css
@@ -77,6 +81,8 @@ lustitelskadb/public/css/bootstrap.rtl.css.map
 lustitelskadb/public/css/bootstrap.rtl.min.css
 lustitelskadb/public/css/bootstrap.rtl.min.css.map
 lustitelskadb/public/css/style.css
+lustitelskadb/public/css/fonts/bootstrap-icons.woff
+lustitelskadb/public/css/fonts/bootstrap-icons.woff2
 lustitelskadb/public/fonts/glyphicons/glyphicons-halflings-regular.eot
 lustitelskadb/public/fonts/glyphicons/glyphicons-halflings-regular.svg
 lustitelskadb/public/fonts/glyphicons/glyphicons-halflings-regular.ttf
@@ -88,6 +94,7 @@ lustitelskadb/public/img/lustitele-twitter-profile.webp
 lustitelskadb/public/img/turbogears_logo.png
 lustitelskadb/public/img/turbogears_logo_big.png
 lustitelskadb/public/img/under_the_hood_blue.png
+lustitelskadb/public/img/wednesday-challenge-256.webp
 lustitelskadb/public/js/bootstrap.bundle.js
 lustitelskadb/public/js/bootstrap.bundle.js.map
 lustitelskadb/public/js/bootstrap.bundle.min.js
