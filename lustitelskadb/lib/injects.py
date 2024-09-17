@@ -87,18 +87,25 @@ tinymce.init({
 """
 
 closing_deadline_jssrc = JSSource(src='''"use strict";
+function milisecsToTimeString(timeInMilisecs) {
+    let h, m, s;
+
+    h = Math.floor(timeInMilisecs / 1000 / 60 / 60);
+    m = Math.floor((timeInMilisecs / 1000 / 60 / 60 - h) * 60);
+    s = Math.floor(((timeInMilisecs / 1000 / 60 / 60 - h) * 60 - m) * 60);
+
+    s < 10 ? s = `0${s}`: s = `${s}`;
+    m < 10 ? m = `0${m}`: m = `${m}`;
+    h < 10 ? h = `0${h}`: h = `${h}`;
+
+    return `${h}:${m}:${s}`;
+}
+
 function setClosingProgressBar() {
     const now = new Date();
     let target = new Date(now);
     let dayInMillisec = 24 * 60 * 60 * 1000;
     let leftPercent = 0;
-    const formatter = new Intl.DateTimeFormat('cs-CZ',
-        {
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit'
-        }
-    );
 
     target.setHours(18);
     target.setMinutes(0);
@@ -120,7 +127,7 @@ function setClosingProgressBar() {
     } else {
         $('#closingDeadlineProgress.progress>.progress-bar').addClass('bg-danger').removeClass('bg-success').removeClass('bg-warning');
     }
-    $('#closingDeadlineProgress.progress>.progress-bar').text(formatter.format(target - now));
+    $('#closingDeadlineProgress.progress>.progress-bar').text(milisecsToTimeString(target - now));
 
     setTimeout(setClosingProgressBar, 1000);
 }
