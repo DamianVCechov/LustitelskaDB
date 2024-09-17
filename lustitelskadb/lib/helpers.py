@@ -16,6 +16,10 @@ def icon(icon_name):
     return Markup('<i class="glyphicon glyphicon-%s"></i>' % icon_name)
 
 
+def bicon(icon_name, fs=None, color=None):
+    return Markup('<i class="bi bi-%s%s%s"></i>' % (icon_name, (' fs-%i' % fs) if fs else '', (' text-%s' % color) if color else ''))
+
+
 # Import commonly used helpers from WebHelpers2 and TG
 from tg.util.html import script_json_encode
 
