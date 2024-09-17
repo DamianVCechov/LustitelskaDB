@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: LustitelskaDB 0.19\n"
+"Project-Id-Version: LustitelskaDB 0.21\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-09-14 22:24+0200\n"
+"POT-Creation-Date: 2024-09-18 00:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr ""
 
 #: lustitelskadb/controllers/admin.py:138
 #: lustitelskadb/controllers/libricipher.py:115
-#: lustitelskadb/controllers/root.py:341 lustitelskadb/controllers/xtwitter.py:32
+#: lustitelskadb/controllers/root.py:346 lustitelskadb/controllers/xtwitter.py:32
 msgid "Form filled with errors!"
 msgstr ""
 
@@ -138,29 +138,29 @@ msgstr ""
 msgid "Libri Cipher item successfully deleted"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:122
+#: lustitelskadb/controllers/root.py:127
 msgid "Missing unique ID of user game result"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:127
+#: lustitelskadb/controllers/root.py:132
 msgid "Requested user game result not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:136
+#: lustitelskadb/controllers/root.py:141
 msgid "Unknown source for authorization, canceled"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:152
+#: lustitelskadb/controllers/root.py:157
 msgid ""
 "There may have been an issue with the consumer_key or consumer_secret in "
 "application"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:184
+#: lustitelskadb/controllers/root.py:189
 msgid "Unknown type of OAuth in config"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:201
+#: lustitelskadb/controllers/root.py:206
 msgid ""
 "I cannot find the keys needed to continue in authorization process in the "
 "session. Maybe you are using a light version of the browser that cannot "
@@ -168,7 +168,7 @@ msgid ""
 "to a full-fledged browser or turn on the saving of cookies."
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:231
+#: lustitelskadb/controllers/root.py:236
 msgid ""
 "I cannot find the data needed to validate the authorization challenge in the "
 "session. Maybe you are using a light version of the browser that cannot "
@@ -176,70 +176,70 @@ msgid ""
 "to a full-fledged browser or turn on the saving of cookies."
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:250
+#: lustitelskadb/controllers/root.py:255
 msgid "Can't fetch access token"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:270
+#: lustitelskadb/controllers/root.py:275
 msgid "Can't get user info from Twitter"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:302
+#: lustitelskadb/controllers/root.py:307
 msgid "Successfully authorized"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:305
+#: lustitelskadb/controllers/root.py:310
 msgid "Succesfully authorized, but missing landing URL"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:322
+#: lustitelskadb/controllers/root.py:327
 msgid "Successfully detached from X/Twitter, the access token has been discarded"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:379
+#: lustitelskadb/controllers/root.py:384
 msgid "This game result is already in database"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:384
+#: lustitelskadb/controllers/root.py:389
 msgid "X/Twitter user not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:403
+#: lustitelskadb/controllers/root.py:408
 msgid ""
 "Something went wrong! Can't save game result to database, so it isn't sent to"
 " legacy website too!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:424
+#: lustitelskadb/controllers/root.py:429
 msgid ""
 "Your result has been successfully saved to database and sent to the original "
 "website"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:426
+#: lustitelskadb/controllers/root.py:431
 msgid ""
 "Your result has been successfully saved to database, but an error occurred "
 "while submitting the result from the form to legacy website. Let us know it!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:454
+#: lustitelskadb/controllers/root.py:459
 msgid "User not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:456
+#: lustitelskadb/controllers/root.py:461
 msgid "Invalid Password"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:460
+#: lustitelskadb/controllers/root.py:465
 msgid "Wrong credentials"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:477
+#: lustitelskadb/controllers/root.py:482
 #, python-format
 msgid "Welcome back, %s!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:490
+#: lustitelskadb/controllers/root.py:495
 msgid "We hope to see you soon!"
 msgstr ""
 
@@ -331,7 +331,7 @@ msgstr ""
 msgid " | About page"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:8 lustitelskadb/templates/master.xhtml:49
+#: lustitelskadb/templates/about.xhtml:8 lustitelskadb/templates/master.xhtml:50
 msgid "About"
 msgstr ""
 
@@ -530,7 +530,7 @@ msgid "User game result detail"
 msgstr ""
 
 #: lustitelskadb/templates/detail.xhtml:26 lustitelskadb/templates/detail.xhtml:46
-#: lustitelskadb/templates/index.xhtml:64 lustitelskadb/templates/master.xhtml:41
+#: lustitelskadb/templates/index.xhtml:81 lustitelskadb/templates/master.xhtml:42
 #: lustitelskadb/templates/newresult.xhtml:18
 msgid "@"
 msgstr ""
@@ -567,58 +567,53 @@ msgstr ""
 msgid " | Welcome"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:14
+#: lustitelskadb/templates/index.xhtml:18
+msgid "Don't forget the Wednesday challenge!"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:25
 msgid "Game"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:17
+#: lustitelskadb/templates/index.xhtml:28
 msgid "Medal"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:18
+#: lustitelskadb/templates/index.xhtml:29
 msgid "Gamester"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:19
+#: lustitelskadb/templates/index.xhtml:30
 msgid "Time"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:20
+#: lustitelskadb/templates/index.xhtml:31
 msgid "Rows"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:21
+#: lustitelskadb/templates/index.xhtml:32
 msgid "Result"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:29
+#: lustitelskadb/templates/index.xhtml:40
 msgid "loss"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:35
+#: lustitelskadb/templates/index.xhtml:46
 msgid "Played players"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:45
-msgid "«"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:48
-#: lustitelskadb/templates/libriciphers.xhtml:25
-msgid "»"
-msgstr ""
-
-#: lustitelskadb/templates/index.xhtml:71
+#: lustitelskadb/templates/index.xhtml:88
 msgid "Previous"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:74
+#: lustitelskadb/templates/index.xhtml:91
 msgid "Next"
 msgstr ""
 
 #: lustitelskadb/templates/administration/index.xhtml:14
 #: lustitelskadb/templates/libriciphers.xhtml:7
-#: lustitelskadb/templates/master.xhtml:28
+#: lustitelskadb/templates/master.xhtml:29
 msgid "Libri Ciphers"
 msgstr ""
 
@@ -637,6 +632,10 @@ msgstr ""
 
 #: lustitelskadb/templates/libriciphers.xhtml:25
 msgid "Permanent link"
+msgstr ""
+
+#: lustitelskadb/templates/libriciphers.xhtml:25
+msgid "»"
 msgstr ""
 
 #: lustitelskadb/templates/libriciphers.xhtml:27
@@ -668,48 +667,48 @@ msgstr ""
 msgid "remember me"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:27
+#: lustitelskadb/templates/master.xhtml:28
 #: lustitelskadb/templates/newresult.xhtml:12
 msgid "New result"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:29
+#: lustitelskadb/templates/master.xhtml:30
 msgid "Statistic"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:30
+#: lustitelskadb/templates/master.xhtml:31
 msgid "Other"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:32
+#: lustitelskadb/templates/master.xhtml:33
 msgid "Czech Wordle Game"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:33
+#: lustitelskadb/templates/master.xhtml:34
 msgid "Our X/Twitter"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:35
+#: lustitelskadb/templates/master.xhtml:36
 msgid "Original website"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:37
+#: lustitelskadb/templates/master.xhtml:38
 msgid "Misc"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:41
+#: lustitelskadb/templates/master.xhtml:42
 msgid "Detach"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:46
+#: lustitelskadb/templates/master.xhtml:47
 msgid "Logout"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:47
+#: lustitelskadb/templates/master.xhtml:48
 msgid "Admin"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:72
+#: lustitelskadb/templates/master.xhtml:73
 msgid "Copyright © "
 msgstr ""
 
