@@ -7,10 +7,10 @@
 <?py
 from operator import lt, le, gt, ge
 from datetime import datetime
-
+now = datetime.now()
 def wednesday_challenge_comming():
 	now = datetime.now()
-	if now.weekday() == 1 and now.hour > 18 or now.weekday() == 2 and now.hour < 18:
+	if now.weekday() == 1 and now.hour >= 18 or now.weekday() == 2 or now.weekday() == 3 and now.hour < 18:
 		return True
 	else:
 		return False
