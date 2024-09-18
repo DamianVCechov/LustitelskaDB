@@ -71,10 +71,12 @@ class GameResultsAdminCrudConfig(CrudRestControllerConfig):
             '__omit_fields__': [
                 'game_raw_data',
                 'created',
-                'updated'
+                'updated',
+                'xtwitter'
             ],
             '__field_widgets__': {
                 'wednesday_challenge': CustomCheckbox(
+                    key="wednesday_challenge",
                     label="Wednesday challenge"
                 )
             }
