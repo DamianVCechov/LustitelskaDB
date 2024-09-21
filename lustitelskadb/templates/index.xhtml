@@ -38,7 +38,7 @@ def wednesday_challenge_comming():
 							<th scope="row" py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${row.game_rank or '?'}<a class="stretched-link" href="${tg.url('/detail/{}'.format(row.uid))}"></a></th>
 							<td py:attrs="{'class': 'text-center w-100{}'.format(' text-muted' if row.game_rows is None else '')}">${row.xtwitter.display_name}<span py:if="row.comment"> ${h.bicon('chat-left-dots', color="muted")}</span></td>
 							<td py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${"{}:{:02}".format(row.game_time.hour * 60 + row.game_time.minute, row.game_time.second) if row.game_time else '-'}</td>
-							<td py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${row.game_rows or _('loss')}</td>
+							<td py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${row.game_rows or h.bicon('x-circle')}</td>
 							<td py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${"{}:{:02}".format(row.game_result_time.hour * 60 + row.game_result_time.minute, row.game_result_time.second) if row.game_result_time else '-'}</td>
 						</tr>
 					</tbody>
