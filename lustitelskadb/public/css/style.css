@@ -1,3 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap');
+
+emoji-picker {
+	--emoji-font-family: "Noto Color Emoji";
+}
+
+.noto-color-emoji-regular {
+	font-family: "Noto Color Emoji", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.emoji-picker-tooltip:not(.shown) {
+	display: none;
+}
+
 /* TurboGears flash bootstrap look */
 #flash>div {
 	padding: 8px 35px 8px 14px;
@@ -50,7 +66,6 @@
 	margin: .25rem;
 	border: 1px solid #a5a5a5;
 } */
-
 form li {
 	margin-top: 2rem;
 }

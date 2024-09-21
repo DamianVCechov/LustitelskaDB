@@ -4,7 +4,7 @@
 </head>
 
 <body py:block="body" py:strip="True">
-<?py
+	<?py
 from aniso8601 import parse_datetime
 
 htmlbr = '<br>'
@@ -13,19 +13,15 @@ htmlbr = '<br>'
 
 	<div class="mt-5">
 		<img class="rounded-circle float-start me-3" src="${session['me_on_xtwitter']['data']['profile_image_url']}" alt="${session['me_on_xtwitter']['data']['name']} @${session['me_on_xtwitter']['data']['username']}" py:if="'profile_image_url' in session['me_on_xtwitter']['data']" />
-		<h5>
-			<span py:if="'name' in session['me_on_xtwitter']['data']">${session['me_on_xtwitter']['data']['name']}</span> <span py:if="'protected' in session['me_on_xtwitter']['data'] and session['me_on_xtwitter']['data']['protected']">${h.icon('lock')}</span> <span py:if="'verified' in session['me_on_xtwitter']['data'] and session['me_on_xtwitter']['data']['verified']">${h.icon('certificate')}</span><br />
-			<span class="small text-muted" py:if="'username' in session['me_on_xtwitter']['data']">@${session['me_on_xtwitter']['data']['username']}</span>
+		<h5 class="noto-color-emoji-regular">
+			<span py:if="'name' in session['me_on_xtwitter']['data']">${session['me_on_xtwitter']['data']['name']}</span> <span py:if="'protected' in session['me_on_xtwitter']['data'] and session['me_on_xtwitter']['data']['protected']">${h.icon('lock')}</span> <span py:if="'verified' in session['me_on_xtwitter']['data'] and session['me_on_xtwitter']['data']['verified']">${h.icon('certificate')}</span><br /> <span class="small text-muted" py:if="'username' in session['me_on_xtwitter']['data']">@${session['me_on_xtwitter']['data']['username']}</span>
 		</h5>
 		<p class="lead" py:if="'description' in session['me_on_xtwitter']['data']">${Markup(session['me_on_xtwitter']['data']['description'].replace('\n', htmlbr))}</p>
 		<p class="lead text-muted">
-			<span class="text-nowrap ms-2" py:if="'location' in session['me_on_xtwitter']['data']">${h.icon('map-marker')} ${session['me_on_xtwitter']['data']['location']}</span>
-			<span class="text-nowrap ms-2" py:if="'entities' in session['me_on_xtwitter']['data'] and 'url' in session['me_on_xtwitter']['data']['entities']">${h.icon('link')} <a class="text-decoration-none" href="${session['me_on_xtwitter']['data']['entities']['url']['urls'][0]['expanded_url']}">${session['me_on_xtwitter']['data']['entities']['url']['urls'][0]['display_url']}</a></span>
-			<span class="text-nowrap ms-2" py:if="'created_at' in session['me_on_xtwitter']['data']">${h.icon('calendar')} ${"{} {}".format(_('Joined'), parse_datetime(session['me_on_xtwitter']['data']['created_at']).strftime("%d.%m.%Y %H:%M:%S"))}</span>
+			<span class="text-nowrap ms-2" py:if="'location' in session['me_on_xtwitter']['data']">${h.icon('map-marker')} ${session['me_on_xtwitter']['data']['location']}</span> <span class="text-nowrap ms-2" py:if="'entities' in session['me_on_xtwitter']['data'] and 'url' in session['me_on_xtwitter']['data']['entities']">${h.icon('link')} <a class="text-decoration-none" href="${session['me_on_xtwitter']['data']['entities']['url']['urls'][0]['expanded_url']}">${session['me_on_xtwitter']['data']['entities']['url']['urls'][0]['display_url']}</a></span> <span class="text-nowrap ms-2" py:if="'created_at' in session['me_on_xtwitter']['data']">${h.icon('calendar')} ${"{} {}".format(_('Joined'), parse_datetime(session['me_on_xtwitter']['data']['created_at']).strftime("%d.%m.%Y %H:%M:%S"))}</span>
 		</p>
 		<p class="lead text-muted" py:if="'public_metrics' in session['me_on_xtwitter']['data']">
-			<span class="text-dark fw-bold" py:if="'following_count' in session['me_on_xtwitter']['data']['public_metrics']">${session['me_on_xtwitter']['data']['public_metrics']['following_count']}</span> <span>Following</span>
-			<span class="text-dark fw-bold ms-2" py:if="'followers_count' in session['me_on_xtwitter']['data']['public_metrics']">${session['me_on_xtwitter']['data']['public_metrics']['followers_count']}</span> <span>Followers</span>
+			<span class="text-dark fw-bold" py:if="'following_count' in session['me_on_xtwitter']['data']['public_metrics']">${session['me_on_xtwitter']['data']['public_metrics']['following_count']}</span> <span>Following</span> <span class="text-dark fw-bold ms-2" py:if="'followers_count' in session['me_on_xtwitter']['data']['public_metrics']">${session['me_on_xtwitter']['data']['public_metrics']['followers_count']}</span> <span>Followers</span>
 		</p>
 
 	</div>

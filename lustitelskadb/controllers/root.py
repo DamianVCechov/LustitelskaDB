@@ -354,6 +354,42 @@ class RootController(BaseController):
                 'xtwitter_displayname': session['me_on_xtwitter']['data']['name']
             }
 
+        emoji_picker_jslnk = twc.JSLink(
+            location="bodybottom",
+            type="module",
+            link="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js",
+            template='kajiki:lustitelskadb.templates.tw2.core.jslink'
+        )
+
+        emoji_picker_jssrc = twc.JSSource(
+            location="bodybottom",
+            src='''"use strict;"
+                $('emoji-picker').on('emoji-click', (event) => {
+                    const commentFieldCaret = $('[name="comment"]').prop('selectionStart');
+                    const commentFieldText = $('[name="comment"]').val();
+                    $('[name="comment"]').focus();
+                    $('[name="comment"]').val(
+                        [commentFieldText.slice(0, commentFieldCaret), event.detail.unicode, commentFieldText.slice(commentFieldCaret)].join('')
+                    );
+                    $('[name="comment"]').prop('selectionStart', commentFieldCaret + event.detail.unicode.length);
+                    $('[name="comment"]').prop('selectionEnd', commentFieldCaret + event.detail.unicode.length);
+                });
+
+                $(() => {
+                    Popper.createPopper(document.querySelector('#emoji_picker'), document.querySelector('.emoji-picker-tooltip'), {
+                        placement: 'top'
+                    });
+                    $('#emoji_picker').click((e) => {
+                        e.preventDefault();
+                        document.querySelector('.emoji-picker-tooltip').classList.toggle("shown");
+                        $("#comment").focus();
+                    });
+                });
+            '''
+        )
+        emoji_picker_jslnk.inject()
+        emoji_picker_jssrc.inject()
+
         return dict(page='newresult')
 
     @expose()
