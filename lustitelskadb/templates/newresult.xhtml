@@ -13,7 +13,7 @@ htmlbr = '<br>'
 
 	<div class="mt-5">
 		<img class="rounded-circle float-start me-3" src="${session['me_on_xtwitter']['data']['profile_image_url']}" alt="${session['me_on_xtwitter']['data']['name']} @${session['me_on_xtwitter']['data']['username']}" py:if="'profile_image_url' in session['me_on_xtwitter']['data']" />
-		<h5 class="noto-color-emoji-regular">
+		<h5>
 			<span py:if="'name' in session['me_on_xtwitter']['data']">${session['me_on_xtwitter']['data']['name']}</span> <span py:if="'protected' in session['me_on_xtwitter']['data'] and session['me_on_xtwitter']['data']['protected']">${h.icon('lock')}</span> <span py:if="'verified' in session['me_on_xtwitter']['data'] and session['me_on_xtwitter']['data']['verified']">${h.icon('certificate')}</span><br /> <span class="small text-muted" py:if="'username' in session['me_on_xtwitter']['data']">@${session['me_on_xtwitter']['data']['username']}</span>
 		</h5>
 		<p class="lead" py:if="'description' in session['me_on_xtwitter']['data']">${Markup(session['me_on_xtwitter']['data']['description'].replace('\n', htmlbr))}</p>
