@@ -332,6 +332,9 @@ lustitelskadb/templates/tgext/admin/bootstrap_crud/__init__.py
 lustitelskadb/templates/tgext/admin/bootstrap_crud/edit.xhtml
 lustitelskadb/templates/tgext/admin/bootstrap_crud/get_all.xhtml
 lustitelskadb/templates/tgext/admin/bootstrap_crud/new.xhtml
+lustitelskadb/templates/tw2/__init__.py
+lustitelskadb/templates/tw2/core/__init__.py
+lustitelskadb/templates/tw2/core/jslink.kajiki
 lustitelskadb/tests/__init__.py
 lustitelskadb/tests/functional/__init__.py
 lustitelskadb/tests/functional/test_authentication.py
