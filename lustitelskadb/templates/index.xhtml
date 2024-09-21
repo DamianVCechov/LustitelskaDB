@@ -6,8 +6,9 @@
 <body py:block="body" py:strip="True">
 <?py
 from operator import lt, le, gt, ge
-from datetime import datetime
+from datetime import datetime, time
 now = datetime.now()
+timenow = time
 def wednesday_challenge_comming():
 	now = datetime.now()
 	if now.weekday() == 1 and now.hour >= 18 or now.weekday() == 2 or now.weekday() == 3 and now.hour < 18:
@@ -25,20 +26,20 @@ def wednesday_challenge_comming():
 							<th class="rounded-top" scope="col" colspan="5"><span>Game</span> ${game_nums[idx].game_no}</th>
 						</tr>
 						<tr class="table-dark text-center">
-							<th scope="col">Medal</th>
-							<th scope="col">Gamester</th>
-							<th scope="col">Time</th>
-							<th scope="col">Rows</th>
-							<th scope="col">Result</th>
+							<th scope="col">${h.bicon('graph-up-arrow')}</th>
+							<th scope="col" class="w-100">${h.bicon('person')}</th>
+							<th scope="col">${h.bicon('stopwatch')}</th>
+							<th scope="col">${h.bicon('justify')}</th>
+							<th scope="col">${h.bicon('clock')}</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr py:attrs="{'class': 'position-relative{}'.format(' table-secondary' if row.wednesday_challenge == False else '')}" py:for="row in game">
 							<th scope="row" py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${row.game_rank or '?'}<a class="stretched-link" href="${tg.url('/detail/{}'.format(row.uid))}"></a></th>
-							<td py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${row.xtwitter.display_name}<span py:if="row.comment"> ${h.bicon('chat-left-dots', color="muted")}</span></td>
-							<td py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${row.game_time}</td>
+							<td py:attrs="{'class': 'text-center w-100{}'.format(' text-muted' if row.game_rows is None else '')}">${row.xtwitter.display_name}<span py:if="row.comment"> ${h.bicon('chat-left-dots', color="muted")}</span></td>
+							<td py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${"{}:{:02}".format(row.game_time.hour * 60 + row.game_time.minute, row.game_time.second) if row.game_time else '-'}</td>
 							<td py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${row.game_rows or _('loss')}</td>
-							<td py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${row.game_result_time}</td>
+							<td py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${"{}:{:02}".format(row.game_result_time.hour * 60 + row.game_result_time.minute, row.game_result_time.second) if row.game_result_time else '-'}</td>
 						</tr>
 					</tbody>
 					<tfoot>
