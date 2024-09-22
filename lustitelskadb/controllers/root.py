@@ -111,9 +111,9 @@ class RootController(BaseController):
         for lg in game_nums:
             game = DBSession.query(model.GameResult).filter(model.GameResult.game_no == lg.game_no)
             if lg.game_no % 7 == 5:
-                game = game.order_by(model.GameResult.game_result_time == None, model.GameResult.wednesday_challenge.desc(), model.GameResult.game_result_time, model.GameResult.game_rows)
+                game = game.order_by(model.GameResult.game_result_time == None, model.GameResult.wednesday_challenge.desc(), model.GameResult.game_result_time, model.GameResult.game_rows, model.GameResult.game_time)
             else:
-                game = game.order_by(model.GameResult.game_result_time == None, model.GameResult.game_result_time, model.GameResult.game_rows)
+                game = game.order_by(model.GameResult.game_result_time == None, model.GameResult.game_result_time, model.GameResult.game_rows, model.GameResult.game_time)
             games.append(game.all())
 
         closing_deadline_jssrc.inject();
