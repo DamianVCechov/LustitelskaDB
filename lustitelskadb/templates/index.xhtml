@@ -4,11 +4,12 @@
 </head>
 
 <body py:block="body" py:strip="True">
-<?py
+	<?py
 from operator import lt, le, gt, ge
-from datetime import datetime, time
+from datetime import datetime
+
 now = datetime.now()
-timenow = time
+
 def wednesday_challenge_comming():
 	now = datetime.now()
 	if now.weekday() == 1 and now.hour >= 18 or now.weekday() == 2 or now.weekday() == 3 and now.hour < 18:
@@ -16,7 +17,9 @@ def wednesday_challenge_comming():
 	else:
 		return False
 ?>
-	<div class="bg-light rounded text-uppercase text-danger d-flex align-items-center clearfix display-4 my-3" py:if="wednesday_challenge_comming()"><img class="img-fluid rounded wednesday-challenge-img m-1" style="max-width: 128px;" src="${tg.url('/img/wednesday-challenge-256.webp')}" alt="Wednesday Challenge" /><span class="fw-bolder mx-3">Don't forget the Wednesday challenge!</span></div>
+	<div class="bg-light rounded text-uppercase text-danger d-flex align-items-center clearfix display-4 my-3" py:if="wednesday_challenge_comming()">
+		<img class="img-fluid rounded wednesday-challenge-img m-1" style="max-width: 128px;" src="${tg.url('/img/wednesday-challenge-256.webp')}" alt="Wednesday Challenge" /><span class="fw-bolder mx-3">Don't forget the Wednesday challenge!</span>
+	</div>
 	<div class="row pt-1" py:if="games">
 		<div class="col-lg-6" py:for="idx, game in enumerate(games)">
 			<div class="table-responsive">
@@ -33,14 +36,24 @@ def wednesday_challenge_comming():
 							<th scope="col">${h.bicon('clock')}</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr py:attrs="{'class': 'position-relative{}'.format(' table-secondary' if row.wednesday_challenge == False else '')}" py:for="row in game">
-							<th scope="row" py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${row.game_rank or '?'}<a class="stretched-link" href="${tg.url('/detail/{}'.format(row.uid))}"></a></th>
-							<td py:attrs="{'class': 'text-center w-100{}'.format(' text-muted' if row.game_rows is None else '')}">${row.xtwitter.display_name}<span py:if="row.comment"> ${h.bicon('chat-left-dots', color="muted")}</span></td>
-							<td py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${"{}:{:02}".format(row.game_time.hour * 60 + row.game_time.minute, row.game_time.second) if row.game_time else '-'}</td>
-							<td py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${h.bicon('{}-circle-fill'.format(row.game_rows), color="{}".format(["success", "success", "primary", "primary", "danger", "danger"][row.game_rows-1])) if row.game_rows else h.bicon('emoji-frown-fill', color="dark")}</td>
-							<td py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${"{}:{:02}".format(row.game_result_time.hour * 60 + row.game_result_time.minute, row.game_result_time.second) if row.game_result_time else '-'}</td>
-						</tr>
+					<tbody py:with="losers_divided=False; nochallengers_divided=False">
+						<py:for each="row in game">
+							<tr class="table-dark text-center" py:if="row.game_no % 7 == 5 and not nochallengers_divided and not row.wednesday_challenge">
+								<th scope="row" colspan="5">Not played the challenge</th>
+								<?py nochallengers_divided = True ?>
+							</tr>
+							<tr class="table-dark text-center" py:if="not losers_divided and not row.game_rows">
+								<th scope="row" colspan="5">Losers</th>
+								<?py losers_divided = True ?>
+							</tr>
+							<tr py:attrs="{'class': 'position-relative{}'.format(' table-secondary' if row.wednesday_challenge == False else '')}">
+								<th scope="row" py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${row.game_rank or '?'}<a class="stretched-link" href="${tg.url('/detail/{}'.format(row.uid))}"></a></th>
+								<td py:attrs="{'class': 'text-center w-100{}'.format(' text-muted' if row.game_rows is None else '')}">${row.xtwitter.display_name}<span py:if="row.comment"> ${h.bicon('chat-left-dots', color="muted")}</span></td>
+								<td py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${"{}:{:02}".format(row.game_time.hour * 60 + row.game_time.minute, row.game_time.second) if row.game_time else '-'}</td>
+								<td py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${h.bicon('{}-circle-fill'.format(row.game_rows), color="{}".format(["success", "success", "primary", "primary", "danger", "danger"][row.game_rows-1])) if row.game_rows else h.bicon('emoji-frown-fill', color="dark")}</td>
+								<td py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${"{}:{:02}".format(row.game_result_time.hour * 60 + row.game_result_time.minute, row.game_result_time.second) if row.game_result_time else '-'}</td>
+							</tr>
+						</py:for>
 					</tbody>
 					<tfoot>
 						<tr class="table-primary text-center">

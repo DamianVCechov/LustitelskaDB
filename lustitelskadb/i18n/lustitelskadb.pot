@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.22\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-09-21 20:14+0200\n"
+"POT-Creation-Date: 2024-09-24 01:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -530,7 +530,7 @@ msgid "User game result detail"
 msgstr ""
 
 #: lustitelskadb/templates/detail.xhtml:26 lustitelskadb/templates/detail.xhtml:46
-#: lustitelskadb/templates/index.xhtml:82 lustitelskadb/templates/master.xhtml:42
+#: lustitelskadb/templates/index.xhtml:95 lustitelskadb/templates/master.xhtml:42
 #: lustitelskadb/templates/newresult.xhtml:17
 msgid "@"
 msgstr ""
@@ -567,27 +567,31 @@ msgstr ""
 msgid " | Welcome"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:19
+#: lustitelskadb/templates/index.xhtml:21
 msgid "Don't forget the Wednesday challenge!"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:26
+#: lustitelskadb/templates/index.xhtml:29
 msgid "Game"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:41
-msgid "loss"
+#: lustitelskadb/templates/index.xhtml:42
+msgid "Not played the challenge"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:47
+#: lustitelskadb/templates/index.xhtml:46
+msgid "Losers"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:60
 msgid "Played players"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:89
+#: lustitelskadb/templates/index.xhtml:102
 msgid "Previous"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:92
+#: lustitelskadb/templates/index.xhtml:105
 msgid "Next"
 msgstr ""
 
