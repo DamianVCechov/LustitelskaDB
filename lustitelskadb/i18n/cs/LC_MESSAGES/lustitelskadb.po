@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-09-24 01:28+0200\n"
-"PO-Revision-Date: 2024-09-24 01:29+0200\n"
+"POT-Creation-Date: 2024-09-25 02:26+0200\n"
+"PO-Revision-Date: 2024-09-25 02:27+0200\n"
 "Last-Translator: Jaroslav Mikulík <jaroslav.mikulik@runtech.cz>\n"
 "Language: cs\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -615,7 +615,7 @@ msgstr "Detail herního výsledku uživatele"
 
 #: lustitelskadb/templates/detail.xhtml:26
 #: lustitelskadb/templates/detail.xhtml:46
-#: lustitelskadb/templates/index.xhtml:95
+#: lustitelskadb/templates/index.xhtml:99
 #: lustitelskadb/templates/master.xhtml:42
 #: lustitelskadb/templates/newresult.xhtml:17
 msgid "@"
@@ -663,27 +663,31 @@ msgstr "Nezapomeň na středeční výzvu!"
 msgid "Game"
 msgstr "Klání"
 
+# | msgid "Wednesday challenge"
 #: lustitelskadb/templates/index.xhtml:42
-#| msgid "Wednesday challenge"
 msgid "Not played the challenge"
 msgstr "Nehráli středeční výzvu"
 
 # | msgid "loose"
 # | msgid "lose"
+# | msgid "loss"
 #: lustitelskadb/templates/index.xhtml:46
-#| msgid "loss"
 msgid "Losers"
 msgstr "Poražení"
 
-#: lustitelskadb/templates/index.xhtml:60
+#: lustitelskadb/templates/index.xhtml:50
+msgid "Disqualified"
+msgstr "Diskvalifikovaní"
+
+#: lustitelskadb/templates/index.xhtml:64
 msgid "Played players"
 msgstr "Hrálo hráčů"
 
-#: lustitelskadb/templates/index.xhtml:102
+#: lustitelskadb/templates/index.xhtml:106
 msgid "Previous"
 msgstr "Předchozí"
 
-#: lustitelskadb/templates/index.xhtml:105
+#: lustitelskadb/templates/index.xhtml:109
 msgid "Next"
 msgstr "Následující"
 

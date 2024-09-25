@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: LustitelskaDB 0.22\n"
+"Project-Id-Version: LustitelskaDB 0.23\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-09-24 01:28+0200\n"
+"POT-Creation-Date: 2024-09-25 02:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -530,7 +530,7 @@ msgid "User game result detail"
 msgstr ""
 
 #: lustitelskadb/templates/detail.xhtml:26 lustitelskadb/templates/detail.xhtml:46
-#: lustitelskadb/templates/index.xhtml:95 lustitelskadb/templates/master.xhtml:42
+#: lustitelskadb/templates/index.xhtml:99 lustitelskadb/templates/master.xhtml:42
 #: lustitelskadb/templates/newresult.xhtml:17
 msgid "@"
 msgstr ""
@@ -583,15 +583,19 @@ msgstr ""
 msgid "Losers"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:60
+#: lustitelskadb/templates/index.xhtml:50
+msgid "Disqualified"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:64
 msgid "Played players"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:102
+#: lustitelskadb/templates/index.xhtml:106
 msgid "Previous"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:105
+#: lustitelskadb/templates/index.xhtml:109
 msgid "Next"
 msgstr ""
 
