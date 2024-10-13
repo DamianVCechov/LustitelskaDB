@@ -55,7 +55,7 @@ user_xtwitter = json.loads(gameresult.xtwitter.user_info or '{"data":{}}')
 				</tr>
 				<tr>
 					<th scope="row">success rate</th>
-					<td></td>
+					<td>${h.bicon('arrow{}-right'.format("" if solved_games == played_games else "-up" if gameresult.game_rows != None else "-down"))}</td>
 					<td class="text-end bg-light">${"{:0.2f}".format(100 * solved_games / played_games)} <span>%</span></td>
 				</tr>
 				<tr>
