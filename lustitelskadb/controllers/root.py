@@ -132,7 +132,16 @@ class RootController(BaseController):
             flash(_("Requested user game result not found"))
             return redirect('/')
 
-        return dict(page="detail", gameresult=gameresult)
+        user_game_stats = DBSession.query(
+            func.avg(func.ifnull(model.GameResult.game_rows, 7)).label('avg_rows'),
+            func.avg(model.GameResult.game_rows).label('avg_solved_rows'),
+            func.avg(model.GameResult.game_time).label('avg_time'),
+            func.avg(model.GameResult.game_result_time).label('avg_result_time')).filter(model.GameResult.xtwitter_uid == gameresult.xtwitter_uid, model.GameResult.game_no <= gameresult.game_no).first()
+
+        played_games = DBSession.query(model.GameResult).filter(model.GameResult.xtwitter_uid == gameresult.xtwitter_uid, model.GameResult.game_no <= gameresult.game_no).count()
+        solved_games = DBSession.query(model.GameResult).filter(model.GameResult.xtwitter_uid == gameresult.xtwitter_uid, model.GameResult.game_no <= gameresult.game_no, model.GameResult.game_rows != None).count()
+
+        return dict(page="detail", gameresult=gameresult, user_game_stats=user_game_stats, played_games=played_games, solved_games=solved_games)
 
     @expose()
     def xauthorize(self, **kw):

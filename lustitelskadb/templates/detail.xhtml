@@ -5,6 +5,7 @@
 
 <body py:block="body" py:strip="True">
 	<?py
+from operator import lt, le, gt, ge
 from aniso8601 import parse_datetime
 
 try:
@@ -32,6 +33,53 @@ user_xtwitter = json.loads(gameresult.xtwitter.user_info or '{"data":{}}')
 		<p class="lead text-muted" py:if="'public_metrics' in user_xtwitter['data']">
 			<span class="text-dark fw-bold" py:if="'following_count' in user_xtwitter['data']['public_metrics']">${user_xtwitter['data']['public_metrics']['following_count']}</span> <span>Following</span> <span class="text-dark fw-bold ms-2" py:if="'followers_count' in user_xtwitter['data']['public_metrics']">${user_xtwitter['data']['public_metrics']['followers_count']}</span> <span>Followers</span>
 		</p>
+	</div>
+
+	<div class="table-responsive">
+		<table class="table table-sm table-striped w-auto mt-5">
+			<thead>
+				<tr class="table-dark text-center">
+					<th class="rounded-top" scope="col" colspan="3">User statistics till this game</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row">played</th>
+					<td></td>
+					<td class="text-end bg-light">${played_games} <span>games</span></td>
+				</tr>
+				<tr>
+					<th scope="row">solved</th>
+					<td></td>
+					<td class="text-end bg-light">${solved_games} <span>games</span></td>
+				</tr>
+				<tr>
+					<th scope="row">success rate</th>
+					<td></td>
+					<td class="text-end bg-light">${"{:0.2f}".format(100 * solved_games / played_games)} <span>%</span></td>
+				</tr>
+				<tr>
+					<th scope="row">&#x2300; for all games</th>
+					<td py:with="average=user_game_stats.avg_rows; result=gameresult.game_rows or 7">${h.bicon('arrow{}-right'.format('' if average == result else "-up" if gt(average, result) else "-down"))}</td>
+					<td class="text-end bg-light">${"{:0.1f}".format(user_game_stats.avg_rows)} <span>rows</span></td>
+				</tr>
+				<tr>
+					<th scope="row">&#x2300; for solved games</th>
+					<td py:with="average=user_game_stats.avg_solved_rows; result=gameresult.game_rows or 7">${h.bicon('arrow{}-right'.format('' if average == result else "-up" if gt(average, result) else "-down"))}</td>
+					<td class="text-end bg-light">${"{:0.1f}".format(user_game_stats.avg_solved_rows)} <span>rows</span></td>
+				</tr>
+				<tr>
+					<th scope="row">&#x2300; time for solved games</th>
+					<td py:with="average=user_game_stats.avg_time; result=float('inf') if not gameresult.game_result_time else gameresult.game_time.second + gameresult.game_time.minute*60 + gameresult.game_time.hour*60**2">${h.bicon('arrow{}-right'.format('' if average == result else "-up" if gt(average, result) else "-down"))}</td>
+					<td class="text-end bg-light">${"{}:{:02.0f}".format(user_game_stats.avg_time // 60, user_game_stats.avg_time % 60)} <span>min</span></td>
+				</tr>
+				<tr>
+					<th scope="row">&#x2300; result time for solved games</th>
+					<td py:with="average=user_game_stats.avg_result_time; result=float('inf') if not gameresult.game_result_time else gameresult.game_result_time.second + gameresult.game_result_time.minute*60 + gameresult.game_result_time.hour*60**2">${h.bicon('arrow{}-right'.format('' if average == result else "-up" if gt(average, result) else "-down"))}</td>
+					<td class="text-end bg-light">${"{}:{:02.0f}".format(user_game_stats.avg_result_time // 60, user_game_stats.avg_result_time % 60)} <span>min</span></td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 
 	<div class="mt-5">
