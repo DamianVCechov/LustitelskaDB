@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-10-13 03:22+0200\n"
-"PO-Revision-Date: 2024-10-13 03:23+0200\n"
+"PO-Revision-Date: 2024-10-13 12:25+0200\n"
 "Last-Translator: Jaroslav Mikulík <jaroslav.mikulik@runtech.cz>\n"
 "Language: cs\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -652,7 +652,7 @@ msgstr "her"
 
 #: lustitelskadb/templates/detail.xhtml:50
 msgid "solved"
-msgstr "vyšeno"
+msgstr "vyřešeno"
 
 #: lustitelskadb/templates/detail.xhtml:54
 msgid "success rate"
