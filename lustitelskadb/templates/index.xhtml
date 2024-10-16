@@ -10,21 +10,61 @@ from datetime import datetime
 
 now = datetime.now()
 
+first_special_dates = {
+	'01.01': '&#x1F386;', # Fireworks
+	'14.03': '&Pi;', # Pi Day
+	'01.04': '&#x1F0CF;', # Playing Card Black Joker - Fool's day
+	'24.12': '&#x1F384;', # Christmas Tree
+	'25.12': '&#x1F384;', # Christmas Tree
+	'26.12': '&#x1F384;', # Christmas Tree
+	'31.12': '&#x1F386;' # Fireworks
+}
+
+second_special_dates = {
+	'14.03': '&pi;' # pi Day
+}
+
+fourth_special_dates = {
+	'08.03': '&#x1F339;', # Rose - International Women's Day
+	'14.03': '&#x1F967;', # Pie - Pi Day
+	'31.07': '&#x1F346;', # Aubergine - National Orgasm Day
+	'08.08': '&#x1F346;' # Aubergine - International Female Orgasm Day
+}
+
+fifth_special_dates = {
+	'14.03': '&#x1F427;', # Penguin - Czech name-day Rút
+	'26.03': '&#x1F410;', # Goat - Free The Nipple Day
+	'01.04': '&#x1F40C;', # Snail
+	'17.09': '&#x1F427;', # Penguin - 1st release of Linux
+	'13.10': '&#x1F410;', # Goat - National Bra Day
+	'24.12': '&#x26C4;', # Snowman Without Snow
+	'25.12': '&#x26C4;', # Snowman Without Snow
+	'26.12': '&#x26C4;' # Snowman Without Snow
+}
+
 last_special_dates = {
+	'01.01': '&#x1F387;', # Firework Sparkler
+	'15.02': '&#x1F4BB;', # Personal Computer - World Computer Day
 	'12.03': '&#x1F526;', # Electric torch - Invented in 12.3.1898
+	'17.03': '&#x1F382;', # Birthday cake - This DB B-day
+	'15.09': '&#x1F365;', # Fish Cake with Swirl Design - 1st releaseof Debian
 	'21.10': '&#x1F4A1;', # Bulb - Invented in 21.10.1879
 	'29.10': '&#x1FA94;', # Aladdin's lamp - name-day of Aladdin
 	'31.10': '&#x1F383;', # Jack-O-Lantern - Halloween
-	'01.11': '&#x1F56F;' # Candle - All Saints Day
+	'01.11': '&#x1F56F;', # Candle - All Saints Day
+	'24.12': '&#x2744;', # Snowflake
+	'25.12': '&#x2744;', # Snowflake
+	'26.12': '&#x2744;', # Snowflake
+	'31.12': '&#x1F387;' # Firework Sparkler
 }
 
 badge = {
 	0: '&#x1F984;',
-	1: '&#x1F947;',
+	1: first_special_dates.get(now.strftime('%d.%m'), '&#x1F947;'),
 	2: '&#x1F948;',
 	3: '&#x1F949;',
-	4: '&#x1F954;',
-	5: '&#x1F422;',
+	4: fourth_special_dates.get(now.strftime('%d.%m'), '&#x1F954;'),
+	5: fifth_special_dates.get(now.strftime('%d.%m'), '&#x1F422;'),
 	# 6: '&#x1FBF6;',
 	# 7: '&#x1FBF7;',
 	# 8: '&#x1FBF8;',
