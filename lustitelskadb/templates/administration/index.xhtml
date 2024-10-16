@@ -27,6 +27,19 @@
 			</div>
 		</div>
 		<div class="col-md-2">
+			<div id="reassemble-scoresheet" class="text-center position-relative bg-light p-1 rounded mb-3">
+				<div class="display-1 text-secondary">
+					${h.icon('sort-by-attributes')}
+				</div>
+				<div class="m-5 p-1 d-none">
+					<div class="spinner-border text-secondary" role="status">
+						<span class="visually-hidden">Counting...</span>
+					</div>
+				</div>
+				<a href="${tg.url('/admin/reassemble_scoresheet')}" class="stretched-link link-secondary h5" onclick="$.each($('#reassemble-scoresheet').children(), (idx, element) => {$(element).toggleClass('d-none')})">Reassemble Score Sheet</a>
+			</div>
+		</div>
+		<div class="col-md-2">
 			<div class="text-center position-relative bg-light p-1 rounded mb-3">
 				<div class="display-1 text-secondary">${h.icon('list-alt')}</div>
 				<a href="${tg.url('/admin/dbadmin')}" class="stretched-link link-secondary h5">DB admin</a>

@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: LustitelskaDB 0.23\n"
+"Project-Id-Version: LustitelskaDB 0.24\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-10-13 03:22+0200\n"
+"POT-Creation-Date: 2024-10-16 04:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: lustitelskadb/controllers/admin.py:128 lustitelskadb/controllers/admin.py:133
 #: lustitelskadb/controllers/admin.py:148 lustitelskadb/controllers/admin.py:230
-#: lustitelskadb/controllers/admin.py:264
+#: lustitelskadb/controllers/admin.py:277 lustitelskadb/controllers/admin.py:311
 #: lustitelskadb/controllers/libricipher.py:56
 #: lustitelskadb/controllers/libricipher.py:108
 #: lustitelskadb/controllers/libricipher.py:143
@@ -55,7 +55,11 @@ msgstr ""
 msgid "The import attempt ended with an error: \"{}\""
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:268
+#: lustitelskadb/controllers/admin.py:271
+msgid "Score Sheet successfully reassembled for {} games"
+msgstr ""
+
+#: lustitelskadb/controllers/admin.py:315
 msgid "Application successfully restarted"
 msgstr ""
 
@@ -525,76 +529,76 @@ msgstr ""
 msgid " | User game result detail"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:21
+#: lustitelskadb/templates/detail.xhtml:22
 msgid "User game result detail"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:26 lustitelskadb/templates/detail.xhtml:86
+#: lustitelskadb/templates/detail.xhtml:27 lustitelskadb/templates/detail.xhtml:94
 #: lustitelskadb/templates/index.xhtml:99 lustitelskadb/templates/master.xhtml:42
 #: lustitelskadb/templates/newresult.xhtml:17
 msgid "@"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:30
+#: lustitelskadb/templates/detail.xhtml:31
 #: lustitelskadb/templates/newresult.xhtml:21
 msgid "Joined"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:33
+#: lustitelskadb/templates/detail.xhtml:34
 #: lustitelskadb/templates/newresult.xhtml:24
 msgid "Following"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:33
+#: lustitelskadb/templates/detail.xhtml:34
 #: lustitelskadb/templates/newresult.xhtml:24
 msgid "Followers"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:41
+#: lustitelskadb/templates/detail.xhtml:42
 msgid "User statistics till this game"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:46
+#: lustitelskadb/templates/detail.xhtml:47
 msgid "played"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:47 lustitelskadb/templates/detail.xhtml:51
+#: lustitelskadb/templates/detail.xhtml:49 lustitelskadb/templates/detail.xhtml:54
 msgid "games"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:50
+#: lustitelskadb/templates/detail.xhtml:52
 msgid "solved"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:54
+#: lustitelskadb/templates/detail.xhtml:57
 msgid "success rate"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:55
+#: lustitelskadb/templates/detail.xhtml:59
 msgid "%"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:58
+#: lustitelskadb/templates/detail.xhtml:62
 msgid "⌀ for all games"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:59 lustitelskadb/templates/detail.xhtml:63
+#: lustitelskadb/templates/detail.xhtml:64 lustitelskadb/templates/detail.xhtml:69
 msgid "rows"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:62
+#: lustitelskadb/templates/detail.xhtml:67
 msgid "⌀ for solved games"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:66
+#: lustitelskadb/templates/detail.xhtml:72
 msgid "⌀ time for solved games"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:67 lustitelskadb/templates/detail.xhtml:71
+#: lustitelskadb/templates/detail.xhtml:74 lustitelskadb/templates/detail.xhtml:79
 msgid "min"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:70
+#: lustitelskadb/templates/detail.xhtml:77
 msgid "⌀ result time for solved games"
 msgstr ""
 
@@ -805,11 +809,19 @@ msgstr ""
 msgid "Legacy Data Import"
 msgstr ""
 
-#: lustitelskadb/templates/administration/index.xhtml:32
+#: lustitelskadb/templates/administration/index.xhtml:36
+msgid "Counting..."
+msgstr ""
+
+#: lustitelskadb/templates/administration/index.xhtml:39
+msgid "Reassemble Score Sheet"
+msgstr ""
+
+#: lustitelskadb/templates/administration/index.xhtml:45
 msgid "DB admin"
 msgstr ""
 
-#: lustitelskadb/templates/administration/index.xhtml:38
+#: lustitelskadb/templates/administration/index.xhtml:51
 msgid "Restart APP"
 msgstr ""
 
