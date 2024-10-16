@@ -117,7 +117,14 @@ class RootController(BaseController):
                 game = game.order_by(model.GameResult.game_rows == None, model.GameResult.game_result_time == None, model.GameResult.game_result_time, model.GameResult.game_rows, model.GameResult.game_time.desc())
             games.append(game.all())
 
-        closing_deadline_jssrc.inject();
+        popover_titles_jssrc = twc.JSSource(src='''
+            $(() => {
+                $('[title]').popover({ trigger: "hover", placement: "top" });
+            });
+        ''')
+
+        closing_deadline_jssrc.inject()
+        popover_titles_jssrc.inject()
 
         return dict(page='index', comments=comments, game_nums=game_nums, games=games, latest_game=latest_game, oldest_game=oldest_game)
 
