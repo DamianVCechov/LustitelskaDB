@@ -49,6 +49,7 @@ from lustitelskadb.controllers.api import APIController
 
 import lustitelskadb.lib.forms as appforms
 from lustitelskadb.lib.injects import closing_deadline_jssrc
+from lustitelskadb.lib.utils import assemble_game_scoresheet
 
 __all__ = ['RootController']
 
@@ -452,6 +453,8 @@ class RootController(BaseController):
         except Exception as e:
             flash(_(u"Something went wrong! Can't save game result to database, so it isn't sent to legacy website too!"), 'error')
             redirect('/')
+
+        assemble_game_scoresheet(parsed_vals['game_no'])
 
         # Send data to legacy form (temporary function)
         viewform_url = "https://docs.google.com/forms/d/e/1FAIpQLSdHcMlAmXKOODsG0hZCc687_8oVZpFbv_GJXfA5P9aHn2IJgg/viewform"
