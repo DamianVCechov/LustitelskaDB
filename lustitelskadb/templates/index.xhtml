@@ -10,6 +10,14 @@ from datetime import datetime
 
 now = datetime.now()
 
+last_special_dates = {
+	'12.03': '&#x1F526;', # Electric torch - Invented in 12.3.1898
+	'21.10': '&#x1F4A1;', # Bulb - Invented in 21.10.1879
+	'29.10': '&#x1FA94;', # Aladdin's lamp - name-day of Aladdin
+	'31.10': '&#x1F383;', # Jack-O-Lantern - Halloween
+	'01.11': '&#x1F56F;' # Candle - All Saints Day
+}
+
 badge = {
 	0: '&#x1F984;',
 	1: '&#x1F947;',
@@ -21,7 +29,7 @@ badge = {
 	# 7: '&#x1FBF7;',
 	# 8: '&#x1FBF8;',
 	# 9: '&#x1FBF9;',
-	'last': '&#x1FA94;'
+	'last': last_special_dates.get(now.strftime('%d.%m'), '&#x1F3EE;')
 }
 
 def wednesday_challenge_comming():
