@@ -23,6 +23,7 @@ from lustitelskadb import model
 from lustitelskadb.model import DBSession
 
 import lustitelskadb.lib.forms as appforms
+from lustitelskadb.lib.utils import assemble_game_scoresheet
 
 from pathlib import Path
 from datetime import datetime, timedelta
@@ -233,40 +234,7 @@ class AdministrationController(BaseController):
         games_nums = DBSession.query(model.GameResult.game_no).order_by(model.GameResult.game_no).distinct()
 
         for game_no in games_nums:
-            game = DBSession.query(model.GameResult).filter(model.GameResult.game_no == game_no.game_no)
-            if game_no.game_no % 7 == 5:
-                game = game.order_by(model.GameResult.game_rows == None, model.GameResult.game_result_time == None, model.GameResult.wednesday_challenge.desc(), model.GameResult.game_result_time, model.GameResult.game_rows, model.GameResult.game_time.desc())
-            else:
-                game = game.order_by(model.GameResult.game_rows == None, model.GameResult.game_result_time == None, model.GameResult.game_result_time, model.GameResult.game_rows, model.GameResult.game_time.desc())
-
-            next_place = 1
-            recentplace_counter = 0
-            prev_row = None
-
-            for row in game.all():
-                if row.game_rows:
-                    if not (prev_row and prev_row.game_time == row.game_time and prev_row.game_rows == row.game_rows and prev_row.game_result_time == row.game_result_time):
-                        next_place += recentplace_counter
-                        recentplace_counter = 0
-                    if game_no.game_no % 7 == 5 and prev_row and prev_row.wednesday_challenge and not row.wednesday_challenge:
-                        next_place = 1
-                        recentplace_counter = 0
-                    if row.game_rows == 1:
-                        row.game_rank = 0
-                    else:
-                        row.game_rank = next_place
-                        recentplace_counter += 1
-                else:
-                    if next_place > 0:
-                        next_place = -1
-                        recentplace_counter = 0
-                    if not (prev_row and prev_row.game_time == row.game_time and prev_row.game_rows == row.game_rows and prev_row.game_result_time == row.game_result_time):
-                        next_place -= recentplace_counter
-                        recentplace_counter = 0
-                    row.game_rank = next_place
-                    recentplace_counter += 1
-
-                prev_row = row
+            assemble_game_scoresheet(game_no.game_no, dbflush=False)
 
         flash(_(u'Score Sheet successfully reassembled for {} games').format(games_nums.count()))
         DBSession.flush()
