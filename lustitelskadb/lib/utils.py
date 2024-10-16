@@ -42,6 +42,9 @@ def assemble_game_scoresheet(game_no, dbflush=True):
             if next_place > 0:
                 next_place = -1
                 recentplace_counter = 0
+            if game_no % 7 == 5 and prev_row and prev_row.wednesday_challenge and not row.wednesday_challenge:
+                next_place = -1
+                recentplace_counter = 0
             if not (prev_row and prev_row.game_time == row.game_time and prev_row.game_rows == row.game_rows and prev_row.game_result_time == row.game_result_time):
                 next_place -= recentplace_counter
                 recentplace_counter = 0
