@@ -12,6 +12,14 @@ from lustitelskadb.model import DBSession
 
 __all__ = ('assemble_game_scoresheet')
 
+scoring = {
+    0: 0,
+    1: 6,
+    2: 5,
+    3: 4,
+    4: 3,
+    5: 2
+}
 
 def assemble_game_scoresheet(game_no, dbflush=True):
     """Assemble Game Scoresheet"""
@@ -33,12 +41,18 @@ def assemble_game_scoresheet(game_no, dbflush=True):
             if game_no % 7 == 5 and prev_row and prev_row.wednesday_challenge and not row.wednesday_challenge:
                 next_place = 1
                 recentplace_counter = 0
+                if prev_row.game_rank > 5:
+                    prev_row.game_points = 0
             if row.game_rows == 1:
                 row.game_rank = 0
+                row.game_game_points = 0
             else:
                 row.game_rank = next_place
+                row.game_points = scoring.get(next_place, 1)
                 recentplace_counter += 1
         else:
+            if prev_row.game_rows and prev_row.game_rank > 5:
+                prev_row.game_points = 0
             if next_place > 0:
                 next_place = -1
                 recentplace_counter = 0
@@ -49,9 +63,13 @@ def assemble_game_scoresheet(game_no, dbflush=True):
                 next_place -= recentplace_counter
                 recentplace_counter = 0
             row.game_rank = next_place
+            row.game_points = 0
             recentplace_counter += 1
 
         prev_row = row
+
+    if row.game_rows and row.game_rank > 5:
+        row.game_points = 0
 
     if dbflush:
         DBSession.flush()
