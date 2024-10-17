@@ -145,7 +145,8 @@ class RootController(BaseController):
             func.avg(model.GameResult.game_rows).label('avg_solved_rows'),
             func.avg(model.GameResult.game_time).label('avg_time'),
             func.avg(model.GameResult.game_result_time).label('avg_result_time'),
-            func.avg(model.GameResult.game_rank).label('avg_rank')
+            func.avg(model.GameResult.game_rank).label('avg_rank'),
+            func.avg(model.GameResult.game_points).label('avg_points')
         ).filter(model.GameResult.xtwitter_uid == gameresult.xtwitter_uid, model.GameResult.game_no <= gameresult.game_no).first()
 
         played_games = DBSession.query(model.GameResult).filter(model.GameResult.xtwitter_uid == gameresult.xtwitter_uid, model.GameResult.game_no <= gameresult.game_no).count()
