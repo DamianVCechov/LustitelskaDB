@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-10-17 01:13+0200\n"
-"PO-Revision-Date: 2024-10-17 01:13+0200\n"
+"POT-Creation-Date: 2024-10-17 03:30+0200\n"
+"PO-Revision-Date: 2024-10-17 03:31+0200\n"
 "Last-Translator: Jaroslav Mikulík <jaroslav.mikulik@runtech.cz>\n"
 "Language: cs\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -43,7 +43,7 @@ msgstr "Chcete opravdu restartovat aplikaci? Toto bude provedeno okamžitě!"
 
 #: lustitelskadb/controllers/admin.py:141
 #: lustitelskadb/controllers/libricipher.py:115
-#: lustitelskadb/controllers/root.py:356
+#: lustitelskadb/controllers/root.py:365
 #: lustitelskadb/controllers/xtwitter.py:32
 msgid "Form filled with errors!"
 msgstr "Formulář vyplněn s chybami!"
@@ -162,20 +162,20 @@ msgstr "Chybí unikátní ID Libri Šifry"
 msgid "Libri Cipher item successfully deleted"
 msgstr "Libri Šifry položka úspěšně smazána"
 
-#: lustitelskadb/controllers/root.py:128
+#: lustitelskadb/controllers/root.py:135
 msgid "Missing unique ID of user game result"
 msgstr "Chybí unikátní ID herního výsledku uživatele"
 
 # | msgid "Requested Libri Cipher not found"
-#: lustitelskadb/controllers/root.py:133
+#: lustitelskadb/controllers/root.py:140
 msgid "Requested user game result not found"
 msgstr "Požadovaný herní výsledek uživatele nenalezen"
 
-#: lustitelskadb/controllers/root.py:151
+#: lustitelskadb/controllers/root.py:160
 msgid "Unknown source for authorization, canceled"
 msgstr "Neznámý zdroj k autorizaci, přerušeno"
 
-#: lustitelskadb/controllers/root.py:167
+#: lustitelskadb/controllers/root.py:176
 msgid ""
 "There may have been an issue with the consumer_key or consumer_secret in "
 "application"
@@ -183,11 +183,11 @@ msgstr ""
 "Je možné, že došlo k problému s consumer_key nebo consumer_secret v "
 "aplikaci"
 
-#: lustitelskadb/controllers/root.py:199
+#: lustitelskadb/controllers/root.py:208
 msgid "Unknown type of OAuth in config"
 msgstr "Neznámý typ OAuth v konfiguraci"
 
-#: lustitelskadb/controllers/root.py:216
+#: lustitelskadb/controllers/root.py:225
 msgid ""
 "I cannot find the keys needed to continue in authorization process in the"
 " session. Maybe you are using a light version of the browser that cannot "
@@ -199,7 +199,7 @@ msgstr ""
 "udržet nebo máte vypnuté ukládání cookies. Zkuste přejít na plnohodnotný "
 "prohlížeč nebo zapnout ukládání cookies."
 
-#: lustitelskadb/controllers/root.py:246
+#: lustitelskadb/controllers/root.py:255
 msgid ""
 "I cannot find the data needed to validate the authorization challenge in "
 "the session. Maybe you are using a light version of the browser that "
@@ -212,39 +212,39 @@ msgstr ""
 "nebo zapnout ukládání cookies."
 
 # | msgid "Can't fetch token"
-#: lustitelskadb/controllers/root.py:265
+#: lustitelskadb/controllers/root.py:274
 msgid "Can't fetch access token"
 msgstr "Nemohu získat přístupový žeton"
 
-#: lustitelskadb/controllers/root.py:285
+#: lustitelskadb/controllers/root.py:294
 msgid "Can't get user info from Twitter"
 msgstr "Nelze získat informace o uživateli z Twitteru"
 
 # | msgid "Result successfully added"
-#: lustitelskadb/controllers/root.py:317
+#: lustitelskadb/controllers/root.py:326
 msgid "Successfully authorized"
 msgstr "Úspěšně autorizováno"
 
-#: lustitelskadb/controllers/root.py:320
+#: lustitelskadb/controllers/root.py:329
 msgid "Succesfully authorized, but missing landing URL"
 msgstr "Úspěšně autorizováno, ale chybí cílové URL"
 
 # | msgid "Successfully detached from X/Twitter"
-#: lustitelskadb/controllers/root.py:337
+#: lustitelskadb/controllers/root.py:346
 msgid ""
 "Successfully detached from X/Twitter, the access token has been discarded"
 msgstr "Úspěšně odpojeno z X/Twitteru, přístupový žeton byl zahozen"
 
-#: lustitelskadb/controllers/root.py:430
+#: lustitelskadb/controllers/root.py:439
 msgid "This game result is already in database"
 msgstr "Tento herní výsledek už v databázi je"
 
 # | msgid "User not found"
-#: lustitelskadb/controllers/root.py:435
+#: lustitelskadb/controllers/root.py:444
 msgid "X/Twitter user not found"
 msgstr "X/Twitter uživatel nenalezen"
 
-#: lustitelskadb/controllers/root.py:454
+#: lustitelskadb/controllers/root.py:463
 msgid ""
 "Something went wrong! Can't save game result to database, so it isn't "
 "sent to legacy website too!"
@@ -253,13 +253,13 @@ msgstr ""
 " ani na původní web!"
 
 # | msgid "Your result has been successfully sent to the original website"
-#: lustitelskadb/controllers/root.py:477
+#: lustitelskadb/controllers/root.py:486
 msgid ""
 "Your result has been successfully saved to database and sent to the "
 "original website"
 msgstr "Váš výsledek byl úspěšně uložen do databáze a odeslán na  původní web"
 
-#: lustitelskadb/controllers/root.py:479
+#: lustitelskadb/controllers/root.py:488
 msgid ""
 "Your result has been successfully saved to database, but an error "
 "occurred while submitting the result from the form to legacy website. Let"
@@ -268,24 +268,24 @@ msgstr ""
 "Váš výsledek byl úspěšně uložen do databáze, ale došlo k chybě během "
 "odesílání výsledku z formuláře na původní web. Dej  nám to vědět!"
 
-#: lustitelskadb/controllers/root.py:507
+#: lustitelskadb/controllers/root.py:516
 msgid "User not found"
 msgstr "Uživatel nenalezen"
 
-#: lustitelskadb/controllers/root.py:509
+#: lustitelskadb/controllers/root.py:518
 msgid "Invalid Password"
 msgstr "Neplatné heslo"
 
-#: lustitelskadb/controllers/root.py:513
+#: lustitelskadb/controllers/root.py:522
 msgid "Wrong credentials"
 msgstr "Nesprávné přihlašovací údaje"
 
-#: lustitelskadb/controllers/root.py:530
+#: lustitelskadb/controllers/root.py:539
 #, python-format
 msgid "Welcome back, %s!"
 msgstr "Vítejte zpět, uživateli %s!"
 
-#: lustitelskadb/controllers/root.py:543
+#: lustitelskadb/controllers/root.py:552
 msgid "We hope to see you soon!"
 msgstr "Těšíme se příště!"
 
@@ -619,7 +619,7 @@ msgid "User game result detail"
 msgstr "Detail herního výsledku uživatele"
 
 #: lustitelskadb/templates/detail.xhtml:27
-#: lustitelskadb/templates/detail.xhtml:94
+#: lustitelskadb/templates/detail.xhtml:99
 #: lustitelskadb/templates/index.xhtml:168
 #: lustitelskadb/templates/master.xhtml:42
 #: lustitelskadb/templates/newresult.xhtml:17
@@ -696,6 +696,16 @@ msgstr "min"
 msgid "⌀ result time for solved games"
 msgstr "⌀ výsledný čas za vyřešené hry"
 
+#: lustitelskadb/templates/detail.xhtml:82
+msgid "⌀ game rank"
+msgstr "⌀ herní umístění"
+
+# | msgid "played"
+#: lustitelskadb/templates/detail.xhtml:84
+#: lustitelskadb/templates/index.xhtml:122
+msgid "place"
+msgstr "místo"
+
 #: lustitelskadb/templates/error.xhtml:3
 msgid "A "
 msgstr "Nějaká"
@@ -738,11 +748,6 @@ msgstr "Poražení"
 #: lustitelskadb/templates/index.xhtml:119
 msgid "Disqualified"
 msgstr "Diskvalifikovaní"
-
-#: lustitelskadb/templates/index.xhtml:122
-#| msgid "played"
-msgid "place"
-msgstr "místo"
 
 #: lustitelskadb/templates/index.xhtml:122
 msgid "point(s)"
