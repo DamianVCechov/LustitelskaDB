@@ -80,7 +80,7 @@ user_xtwitter = json.loads(gameresult.xtwitter.user_info or '{"data":{}}')
 				</tr>
 				<tr>
 					<th scope="row">&#x2300; game rank</th>
-					<td py:with="average=user_game_stats.avg_rank; result=gameresult.game_rank">${h.bicon('arrow{}-right'.format('' if average == result else "-down" if gt(average, result) else "-up"))}</td>
+					<td py:with="average=user_game_stats.avg_rank; result=gameresult.game_rank">${h.bicon('arrow{}-right'.format('' if average == result else "-up" if gt(average, result) else "-down"))}</td>
 					<td class="text-end bg-light">${"{:0.0f}".format(user_game_stats.avg_rank)} <span>place</span></td>
 				</tr>
 			</tbody>
