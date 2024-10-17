@@ -156,8 +156,9 @@ class RootController(BaseController):
 
         played_games = DBSession.query(model.GameResult).filter(model.GameResult.xtwitter_uid == gameresult.xtwitter_uid, model.GameResult.game_no <= gameresult.game_no).count()
         solved_games = DBSession.query(model.GameResult).filter(model.GameResult.xtwitter_uid == gameresult.xtwitter_uid, model.GameResult.game_no <= gameresult.game_no, model.GameResult.game_rows != None).count()
+        obtained_lanterns = DBSession.query(model.GameResult).filter(model.GameResult.xtwitter_uid == gameresult.xtwitter_uid, model.GameResult.game_no <= gameresult.game_no, model.GameResult.game_rows > 1, model.GameResult.game_time != None, model.GameResult.game_points == 0).count()
 
-        return dict(page="detail", gameresult=gameresult, user_game_stats=user_game_stats, played_games=played_games, solved_games=solved_games, user_game_rank_stats=user_game_rank_stats)
+        return dict(page="detail", gameresult=gameresult, user_game_stats=user_game_stats, played_games=played_games, solved_games=solved_games, obtained_lanterns=obtained_lanterns, user_game_rank_stats=user_game_rank_stats)
 
     @expose()
     def xauthorize(self, **kw):

@@ -56,6 +56,11 @@ user_xtwitter = json.loads(gameresult.xtwitter.user_info or '{"data":{}}')
 						<td class="text-end bg-light">${solved_games} <span>games</span></td>
 					</tr>
 					<tr>
+						<th scope="row">lanterns</th>
+						<td></td>
+						<td class="text-end bg-light">${obtained_lanterns} <span>pcs</span></td>
+					</tr>
+					<tr>
 						<th scope="row">success rate</th>
 						<td>${h.bicon('arrow{}-right'.format("" if solved_games == played_games else "-up" if gameresult.game_rows != None else "-down"))}</td>
 						<td class="text-end bg-light">${"{:0.2f}".format(100 * solved_games / played_games)} <span>%</span></td>
@@ -98,21 +103,21 @@ user_xtwitter = json.loads(gameresult.xtwitter.user_info or '{"data":{}}')
 			<table class="table table-sm table-striped w-auto mt-5">
 				<thead>
 					<tr class="table-dark text-center">
-						<th class="rounded-top" scope="col" colspan="${2 * math.ceil(len(user_game_rank_stats) / 8)}">Rank statistic</th>
+						<th class="rounded-top" scope="col" colspan="${2 * math.ceil(len(user_game_rank_stats) / 9)}">Rank statistic</th>
 					</tr>
 					<tr class="table-dark text-center">
-						<py:for each="i in range(int(math.ceil(len(user_game_rank_stats) / 8)))">
+						<py:for each="i in range(int(math.ceil(len(user_game_rank_stats) / 9)))">
 							<th scope="col">${h.bicon('graph-up-arrow')}</th>
 							<th scope="col">${h.bicon('calculator')}</th>
 						</py:for>
 					</tr>
 				</thead>
 				<tbody>
-					<tr py:for="row in range(8)">
-						<py:for each="colgroup in range(0, int(math.ceil(len(user_game_rank_stats) / 8)) * 8, 8)">
+					<tr py:for="row in range(9)">
+						<py:for each="colgroup in range(0, int(math.ceil(len(user_game_rank_stats) / 9)) * 9, 9)">
 							<py:with vars="it=user_game_rank_stats[row+colgroup:row+colgroup+1]">
-								<th class="text-end${' bg-light' if (colgroup / 8) % 2 else ''}" scope="row">${'' if not len(it) else "{}.".format(it[0][0])}</th>
-								<td class="text-start${' bg-light' if (colgroup / 8) % 2 else ''}">${'' if not len(it) else "{}x".format(it[0][1])}</td>
+								<th class="text-end${' bg-light' if (colgroup / 9) % 2 else ''}" scope="row">${'' if not len(it) else "{}.".format(it[0][0])}</th>
+								<td class="text-start${' bg-light' if (colgroup / 9) % 2 else ''}">${'' if not len(it) else "{}x".format(it[0][1])}</td>
 							</py:with>
 						</py:for>
 					</tr>
