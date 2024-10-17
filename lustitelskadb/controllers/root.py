@@ -149,10 +149,15 @@ class RootController(BaseController):
             func.avg(model.GameResult.game_points).label('avg_points')
         ).filter(model.GameResult.xtwitter_uid == gameresult.xtwitter_uid, model.GameResult.game_no <= gameresult.game_no).first()
 
+        user_game_rank_stats = DBSession.query(
+            model.GameResult.game_rank,
+            func.count(model.GameResult.game_rank)
+        ).filter(model.GameResult.xtwitter_uid == gameresult.xtwitter_uid, model.GameResult.game_no <= gameresult.game_no).group_by(model.GameResult.game_rank).order_by(model.GameResult.game_points.desc(), model.GameResult.game_rank).all()
+
         played_games = DBSession.query(model.GameResult).filter(model.GameResult.xtwitter_uid == gameresult.xtwitter_uid, model.GameResult.game_no <= gameresult.game_no).count()
         solved_games = DBSession.query(model.GameResult).filter(model.GameResult.xtwitter_uid == gameresult.xtwitter_uid, model.GameResult.game_no <= gameresult.game_no, model.GameResult.game_rows != None).count()
 
-        return dict(page="detail", gameresult=gameresult, user_game_stats=user_game_stats, played_games=played_games, solved_games=solved_games)
+        return dict(page="detail", gameresult=gameresult, user_game_stats=user_game_stats, played_games=played_games, solved_games=solved_games, user_game_rank_stats=user_game_rank_stats)
 
     @expose()
     def xauthorize(self, **kw):
