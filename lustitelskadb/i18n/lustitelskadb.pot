@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: LustitelskaDB 0.29\n"
+"Project-Id-Version: LustitelskaDB 0.30\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-10-17 22:45+0200\n"
+"POT-Creation-Date: 2024-10-18 02:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr ""
 
 #: lustitelskadb/controllers/admin.py:141
 #: lustitelskadb/controllers/libricipher.py:115
-#: lustitelskadb/controllers/root.py:372 lustitelskadb/controllers/xtwitter.py:32
+#: lustitelskadb/controllers/root.py:373 lustitelskadb/controllers/xtwitter.py:32
 msgid "Form filled with errors!"
 msgstr ""
 
@@ -150,21 +150,21 @@ msgstr ""
 msgid "Requested user game result not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:167
+#: lustitelskadb/controllers/root.py:168
 msgid "Unknown source for authorization, canceled"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:183
+#: lustitelskadb/controllers/root.py:184
 msgid ""
 "There may have been an issue with the consumer_key or consumer_secret in "
 "application"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:215
+#: lustitelskadb/controllers/root.py:216
 msgid "Unknown type of OAuth in config"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:232
+#: lustitelskadb/controllers/root.py:233
 msgid ""
 "I cannot find the keys needed to continue in authorization process in the "
 "session. Maybe you are using a light version of the browser that cannot "
@@ -172,7 +172,7 @@ msgid ""
 "to a full-fledged browser or turn on the saving of cookies."
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:262
+#: lustitelskadb/controllers/root.py:263
 msgid ""
 "I cannot find the data needed to validate the authorization challenge in the "
 "session. Maybe you are using a light version of the browser that cannot "
@@ -180,70 +180,70 @@ msgid ""
 "to a full-fledged browser or turn on the saving of cookies."
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:281
+#: lustitelskadb/controllers/root.py:282
 msgid "Can't fetch access token"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:301
+#: lustitelskadb/controllers/root.py:302
 msgid "Can't get user info from Twitter"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:333
+#: lustitelskadb/controllers/root.py:334
 msgid "Successfully authorized"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:336
+#: lustitelskadb/controllers/root.py:337
 msgid "Succesfully authorized, but missing landing URL"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:353
+#: lustitelskadb/controllers/root.py:354
 msgid "Successfully detached from X/Twitter, the access token has been discarded"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:446
+#: lustitelskadb/controllers/root.py:447
 msgid "This game result is already in database"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:451
+#: lustitelskadb/controllers/root.py:452
 msgid "X/Twitter user not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:470
+#: lustitelskadb/controllers/root.py:471
 msgid ""
 "Something went wrong! Can't save game result to database, so it isn't sent to"
 " legacy website too!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:493
+#: lustitelskadb/controllers/root.py:494
 msgid ""
 "Your result has been successfully saved to database and sent to the original "
 "website"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:495
+#: lustitelskadb/controllers/root.py:496
 msgid ""
 "Your result has been successfully saved to database, but an error occurred "
 "while submitting the result from the form to legacy website. Let us know it!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:523
+#: lustitelskadb/controllers/root.py:524
 msgid "User not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:525
+#: lustitelskadb/controllers/root.py:526
 msgid "Invalid Password"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:529
+#: lustitelskadb/controllers/root.py:530
 msgid "Wrong credentials"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:546
+#: lustitelskadb/controllers/root.py:547
 #, python-format
 msgid "Welcome back, %s!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:559
+#: lustitelskadb/controllers/root.py:560
 msgid "We hope to see you soon!"
 msgstr ""
 
@@ -529,104 +529,112 @@ msgstr ""
 msgid " | User game result detail"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:23
+#: lustitelskadb/templates/detail.xhtml:24
 msgid "User game result detail"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:28 lustitelskadb/templates/detail.xhtml:138
+#: lustitelskadb/templates/detail.xhtml:29 lustitelskadb/templates/detail.xhtml:149
 #: lustitelskadb/templates/index.xhtml:168 lustitelskadb/templates/master.xhtml:42
 #: lustitelskadb/templates/newresult.xhtml:17
 msgid "@"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:32
+#: lustitelskadb/templates/detail.xhtml:33
 #: lustitelskadb/templates/newresult.xhtml:21
 msgid "Joined"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:35
+#: lustitelskadb/templates/detail.xhtml:36
 #: lustitelskadb/templates/newresult.xhtml:24
 msgid "Following"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:35
+#: lustitelskadb/templates/detail.xhtml:36
 #: lustitelskadb/templates/newresult.xhtml:24
 msgid "Followers"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:44
+#: lustitelskadb/templates/detail.xhtml:45
 msgid "User statistics till this game"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:49
+#: lustitelskadb/templates/detail.xhtml:50
 msgid "played"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:51 lustitelskadb/templates/detail.xhtml:56
+#: lustitelskadb/templates/detail.xhtml:52 lustitelskadb/templates/detail.xhtml:57
 msgid "games"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:54
+#: lustitelskadb/templates/detail.xhtml:55
 msgid "solved"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:59
+#: lustitelskadb/templates/detail.xhtml:60
+msgid "sum of points"
+msgstr ""
+
+#: lustitelskadb/templates/detail.xhtml:65
+msgid "game points"
+msgstr ""
+
+#: lustitelskadb/templates/detail.xhtml:70
 msgid "lanterns"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:61
+#: lustitelskadb/templates/detail.xhtml:72
 msgid "pcs"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:64
+#: lustitelskadb/templates/detail.xhtml:75
 msgid "success rate"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:66
+#: lustitelskadb/templates/detail.xhtml:77
 msgid "%"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:69
+#: lustitelskadb/templates/detail.xhtml:80
 msgid "⌀ for all games"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:71 lustitelskadb/templates/detail.xhtml:76
+#: lustitelskadb/templates/detail.xhtml:82 lustitelskadb/templates/detail.xhtml:87
 msgid "rows"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:74
+#: lustitelskadb/templates/detail.xhtml:85
 msgid "⌀ for solved games"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:79
+#: lustitelskadb/templates/detail.xhtml:90
 msgid "⌀ time for solved games"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:81 lustitelskadb/templates/detail.xhtml:86
+#: lustitelskadb/templates/detail.xhtml:92 lustitelskadb/templates/detail.xhtml:97
 msgid "min"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:84
+#: lustitelskadb/templates/detail.xhtml:95
 msgid "⌀ result time for solved games"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:89
+#: lustitelskadb/templates/detail.xhtml:100
 msgid "⌀ game rank"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:91 lustitelskadb/templates/index.xhtml:122
+#: lustitelskadb/templates/detail.xhtml:102 lustitelskadb/templates/index.xhtml:122
 msgid "place"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:94
+#: lustitelskadb/templates/detail.xhtml:105
 msgid "⌀ game points"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:96
+#: lustitelskadb/templates/detail.xhtml:107
 msgid "points"
 msgstr ""
 
-#: lustitelskadb/templates/detail.xhtml:106
+#: lustitelskadb/templates/detail.xhtml:117
 msgid "Rank statistic"
 msgstr ""
 
