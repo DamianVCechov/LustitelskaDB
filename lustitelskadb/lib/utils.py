@@ -51,7 +51,7 @@ def assemble_game_scoresheet(game_no, dbflush=True):
                 row.game_points = scoring.get(next_place, 1)
                 recentplace_counter += 1
         else:
-            if prev_row.game_rows and prev_row.game_rank > 5:
+            if prev_row and prev_row.game_rows and prev_row.game_rank > 5:
                 prev_row.game_points = 0
             if next_place > 0:
                 next_place = -1
