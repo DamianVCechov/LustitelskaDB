@@ -129,6 +129,23 @@ class RootController(BaseController):
             game_finish = datetime((now + td), (now + td).month, (now + td).day, 17, 59, 59, 999999)
         game_in_progress = (game_finish - HADEJSLOVA_STARTDATE).days
 
+        daily_wallpaper_jssrc = twc.JSSource(src='''
+            $(() => {
+                $.getJSON("%(daily_img_url)s").done((data) => {
+                    if ('url' in data) {
+                        console.log('Adding:', 'url(' + data['url'] + ') no-repeat fixed');
+                        $('body').css({
+                            'background-image': 'url(' + data['url'] + ')',
+                            'background-repeat': 'no-repeat',
+                            'background-attachment': 'fixed',
+                            'background-position': 'center',
+                            'background-size': 'cover'
+                        });
+                    }
+                })
+            });
+        ''' % ({'daily_img_url': url('/get_daily_wallpaper')}))
+
         popover_titles_jssrc = twc.JSSource(src='''
             $(() => {
                 $('[title]').popover({ trigger: "hover", placement: "top" });
@@ -136,9 +153,21 @@ class RootController(BaseController):
         ''')
 
         closing_deadline_jssrc.inject()
+        daily_wallpaper_jssrc.inject()
         popover_titles_jssrc.inject()
 
         return dict(page='index', comments=comments, game_nums=game_nums, games=games, latest_game=latest_game, oldest_game=oldest_game, game_in_progress=game_in_progress)
+
+    @expose('json')
+    def get_daily_wallpaper(self, **kw):
+        """Get Daily Wallpaper"""
+        r = requests.get('https://www.bing.com/HPImageArchive.aspx', params={'format': 'js', 'idx': 0, 'n': 1})
+        if r.ok:
+            data = r.json()
+
+        url = data.get('images', [{}])[0].get('url', '')
+
+        return dict(url="https://bing.com{}".format(url))
 
     @expose('lustitelskadb.templates.detail')
     def detail(self, uid=None, *args, **kw):

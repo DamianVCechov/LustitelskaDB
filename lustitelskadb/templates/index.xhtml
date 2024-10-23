@@ -140,16 +140,16 @@ def wednesday_challenge_comming():
 
 	<div class="row pt-1" py:if="games">
 		<div class="col-3">
-			<a class="btn btn-outline-secondary w-100${' disabled' if le(latest_game.game_no, game_nums[0].game_no) else ''}" href="${tg.url('/{}'.format(latest_game.game_no))}">${h.icon('fast-backward')}</a>
+			<a class="btn btn-light w-100${' disabled' if le(latest_game.game_no, game_nums[0].game_no) else ''}" href="${tg.url('/{}'.format(latest_game.game_no))}">${h.icon('fast-backward')}</a>
 		</div>
 		<div class="col-3">
-			<a class="btn btn-outline-secondary w-100${' disabled' if le(latest_game.game_no, game_nums[0].game_no) else ''}" href="${tg.url('/{}'.format(game_nums[0].game_no+2 if len(game_nums) and le(game_nums[0].game_no+2, latest_game.game_no) else latest_game.game_no))}">${h.icon('backward')}</a>
+			<a class="btn btn-light w-100${' disabled' if le(latest_game.game_no, game_nums[0].game_no) else ''}" href="${tg.url('/{}'.format(game_nums[0].game_no+2 if len(game_nums) and le(game_nums[0].game_no+2, latest_game.game_no) else latest_game.game_no))}">${h.icon('backward')}</a>
 		</div>
 		<div class="col-3">
-			<a class="btn btn-outline-secondary w-100${' disabled' if ge(oldest_game.game_no, game_nums[1].game_no if gt(len(game_nums), 1) else oldest_game.game_no) else ''}" href="${tg.url('/{}'.format(game_nums[1].game_no-1 if gt(len(game_nums), 1) else oldest_game.game_no))}">${h.icon('forward')}</a>
+			<a class="btn btn-light w-100${' disabled' if ge(oldest_game.game_no, game_nums[1].game_no if gt(len(game_nums), 1) else oldest_game.game_no) else ''}" href="${tg.url('/{}'.format(game_nums[1].game_no-1 if gt(len(game_nums), 1) else oldest_game.game_no))}">${h.icon('forward')}</a>
 		</div>
 		<div class="col-3">
-			<a class="btn btn-outline-secondary w-100${' disabled' if ge(oldest_game.game_no, game_nums[1].game_no if gt(len(game_nums), 1) else oldest_game.game_no) else ''}" href="${tg.url('/{}'.format(oldest_game.game_no))}">${h.icon('fast-forward')}</a>
+			<a class="btn btn-light w-100${' disabled' if ge(oldest_game.game_no, game_nums[1].game_no if gt(len(game_nums), 1) else oldest_game.game_no) else ''}" href="${tg.url('/{}'.format(oldest_game.game_no))}">${h.icon('fast-forward')}</a>
 		</div>
 	</div>
 
