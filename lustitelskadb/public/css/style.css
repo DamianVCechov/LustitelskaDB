@@ -110,3 +110,11 @@ form span.error {
 .rounded-bottom-end {
 	border-bottom-right-radius: var(--bs-border-radius) !important;
 }
+
+.opacity-90 {
+	opacity: .90;
+}
+
+.opacity-95 {
+	opacity: .95;
+}
