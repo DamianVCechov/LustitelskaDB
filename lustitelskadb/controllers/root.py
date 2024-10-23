@@ -23,7 +23,7 @@ from requests_oauthlib import OAuth1Session, OAuth2Session
 
 import random
 import string
-from datetime import timedelta
+from datetime import datetime, timedelta
 
 # Python 2 compatibility hack
 try:
@@ -50,6 +50,8 @@ from lustitelskadb.controllers.api import APIController
 import lustitelskadb.lib.forms as appforms
 from lustitelskadb.lib.injects import closing_deadline_jssrc
 from lustitelskadb.lib.utils import assemble_game_scoresheet
+
+HADEJSLOVA_STARTDATE = datetime(2022, 1, 14, 18)
 
 __all__ = ['RootController']
 
@@ -117,6 +119,16 @@ class RootController(BaseController):
                 game = game.order_by(model.GameResult.game_rows == None, model.GameResult.game_result_time == None, model.GameResult.game_result_time, model.GameResult.game_rows, model.GameResult.game_time.desc())
             games.append(game.all())
 
+        now = datetime.now()
+        td = timedelta(1)
+        if now.hour < 18:
+            game_begin = datetime((now - td).year, (now - td).month, (now - td).day, 18)
+            game_finish = datetime(now.year, now.month, now.day, 17, 59, 59, 999999)
+        else:
+            game_begin = datetime(now.year, now.month, now.day, 18)
+            game_finish = datetime((now + td), (now + td).month, (now + td).day, 17, 59, 59, 999999)
+        game_in_progress = (game_finish - HADEJSLOVA_STARTDATE).days
+
         popover_titles_jssrc = twc.JSSource(src='''
             $(() => {
                 $('[title]').popover({ trigger: "hover", placement: "top" });
@@ -126,7 +138,7 @@ class RootController(BaseController):
         closing_deadline_jssrc.inject()
         popover_titles_jssrc.inject()
 
-        return dict(page='index', comments=comments, game_nums=game_nums, games=games, latest_game=latest_game, oldest_game=oldest_game)
+        return dict(page='index', comments=comments, game_nums=game_nums, games=games, latest_game=latest_game, oldest_game=oldest_game, game_in_progress=game_in_progress)
 
     @expose('lustitelskadb.templates.detail')
     def detail(self, uid=None, *args, **kw):

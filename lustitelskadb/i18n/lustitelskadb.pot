@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.30\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-10-18 02:00+0200\n"
+"POT-Creation-Date: 2024-10-23 11:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr ""
 
 #: lustitelskadb/controllers/admin.py:141
 #: lustitelskadb/controllers/libricipher.py:115
-#: lustitelskadb/controllers/root.py:373 lustitelskadb/controllers/xtwitter.py:32
+#: lustitelskadb/controllers/root.py:385 lustitelskadb/controllers/xtwitter.py:32
 msgid "Form filled with errors!"
 msgstr ""
 
@@ -142,29 +142,29 @@ msgstr ""
 msgid "Libri Cipher item successfully deleted"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:135
+#: lustitelskadb/controllers/root.py:147
 msgid "Missing unique ID of user game result"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:140
+#: lustitelskadb/controllers/root.py:152
 msgid "Requested user game result not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:168
+#: lustitelskadb/controllers/root.py:180
 msgid "Unknown source for authorization, canceled"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:184
+#: lustitelskadb/controllers/root.py:196
 msgid ""
 "There may have been an issue with the consumer_key or consumer_secret in "
 "application"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:216
+#: lustitelskadb/controllers/root.py:228
 msgid "Unknown type of OAuth in config"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:233
+#: lustitelskadb/controllers/root.py:245
 msgid ""
 "I cannot find the keys needed to continue in authorization process in the "
 "session. Maybe you are using a light version of the browser that cannot "
@@ -172,7 +172,7 @@ msgid ""
 "to a full-fledged browser or turn on the saving of cookies."
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:263
+#: lustitelskadb/controllers/root.py:275
 msgid ""
 "I cannot find the data needed to validate the authorization challenge in the "
 "session. Maybe you are using a light version of the browser that cannot "
@@ -180,70 +180,70 @@ msgid ""
 "to a full-fledged browser or turn on the saving of cookies."
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:282
+#: lustitelskadb/controllers/root.py:294
 msgid "Can't fetch access token"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:302
+#: lustitelskadb/controllers/root.py:314
 msgid "Can't get user info from Twitter"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:334
+#: lustitelskadb/controllers/root.py:346
 msgid "Successfully authorized"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:337
+#: lustitelskadb/controllers/root.py:349
 msgid "Succesfully authorized, but missing landing URL"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:354
+#: lustitelskadb/controllers/root.py:366
 msgid "Successfully detached from X/Twitter, the access token has been discarded"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:447
+#: lustitelskadb/controllers/root.py:459
 msgid "This game result is already in database"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:452
+#: lustitelskadb/controllers/root.py:464
 msgid "X/Twitter user not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:471
+#: lustitelskadb/controllers/root.py:483
 msgid ""
 "Something went wrong! Can't save game result to database, so it isn't sent to"
 " legacy website too!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:494
+#: lustitelskadb/controllers/root.py:506
 msgid ""
 "Your result has been successfully saved to database and sent to the original "
 "website"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:496
+#: lustitelskadb/controllers/root.py:508
 msgid ""
 "Your result has been successfully saved to database, but an error occurred "
 "while submitting the result from the form to legacy website. Let us know it!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:524
+#: lustitelskadb/controllers/root.py:536
 msgid "User not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:526
+#: lustitelskadb/controllers/root.py:538
 msgid "Invalid Password"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:530
+#: lustitelskadb/controllers/root.py:542
 msgid "Wrong credentials"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:547
+#: lustitelskadb/controllers/root.py:559
 #, python-format
 msgid "Welcome back, %s!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:560
+#: lustitelskadb/controllers/root.py:572
 msgid "We hope to see you soon!"
 msgstr ""
 
@@ -660,7 +660,11 @@ msgid "Don't forget the Wednesday challenge!"
 msgstr ""
 
 #: lustitelskadb/templates/index.xhtml:98
-msgid "Game"
+msgid "Hall of fame"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:98
+msgid "Game in progress"
 msgstr ""
 
 #: lustitelskadb/templates/index.xhtml:111
