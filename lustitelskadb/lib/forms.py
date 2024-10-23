@@ -40,7 +40,7 @@ class ResultForm(twf.Form):
 
     class child(twf.ListLayout):
 
-        css_class = 'list-unstyled bg-light p-3'
+        css_class = 'list-unstyled bg-light p-3 rounded'
 
         xtwitter_uid = twf.HiddenField()
         xtwitter_username = twf.HiddenField()
@@ -88,7 +88,7 @@ class ResultForm(twf.Form):
 
     submit = twf.SubmitButton(
         value=l_(u'Save'),
-        css_class='btn btn-outline-secondary btn-lg'
+        css_class='btn btn-light btn-lg'
     )
 
 

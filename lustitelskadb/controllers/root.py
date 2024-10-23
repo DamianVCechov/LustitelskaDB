@@ -96,6 +96,23 @@ class RootController(BaseController):
             page_plain_template=u'<li%s><a class="page-link">%s</a></li>'
         )
 
+        daily_wallpaper_jssrc = twc.JSSource(src='''
+            $(() => {
+                $.getJSON("%(daily_img_url)s").done((data) => {
+                    if ('url' in data) {
+                        $('body').css({
+                            'background-image': 'url(' + data['url'] + ')',
+                            'background-repeat': 'no-repeat',
+                            'background-attachment': 'fixed',
+                            'background-position': 'center',
+                            'background-size': 'cover'
+                        });
+                    }
+                })
+            });
+        ''' % ({'daily_img_url': url('/get_daily_wallpaper')}))
+        daily_wallpaper_jssrc.inject()
+
     @expose('lustitelskadb.templates.index')
     def _default(self, game=None, *args, **kw):
         """Handle the front-page."""
@@ -132,22 +149,6 @@ class RootController(BaseController):
             game_finish = datetime((now + td).year, (now + td).month, (now + td).day, 17, 59, 59, 999999)
         game_in_progress = (game_finish - HADEJSLOVA_STARTDATE).days
 
-        daily_wallpaper_jssrc = twc.JSSource(src='''
-            $(() => {
-                $.getJSON("%(daily_img_url)s").done((data) => {
-                    if ('url' in data) {
-                        $('body').css({
-                            'background-image': 'url(' + data['url'] + ')',
-                            'background-repeat': 'no-repeat',
-                            'background-attachment': 'fixed',
-                            'background-position': 'center',
-                            'background-size': 'cover'
-                        });
-                    }
-                })
-            });
-        ''' % ({'daily_img_url': url('/get_daily_wallpaper')}))
-
         popover_titles_jssrc = twc.JSSource(src='''
             $(() => {
                 $('[title]').popover({ trigger: "hover", placement: "top" });
@@ -155,7 +156,6 @@ class RootController(BaseController):
         ''')
 
         closing_deadline_jssrc.inject()
-        daily_wallpaper_jssrc.inject()
         popover_titles_jssrc.inject()
 
         return dict(page='index', comments=comments, game_nums=game_nums, games=games, latest_game=latest_game, oldest_game=oldest_game, game_in_progress=game_in_progress)
