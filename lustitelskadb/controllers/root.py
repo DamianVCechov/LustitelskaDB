@@ -25,6 +25,9 @@ import random
 import string
 from datetime import datetime, timedelta
 
+from base64 import b64encode
+from magic import Magic
+
 # Python 2 compatibility hack
 try:
     ModuleNotFoundError
@@ -133,7 +136,6 @@ class RootController(BaseController):
             $(() => {
                 $.getJSON("%(daily_img_url)s").done((data) => {
                     if ('url' in data) {
-                        console.log('Adding:', 'url(' + data['url'] + ') no-repeat fixed');
                         $('body').css({
                             'background-image': 'url(' + data['url'] + ')',
                             'background-repeat': 'no-repeat',
@@ -161,13 +163,24 @@ class RootController(BaseController):
     @expose('json')
     def get_daily_wallpaper(self, **kw):
         """Get Daily Wallpaper"""
-        r = requests.get('https://www.bing.com/HPImageArchive.aspx', params={'format': 'js', 'idx': 0, 'n': 1})
+        mime = Magic(mime=True)
+
+        sess = requests.Session()
+        r = sess.get('https://www.bing.com/HPImageArchive.aspx', params={'format': 'js', 'idx': 0, 'n': 1})
         if r.ok:
             data = r.json()
 
         url = data.get('images', [{}])[0].get('url', '')
+        if url:
+            r_img = sess.get("https://bing.com{}".format(url))
+            if r_img.ok:
+                mime_type = mime.from_buffer(r_img.content)
+                img = b64encode(r_img.content)
+        else:
+            mime_type = ''
+            img = ''
 
-        return dict(url="https://bing.com{}".format(url))
+        return dict(url="data:{};base64,{}".format(mime_type, img.decode('ascii')))
 
     @expose('lustitelskadb.templates.detail')
     def detail(self, uid=None, *args, **kw):
