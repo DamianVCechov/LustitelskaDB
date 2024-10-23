@@ -129,7 +129,7 @@ class RootController(BaseController):
             game_finish = datetime(now.year, now.month, now.day, 17, 59, 59, 999999)
         else:
             game_begin = datetime(now.year, now.month, now.day, 18)
-            game_finish = datetime((now + td), (now + td).month, (now + td).day, 17, 59, 59, 999999)
+            game_finish = datetime((now + td).year, (now + td).month, (now + td).day, 17, 59, 59, 999999)
         game_in_progress = (game_finish - HADEJSLOVA_STARTDATE).days
 
         daily_wallpaper_jssrc = twc.JSSource(src='''
