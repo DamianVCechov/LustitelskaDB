@@ -141,7 +141,7 @@ user_xtwitter = json.loads(gameresult.xtwitter.user_info or '{"data":{}}')
 		<pre class="lead">${gameresult.game_raw_data}</pre>
 	</div>
 
-	<figure class="my-5" py:if="gameresult.comment">
+	<figure class="my-5 bg-light rounded p-1 opacity-90" py:if="gameresult.comment">
 		<blockquote class="blockquote">
 			<p class="fs-3">${gameresult.comment}</p>
 		</blockquote>
