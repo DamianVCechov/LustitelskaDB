@@ -70,7 +70,7 @@ class GameResultsAdminCrudConfig(CrudRestControllerConfig):
 
         __form_options__ = {
             '__omit_fields__': [
-                'game_raw_data',
+                # 'game_raw_data',
                 'created',
                 'updated',
                 # 'xtwitter'
