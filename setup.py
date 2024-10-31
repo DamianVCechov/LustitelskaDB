@@ -53,7 +53,7 @@ install_requires = [
     "requests_oauthlib",
     "tweepy",
     "pathlib; python_version < '3.4'",
-    "magic"
+    # "magic" # Temporary disabled
 ]
 
 if py_version != (3, 2):

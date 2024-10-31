@@ -4,7 +4,6 @@ Kajiki>=0.6.3
 TurboGears2>=2.4.0
 WebHelpers2
 alembic
-magic
 repoze.who
 requests
 requests_oauthlib
