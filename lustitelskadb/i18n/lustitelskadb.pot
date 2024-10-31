@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: LustitelskaDB 0.30\n"
+"Project-Id-Version: LustitelskaDB 0.34\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-10-23 11:38+0200\n"
+"POT-Creation-Date: 2024-10-31 21:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr ""
 
 #: lustitelskadb/controllers/admin.py:141
 #: lustitelskadb/controllers/libricipher.py:115
-#: lustitelskadb/controllers/root.py:385 lustitelskadb/controllers/xtwitter.py:32
+#: lustitelskadb/controllers/root.py:427 lustitelskadb/controllers/xtwitter.py:32
 msgid "Form filled with errors!"
 msgstr ""
 
@@ -142,29 +142,29 @@ msgstr ""
 msgid "Libri Cipher item successfully deleted"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:147
+#: lustitelskadb/controllers/root.py:189
 msgid "Missing unique ID of user game result"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:152
+#: lustitelskadb/controllers/root.py:194
 msgid "Requested user game result not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:180
+#: lustitelskadb/controllers/root.py:222
 msgid "Unknown source for authorization, canceled"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:196
+#: lustitelskadb/controllers/root.py:238
 msgid ""
 "There may have been an issue with the consumer_key or consumer_secret in "
 "application"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:228
+#: lustitelskadb/controllers/root.py:270
 msgid "Unknown type of OAuth in config"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:245
+#: lustitelskadb/controllers/root.py:287
 msgid ""
 "I cannot find the keys needed to continue in authorization process in the "
 "session. Maybe you are using a light version of the browser that cannot "
@@ -172,7 +172,7 @@ msgid ""
 "to a full-fledged browser or turn on the saving of cookies."
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:275
+#: lustitelskadb/controllers/root.py:317
 msgid ""
 "I cannot find the data needed to validate the authorization challenge in the "
 "session. Maybe you are using a light version of the browser that cannot "
@@ -180,70 +180,70 @@ msgid ""
 "to a full-fledged browser or turn on the saving of cookies."
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:294
+#: lustitelskadb/controllers/root.py:336
 msgid "Can't fetch access token"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:314
+#: lustitelskadb/controllers/root.py:356
 msgid "Can't get user info from Twitter"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:346
+#: lustitelskadb/controllers/root.py:388
 msgid "Successfully authorized"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:349
+#: lustitelskadb/controllers/root.py:391
 msgid "Succesfully authorized, but missing landing URL"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:366
+#: lustitelskadb/controllers/root.py:408
 msgid "Successfully detached from X/Twitter, the access token has been discarded"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:459
+#: lustitelskadb/controllers/root.py:501
 msgid "This game result is already in database"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:464
+#: lustitelskadb/controllers/root.py:506
 msgid "X/Twitter user not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:483
+#: lustitelskadb/controllers/root.py:525
 msgid ""
 "Something went wrong! Can't save game result to database, so it isn't sent to"
 " legacy website too!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:506
+#: lustitelskadb/controllers/root.py:548
 msgid ""
 "Your result has been successfully saved to database and sent to the original "
 "website"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:508
+#: lustitelskadb/controllers/root.py:550
 msgid ""
 "Your result has been successfully saved to database, but an error occurred "
 "while submitting the result from the form to legacy website. Let us know it!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:536
+#: lustitelskadb/controllers/root.py:578
 msgid "User not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:538
+#: lustitelskadb/controllers/root.py:580
 msgid "Invalid Password"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:542
+#: lustitelskadb/controllers/root.py:584
 msgid "Wrong credentials"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:559
+#: lustitelskadb/controllers/root.py:601
 #, python-format
 msgid "Welcome back, %s!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:572
+#: lustitelskadb/controllers/root.py:614
 msgid "We hope to see you soon!"
 msgstr ""
 
@@ -339,189 +339,189 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:11
+#: lustitelskadb/templates/about.xhtml:12
 msgid "Dear friends,"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:13
+#: lustitelskadb/templates/about.xhtml:15
 msgid ""
 "let me welcome you to our new puzzlers site, where we announce results and "
 "keep statistics. So far, the site is only for community purposes of players "
 "playing the game"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:13 lustitelskadb/templates/about.xhtml:15
+#: lustitelskadb/templates/about.xhtml:15 lustitelskadb/templates/about.xhtml:19
 msgid "HádejSlova"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:13
+#: lustitelskadb/templates/about.xhtml:15
 msgid "and sharing their results on"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:13 lustitelskadb/templates/about.xhtml:21
+#: lustitelskadb/templates/about.xhtml:15 lustitelskadb/templates/about.xhtml:29
 msgid "Twitter"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:13
+#: lustitelskadb/templates/about.xhtml:15
 msgid ""
 ". We are community of approx. 2 dozen players who enjoy the game and "
 "comparing their results with each other. They have a few extra rules and "
 "joys, compared to the original"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:13
+#: lustitelskadb/templates/about.xhtml:15
 msgid "plan."
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:15
+#: lustitelskadb/templates/about.xhtml:19
 msgid "When you click to"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:15
+#: lustitelskadb/templates/about.xhtml:19
 msgid "\"New result\""
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:15
+#: lustitelskadb/templates/about.xhtml:19
 msgid "at the top of the menu, you will be asked to authorize via"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:15 lustitelskadb/templates/about.xhtml:23
+#: lustitelskadb/templates/about.xhtml:19 lustitelskadb/templates/about.xhtml:33
 #: lustitelskadb/templates/administration/index.xhtml:20
 #: lustitelskadb/templates/administration/xtwitter/index.xhtml:7
 msgid "X/Twitter"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:15
+#: lustitelskadb/templates/about.xhtml:19
 msgid ""
 ".You will then be able to enter your result from the game into the web form. "
 "In the original"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:15
+#: lustitelskadb/templates/about.xhtml:19
 msgid ""
 "game, after playing, just press the SHARE button and insert it into the form "
 "either with Ctrl-V, or if you are using a phone, hold it for a long time in "
 "the field and press PASTE."
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:17
+#: lustitelskadb/templates/about.xhtml:23
 msgid "Furthermore, nothing prevents you from sharing your result with us in our"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:17
+#: lustitelskadb/templates/about.xhtml:23
 msgid "Twitter's"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:17
+#: lustitelskadb/templates/about.xhtml:23
 msgid "threads"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:17 lustitelskadb/templates/about.xhtml:23
+#: lustitelskadb/templates/about.xhtml:23 lustitelskadb/templates/about.xhtml:33
 msgid "@Lustitele"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:17
+#: lustitelskadb/templates/about.xhtml:23
 msgid ", which we announce every day after 6 p.m. We would like to see you."
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:19
+#: lustitelskadb/templates/about.xhtml:26
 msgid ""
 "If we have the slightest suspicion that you are cheating, we will kick you "
 "out. No debate. But otherwise, we are a bunch of nice people. Trust me. 😀"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:21
+#: lustitelskadb/templates/about.xhtml:29
 msgid "We built the original website"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:21
+#: lustitelskadb/templates/about.xhtml:29
 msgid "lustitele.chytrak.cz"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:21
+#: lustitelskadb/templates/about.xhtml:29
 msgid "with"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:21
+#: lustitelskadb/templates/about.xhtml:29
 msgid "@NocniDuha"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:21
+#: lustitelskadb/templates/about.xhtml:29
 msgid "on a green field, when I calculated everything in the"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:21
+#: lustitelskadb/templates/about.xhtml:29
 msgid "GoogleSheets spreadsheet"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:21
+#: lustitelskadb/templates/about.xhtml:29
 msgid ""
 "and loaded the results from it using simple scripts. Now we have progressed "
 "and thanks to the generous cooperation of"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:21
+#: lustitelskadb/templates/about.xhtml:29
 msgid "@ByCzech"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:21
+#: lustitelskadb/templates/about.xhtml:29
 msgid "and"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:21
+#: lustitelskadb/templates/about.xhtml:29
 msgid "@Tlucek_P"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:21
+#: lustitelskadb/templates/about.xhtml:29
 msgid ""
 "(they built it themselves) we have this amazing site with its own database "
 "and simple"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:21
+#: lustitelskadb/templates/about.xhtml:29
 msgid "handling. For which I thank them very much."
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:23
+#: lustitelskadb/templates/about.xhtml:33
 msgid ""
 "Well, if you don't know how to deal with something, feel free to contact me "
 "either on my"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:23
+#: lustitelskadb/templates/about.xhtml:33
 msgid "profile"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:23
+#: lustitelskadb/templates/about.xhtml:33
 msgid "@DamianVCechov"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:23
+#: lustitelskadb/templates/about.xhtml:33
 msgid "or our joint profile"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:23
+#: lustitelskadb/templates/about.xhtml:33
 msgid "or you can contact me via email"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:23
+#: lustitelskadb/templates/about.xhtml:33
 msgid "lustitele@gmail.com"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:23
+#: lustitelskadb/templates/about.xhtml:33
 #: lustitelskadb/templates/libriciphers.xhtml:10
 msgid "."
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:25
+#: lustitelskadb/templates/about.xhtml:36
 msgid "Your friend"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:27
+#: lustitelskadb/templates/about.xhtml:38
 msgid "and table bulletin board administrator"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:29
+#: lustitelskadb/templates/about.xhtml:40
 msgid "Damian V. Checkhov"
 msgstr ""
 
