@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-10-31 21:59+0100\n"
-"PO-Revision-Date: 2024-10-31 22:00+0100\n"
+"PO-Revision-Date: 2024-11-08 02:23+0100\n"
 "Last-Translator: Jaroslav Mikulík <jaroslav.mikulik@runtech.cz>\n"
 "Language: cs\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -357,7 +357,7 @@ msgstr "Text příspěvku"
 
 #: lustitelskadb/lib/forms.py:158
 msgid "Please Enter X/Twitter post text"
-msgstr "Vloště prosím test X/Twitter příspěvku"
+msgstr "Vložtě prosím test X/Twitter příspěvku"
 
 #: lustitelskadb/lib/forms.py:173
 msgid "Media list"
