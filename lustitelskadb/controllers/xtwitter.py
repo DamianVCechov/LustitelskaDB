@@ -39,14 +39,6 @@ class XTwitterController(BaseController):
 
         return dict(page='admin-xtwitter-index')
 
-    def upload_media(files):
-        """Upload media to X/Twitter"""
-        text = str(post)
-        media_id = re.search("media_id=(.+?),", text).group(1)
-        payload = {"media": {"media_ids": ["{}".format(media_id)]}}
-        os.remove("catpic.jpg")
-        return payload
-
     @expose()
     @validate(form=appforms.XTwitterPostForm(), error_handler=index)
     @require(has_any_permission('manage', 'xtwitter', msg=l_('Only for users with appropriate permissions')))
