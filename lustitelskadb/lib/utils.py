@@ -10,6 +10,8 @@ Created on 16. 10. 2024
 from lustitelskadb import model
 from lustitelskadb.model import DBSession
 
+from datetime import datetime
+
 __all__ = ('assemble_game_scoresheet')
 
 scoring = {
@@ -20,6 +22,9 @@ scoring = {
     4: 3,
     5: 2
 }
+
+HADEJSLOVA_STARTDATE = datetime(2022, 1, 14, 18)
+
 
 def assemble_game_scoresheet(game_no, dbflush=True):
     """Assemble Game Scoresheet"""

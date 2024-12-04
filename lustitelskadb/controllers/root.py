@@ -54,7 +54,7 @@ import lustitelskadb.lib.forms as appforms
 from lustitelskadb.lib.injects import closing_deadline_jssrc
 from lustitelskadb.lib.utils import assemble_game_scoresheet
 
-HADEJSLOVA_STARTDATE = datetime(2022, 1, 14, 18)
+from lustitelskadb.lib.utils import HADEJSLOVA_STARTDATE
 
 __all__ = ['RootController']
 

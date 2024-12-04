@@ -1,13 +1,51 @@
 # -*- coding: utf-8 -*-
 """API controller module"""
 
-from tg import expose, redirect, validate, flash, url, config
+from tg import expose, redirect, validate, flash, url, config, abort, response
 # from tg.i18n import ugettext as _
 # from tg import predicates
+from tg.support.converters import asbool
 
 from lustitelskadb.lib.base import BaseController
 from lustitelskadb import model
 from lustitelskadb.model import DBSession
+
+from datetime import datetime, timedelta
+import csv
+
+try:
+    from StringIO import StringIO
+except:
+    from io import StringIO
+
+from lustitelskadb.lib.utils import HADEJSLOVA_STARTDATE
+
+BADGE = {
+    -1: chr(0x1F4A9), # Poop
+    0: chr(0x1F984), # Unicorn
+    1: chr(0x1F947), # Medal #1
+    2: chr(0x1F948), # Medal #2
+    3: chr(0x1F949), # Medal #3
+    4: chr(0x1F954), # Potato
+    5: chr(0x1F422), # Turtle
+    # 6: chr(0x1FBF6),
+    # 7: chr(0x1FBF7),
+    # 8: chr(0x1FBF8),
+    # 9: chr(0x1FBF9),
+    'leaf': chr(0x1F343), # Leaf Fluttering In Wind
+    'last': chr(0x1F3EE) # Lantern
+}
+
+
+def encode(obj, code):
+    """
+    Encode Python2 + Python 3 compatibility function.
+    """
+    try:
+        unicode
+        return obj.encode(code)
+    except:
+        return obj
 
 
 class APIController(BaseController):
@@ -47,3 +85,66 @@ class APIController(BaseController):
         } for item in records]
 
         return dict(data=data, status_code=0, status_txt="OK", error=False, status_msg="New records found.")
+
+    @expose()
+    def fetch_game_data(self, game=None, convert=False, **kw):
+        """Export game data."""
+        if game not in ('ongoing', 'final'):
+            abort(status_code=422, detail="Missing game type to export")
+
+        data_cols = {
+            'game_rank': 'game_rank',
+            'user_name': 'xtwitter.user_name',
+            'game_time': 'game_time',
+            'game_rows': 'game_rows',
+            'wednesday_challenge': 'wednesday_challenge',
+            'game_result_time': 'game_result_time'
+        }
+
+        now = datetime.now()
+        td = timedelta(1)
+        if now.hour < 18:
+            game_begin = datetime((now - td).year, (now - td).month, (now - td).day, 18)
+            game_finish = datetime(now.year, now.month, now.day, 17, 59, 59, 999999)
+        else:
+            game_begin = datetime(now.year, now.month, now.day, 18)
+            game_finish = datetime((now + td).year, (now + td).month, (now + td).day, 17, 59, 59, 999999)
+        game_in_progress = (game_finish - HADEJSLOVA_STARTDATE).days
+        game_no = game_in_progress
+        if game == 'final':
+            game_no -= 1
+
+        game_data = DBSession.query(model.GameResult).filter(model.GameResult.game_no == game_no)
+        if game_no % 7 == 5:
+            game_data = game_data.order_by(model.GameResult.game_rows == None, model.GameResult.game_result_time == None, model.GameResult.wednesday_challenge.desc(), model.GameResult.game_result_time, model.GameResult.game_rows, model.GameResult.game_time.desc())
+        else:
+            game_data = game_data.order_by(model.GameResult.game_rows == None, model.GameResult.game_result_time == None, model.GameResult.game_result_time, model.GameResult.game_rows, model.GameResult.game_time.desc())
+
+        csv_stream = StringIO()
+        csv_writer = csv.DictWriter(csv_stream, fieldnames=data_cols.keys(), dialect="excel")
+        csv_writer.writeheader()
+
+        for row in game_data.all():
+            csv_row = {}.fromkeys(data_cols.keys())
+            for k, v in data_cols.items():
+                if '.' in v:
+                    c, m = v.split('.')
+                    csv_row[k] = encode(getattr(getattr(row, c, {}), m, ''), 'utf-8')
+                else:
+                    csv_row[k] = encode(getattr(row, v, ''), 'utf-8')
+            if asbool(convert):
+                csv_row['game_rank'] = encode(BADGE.get(row.game_rank, row.game_rank), 'utf-8')
+                if row.wednesday_challenge and game_no % 7 == 5:
+                    csv_row['wednesday_challenge'] = encode(chr(0x2705), 'utf-8')
+                if row.game_rank < 0 and not row.game_result_time:
+                    csv_row['game_result_time'] = 'PROHRA'
+                elif row.game_rank > 0 and row.game_rows > 1 and not row.game_result_time:
+                    csv_row['game_rank'] = encode(BADGE.get('leaf', row.game_rank), 'utf-8')
+                elif row.game_rank > 0 and row.game_points == 0:
+                    csv_row['game_rank'] = encode(BADGE.get('last', row.game_rank), 'utf-8')
+            csv_writer.writerow(csv_row)
+
+        # response.headerlist.append(('Content-Disposition', 'inline; filename=lustitelskadb_{}_game-{}.csv'.format(game, now)))
+        response.headerlist.append(('Content-Disposition', 'attachment; filename=lustitelskadb_{}_game-{}.csv'.format(game, now)))
+
+        return csv_stream.getvalue()
