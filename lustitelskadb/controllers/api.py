@@ -92,14 +92,14 @@ class APIController(BaseController):
         if game not in ('ongoing', 'final'):
             abort(status_code=422, detail="Missing game type to export")
 
-        data_cols = {
-            'game_rank': 'game_rank',
-            'user_name': 'xtwitter.user_name',
-            'game_time': 'game_time',
-            'game_rows': 'game_rows',
-            'wednesday_challenge': 'wednesday_challenge',
-            'game_result_time': 'game_result_time'
-        }
+        data_cols = (
+            ('game_rank', 'game_rank'),
+            ('user_name', 'xtwitter.user_name'),
+            ('game_time', 'game_time'),
+            ('game_rows', 'game_rows'),
+            ('wednesday_challenge', 'wednesday_challenge'),
+            ('game_result_time', 'game_result_time')
+        )
 
         now = datetime.now()
         td = timedelta(1)
@@ -121,12 +121,12 @@ class APIController(BaseController):
             game_data = game_data.order_by(model.GameResult.game_rows == None, model.GameResult.game_result_time == None, model.GameResult.game_result_time, model.GameResult.game_rows, model.GameResult.game_time.desc())
 
         csv_stream = StringIO()
-        csv_writer = csv.DictWriter(csv_stream, fieldnames=data_cols.keys(), dialect="excel")
+        csv_writer = csv.DictWriter(csv_stream, fieldnames=[r[0] for r in data_cols], dialect="excel")
         csv_writer.writeheader()
 
         for row in game_data.all():
-            csv_row = {}.fromkeys(data_cols.keys())
-            for k, v in data_cols.items():
+            csv_row = {}.fromkeys([r[0] for r in data_cols])
+            for k, v in data_cols:
                 if '.' in v:
                     c, m = v.split('.')
                     csv_row[k] = encode(getattr(getattr(row, c, {}), m, ''), 'utf-8')
