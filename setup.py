@@ -53,7 +53,7 @@ install_requires = [
     "requests_oauthlib",
     "tweepy",
     "pathlib; python_version < '3.4'",
-    "csv",
+    # "csv", # Tepmporary disabled
     # "magic" # Temporary disabled
 ]
 
@@ -63,7 +63,7 @@ if py_version != (3, 2):
 
 setup(
     name='LustitelskaDB',
-    version='0.36',
+    version='0.37',
     description='Hobby web application for statistics czech Wordle game named HadejSlova',
     author='ByCzech, DamianVCechov',
     author_email='byczech@gmail.com, lustitele@gmail.com',
