@@ -139,6 +139,8 @@ class APIController(BaseController):
                     csv_row[k] = encode(getattr(row, v, ''), 'utf-8')
             if asbool(convert):
                 csv_row['game_rank'] = encode(BADGE.get(row.game_rank, row.game_rank), 'utf-8')
+                csv_row['game_time'] = "{}:{:02}".format(row.game_time.hour * 60 + row.game_time.minute, row.game_time.second) if row.game_time else ''
+                csv_row['game_result_time'] = "{}:{:02}".format(row.game_result_time.hour * 60 + row.game_result_time.minute, row.game_result_time.second) if row.game_result_time else ''
                 if row.wednesday_challenge and game_no % 7 == 5:
                     csv_row['wednesday_challenge'] = encode(unichr(0x2705), 'utf-8')
                 if row.game_rank < 0 and not row.game_result_time:
