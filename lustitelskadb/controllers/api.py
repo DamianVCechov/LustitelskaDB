@@ -20,20 +20,25 @@ except:
 
 from lustitelskadb.lib.utils import HADEJSLOVA_STARTDATE
 
+try:
+    unichr
+except:
+    unichr = chr
+
 BADGE = {
-    -1: chr(0x1F4A9), # Poop
-    0: chr(0x1F984), # Unicorn
-    1: chr(0x1F947), # Medal #1
-    2: chr(0x1F948), # Medal #2
-    3: chr(0x1F949), # Medal #3
-    4: chr(0x1F954), # Potato
-    5: chr(0x1F422), # Turtle
-    # 6: chr(0x1FBF6),
-    # 7: chr(0x1FBF7),
-    # 8: chr(0x1FBF8),
-    # 9: chr(0x1FBF9),
-    'leaf': chr(0x1F343), # Leaf Fluttering In Wind
-    'last': chr(0x1F3EE) # Lantern
+    -1: unichr(0x1F4A9),  # Poop
+    0: unichr(0x1F984),  # Unicorn
+    1: unichr(0x1F947),  # Medal #1
+    2: unichr(0x1F948),  # Medal #2
+    3: unichr(0x1F949),  # Medal #3
+    4: unichr(0x1F954),  # Potato
+    5: unichr(0x1F422),  # Turtle
+    # 6: unichr(0x1FBF6),
+    # 7: unichr(0x1FBF7),
+    # 8: unichr(0x1FBF8),
+    # 9: unichr(0x1FBF9),
+    'leaf': unichr(0x1F343),  # Leaf Fluttering In Wind
+    'last': unichr(0x1F3EE)  # Lantern
 }
 
 
@@ -135,7 +140,7 @@ class APIController(BaseController):
             if asbool(convert):
                 csv_row['game_rank'] = encode(BADGE.get(row.game_rank, row.game_rank), 'utf-8')
                 if row.wednesday_challenge and game_no % 7 == 5:
-                    csv_row['wednesday_challenge'] = encode(chr(0x2705), 'utf-8')
+                    csv_row['wednesday_challenge'] = encode(unichr(0x2705), 'utf-8')
                 if row.game_rank < 0 and not row.game_result_time:
                     csv_row['game_result_time'] = 'PROHRA'
                 elif row.game_rank > 0 and row.game_rows > 1 and not row.game_result_time:
