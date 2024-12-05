@@ -75,7 +75,7 @@ form li {
 	margin-top: 2rem;
 }
 
-form li label {
+form li label:not(:empty) {
 	font-size: 2rem;
 	padding-top: 1rem;
 	display: block;

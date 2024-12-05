@@ -59,6 +59,20 @@ from lustitelskadb.lib.utils import HADEJSLOVA_STARTDATE
 __all__ = ['RootController']
 
 
+def today_game_no():
+    """Count today's game no."""
+    now = datetime.now()
+    td = timedelta(1)
+    if now.hour < 18:
+        game_begin = datetime((now - td).year, (now - td).month, (now - td).day, 18)
+        game_finish = datetime(now.year, now.month, now.day, 17, 59, 59, 999999)
+    else:
+        game_begin = datetime(now.year, now.month, now.day, 18)
+        game_finish = datetime((now + td).year, (now + td).month, (now + td).day, 17, 59, 59, 999999)
+
+    return (game_finish - HADEJSLOVA_STARTDATE).days
+
+
 class RootController(BaseController):
     """
     The root controller for the LustitelskaDB application.
@@ -139,15 +153,7 @@ class RootController(BaseController):
                 game = game.order_by(model.GameResult.game_rows == None, model.GameResult.game_result_time == None, model.GameResult.game_result_time, model.GameResult.game_rows, model.GameResult.game_time.desc())
             games.append(game.all())
 
-        now = datetime.now()
-        td = timedelta(1)
-        if now.hour < 18:
-            game_begin = datetime((now - td).year, (now - td).month, (now - td).day, 18)
-            game_finish = datetime(now.year, now.month, now.day, 17, 59, 59, 999999)
-        else:
-            game_begin = datetime(now.year, now.month, now.day, 18)
-            game_finish = datetime((now + td).year, (now + td).month, (now + td).day, 17, 59, 59, 999999)
-        game_in_progress = (game_finish - HADEJSLOVA_STARTDATE).days
+        game_in_progress = today_game_no()
 
         popover_titles_jssrc = twc.JSSource(src='''
             $(() => {
@@ -412,6 +418,11 @@ class RootController(BaseController):
     def newresult(self, **kw):
         """Handle page with registering new user game result."""
         tmpl_context.form = appforms.ResultForm()
+
+        if today_game_no() % 7 == 5:
+            tmpl_context.form.child.children.wednesday_challenge.container_attrs = {
+                'style': 'color: var(--bs-danger);'
+            }
 
         if not session.has_key('me_on_xtwitter'):
             session['xauthorized.redirect.url'] = url('/newresult')
