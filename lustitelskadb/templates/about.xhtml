@@ -4,8 +4,21 @@
 </head>
 
 <body py:block="body" py:strip="True">
-	<h1 class="d-inline-block bg-light p-1 rounded opacity-90">
+	<?py
+import pkg_resources
+
+def get_string_version(module, default=''):
+	version = default
+	try:
+		return pkg_resources.get_distribution(module).version
+	except pkg_resources.DistributionNotFound:
+		return version
+?>
+	<h1 class="d-inline-block bg-light mt-2 p-1 rounded opacity-90">
 		<span>About</span> ${getattr(tmpl_context, 'project_name', 'turbogears2')}
+		<py:with vars="version=get_string_version('lustitelskadb', default='')">
+			<small class="badge bg-success" py:if="version">${version}</small>
+		</py:with>
 	</h1>
 
 	<div class="mt-5 bg-light p-2 rounded opacity-90">
