@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: LustitelskaDB 0.34\n"
+"Project-Id-Version: LustitelskaDB 0.38\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-10-31 21:59+0100\n"
+"POT-Creation-Date: 2024-12-05 22:46+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgstr ""
 #: lustitelskadb/controllers/libricipher.py:167
 #: lustitelskadb/controllers/libricipher.py:182
 #: lustitelskadb/controllers/xtwitter.py:25
-#: lustitelskadb/controllers/xtwitter.py:52
+#: lustitelskadb/controllers/xtwitter.py:44
 msgid "Only for users with appropriate permissions"
 msgstr ""
 
@@ -36,7 +36,7 @@ msgstr ""
 
 #: lustitelskadb/controllers/admin.py:141
 #: lustitelskadb/controllers/libricipher.py:115
-#: lustitelskadb/controllers/root.py:427 lustitelskadb/controllers/xtwitter.py:32
+#: lustitelskadb/controllers/root.py:440 lustitelskadb/controllers/xtwitter.py:32
 msgid "Form filled with errors!"
 msgstr ""
 
@@ -99,18 +99,18 @@ msgstr ""
 msgid "Really delete?"
 msgstr ""
 
-#: lustitelskadb/controllers/libricipher.py:82 lustitelskadb/lib/forms.py:104
-#: lustitelskadb/lib/forms.py:106
+#: lustitelskadb/controllers/libricipher.py:82 lustitelskadb/lib/forms.py:113
+#: lustitelskadb/lib/forms.py:115
 msgid "Part"
 msgstr ""
 
-#: lustitelskadb/controllers/libricipher.py:86 lustitelskadb/lib/forms.py:114
-#: lustitelskadb/lib/forms.py:116
+#: lustitelskadb/controllers/libricipher.py:86 lustitelskadb/lib/forms.py:123
+#: lustitelskadb/lib/forms.py:125
 msgid "Question"
 msgstr ""
 
-#: lustitelskadb/controllers/libricipher.py:93 lustitelskadb/lib/forms.py:133
-#: lustitelskadb/lib/forms.py:135
+#: lustitelskadb/controllers/libricipher.py:93 lustitelskadb/lib/forms.py:142
+#: lustitelskadb/lib/forms.py:144
 msgid "Answer"
 msgstr ""
 
@@ -142,29 +142,29 @@ msgstr ""
 msgid "Libri Cipher item successfully deleted"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:189
+#: lustitelskadb/controllers/root.py:196
 msgid "Missing unique ID of user game result"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:194
+#: lustitelskadb/controllers/root.py:201
 msgid "Requested user game result not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:222
+#: lustitelskadb/controllers/root.py:229
 msgid "Unknown source for authorization, canceled"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:238
+#: lustitelskadb/controllers/root.py:245
 msgid ""
 "There may have been an issue with the consumer_key or consumer_secret in "
 "application"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:270
+#: lustitelskadb/controllers/root.py:277
 msgid "Unknown type of OAuth in config"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:287
+#: lustitelskadb/controllers/root.py:294
 msgid ""
 "I cannot find the keys needed to continue in authorization process in the "
 "session. Maybe you are using a light version of the browser that cannot "
@@ -172,7 +172,7 @@ msgid ""
 "to a full-fledged browser or turn on the saving of cookies."
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:317
+#: lustitelskadb/controllers/root.py:324
 msgid ""
 "I cannot find the data needed to validate the authorization challenge in the "
 "session. Maybe you are using a light version of the browser that cannot "
@@ -180,78 +180,78 @@ msgid ""
 "to a full-fledged browser or turn on the saving of cookies."
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:336
+#: lustitelskadb/controllers/root.py:343
 msgid "Can't fetch access token"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:356
+#: lustitelskadb/controllers/root.py:363
 msgid "Can't get user info from Twitter"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:388
+#: lustitelskadb/controllers/root.py:395
 msgid "Successfully authorized"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:391
+#: lustitelskadb/controllers/root.py:398
 msgid "Succesfully authorized, but missing landing URL"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:408
+#: lustitelskadb/controllers/root.py:415
 msgid "Successfully detached from X/Twitter, the access token has been discarded"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:501
+#: lustitelskadb/controllers/root.py:530
 msgid "This game result is already in database"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:506
+#: lustitelskadb/controllers/root.py:535
 msgid "X/Twitter user not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:525
+#: lustitelskadb/controllers/root.py:554
 msgid ""
 "Something went wrong! Can't save game result to database, so it isn't sent to"
 " legacy website too!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:548
+#: lustitelskadb/controllers/root.py:577
 msgid ""
 "Your result has been successfully saved to database and sent to the original "
 "website"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:550
+#: lustitelskadb/controllers/root.py:579
 msgid ""
 "Your result has been successfully saved to database, but an error occurred "
 "while submitting the result from the form to legacy website. Let us know it!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:578
+#: lustitelskadb/controllers/root.py:607
 msgid "User not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:580
+#: lustitelskadb/controllers/root.py:609
 msgid "Invalid Password"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:584
+#: lustitelskadb/controllers/root.py:613
 msgid "Wrong credentials"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:601
+#: lustitelskadb/controllers/root.py:630
 #, python-format
 msgid "Welcome back, %s!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:614
+#: lustitelskadb/controllers/root.py:643
 msgid "We hope to see you soon!"
 msgstr ""
 
-#: lustitelskadb/controllers/xtwitter.py:103
+#: lustitelskadb/controllers/xtwitter.py:95
 msgid "Post successfully sent to X/Twitter."
 msgstr ""
 
-#: lustitelskadb/controllers/xtwitter.py:106
+#: lustitelskadb/controllers/xtwitter.py:98
 msgid "Something went wrong, during sending post to X/Twitter. Error Code: {}"
 msgstr ""
 
@@ -263,71 +263,79 @@ msgstr ""
 msgid "Please Enter your game result (required)"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:64
+#: lustitelskadb/lib/forms.py:63
 msgid "Wednesday challenge"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:65
+#: lustitelskadb/lib/forms.py:64
 msgid "Please check it if you play wednesday challenge"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:71 lustitelskadb/lib/forms.py:73
-msgid "Comments"
+#: lustitelskadb/lib/forms.py:71
+msgid "I played"
 msgstr ""
 
 #: lustitelskadb/lib/forms.py:72
+msgid "I didn't played"
+msgstr ""
+
+#: lustitelskadb/lib/forms.py:80 lustitelskadb/lib/forms.py:82
+msgid "Comments"
+msgstr ""
+
+#: lustitelskadb/lib/forms.py:81
 msgid "Please Enter any comments (optional)"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:90 lustitelskadb/lib/forms.py:145
+#: lustitelskadb/lib/forms.py:99 lustitelskadb/lib/forms.py:154
 msgid "Save"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:105
+#: lustitelskadb/lib/forms.py:114
 msgid "Please Enter part number (required)"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:115
+#: lustitelskadb/lib/forms.py:124
 msgid "Please Enter Question (required)"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:123 lustitelskadb/lib/forms.py:125
+#: lustitelskadb/lib/forms.py:132 lustitelskadb/lib/forms.py:134
 msgid "Description"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:124
+#: lustitelskadb/lib/forms.py:133
 msgid "Please Enter description (required)"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:134
+#: lustitelskadb/lib/forms.py:143
 msgid "Please Enter Answer (required)"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:157 lustitelskadb/lib/forms.py:159
+#: lustitelskadb/lib/forms.py:166 lustitelskadb/lib/forms.py:168
 msgid "Post text"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:158
+#: lustitelskadb/lib/forms.py:167
 msgid "Please Enter X/Twitter post text"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:173
+#: lustitelskadb/lib/forms.py:182
 msgid "Media list"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:184
+#: lustitelskadb/lib/forms.py:193
 msgid "Submit"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:196
+#: lustitelskadb/lib/forms.py:205
 msgid "CSV file with legacy data"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:197
+#: lustitelskadb/lib/forms.py:206
 msgid "Please browse CSV file with legacy data to import it into database"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:205
+#: lustitelskadb/lib/forms.py:214
 msgid "Import"
 msgstr ""
 

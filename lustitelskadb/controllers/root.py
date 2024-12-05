@@ -424,6 +424,7 @@ class RootController(BaseController):
             tmpl_context.form.child.children.wednesday_challenge.container_attrs = {
                 'style': 'color: var(--bs-danger);'
             }
+            tmpl_context.form.child.children.wednesday_challenge.required = True
 
         if not session.has_key('me_on_xtwitter') and asbool(config.get('xtwitter.authorize.enabled', True)):
             session['xauthorized.redirect.url'] = url('/newresult')
@@ -454,7 +455,16 @@ class RootController(BaseController):
             template='kajiki:lustitelskadb.templates.tw2.core.jslink'
         )
 
-        emoji_picker_jssrc = twc.JSSource(
+        bs5toggle_csslnk = twc.CSSLink(
+            location="headbottom",
+            link="https://cdn.jsdelivr.net/npm/bootstrap5-toggle@5.1.1/css/bootstrap5-toggle.min.css"
+        )
+        bs5toggle_jslnk = twc.JSLink(
+            location="bodybottom",
+            link="https://cdn.jsdelivr.net/npm/bootstrap5-toggle@5.1.1/js/bootstrap5-toggle.jquery.min.js"
+        )
+
+        newresult_jssrc = twc.JSSource(
             location="bodybottom",
             src='''"use strict;"
                 $('emoji-picker').on('emoji-click', (event) => {
@@ -477,11 +487,17 @@ class RootController(BaseController):
                         document.querySelector('.emoji-picker-tooltip').classList.toggle("shown");
                         $("#comment").focus();
                     });
+
+                    $('[name=wednesday_challenge]').prop('indeterminate', true);
+                    $('[name=wednesday_challenge]').bootstrapToggle('indeterminate');
                 });
             '''
         )
+
         emoji_picker_jslnk.inject()
-        emoji_picker_jssrc.inject()
+        bs5toggle_csslnk.inject()
+        bs5toggle_jslnk.inject()
+        newresult_jssrc.inject()
 
         return dict(page='newresult')
 
@@ -489,6 +505,7 @@ class RootController(BaseController):
     @validate(form=appforms.ResultForm(), error_handler=newresult)
     def save_result(self, **kw):
         """Save result."""
+        raise Exception('debug')
         parsed_vals = {
             'game_no': None,
             'step': None,

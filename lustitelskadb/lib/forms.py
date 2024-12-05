@@ -51,7 +51,6 @@ class ResultForm(twf.Form):
             help_text=l_(u'Please Enter your game result (required)'),
             placeholder=l_(u'Game result'),
             validator=validators.ByteString(min=30),
-            minlength=30,
             required=True,
             rows=12,
             attrs={
@@ -64,7 +63,17 @@ class ResultForm(twf.Form):
             label=l_(u'Wednesday challenge'),
             help_text=l_(u'Please check it if you play wednesday challenge'),
             validator=validators.Bool(),
-            css_class="form-check-input my-3 p-3 d-block"
+            css_class="form-check-input d-block",
+            required=False,
+            attrs={
+                'data-toggle': "toggle",
+                'tristate': "tristate",
+                'data-onlabel': l_("I played"),
+                'data-offlabel': l_("I didn't played"),
+                'data-onstyle': "success",
+                'data-offstyle': "danger",
+                'data-style': "my-3 me-3"
+            }
         )
 
         comment = twf.TextArea(
