@@ -10,6 +10,7 @@ from tg.i18n import ugettext as _, lazy_ugettext as l_
 from tg.exceptions import HTTPFound
 from tg import predicates
 from tg.decorators import paginate
+from tg.support.converters import asbool
 
 from lustitelskadb import model
 from lustitelskadb.model import DBSession
@@ -424,7 +425,7 @@ class RootController(BaseController):
                 'style': 'color: var(--bs-danger);'
             }
 
-        if not session.has_key('me_on_xtwitter'):
+        if not session.has_key('me_on_xtwitter') and asbool(config.get('xtwitter.authorize.enabled', True)):
             session['xauthorized.redirect.url'] = url('/newresult')
             session.save()
             redirect('/xauthorize')
@@ -441,9 +442,9 @@ class RootController(BaseController):
                     getattr(tmpl_context.form.child.children, key).error_msg = value
         else:
             tmpl_context.form.value = {
-                'xtwitter_uid': session['me_on_xtwitter']['data']['id'],
-                'xtwitter_username': session['me_on_xtwitter']['data']['username'],
-                'xtwitter_displayname': session['me_on_xtwitter']['data']['name']
+                'xtwitter_uid': session.get('me_on_xtwitter', {}).get('data', {}).get('id', None),
+                'xtwitter_username': session.get('me_on_xtwitter', {}).get('data', {}).get('username', None),
+                'xtwitter_displayname': session.get('me_on_xtwitter', {}).get('data', {}).get('name', None)
             }
 
         emoji_picker_jslnk = twc.JSLink(
