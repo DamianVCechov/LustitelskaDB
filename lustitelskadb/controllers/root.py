@@ -505,7 +505,6 @@ class RootController(BaseController):
     @validate(form=appforms.ResultForm(), error_handler=newresult)
     def save_result(self, **kw):
         """Save result."""
-        raise Exception('debug')
         parsed_vals = {
             'game_no': None,
             'step': None,
