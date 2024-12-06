@@ -519,6 +519,11 @@ class RootController(BaseController):
         if sp_result[-2].endswith('min') and sp_result[-1].endswith('s'):
             parsed_vals['time'] = int(sp_result[-2].rstrip('min')) * 60 + int(sp_result[-1].rstrip('s')) if sp_result[-2].rstrip('min').isdigit() and sp_result[-1].rstrip('s').isdigit() else None
 
+        if parsed_vals['game_no'] != today_game_no():
+            flash(_("This result can't be saved, because isn't for actually ongoing game!"), 'error')
+            redirect('/')
+
+        raise Exception("debug")
         game_result = DBSession.query(model.GameResult, model.XTwitter).join(model.XTwitter, model.XTwitter.uid == model.GameResult.xtwitter_uid)
         game_result = game_result.filter(
             model.GameResult.game_no == parsed_vals['game_no'],

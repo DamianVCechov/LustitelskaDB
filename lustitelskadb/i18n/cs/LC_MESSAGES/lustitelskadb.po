@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-12-05 22:46+0100\n"
-"PO-Revision-Date: 2024-12-05 22:48+0100\n"
+"POT-Creation-Date: 2024-12-06 03:30+0100\n"
+"PO-Revision-Date: 2024-12-06 03:30+0100\n"
 "Last-Translator: Jaroslav Mikulík <jaroslav.mikulik@runtech.cz>\n"
 "Language: cs\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -235,16 +235,21 @@ msgid ""
 "Successfully detached from X/Twitter, the access token has been discarded"
 msgstr "Úspěšně odpojeno z X/Twitteru, přístupový žeton byl zahozen"
 
-#: lustitelskadb/controllers/root.py:530
+#: lustitelskadb/controllers/root.py:523
+msgid "This result can't be saved, because isn't for actually ongoing game!"
+msgstr ""
+"Tento výsledek nelze uložit, protože není pro aktuálně probíhající hru!"
+
+#: lustitelskadb/controllers/root.py:534
 msgid "This game result is already in database"
 msgstr "Tento herní výsledek už v databázi je"
 
 # | msgid "User not found"
-#: lustitelskadb/controllers/root.py:535
+#: lustitelskadb/controllers/root.py:539
 msgid "X/Twitter user not found"
 msgstr "X/Twitter uživatel nenalezen"
 
-#: lustitelskadb/controllers/root.py:554
+#: lustitelskadb/controllers/root.py:558
 msgid ""
 "Something went wrong! Can't save game result to database, so it isn't "
 "sent to legacy website too!"
@@ -253,13 +258,13 @@ msgstr ""
 " ani na původní web!"
 
 # | msgid "Your result has been successfully sent to the original website"
-#: lustitelskadb/controllers/root.py:577
+#: lustitelskadb/controllers/root.py:581
 msgid ""
 "Your result has been successfully saved to database and sent to the "
 "original website"
 msgstr "Váš výsledek byl úspěšně uložen do databáze a odeslán na  původní web"
 
-#: lustitelskadb/controllers/root.py:579
+#: lustitelskadb/controllers/root.py:583
 msgid ""
 "Your result has been successfully saved to database, but an error "
 "occurred while submitting the result from the form to legacy website. Let"
@@ -268,24 +273,24 @@ msgstr ""
 "Váš výsledek byl úspěšně uložen do databáze, ale došlo k chybě během "
 "odesílání výsledku z formuláře na původní web. Dej  nám to vědět!"
 
-#: lustitelskadb/controllers/root.py:607
+#: lustitelskadb/controllers/root.py:611
 msgid "User not found"
 msgstr "Uživatel nenalezen"
 
-#: lustitelskadb/controllers/root.py:609
+#: lustitelskadb/controllers/root.py:613
 msgid "Invalid Password"
 msgstr "Neplatné heslo"
 
-#: lustitelskadb/controllers/root.py:613
+#: lustitelskadb/controllers/root.py:617
 msgid "Wrong credentials"
 msgstr "Nesprávné přihlašovací údaje"
 
-#: lustitelskadb/controllers/root.py:630
+#: lustitelskadb/controllers/root.py:634
 #, python-format
 msgid "Welcome back, %s!"
 msgstr "Vítejte zpět, uživateli %s!"
 
-#: lustitelskadb/controllers/root.py:643
+#: lustitelskadb/controllers/root.py:647
 msgid "We hope to see you soon!"
 msgstr "Těšíme se příště!"
 
@@ -315,8 +320,8 @@ msgstr "Středeční výzva"
 msgid "Please check it if you play wednesday challenge"
 msgstr "Tohle zaškrtněte, pokud hrajete středeční výzvu"
 
+# | msgid "played"
 #: lustitelskadb/lib/forms.py:71
-#| msgid "played"
 msgid "I played"
 msgstr "Hrál(a) jsem"
 
@@ -393,16 +398,16 @@ msgstr "Import"
 msgid " | About page"
 msgstr "| Stránka o aplikaci"
 
-#: lustitelskadb/templates/about.xhtml:8
+#: lustitelskadb/templates/about.xhtml:18
 #: lustitelskadb/templates/master.xhtml:50
 msgid "About"
 msgstr "O aplikaci"
 
-#: lustitelskadb/templates/about.xhtml:12
+#: lustitelskadb/templates/about.xhtml:25
 msgid "Dear friends,"
 msgstr "Vážení přátelé,"
 
-#: lustitelskadb/templates/about.xhtml:15
+#: lustitelskadb/templates/about.xhtml:28
 msgid ""
 "let me welcome you to our new puzzlers site, where we announce results "
 "and keep statistics. So far, the site is only for community purposes of "
@@ -413,23 +418,23 @@ msgstr ""
 "pouze pro komunitní účely hráčů hrajících hru"
 
 # | msgid "HadejSlova"
-#: lustitelskadb/templates/about.xhtml:15
-#: lustitelskadb/templates/about.xhtml:19
+#: lustitelskadb/templates/about.xhtml:28
+#: lustitelskadb/templates/about.xhtml:32
 msgid "HádejSlova"
 msgstr "HádejSlova"
 
-#: lustitelskadb/templates/about.xhtml:15
+#: lustitelskadb/templates/about.xhtml:28
 msgid "and sharing their results on"
 msgstr "a sdílejí své výsledky na"
 
 # | msgid "Our X/Twitter"
 # | msgid "X/Twitter"
-#: lustitelskadb/templates/about.xhtml:15
-#: lustitelskadb/templates/about.xhtml:29
+#: lustitelskadb/templates/about.xhtml:28
+#: lustitelskadb/templates/about.xhtml:42
 msgid "Twitter"
 msgstr "Twitter"
 
-#: lustitelskadb/templates/about.xhtml:15
+#: lustitelskadb/templates/about.xhtml:28
 msgid ""
 ". We are community of approx. 2 dozen players who enjoy the game and "
 "comparing their results with each other. They have a few extra rules and "
@@ -438,32 +443,32 @@ msgstr ""
 ". Jsme komunitou cca. 2 desítek hráčů, kteří se hrou baví a porovnávají "
 "si mezi sebou své výsledky. A mají oproti původnímu plánu"
 
-#: lustitelskadb/templates/about.xhtml:15
+#: lustitelskadb/templates/about.xhtml:28
 msgid "plan."
 msgstr "pár pravidel a radostí navíc."
 
-#: lustitelskadb/templates/about.xhtml:19
+#: lustitelskadb/templates/about.xhtml:32
 msgid "When you click to"
 msgstr "Klepnete-li na odkaz"
 
 # | msgid "New result"
-#: lustitelskadb/templates/about.xhtml:19
+#: lustitelskadb/templates/about.xhtml:32
 msgid "\"New result\""
 msgstr "\"Nový výsledek\""
 
-#: lustitelskadb/templates/about.xhtml:19
+#: lustitelskadb/templates/about.xhtml:32
 msgid "at the top of the menu, you will be asked to authorize via"
 msgstr "nahoře v menu, budete požádáni o autorizaci stran"
 
 # | msgid "Our X/Twitter"
-#: lustitelskadb/templates/about.xhtml:19
-#: lustitelskadb/templates/about.xhtml:33
+#: lustitelskadb/templates/about.xhtml:32
+#: lustitelskadb/templates/about.xhtml:46
 #: lustitelskadb/templates/administration/index.xhtml:20
 #: lustitelskadb/templates/administration/xtwitter/index.xhtml:7
 msgid "X/Twitter"
 msgstr "X/Twitter"
 
-#: lustitelskadb/templates/about.xhtml:19
+#: lustitelskadb/templates/about.xhtml:32
 msgid ""
 ".You will then be able to enter your result from the game into the web "
 "form. In the original"
@@ -471,7 +476,7 @@ msgstr ""
 "u. Pak budete mít možnost zadat svůj výsledek ze hry do formuláře. V "
 "původní hře"
 
-#: lustitelskadb/templates/about.xhtml:19
+#: lustitelskadb/templates/about.xhtml:32
 msgid ""
 "game, after playing, just press the SHARE button and insert it into the "
 "form either with Ctrl-V, or if you are using a phone, hold it for a long "
@@ -481,7 +486,7 @@ msgstr ""
 "pomocí Ctrl-V, nebo použiváte-li telefon dlouze přídržet v políčku a "
 "stisknout VLOŽIT."
 
-#: lustitelskadb/templates/about.xhtml:23
+#: lustitelskadb/templates/about.xhtml:36
 msgid ""
 "Furthermore, nothing prevents you from sharing your result with us in our"
 msgstr "Dále Vám již nic nebrání se o svůj výsledek podělit s námi v našich"
@@ -489,25 +494,25 @@ msgstr "Dále Vám již nic nebrání se o svůj výsledek podělit s námi v na
 # | msgid "Our X/Twitter"
 # | msgid "X/Twitter"
 # | msgid "Twitter"
-#: lustitelskadb/templates/about.xhtml:23
+#: lustitelskadb/templates/about.xhtml:36
 msgid "Twitter's"
 msgstr "Twitterovských"
 
-#: lustitelskadb/templates/about.xhtml:23
+#: lustitelskadb/templates/about.xhtml:36
 msgid "threads"
 msgstr "vláknech"
 
 # | msgid "LustiteleDB"
-#: lustitelskadb/templates/about.xhtml:23
-#: lustitelskadb/templates/about.xhtml:33
+#: lustitelskadb/templates/about.xhtml:36
+#: lustitelskadb/templates/about.xhtml:46
 msgid "@Lustitele"
 msgstr "@Lustitele"
 
-#: lustitelskadb/templates/about.xhtml:23
+#: lustitelskadb/templates/about.xhtml:36
 msgid ", which we announce every day after 6 p.m. We would like to see you."
 msgstr ", která vyhlašujeme každý den po 18 hodině. Rádi Vás uvidíme."
 
-#: lustitelskadb/templates/about.xhtml:26
+#: lustitelskadb/templates/about.xhtml:39
 msgid ""
 "If we have the slightest suspicion that you are cheating, we will kick "
 "you out. No debate. But otherwise, we are a bunch of nice people. Trust "
@@ -517,31 +522,31 @@ msgstr ""
 "debaty. Ale jinak jsme parta milých lidí. Věrte mi. 😀"
 
 # | msgid "original website"
-#: lustitelskadb/templates/about.xhtml:29
+#: lustitelskadb/templates/about.xhtml:42
 msgid "We built the original website"
 msgstr "Původní web"
 
-#: lustitelskadb/templates/about.xhtml:29
+#: lustitelskadb/templates/about.xhtml:42
 msgid "lustitele.chytrak.cz"
 msgstr "lustitele.chytrak.cz"
 
-#: lustitelskadb/templates/about.xhtml:29
+#: lustitelskadb/templates/about.xhtml:42
 msgid "with"
 msgstr "jsme s"
 
-#: lustitelskadb/templates/about.xhtml:29
+#: lustitelskadb/templates/about.xhtml:42
 msgid "@NocniDuha"
 msgstr "@NocniDuha"
 
-#: lustitelskadb/templates/about.xhtml:29
+#: lustitelskadb/templates/about.xhtml:42
 msgid "on a green field, when I calculated everything in the"
 msgstr "stavěli na zelené louce, kdy jsem vše počítal v"
 
-#: lustitelskadb/templates/about.xhtml:29
+#: lustitelskadb/templates/about.xhtml:42
 msgid "GoogleSheets spreadsheet"
 msgstr "tabulkovém procesoru GoogleSheets"
 
-#: lustitelskadb/templates/about.xhtml:29
+#: lustitelskadb/templates/about.xhtml:42
 msgid ""
 "and loaded the results from it using simple scripts. Now we have "
 "progressed and thanks to the generous cooperation of"
@@ -549,19 +554,19 @@ msgstr ""
 "a načítal výsledky z něj pomocí jednoduchých skriptů. Nyní jsme pokročili"
 " a máme za vydatné spolupráce"
 
-#: lustitelskadb/templates/about.xhtml:29
+#: lustitelskadb/templates/about.xhtml:42
 msgid "@ByCzech"
 msgstr "@ByCzech"
 
-#: lustitelskadb/templates/about.xhtml:29
+#: lustitelskadb/templates/about.xhtml:42
 msgid "and"
 msgstr "a"
 
-#: lustitelskadb/templates/about.xhtml:29
+#: lustitelskadb/templates/about.xhtml:42
 msgid "@Tlucek_P"
 msgstr "@Tlucek_P"
 
-#: lustitelskadb/templates/about.xhtml:29
+#: lustitelskadb/templates/about.xhtml:42
 msgid ""
 "(they built it themselves) we have this amazing site with its own "
 "database and simple"
@@ -569,11 +574,11 @@ msgstr ""
 "(postavili to sami) tuto úžasnou stránku s vlastní databází a jednoduchou"
 " obsluhou"
 
-#: lustitelskadb/templates/about.xhtml:29
+#: lustitelskadb/templates/about.xhtml:42
 msgid "handling. For which I thank them very much."
 msgstr ". Za což jim velmi děkuji."
 
-#: lustitelskadb/templates/about.xhtml:33
+#: lustitelskadb/templates/about.xhtml:46
 msgid ""
 "Well, if you don't know how to deal with something, feel free to contact "
 "me either on my"
@@ -581,40 +586,40 @@ msgstr ""
 "No, kdyby jste si s něčím nevěděli rady, neváhejte se na mne obrátit buď "
 "na mém"
 
-#: lustitelskadb/templates/about.xhtml:33
+#: lustitelskadb/templates/about.xhtml:46
 msgid "profile"
 msgstr "profilu"
 
-#: lustitelskadb/templates/about.xhtml:33
+#: lustitelskadb/templates/about.xhtml:46
 msgid "@DamianVCechov"
 msgstr "@DamianVCechov"
 
-#: lustitelskadb/templates/about.xhtml:33
+#: lustitelskadb/templates/about.xhtml:46
 msgid "or our joint profile"
 msgstr "nebo našem společném"
 
-#: lustitelskadb/templates/about.xhtml:33
+#: lustitelskadb/templates/about.xhtml:46
 msgid "or you can contact me via email"
 msgstr "a nebo mě můžete kontaktovat e-mailem"
 
-#: lustitelskadb/templates/about.xhtml:33
+#: lustitelskadb/templates/about.xhtml:46
 msgid "lustitele@gmail.com"
 msgstr "lustitele@gmail.com"
 
-#: lustitelskadb/templates/about.xhtml:33
+#: lustitelskadb/templates/about.xhtml:46
 #: lustitelskadb/templates/libriciphers.xhtml:10
 msgid "."
 msgstr "."
 
-#: lustitelskadb/templates/about.xhtml:36
+#: lustitelskadb/templates/about.xhtml:49
 msgid "Your friend"
 msgstr "Váš kamarád "
 
-#: lustitelskadb/templates/about.xhtml:38
+#: lustitelskadb/templates/about.xhtml:51
 msgid "and table bulletin board administrator"
 msgstr "a tabulkový nástěnkář"
 
-#: lustitelskadb/templates/about.xhtml:40
+#: lustitelskadb/templates/about.xhtml:53
 msgid "Damian V. Checkhov"
 msgstr "Damian V. Čechov"
 
