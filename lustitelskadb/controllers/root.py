@@ -523,7 +523,6 @@ class RootController(BaseController):
             flash(_("This result can't be saved, because isn't for actually ongoing game!"), 'error')
             redirect('/')
 
-        raise Exception("debug")
         game_result = DBSession.query(model.GameResult, model.XTwitter).join(model.XTwitter, model.XTwitter.uid == model.GameResult.xtwitter_uid)
         game_result = game_result.filter(
             model.GameResult.game_no == parsed_vals['game_no'],
