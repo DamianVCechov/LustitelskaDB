@@ -68,8 +68,8 @@ class ResultForm(twf.Form):
             attrs={
                 'data-toggle': "toggle",
                 'tristate': "tristate",
-                'data-onlabel': l_("I played"),
-                'data-offlabel': l_("I didn't played"),
+                'data-onlabel': l_("I did play"),
+                'data-offlabel': l_("I didn't play"),
                 'data-onstyle': "success",
                 'data-offstyle': "danger",
                 'data-style': "my-3 me-3"
