@@ -63,17 +63,8 @@ class ResultForm(twf.Form):
             label=l_(u'Wednesday challenge'),
             help_text=l_(u'Please check it if you play wednesday challenge'),
             validator=validators.Bool(),
-            css_class="form-check-input d-block",
-            required=False,
-            attrs={
-                'data-toggle': "toggle",
-                'tristate': "tristate",
-                'data-onlabel': l_("I did play"),
-                'data-offlabel': l_("I didn't play"),
-                'data-onstyle': "success",
-                'data-offstyle': "danger",
-                'data-style': "my-3 me-3"
-            }
+            css_class="form-check-input d-block p-3 my-3",
+            required=False
         )
 
         comment = twf.TextArea(

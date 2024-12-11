@@ -455,15 +455,6 @@ class RootController(BaseController):
             template='kajiki:lustitelskadb.templates.tw2.core.jslink'
         )
 
-        bs5toggle_csslnk = twc.CSSLink(
-            location="headbottom",
-            link="https://cdn.jsdelivr.net/npm/bootstrap5-toggle@5.1.1/css/bootstrap5-toggle.min.css"
-        )
-        bs5toggle_jslnk = twc.JSLink(
-            location="bodybottom",
-            link="https://cdn.jsdelivr.net/npm/bootstrap5-toggle@5.1.1/js/bootstrap5-toggle.jquery.min.js"
-        )
-
         newresult_jssrc = twc.JSSource(
             location="bodybottom",
             src='''"use strict;"
@@ -489,14 +480,11 @@ class RootController(BaseController):
                     });
 
                     $('[name=wednesday_challenge]').prop('indeterminate', true);
-                    $('[name=wednesday_challenge]').bootstrapToggle('indeterminate');
                 });
             '''
         )
 
         emoji_picker_jslnk.inject()
-        bs5toggle_csslnk.inject()
-        bs5toggle_jslnk.inject()
         newresult_jssrc.inject()
 
         return dict(page='newresult')
