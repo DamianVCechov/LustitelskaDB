@@ -64,7 +64,10 @@ class ResultForm(twf.Form):
             help_text=l_(u'Please check it if you play wednesday challenge'),
             validator=validators.Bool(),
             css_class="form-check-input d-block p-3 my-3",
-            required=False
+            required=False,
+            attrs={
+                'onchange': '$(this).prop("required", false);'
+            }
         )
 
         comment = twf.TextArea(
