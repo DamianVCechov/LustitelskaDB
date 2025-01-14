@@ -19,7 +19,7 @@ HTMLBR = '<br>'
 		<h2 class="text-center mt-3">Wednesday challenge words</h2>
 		<h3 class="text-center text-muted" py:if="wc_words"><span>for game #</span>${wc_words.game_no}</h3>
 
-		<h4 class="text-center text-primary my-5" py:if="wc_words">The following words were selected for Wednesday's Challenge, which will be played from <span>${next_wc}</span> 6:00 PM to next day 6:00 PM:</h4>
+		<h4 class="text-center text-primary my-5" py:if="wc_words">The following words were selected for Wednesday's Challenge, which will be played from <span>${next_wc.strftime("%Y-%m-%d")}</span> 6:00 PM to next day 6:00 PM:</h4>
 		<h3 class="text-center display-3 text-danger fw-bold" py:if="wc_words">${wc_words.first_word}</h3>
 		<h3 class="text-center display-3 text-warning fw-bold" py:if="wc_words">${wc_words.second_word}</h3>
 		<h3 class="text-center display-3 text-success fw-bold" py:if="wc_words">${wc_words.third_word}</h3>
