@@ -86,7 +86,7 @@ def wednesday_challenge_comming():
 	else:
 		return False
 ?>
-	<div class="bg-light rounded text-uppercase text-danger display-4 my-3" py:if="wednesday_challenge_comming() or True">
+	<div class="bg-light rounded text-uppercase text-danger display-4 my-3" py:if="wednesday_challenge_comming()">
 		<div class="d-flex align-items-center clearfix">
 			<img class="img-fluid rounded wednesday-challenge-img m-1" style="max-width: 128px;" src="${tg.url('/img/wednesday-challenge-256.webp')}" alt="Wednesday Challenge" />
 			<span class="fw-bolder mx-3">Don't forget the Wednesday challenge!</span>
