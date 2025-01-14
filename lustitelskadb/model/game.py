@@ -6,11 +6,12 @@ from sqlalchemy.orm import relationship, backref
 
 from lustitelskadb.model import DeclarativeBase, metadata, DBSession
 
-__all__ = ['GameResult']
+__all__ = ['GameResult', 'WednesdayChallengeWord']
 
 
 class GameResult(DeclarativeBase):
     """Games results table."""
+
     __tablename__ = 'games_results'
     __table_args__ = {
                       'mysql_engine': 'InnoDB',
@@ -31,6 +32,30 @@ class GameResult(DeclarativeBase):
     game_rank = Column(Integer, nullable=True, index=True)
     # Raw data
     game_raw_data = Column(UnicodeText(255), nullable=False, default='')
+    # Meta data
+    created = Column(DateTime(timezone=True), server_default=func.now())
+    updated = Column(DateTime(timezone=True), onupdate=func.now())
+
+
+class WednesdayChallengeWord(DeclarativeBase):
+    """Wednesday Challenge words."""
+
+    __tablename__ = 'wednesday_challenge_words'
+    __table_args__ = {
+                      'mysql_engine': 'InnoDB',
+                      'mysql_charset': 'utf8mb4'
+    }
+
+    uid = Column(Integer, primary_key=True)
+    xtwitter_uid = Column(Integer, ForeignKey('xtwitter.uid'), index=True)
+    xtwitter = relationship('XTwitter', backref=backref('wednesday_challenges'))
+    # Game no (modulo 7 need to be = 5)
+    game_no = Column(Integer, nullable=False, index=True, default=0)
+    # Words need to be 5 chars exactly
+    first_word = Column(Unicode(5), nullable=False, index=True, default='')
+    second_word = Column(Unicode(5), nullable=False, index=True, default='')
+    third_word = Column(Unicode(5), nullable=False, index=True, default='')
+    comment = Column(UnicodeText, nullable=True)
     # Meta data
     created = Column(DateTime(timezone=True), server_default=func.now())
     updated = Column(DateTime(timezone=True), onupdate=func.now())

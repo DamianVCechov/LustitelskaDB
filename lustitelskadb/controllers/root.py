@@ -60,6 +60,11 @@ from lustitelskadb.lib.utils import HADEJSLOVA_STARTDATE
 __all__ = ['RootController']
 
 
+def game_no_start_date(game_no):
+    """Count date from and to for game no."""
+    return HADEJSLOVA_STARTDATE + timedelta(days=game_no)
+
+
 def today_game_no():
     """Count today's game no."""
     now = datetime.now()
@@ -572,6 +577,17 @@ class RootController(BaseController):
         rsess.close()
 
         return redirect('/')
+
+    @expose('lustitelskadb.templates.wednesday_challenge')
+    def wednesday_challenge(self, **kw):
+        """Handle page with words for next comming Wednesday challenge."""
+        wc_words = DBSession.query(model.WednesdayChallengeWord).filter(model.WednesdayChallengeWord.game_no >= today_game_no()).first()
+        if wc_words:
+            next_wc = game_no_start_date(wc_words.game_no)
+        else:
+            next_wc = None
+
+        return dict(page="wednesday_challenge", wc_words=wc_words, next_wc=next_wc)
 
     @expose('lustitelskadb.templates.libriciphers')
     @paginate('libriciphers', items_per_page=1)

@@ -1,0 +1,33 @@
+<html py:extends="master.xhtml" py:strip="True">
+<head py:block="head" py:strip="True">
+<title py:block="master_title">${getattr(tmpl_context, 'project_name', 'turbogears2')} | Wednesday challenge</title>
+</head>
+
+<body py:block="body" py:strip="True">
+	<?py
+from aniso8601 import parse_datetime
+
+HTMLBR = '<br>'
+?>
+	<h1 class="bg-light p-1 rounded opacity-90 text-center">Wednesday challenge</h1>
+
+	<div class="text-center">
+		<img class="img-fluid rounded wednesday-challenge-img m-1" src="${tg.url('/img/wednesday-challenge-256.webp')}" alt="Wednesday Challenge" />
+	</div>
+
+	<div class="mt-5 mb-3 bg-light p-2 rounded opacity-90">
+		<h2 class="text-center mt-3">Wednesday challenge words</h2>
+		<h3 class="text-center text-muted" py:if="wc_words"><span>for game #</span>${wc_words.game_no}</h3>
+
+		<h4 class="text-center text-primary my-5" py:if="wc_words">The following words were selected for Wednesday's Challenge, which will be played from <span>${next_wc}</span> 6:00 PM to next day 6:00 PM:</h4>
+		<h3 class="text-center display-3 text-danger fw-bold" py:if="wc_words">${wc_words.first_word}</h3>
+		<h3 class="text-center display-3 text-warning fw-bold" py:if="wc_words">${wc_words.second_word}</h3>
+		<h3 class="text-center display-3 text-success fw-bold" py:if="wc_words">${wc_words.third_word}</h3>
+		<h5 class="text-center mt-5 mb-3" py:if="wc_words">${Markup(wc_words.comment.replace('\n', HTMLBR))}</h5>
+		<h5 class="text-center" py:if="wc_words">Any complaints about the quality of the challenge words should be directed directly to their author, who this time is</h5>
+		<h5 class="text-center mb-5" py:if="wc_words"><a href="http://x.com/${wc_words.xtwitter.user_name}" target="_blank">${wc_words.xtwitter.display_name}</a></h5>
+
+		<h4 class="text-center text-danger my-5" py:if="not wc_words">Unfortunately (for now) there are no words known for the next or current Wednesday Challenge, please try again later!</h4>
+	</div>
+</body>
+</html>

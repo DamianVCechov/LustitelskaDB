@@ -84,6 +84,40 @@ class GameResultsAdminCrudConfig(CrudRestControllerConfig):
         }
 
 
+class WednesdayChallengesWordsAdminCrudConfig(CrudRestControllerConfig):
+
+    class defaultCrudRestController(EasyCrudRestController):
+        # __table_options__ = {
+        #     '__omit_fields__': [
+        #     ]
+        # }
+
+        __form_edit_options__ = {
+            '__omit_fields__': [
+                'created',
+                'updated',
+            ]
+        }
+
+        __form_new_options__ = {
+            '__omit_fields__': [
+                'uid',
+                'created',
+                'updated'
+            ]
+        }
+
+        @expose(inherit=True)
+        def post(self, *args, **kw):
+            kw['xtwitter_uid'] = kw.pop('xtwitter')
+            return EasyCrudRestController.post(self, *args, **kw)
+
+        @expose(inherit=True)
+        def put(self, *args, **kw):
+            kw['xtwitter_uid'] = kw.pop('xtwitter')
+            return EasyCrudRestController.put(self, *args, **kw)
+
+
 class CustomGroupedBootstrapAdminLayout(GroupedBootstrapAdminLayout):
 
     crud_templates = {
@@ -110,6 +144,8 @@ class CustomAdminConfig(TGAdminConfig):
     xtwitter = XTwitterAdminCrudConfig
 
     gameresult = GameResultsAdminCrudConfig
+
+    wednesdaychallengeword = WednesdayChallengesWordsAdminCrudConfig
 
 
 class AdministrationController(BaseController):
