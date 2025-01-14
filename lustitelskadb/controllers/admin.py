@@ -68,12 +68,10 @@ class GameResultsAdminCrudConfig(CrudRestControllerConfig):
             ]
         }
 
-        __form_options__ = {
+        __form_edit_options__ = {
             '__omit_fields__': [
-                # 'game_raw_data',
                 'created',
                 'updated',
-                # 'xtwitter'
             ],
             '__field_widgets__': {
                 'wednesday_challenge': CustomCheckbox(
@@ -82,6 +80,30 @@ class GameResultsAdminCrudConfig(CrudRestControllerConfig):
                 )
             }
         }
+
+        __form_new_options__ = {
+            '__omit_fields__': [
+                'uid',
+                'created',
+                'updated'
+            ],
+            '__field_widgets__': {
+                'wednesday_challenge': CustomCheckbox(
+                    key="wednesday_challenge",
+                    label="Wednesday challenge"
+                )
+            }
+        }
+
+        @expose(inherit=True)
+        def post(self, *args, **kw):
+            kw['xtwitter_uid'] = kw.pop('xtwitter')
+            return EasyCrudRestController.post(self, *args, **kw)
+
+        @expose(inherit=True)
+        def put(self, *args, **kw):
+            kw['xtwitter_uid'] = kw.pop('xtwitter')
+            return EasyCrudRestController.put(self, *args, **kw)
 
 
 class WednesdayChallengesWordsAdminCrudConfig(CrudRestControllerConfig):
