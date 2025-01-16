@@ -498,6 +498,14 @@ class RootController(BaseController):
     @validate(form=appforms.ResultForm(), error_handler=newresult)
     def save_result(self, **kw):
         """Save result."""
+        if not session.has_key('me_on_xtwitter'):
+            flash(_("Nice try, only authorized person can send result!"), 'error')
+            return redirect(url('/'))
+
+        if session['me_on_xtwitter']['data']['id'] != kw['xtwitter_uid']:
+            flash(_("Really nice try, only authorized person can send their own result!"), 'error')
+            return redirect(url('/'))
+
         parsed_vals = {
             'game_no': None,
             'step': None,
