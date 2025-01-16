@@ -178,7 +178,7 @@ class RootController(BaseController):
         mime = Magic(mime=True)
 
         sess = requests.Session()
-        r = sess.get('https://www.bing.com/HPImageArchive.aspx', params={'format': 'js', 'idx': 0, 'n': 1})
+        r = sess.get('https://www.bing.com/hpimagearchive.aspx', params={'format': 'js', 'idx': 0, 'n': 1})
         if r.ok:
             data = r.json()
 
