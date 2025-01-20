@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-01-14 19:12+0100\n"
-"PO-Revision-Date: 2025-01-14 19:12+0100\n"
+"POT-Creation-Date: 2025-01-20 06:09+0100\n"
+"PO-Revision-Date: 2025-01-20 06:16+0100\n"
 "Last-Translator: Jaroslav Mikulík <jaroslav.mikulik@runtech.cz>\n"
 "Language: cs\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -21,12 +21,12 @@ msgstr ""
 "Generated-By: Babel 2.10.3\n"
 "X-Generator: Lokalize 22.12.3\n"
 
-#: lustitelskadb/controllers/admin.py:165
-#: lustitelskadb/controllers/admin.py:170
-#: lustitelskadb/controllers/admin.py:185
-#: lustitelskadb/controllers/admin.py:267
-#: lustitelskadb/controllers/admin.py:281
-#: lustitelskadb/controllers/admin.py:315
+#: lustitelskadb/controllers/admin.py:187
+#: lustitelskadb/controllers/admin.py:192
+#: lustitelskadb/controllers/admin.py:207
+#: lustitelskadb/controllers/admin.py:289
+#: lustitelskadb/controllers/admin.py:303
+#: lustitelskadb/controllers/admin.py:337
 #: lustitelskadb/controllers/libricipher.py:56
 #: lustitelskadb/controllers/libricipher.py:108
 #: lustitelskadb/controllers/libricipher.py:143
@@ -37,22 +37,22 @@ msgstr ""
 msgid "Only for users with appropriate permissions"
 msgstr "Pouze pro uživatele s odpovídajícími oprávněními"
 
-#: lustitelskadb/controllers/admin.py:167
+#: lustitelskadb/controllers/admin.py:189
 msgid "Do you really want restart application? This will be done immediately!"
 msgstr "Chcete opravdu restartovat aplikaci? Toto bude provedeno okamžitě!"
 
-#: lustitelskadb/controllers/admin.py:177
+#: lustitelskadb/controllers/admin.py:199
 #: lustitelskadb/controllers/libricipher.py:115
-#: lustitelskadb/controllers/root.py:445
+#: lustitelskadb/controllers/root.py:426 lustitelskadb/controllers/root.py:585
 #: lustitelskadb/controllers/xtwitter.py:32
 msgid "Form filled with errors!"
 msgstr "Formulář vyplněn s chybami!"
 
-#: lustitelskadb/controllers/admin.py:190
+#: lustitelskadb/controllers/admin.py:212
 msgid "Missing CSV file for import"
 msgstr "Schází CSV soubor k importu"
 
-#: lustitelskadb/controllers/admin.py:260
+#: lustitelskadb/controllers/admin.py:282
 msgid ""
 "The import was successful. {all_count} records processed, "
 "{imported_count} records imported, {duplicity_skipped} duplicate records "
@@ -62,17 +62,17 @@ msgstr ""
 "záznamů importováno, {duplicity_skipped} duplicitních záznamů přeskočeno "
 "a {added_nicknames} uživatelů přidáno."
 
-#: lustitelskadb/controllers/admin.py:262
+#: lustitelskadb/controllers/admin.py:284
 msgid "The import attempt ended with an error: \"{}\""
 msgstr "Pokus o import skončil chybou: \"{}\""
 
-#: lustitelskadb/controllers/admin.py:275
+#: lustitelskadb/controllers/admin.py:297
 msgid "Score Sheet successfully reassembled for {} games"
 msgstr "Výsledovka úspěšně znovusestavena pro {} her"
 
 # | msgid "Result successfully added"
 # | msgid "Libri Cipher item successfully created"
-#: lustitelskadb/controllers/admin.py:319
+#: lustitelskadb/controllers/admin.py:341
 msgid "Application successfully restarted"
 msgstr "Aplikace úspěšně restartována"
 
@@ -116,19 +116,19 @@ msgid "Really delete?"
 msgstr "Opravdu smazat?"
 
 # | msgid "Part:"
-#: lustitelskadb/controllers/libricipher.py:82 lustitelskadb/lib/forms.py:107
-#: lustitelskadb/lib/forms.py:109
+#: lustitelskadb/controllers/libricipher.py:82 lustitelskadb/lib/forms.py:168
+#: lustitelskadb/lib/forms.py:170
 msgid "Part"
 msgstr "Díl"
 
-#: lustitelskadb/controllers/libricipher.py:86 lustitelskadb/lib/forms.py:117
-#: lustitelskadb/lib/forms.py:119
+#: lustitelskadb/controllers/libricipher.py:86 lustitelskadb/lib/forms.py:178
+#: lustitelskadb/lib/forms.py:180
 msgid "Question"
 msgstr "Otázka"
 
 # | msgid "Show answer"
-#: lustitelskadb/controllers/libricipher.py:93 lustitelskadb/lib/forms.py:136
-#: lustitelskadb/lib/forms.py:138
+#: lustitelskadb/controllers/libricipher.py:93 lustitelskadb/lib/forms.py:197
+#: lustitelskadb/lib/forms.py:199
 msgid "Answer"
 msgstr "Odpověď"
 
@@ -162,20 +162,20 @@ msgstr "Chybí unikátní ID Libri Šifry"
 msgid "Libri Cipher item successfully deleted"
 msgstr "Libri Šifry položka úspěšně smazána"
 
-#: lustitelskadb/controllers/root.py:201
+#: lustitelskadb/controllers/root.py:182
 msgid "Missing unique ID of user game result"
 msgstr "Chybí unikátní ID herního výsledku uživatele"
 
 # | msgid "Requested Libri Cipher not found"
-#: lustitelskadb/controllers/root.py:206
+#: lustitelskadb/controllers/root.py:187
 msgid "Requested user game result not found"
 msgstr "Požadovaný herní výsledek uživatele nenalezen"
 
-#: lustitelskadb/controllers/root.py:234
+#: lustitelskadb/controllers/root.py:215
 msgid "Unknown source for authorization, canceled"
 msgstr "Neznámý zdroj k autorizaci, přerušeno"
 
-#: lustitelskadb/controllers/root.py:250
+#: lustitelskadb/controllers/root.py:231
 msgid ""
 "There may have been an issue with the consumer_key or consumer_secret in "
 "application"
@@ -183,11 +183,11 @@ msgstr ""
 "Je možné, že došlo k problému s consumer_key nebo consumer_secret v "
 "aplikaci"
 
-#: lustitelskadb/controllers/root.py:282
+#: lustitelskadb/controllers/root.py:263
 msgid "Unknown type of OAuth in config"
 msgstr "Neznámý typ OAuth v konfiguraci"
 
-#: lustitelskadb/controllers/root.py:299
+#: lustitelskadb/controllers/root.py:280
 msgid ""
 "I cannot find the keys needed to continue in authorization process in the"
 " session. Maybe you are using a light version of the browser that cannot "
@@ -199,7 +199,7 @@ msgstr ""
 "udržet nebo máte vypnuté ukládání cookies. Zkuste přejít na plnohodnotný "
 "prohlížeč nebo zapnout ukládání cookies."
 
-#: lustitelskadb/controllers/root.py:329
+#: lustitelskadb/controllers/root.py:310
 msgid ""
 "I cannot find the data needed to validate the authorization challenge in "
 "the session. Maybe you are using a light version of the browser that "
@@ -212,44 +212,54 @@ msgstr ""
 "nebo zapnout ukládání cookies."
 
 # | msgid "Can't fetch token"
-#: lustitelskadb/controllers/root.py:348
+#: lustitelskadb/controllers/root.py:329
 msgid "Can't fetch access token"
 msgstr "Nemohu získat přístupový žeton"
 
-#: lustitelskadb/controllers/root.py:368
+#: lustitelskadb/controllers/root.py:349
 msgid "Can't get user info from Twitter"
 msgstr "Nelze získat informace o uživateli z Twitteru"
 
 # | msgid "Result successfully added"
-#: lustitelskadb/controllers/root.py:400
+#: lustitelskadb/controllers/root.py:381
 msgid "Successfully authorized"
 msgstr "Úspěšně autorizováno"
 
-#: lustitelskadb/controllers/root.py:403
+#: lustitelskadb/controllers/root.py:384
 msgid "Succesfully authorized, but missing landing URL"
 msgstr "Úspěšně autorizováno, ale chybí cílové URL"
 
 # | msgid "Successfully detached from X/Twitter"
-#: lustitelskadb/controllers/root.py:420
+#: lustitelskadb/controllers/root.py:401
 msgid ""
 "Successfully detached from X/Twitter, the access token has been discarded"
 msgstr "Úspěšně odpojeno z X/Twitteru, přístupový žeton byl zahozen"
 
-#: lustitelskadb/controllers/root.py:516
+#: lustitelskadb/controllers/root.py:483
+msgid "Nice try, only authorized person can send result!"
+msgstr "Hezký pokus, pouze autorizované osoby mohou poslat výsledek!"
+
+#: lustitelskadb/controllers/root.py:487
+msgid "Really nice try, only authorized person can send their own result!"
+msgstr ""
+"Opravdu hezký pokus, pouze autorizované osoby mohou poslat svůj vlastní"
+" výsledek!"
+
+#: lustitelskadb/controllers/root.py:505
 msgid "This result can't be saved, because isn't for actually ongoing game!"
 msgstr ""
 "Tento výsledek nelze uložit, protože není pro aktuálně probíhající hru!"
 
-#: lustitelskadb/controllers/root.py:526
+#: lustitelskadb/controllers/root.py:515
 msgid "This game result is already in database"
 msgstr "Tento herní výsledek už v databázi je"
 
 # | msgid "User not found"
-#: lustitelskadb/controllers/root.py:531
+#: lustitelskadb/controllers/root.py:520
 msgid "X/Twitter user not found"
 msgstr "X/Twitter uživatel nenalezen"
 
-#: lustitelskadb/controllers/root.py:550
+#: lustitelskadb/controllers/root.py:539
 msgid ""
 "Something went wrong! Can't save game result to database, so it isn't "
 "sent to legacy website too!"
@@ -258,13 +268,13 @@ msgstr ""
 " ani na původní web!"
 
 # | msgid "Your result has been successfully sent to the original website"
-#: lustitelskadb/controllers/root.py:573
+#: lustitelskadb/controllers/root.py:562
 msgid ""
 "Your result has been successfully saved to database and sent to the "
 "original website"
 msgstr "Váš výsledek byl úspěšně uložen do databáze a odeslán na  původní web"
 
-#: lustitelskadb/controllers/root.py:575
+#: lustitelskadb/controllers/root.py:564
 msgid ""
 "Your result has been successfully saved to database, but an error "
 "occurred while submitting the result from the form to legacy website. Let"
@@ -273,24 +283,66 @@ msgstr ""
 "Váš výsledek byl úspěšně uložen do databáze, ale došlo k chybě během "
 "odesílání výsledku z formuláře na původní web. Dej  nám to vědět!"
 
-#: lustitelskadb/controllers/root.py:614
+#: lustitelskadb/controllers/root.py:619
+msgid "Nice try, only authorized person can send Wednesday challenge words!"
+msgstr ""
+"Hezký pokus, pouze autorizovaná osoba může poslat slova pro středeční výzvu!"
+
+#: lustitelskadb/controllers/root.py:623
+msgid ""
+"Really nice try, only authorized person can send Wednesday challenge "
+"words!"
+msgstr ""
+"Opravdu hezký pokus, pouze autorizovaná osoba může poslat slova pro středeční "
+"výzvu!"
+
+#: lustitelskadb/controllers/root.py:630
+msgid ""
+"Words for next Wednesday challenge is already in database! Try it again "
+"in next week!"
+msgstr ""
+"Slova pro příští středeční výzvu již jsou v databázi! Zkus to znovu "
+"příští týden!"
+
+# | msgid "Wednesday challenge"
+#: lustitelskadb/controllers/root.py:644
+#| msgid "Don't forget the Wednesday challenge!"
+msgid "You can't sent words for Wednesday challenge"
+msgstr "Ty nemůžeš poslat slova pro středeční výzvu"
+
+#: lustitelskadb/controllers/root.py:649
+msgid "Unknown user, sorry"
+msgstr "Omlouvám se, neznámý uživatel"
+
+# | msgid "Your result has been successfully sent to the original website"
+#: lustitelskadb/controllers/root.py:663
+#| msgid "" "Your result has been successfully saved to database and sent to
+#| the " "original website"
+msgid ""
+"Words has been successfully saved to database for next Wednesday "
+"challenge! Thanx!"
+msgstr ""
+"Slova byla úspěšně uložena do databáze pro následující středeční "
+"výzvu! Díky!"
+
+#: lustitelskadb/controllers/root.py:689
 msgid "User not found"
 msgstr "Uživatel nenalezen"
 
-#: lustitelskadb/controllers/root.py:616
+#: lustitelskadb/controllers/root.py:691
 msgid "Invalid Password"
 msgstr "Neplatné heslo"
 
-#: lustitelskadb/controllers/root.py:620
+#: lustitelskadb/controllers/root.py:695
 msgid "Wrong credentials"
 msgstr "Nesprávné přihlašovací údaje"
 
-#: lustitelskadb/controllers/root.py:637
+#: lustitelskadb/controllers/root.py:712
 #, python-format
 msgid "Welcome back, %s!"
 msgstr "Vítejte zpět, uživateli %s!"
 
-#: lustitelskadb/controllers/root.py:650
+#: lustitelskadb/controllers/root.py:725
 msgid "We hope to see you soon!"
 msgstr "Těšíme se příště!"
 
@@ -322,67 +374,112 @@ msgid "Please check it if you play wednesday challenge"
 msgstr "Tohle zaškrtněte, pokud hrajete středeční výzvu"
 
 #: lustitelskadb/lib/forms.py:74 lustitelskadb/lib/forms.py:76
+#: lustitelskadb/lib/forms.py:142 lustitelskadb/lib/forms.py:144
 msgid "Comments"
 msgstr "Komentáře"
 
-#: lustitelskadb/lib/forms.py:75
+#: lustitelskadb/lib/forms.py:75 lustitelskadb/lib/forms.py:143
 msgid "Please Enter any comments (optional)"
 msgstr "Vložte prosím libovolné sdělení (volitelné)"
 
-#: lustitelskadb/lib/forms.py:93 lustitelskadb/lib/forms.py:148
+#: lustitelskadb/lib/forms.py:93 lustitelskadb/lib/forms.py:154
+#: lustitelskadb/lib/forms.py:209
 msgid "Save"
 msgstr "Uložit"
 
+#: lustitelskadb/lib/forms.py:109
+msgid "First word"
+msgstr "První slovo"
+
 # | msgid "Please Enter your nickname (required)"
-#: lustitelskadb/lib/forms.py:108
+#: lustitelskadb/lib/forms.py:110
+#| msgid "Please Enter description (required)"
+msgid "Please Enter Wednesday challenge first word (required)"
+msgstr "Vložte prosím první slovo středeční výzvy (povinné)"
+
+#: lustitelskadb/lib/forms.py:111
+msgid "First"
+msgstr "První"
+
+#: lustitelskadb/lib/forms.py:122
+msgid "Second word"
+msgstr "Druhé slovo"
+
+# | msgid "Please Enter your nickname (required)"
+#: lustitelskadb/lib/forms.py:123
+#| msgid "Please Enter description (required)"
+msgid "Please Enter Wednesday challenge second word (required)"
+msgstr "Vložte prosím druhé slovo středeční výzvy (povinné)"
+
+#: lustitelskadb/lib/forms.py:124
+msgid "Second"
+msgstr "Druhé"
+
+#: lustitelskadb/lib/forms.py:132
+msgid "Third word"
+msgstr "Třetí slovo"
+
+# | msgid "Please Enter your nickname (required)"
+#: lustitelskadb/lib/forms.py:133
+#| msgid "Please Enter description (required)"
+msgid "Please Enter Wednesday challenge third word (required)"
+msgstr "Vložte prosím třetí slovo středeční výzvy (povinné)"
+
+#: lustitelskadb/lib/forms.py:134
+#| msgid "threads"
+msgid "Third"
+msgstr "Třetí"
+
+# | msgid "Please Enter your nickname (required)"
+#: lustitelskadb/lib/forms.py:169
 msgid "Please Enter part number (required)"
 msgstr "Vložte prosím číslo dílu (povinné)"
 
 # | msgid "Please Enter your game result (required)"
-#: lustitelskadb/lib/forms.py:118
+#: lustitelskadb/lib/forms.py:179
 msgid "Please Enter Question (required)"
 msgstr "Vložte prosím otázku (povinné)"
 
-#: lustitelskadb/lib/forms.py:126 lustitelskadb/lib/forms.py:128
+#: lustitelskadb/lib/forms.py:187 lustitelskadb/lib/forms.py:189
 msgid "Description"
 msgstr "Popis"
 
 # | msgid "Please Enter your nickname (required)"
-#: lustitelskadb/lib/forms.py:127
+#: lustitelskadb/lib/forms.py:188
 msgid "Please Enter description (required)"
 msgstr "Vložte prosím popis položky (povinné)"
 
 # | msgid "Please Enter your nickname (required)"
-#: lustitelskadb/lib/forms.py:137
+#: lustitelskadb/lib/forms.py:198
 msgid "Please Enter Answer (required)"
 msgstr "Vložte prosím otázku (povinné)"
 
-#: lustitelskadb/lib/forms.py:160 lustitelskadb/lib/forms.py:162
+#: lustitelskadb/lib/forms.py:221 lustitelskadb/lib/forms.py:223
 msgid "Post text"
 msgstr "Text příspěvku"
 
-#: lustitelskadb/lib/forms.py:161
+#: lustitelskadb/lib/forms.py:222
 msgid "Please Enter X/Twitter post text"
 msgstr "Vložtě prosím test X/Twitter příspěvku"
 
-#: lustitelskadb/lib/forms.py:176
+#: lustitelskadb/lib/forms.py:237
 msgid "Media list"
 msgstr "Seznam médií"
 
-#: lustitelskadb/lib/forms.py:187
+#: lustitelskadb/lib/forms.py:248
 msgid "Submit"
 msgstr "Odeslat"
 
-#: lustitelskadb/lib/forms.py:199
+#: lustitelskadb/lib/forms.py:260
 msgid "CSV file with legacy data"
 msgstr "CSV soubor s původními daty"
 
-#: lustitelskadb/lib/forms.py:200
+#: lustitelskadb/lib/forms.py:261
 msgid "Please browse CSV file with legacy data to import it into database"
 msgstr ""
 "Prosím nalistujte CSV soubor s původními daty k jejich importu do databáze"
 
-#: lustitelskadb/lib/forms.py:208
+#: lustitelskadb/lib/forms.py:269
 msgid "Import"
 msgstr "Import"
 
@@ -620,130 +717,131 @@ msgstr "Damian V. Čechov"
 msgid " | User game result detail"
 msgstr " | Detail herního výsledku uživatele"
 
-#: lustitelskadb/templates/detail.xhtml:24
+#: lustitelskadb/templates/detail.xhtml:23
 msgid "User game result detail"
 msgstr "Detail herního výsledku uživatele"
 
-#: lustitelskadb/templates/detail.xhtml:29
-#: lustitelskadb/templates/detail.xhtml:149
-#: lustitelskadb/templates/index.xhtml:174
+#: lustitelskadb/templates/detail.xhtml:28
+#: lustitelskadb/templates/detail.xhtml:148
+#: lustitelskadb/templates/index.xhtml:164
 #: lustitelskadb/templates/master.xhtml:43
 #: lustitelskadb/templates/newresult.xhtml:17
 msgid "@"
 msgstr "@"
 
-#: lustitelskadb/templates/detail.xhtml:33
+#: lustitelskadb/templates/detail.xhtml:32
 #: lustitelskadb/templates/newresult.xhtml:21
 msgid "Joined"
 msgstr "Připojen"
 
-#: lustitelskadb/templates/detail.xhtml:36
+#: lustitelskadb/templates/detail.xhtml:35
 #: lustitelskadb/templates/newresult.xhtml:24
 msgid "Following"
 msgstr "Sleduji"
 
-#: lustitelskadb/templates/detail.xhtml:36
+#: lustitelskadb/templates/detail.xhtml:35
 #: lustitelskadb/templates/newresult.xhtml:24
 msgid "Followers"
 msgstr "Sledující"
 
-#: lustitelskadb/templates/detail.xhtml:45
+#: lustitelskadb/templates/detail.xhtml:44
 msgid "User statistics till this game"
 msgstr "Statistika uživatele po tuto hru"
 
-#: lustitelskadb/templates/detail.xhtml:50
+#: lustitelskadb/templates/detail.xhtml:49
 msgid "played"
 msgstr "zahráno"
 
 # | msgid "Game"
-#: lustitelskadb/templates/detail.xhtml:52
-#: lustitelskadb/templates/detail.xhtml:57
+#: lustitelskadb/templates/detail.xhtml:51
+#: lustitelskadb/templates/detail.xhtml:56
 msgid "games"
 msgstr "her"
 
-#: lustitelskadb/templates/detail.xhtml:55
+#: lustitelskadb/templates/detail.xhtml:54
 msgid "solved"
 msgstr "vyřešeno"
 
 # | msgid "point(s)"
 # | msgid "points"
-#: lustitelskadb/templates/detail.xhtml:60
+#: lustitelskadb/templates/detail.xhtml:59
 msgid "sum of points"
 msgstr "součet bodů"
 
 # | msgid "⌀ game rank"
 # | msgid "⌀ game points"
-#: lustitelskadb/templates/detail.xhtml:65
+#: lustitelskadb/templates/detail.xhtml:64
 msgid "game points"
 msgstr "herních bodů"
 
-#: lustitelskadb/templates/detail.xhtml:70
+#: lustitelskadb/templates/detail.xhtml:69
 msgid "lanterns"
 msgstr "lucerny"
 
-#: lustitelskadb/templates/detail.xhtml:72
+#: lustitelskadb/templates/detail.xhtml:71
 msgid "pcs"
 msgstr "ks"
 
-#: lustitelskadb/templates/detail.xhtml:75
+#: lustitelskadb/templates/detail.xhtml:74
 msgid "success rate"
 msgstr "úspěšnost"
 
-#: lustitelskadb/templates/detail.xhtml:77
+#: lustitelskadb/templates/detail.xhtml:76
 msgid "%"
 msgstr "%"
 
 # | msgid "⌀ rows for all games"
-#: lustitelskadb/templates/detail.xhtml:80
+#: lustitelskadb/templates/detail.xhtml:79
 msgid "⌀ for all games"
 msgstr "⌀ za všechny hry"
 
-#: lustitelskadb/templates/detail.xhtml:82
-#: lustitelskadb/templates/detail.xhtml:87
+#: lustitelskadb/templates/detail.xhtml:81
+#: lustitelskadb/templates/detail.xhtml:86
 msgid "rows"
 msgstr "řádků"
 
 # | msgid "⌀ time for solved games"
-#: lustitelskadb/templates/detail.xhtml:85
+#: lustitelskadb/templates/detail.xhtml:84
 msgid "⌀ for solved games"
 msgstr "⌀ za vyřešené hry"
 
-#: lustitelskadb/templates/detail.xhtml:90
+#: lustitelskadb/templates/detail.xhtml:89
 msgid "⌀ time for solved games"
 msgstr "⌀ čas za vyřešené hry"
 
 # | msgid "Admin"
-#: lustitelskadb/templates/detail.xhtml:92
-#: lustitelskadb/templates/detail.xhtml:97
+#: lustitelskadb/templates/detail.xhtml:91
+#: lustitelskadb/templates/detail.xhtml:96
 msgid "min"
 msgstr "min"
 
-#: lustitelskadb/templates/detail.xhtml:95
+#: lustitelskadb/templates/detail.xhtml:94
 msgid "⌀ result time for solved games"
 msgstr "⌀ výsledný čas za vyřešené hry"
 
-#: lustitelskadb/templates/detail.xhtml:100
+#: lustitelskadb/templates/detail.xhtml:99
 msgid "⌀ game rank"
 msgstr "⌀ herní umístění"
 
 # | msgid "played"
-#: lustitelskadb/templates/detail.xhtml:102
-#: lustitelskadb/templates/index.xhtml:128
+#: lustitelskadb/templates/api/index.xhtml:122
+#: lustitelskadb/templates/detail.xhtml:101
+#: lustitelskadb/templates/index.xhtml:118
 msgid "place"
 msgstr "místo"
 
 # | msgid "⌀ game rank"
-#: lustitelskadb/templates/detail.xhtml:105
+#: lustitelskadb/templates/detail.xhtml:104
 msgid "⌀ game points"
 msgstr "⌀ herních bodů"
 
 # | msgid "point(s)"
-#: lustitelskadb/templates/detail.xhtml:107
+#: lustitelskadb/templates/detail.xhtml:106
 msgid "points"
 msgstr "bodů"
 
 # | msgid "Statistic"
-#: lustitelskadb/templates/detail.xhtml:117
+#: lustitelskadb/templates/detail.xhtml:116
 msgid "Rank statistic"
 msgstr "Statistika umístění"
 
@@ -766,53 +864,59 @@ msgid " | Welcome"
 msgstr " | Vítejte"
 
 # | msgid "Wednesday challenge"
-#: lustitelskadb/templates/index.xhtml:92
+#: lustitelskadb/templates/index.xhtml:82
 msgid "Don't forget the Wednesday challenge!"
 msgstr "Pomni, že je středeční výzva!"
 
 # | msgid "Wednesday challenge"
-#: lustitelskadb/templates/index.xhtml:95
-#| msgid "Not played the challenge"
+# | msgid "Not played the challenge"
+#: lustitelskadb/templates/index.xhtml:85
 msgid "I accept the challenge!"
 msgstr "Výzvu přijímám!"
 
-#: lustitelskadb/templates/index.xhtml:104
+#: lustitelskadb/templates/api/index.xhtml:98
+#: lustitelskadb/templates/index.xhtml:94
 msgid "Hall of fame"
 msgstr "Síň slávy"
 
-#: lustitelskadb/templates/index.xhtml:104
+#: lustitelskadb/templates/index.xhtml:94
 msgid "Game in progress"
 msgstr "Probíhající hra"
 
 # | msgid "Wednesday challenge"
-#: lustitelskadb/templates/index.xhtml:117
+#: lustitelskadb/templates/api/index.xhtml:111
+#: lustitelskadb/templates/index.xhtml:107
 msgid "Not played the challenge"
 msgstr "Nehráli středeční výzvu"
 
 # | msgid "loose"
 # | msgid "lose"
 # | msgid "loss"
-#: lustitelskadb/templates/index.xhtml:121
+#: lustitelskadb/templates/api/index.xhtml:115
+#: lustitelskadb/templates/index.xhtml:111
 msgid "Losers"
 msgstr "Poražení"
 
-#: lustitelskadb/templates/index.xhtml:125
+#: lustitelskadb/templates/api/index.xhtml:119
+#: lustitelskadb/templates/index.xhtml:115
 msgid "Disqualified"
 msgstr "Diskvalifikovaní"
 
-#: lustitelskadb/templates/index.xhtml:128
+#: lustitelskadb/templates/api/index.xhtml:122
+#: lustitelskadb/templates/index.xhtml:118
 msgid "point(s)"
 msgstr "bod(y/ů)"
 
-#: lustitelskadb/templates/index.xhtml:139
+#: lustitelskadb/templates/api/index.xhtml:133
+#: lustitelskadb/templates/index.xhtml:129
 msgid "Played players"
 msgstr "Hrálo hráčů"
 
-#: lustitelskadb/templates/index.xhtml:181
+#: lustitelskadb/templates/index.xhtml:171
 msgid "Previous"
 msgstr "Předchozí"
 
-#: lustitelskadb/templates/index.xhtml:184
+#: lustitelskadb/templates/index.xhtml:174
 msgid "Next"
 msgstr "Následující"
 
@@ -941,21 +1045,21 @@ msgstr "Slova středeční výzvy"
 
 # | msgid "⌀ rows for all games"
 # | msgid "⌀ for all games"
-#: lustitelskadb/templates/wednesday_challenge.xhtml:20
+#: lustitelskadb/templates/wednesday_challenge.xhtml:21
 msgid "for game #"
 msgstr "pro hru č. "
 
-#: lustitelskadb/templates/wednesday_challenge.xhtml:22
+#: lustitelskadb/templates/wednesday_challenge.xhtml:25
 msgid ""
 "The following words were selected for Wednesday's Challenge, which will "
 "be played from"
 msgstr "Na Středeční výzvu, která se bude hrát od"
 
-#: lustitelskadb/templates/wednesday_challenge.xhtml:22
+#: lustitelskadb/templates/wednesday_challenge.xhtml:25
 msgid "6:00 PM to next day 6:00 PM:"
 msgstr "18:00 h do příštího dne 18:00 h,  byla vybrána následující slova:"
 
-#: lustitelskadb/templates/wednesday_challenge.xhtml:27
+#: lustitelskadb/templates/wednesday_challenge.xhtml:31
 msgid ""
 "Any complaints about the quality of the challenge words should be "
 "directed directly to their author, who this time is"
@@ -963,13 +1067,21 @@ msgstr ""
 "Případné stížnosti na kvalitu slov výzvy směřujte přímo na jejich autora,"
 " kterým tentokrát je"
 
-#: lustitelskadb/templates/wednesday_challenge.xhtml:30
+#: lustitelskadb/templates/wednesday_challenge.xhtml:36
 msgid ""
 "Unfortunately (for now) there are no words known for the next or current "
 "Wednesday Challenge, please try again later!"
 msgstr ""
 "Bohužel (prozatím) nejsou známa slova pro následující nebo aktuální "
 "Středeční výzvu, zkuste to prosím později!"
+
+#: lustitelskadb/templates/wednesday_challenge.xhtml:40
+msgid "You are lucky!"
+msgstr "Máš štěstí!"
+
+#: lustitelskadb/templates/wednesday_challenge.xhtml:41
+msgid "You have chance to choose words for next Wednesday challenge!"
+msgstr "Máš šanci vybrat slova pro následující středeční výzvu!"
 
 #: lustitelskadb/templates/xdenied.xhtml:3
 msgid " | X/Twitter Denied"
@@ -1088,6 +1200,14 @@ msgstr "nějaké přidat."
 #: lustitelskadb/templates/administration/xtwitter/index.xhtml:3
 msgid " | X/Twitter Administration"
 msgstr " | X/Twitter administrace"
+
+#: lustitelskadb/templates/api/index.xhtml:8
+msgid " | Last completed game for screenshot"
+msgstr " | Poslední kompletní hra pro snímek obrazovky"
+
+#: lustitelskadb/templates/api/index.xhtml:91
+msgid "No data :-("
+msgstr "Žádná data :-("
 
 # | msgid "Edit"
 #: lustitelskadb/templates/tgext/admin/bootstrap_crud/edit.xhtml:4
