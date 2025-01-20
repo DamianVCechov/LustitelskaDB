@@ -33,7 +33,7 @@ except (ImportError, ModuleNotFoundError, SyntaxError):
     except:
         log.error("WebHelpers(2) helpers not available with this Python Version")
 
-__all__ = ['ResultForm', 'LibriCipherForm', 'XTwitterPostForm', 'LegacyDataImportForm']
+__all__ = ('ResultForm', 'WednesdayChallengeWordsForm', 'LibriCipherForm', 'XTwitterPostForm', 'LegacyDataImportForm')
 
 
 class ResultForm(twf.Form):
@@ -88,6 +88,67 @@ class ResultForm(twf.Form):
         )
 
     action = lurl('/save_result')
+
+    submit = twf.SubmitButton(
+        value=l_(u'Save'),
+        css_class='btn btn-light btn-lg'
+    )
+
+
+class WednesdayChallengeWordsForm(twf.Form):
+
+    class child(twf.ListLayout):
+
+        css_class = 'list-unstyled bg-light p-3 rounded'
+
+        xtwitter_uid = twf.HiddenField()
+        xtwitter_username = twf.HiddenField()
+        xtwitter_displayname = twf.HiddenField()
+
+        first_word = twf.TextField(
+            label=l_(u'First word'),
+            help_text=l_(u'Please Enter Wednesday challenge first word (required)'),
+            placeholder=l_(u'First'),
+            validator=validators.ByteString(min=5, max=5),
+            required=True,
+            maxlength=5,
+            # attrs={
+            #     'autofocus': True
+            # },
+            css_class="form-control font-monospace fs-6 text-uppercase"
+        )
+
+        second_word = twf.TextField(
+            label=l_(u'Second word'),
+            help_text=l_(u'Please Enter Wednesday challenge second word (required)'),
+            placeholder=l_(u'Second'),
+            validator=validators.ByteString(min=5, max=5),
+            required=True,
+            maxlength=5,
+            css_class="form-control font-monospace fs-6 text-uppercase"
+        )
+
+        third_word = twf.TextField(
+            label=l_(u'Third word'),
+            help_text=l_(u'Please Enter Wednesday challenge third word (required)'),
+            placeholder=l_(u'Third'),
+            validator=validators.ByteString(min=5, max=5),
+            required=True,
+            maxlength=5,
+            css_class="form-control font-monospace fs-6 text-uppercase"
+        )
+
+        comment = twf.TextArea(
+            label=l_(u'Comments'),
+            help_text=l_(u'Please Enter any comments (optional)'),
+            placeholder=l_(u'Comments'),
+            validator=validators.ByteString(),
+            required=False,
+            rows=5,
+            css_class="form-control fs-4 my-3 noto-color-emoji-regular"
+        )
+
+    action = lurl('/save_wednesday_challenge_words')
 
     submit = twf.SubmitButton(
         value=l_(u'Save'),

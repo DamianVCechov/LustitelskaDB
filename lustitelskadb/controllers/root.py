@@ -12,6 +12,8 @@ from tg import predicates
 from tg.decorators import paginate
 from tg.support.converters import asbool
 
+from lustitelskadb.lib.helpers import wednesday_challenge_words_window
+
 from lustitelskadb import model
 from lustitelskadb.model import DBSession
 
@@ -589,13 +591,99 @@ class RootController(BaseController):
     @expose('lustitelskadb.templates.wednesday_challenge')
     def wednesday_challenge(self, **kw):
         """Handle page with words for next comming Wednesday challenge."""
+        tmpl_context.form = appforms.WednesdayChallengeWordsForm()
+
+        user_rank_hours_ofset = {
+            1: 0,
+            2: 5,
+            3: 10,
+            4: 15,
+            5: 20
+        }
+
+        if request.validation.errors:
+            tmpl_context.form.value = kw
+            tmpl_context.form.error_msg = l_("Form filled with errors!")
+            for key, value in request.validation.errors.items():
+                if value:
+                    getattr(tmpl_context.form.child.children, key).error_msg = value
+        elif session.has_key('me_on_xtwitter'):
+            tmpl_context.form.value = {
+                'xtwitter_uid': session.get('me_on_xtwitter', {}).get('data', {}).get('id', None),
+                'xtwitter_username': session.get('me_on_xtwitter', {}).get('data', {}).get('username', None),
+                'xtwitter_displayname': session.get('me_on_xtwitter', {}).get('data', {}).get('name', None)
+            }
+
+        wc_words_form_open = False
         wc_words = DBSession.query(model.WednesdayChallengeWord).filter(model.WednesdayChallengeWord.game_no >= today_game_no()).first()
         if wc_words:
             next_wc = game_no_start_date(wc_words.game_no)
         else:
             next_wc = None
+            if predicates.has_permission('manage') and wednesday_challenge_words_window():
+                wc_words_form_open = True
+            elif session.has_key('me_on_xtwitter') and wednesday_challenge_words_window():
+                user_result_in_monday_game = DBSession.query(model.GameResult).join(model.XTwitter).filter(model.GameResult.game_no == today_game_no() - 1).filter(model.GameResult.xtwitter.xid == session.get('me_on_xtwitter', {}).get('data', {}).get('id', None)).first()
+                last_monday_game_rank = DBSession.query(model.GameResult).filter(model.GameResult.game_no == today_game_no()-1).order_by(model.GameResult.game_rank.desc(), model.GameResult.uid.desc()).first()
+                if user_result_in_monday_game and last_monday_game_rank and last_monday_game_rank.game_rank != user_result_in_monday_game.game_rank and game_no_start_date(today_game_no()) + timedelta(hours=user_rank_hours_ofset.get(user_result_in_monday_game.game_rank, 24)) >= datetime.now():
+                    wc_words_form_open = True
+                elif user_result_in_monday_game and last_monday_game_rank and last_monday_game_rank.game_rank == user_result_in_monday_game.game_rank and game_no_start_date(today_game_no()) + timedelta(hours=23, minutes=59) >= datetime.now():
+                    wc_words_form_open = True
 
-        return dict(page="wednesday_challenge", wc_words=wc_words, next_wc=next_wc)
+        return dict(page="wednesday_challenge", wc_words=wc_words, next_wc=next_wc, wc_words_form_open=wc_words_form_open)
+
+    @expose()
+    @validate(form=appforms.WednesdayChallengeWordsForm(), error_handler=wednesday_challenge)
+    def save_wednesday_challenge_words(self, **kw):
+        """Save Wednesday challenge words."""
+        if not session.has_key('me_on_xtwitter'):
+            flash(_("Nice try, only authorized person can send Wednesday challenge words!"), 'error')
+            return redirect('/')
+
+        if session['me_on_xtwitter']['data']['id'] != kw['xtwitter_uid']:
+            flash(_("Really nice try, only authorized person can send Wednesday challenge words!"), 'error')
+            return redirect('/')
+
+        wc_words_form_open = False
+        wc_words = DBSession.query(model.WednesdayChallengeWord).filter(model.WednesdayChallengeWord.game_no >= today_game_no()).first()
+
+        if not wc_words:
+            flash(l_(u"Words for next Wednesday challenge is already in database! Try it again in next week!"))
+            return redirect('/')
+
+        if predicates.has_permission('manage') and wednesday_challenge_words_window():
+            wc_words_form_open = True
+        elif session.has_key('me_on_xtwitter') and wednesday_challenge_words_window():
+            user_result_in_monday_game = DBSession.query(model.GameResult).join(model.XTwitter).filter(model.GameResult.game_no == today_game_no()-1).filter(model.GameResult.xtwitter.xid == session.get('me_on_xtwitter', {}).get('data', {}).get('id', None)).first()
+            last_monday_game_rank = DBSession.query(model.GameResult).filter(model.GameResult.game_no == today_game_no()-1).order_by(model.GameResult.game_rank.desc(), model.GameResult.uid.desc()).first()
+            if user_result_in_monday_game and last_monday_game_rank and last_monday_game_rank.game_rank != user_result_in_monday_game.game_rank and game_no_start_date(today_game_no()) + timedelta(hours=user_rank_hours_ofset.get(user_result_in_monday_game.game_rank, 24)) >= datetime.now():
+                wc_words_form_open = True
+            elif user_result_in_monday_game and last_monday_game_rank and last_monday_game_rank.game_rank == user_result_in_monday_game.game_rank and game_no_start_date(today_game_no()) + timedelta(hours=23, minutes=59) >= datetime.now():
+                wc_words_form_open = True
+
+        if not wc_words_form_open:
+            flash(l_("You can't sent words for Wednesday challenge"), 'error')
+            return redirect('/')
+
+        xtwitter_user = DBSession.query(model.XTwitter).filter(model.XTwitter.xid == session['me_on_xtwitter']['data']['id']).first()
+        if not xtwitter_user:
+            flash(l_("Unknown user, sorry"))
+            return redirect('/')
+
+        wc_words = model.WednesdayChallengeWord(
+            game_no = today_game_no() + 1,
+            first_word = kw.get('first_word', '-----').upper(),
+            second_word = kw.get('second_word', '-----').upper(),
+            third_word = kw.get('third_word', '-----').upper(),
+            comment = kw.get('comment', None)
+        )
+
+        DBSession.add(wc_words)
+        DBSession.flush()
+
+        flash(l_("Words has been successfully saved to database for next Wednesday challenge! Thanx!"))
+
+        return redirect('/')
 
     @expose('lustitelskadb.templates.libriciphers')
     @paginate('libriciphers', items_per_page=1)

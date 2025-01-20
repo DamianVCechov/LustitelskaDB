@@ -28,6 +28,13 @@ def bicon(icon_name, fs=None, color=None):
     return Markup('<i class="bi bi-%s%s%s"></i>' % (icon_name, (' fs-%i' % fs) if fs else '', (' text-%s' % color) if color else ''))
 
 
+def wednesday_challenge_words_window():
+    now = datetime.now()
+    if now.weekday() == 1 and now.hour >= 18 or now.weekday() == 2 and now.hour < 18:
+        return True
+    else:
+        return False
+
 def wednesday_challenge_comming():
     now = datetime.now()
     if now.weekday() == 2 and now.hour >= 18 or now.weekday() == 3 and now.hour < 18:
