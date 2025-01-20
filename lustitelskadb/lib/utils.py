@@ -10,9 +10,9 @@ Created on 16. 10. 2024
 from lustitelskadb import model
 from lustitelskadb.model import DBSession
 
-from datetime import datetime
+from datetime import datetime, timedelta
 
-__all__ = ('assemble_game_scoresheet')
+__all__ = ('assemble_game_scoresheet', 'game_no_start_date', 'today_game_no')
 
 scoring = {
     0: 0,
@@ -80,3 +80,22 @@ def assemble_game_scoresheet(game_no, dbflush=True):
         DBSession.flush()
 
     return 0
+
+
+def game_no_start_date(game_no):
+    """Count date from and to for game no."""
+    return HADEJSLOVA_STARTDATE + timedelta(days=game_no)
+
+
+def today_game_no():
+    """Count today's game no."""
+    now = datetime.now()
+    td = timedelta(1)
+    if now.hour < 18:
+        game_begin = datetime((now - td).year, (now - td).month, (now - td).day, 18)
+        game_finish = datetime(now.year, now.month, now.day, 17, 59, 59, 999999)
+    else:
+        game_begin = datetime(now.year, now.month, now.day, 18)
+        game_finish = datetime((now + td).year, (now + td).month, (now + td).day, 17, 59, 59, 999999)
+
+    return (game_finish - HADEJSLOVA_STARTDATE).days

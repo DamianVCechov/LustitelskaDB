@@ -18,7 +18,7 @@ try:
 except:
     from io import StringIO
 
-from lustitelskadb.lib.utils import HADEJSLOVA_STARTDATE
+from lustitelskadb.lib.utils import HADEJSLOVA_STARTDATE, today_game_no
 
 try:
     unichr
@@ -57,9 +57,16 @@ class APIController(BaseController):
     # Uncomment this line if your controller requires an authenticated user
     # allow_only = predicates.not_anonymous()
 
-    @expose()
+    @expose('lustitelskadb.templates.api.index')
     def index(self, **kw):
-        return redirect('/')
+        """Display last completed game for screenshot"""
+        game = DBSession.query(model.GameResult).filter(model.GameResult.game_no == today_game_no() - 1)
+        if (today_game_no() - 1) % 7 == 5:
+            game = game.order_by(model.GameResult.game_rows == None, model.GameResult.game_result_time == None, model.GameResult.wednesday_challenge.desc(), model.GameResult.game_result_time, model.GameResult.game_rows, model.GameResult.game_time.desc())
+        else:
+            game = game.order_by(model.GameResult.game_rows == None, model.GameResult.game_result_time == None, model.GameResult.game_result_time, model.GameResult.game_rows, model.GameResult.game_time.desc())
+
+        return dict(game=game.all())
 
     @expose('json')
     def get_new_records(self, last_fetched_uid=None, **kw):
