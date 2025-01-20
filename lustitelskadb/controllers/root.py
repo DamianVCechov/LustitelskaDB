@@ -606,7 +606,7 @@ class RootController(BaseController):
                 last_monday_game_rank = DBSession.query(model.GameResult).filter(model.GameResult.game_no == today_game_no() - 1).order_by(model.GameResult.game_rank.desc(), model.GameResult.uid.desc()).first()
                 if user_result_in_monday_game and last_monday_game_rank and last_monday_game_rank.game_rank != user_result_in_monday_game.game_rank and game_no_start_date(today_game_no()) + timedelta(hours=user_rank_hours_offset.get(user_result_in_monday_game.game_rank, 24)) >= datetime.now():
                     wc_words_form_open = True
-                elif user_result_in_monday_game and last_monday_game_rank and last_monday_game_rank.game_rank > 0 and last_monday_game_rank.game_rank != user_result_in_monday_game.game_rank and game_no_start_date(today_game_no()) + timedelta(hours=23)) >= datetime.now():
+                elif user_result_in_monday_game and last_monday_game_rank and last_monday_game_rank.game_rank > 0 and last_monday_game_rank.game_rank != user_result_in_monday_game.game_rank and game_no_start_date(today_game_no()) + timedelta(hours=23) >= datetime.now():
                     wc_words_form_open = True
                 elif user_result_in_monday_game and last_monday_game_rank and last_monday_game_rank.game_rank == user_result_in_monday_game.game_rank and game_no_start_date(today_game_no()) + timedelta(hours=23, minutes=59) >= datetime.now():
                     wc_words_form_open = True
@@ -638,6 +638,8 @@ class RootController(BaseController):
             user_result_in_monday_game = DBSession.query(model.GameResult).join(model.XTwitter).filter(model.GameResult.game_no == today_game_no() - 1).filter(model.GameResult.xtwitter.xid == session.get('me_on_xtwitter', {}).get('data', {}).get('id', None)).first()
             last_monday_game_rank = DBSession.query(model.GameResult).filter(model.GameResult.game_no == today_game_no() - 1).order_by(model.GameResult.game_rank.desc(), model.GameResult.uid.desc()).first()
             if user_result_in_monday_game and last_monday_game_rank and last_monday_game_rank.game_rank != user_result_in_monday_game.game_rank and game_no_start_date(today_game_no()) + timedelta(hours=user_rank_hours_offset.get(user_result_in_monday_game.game_rank, 24)) >= datetime.now():
+                wc_words_form_open = True
+            elif user_result_in_monday_game and last_monday_game_rank and last_monday_game_rank.game_rank > 0 and last_monday_game_rank.game_rank != user_result_in_monday_game.game_rank and game_no_start_date(today_game_no()) + timedelta(hours=23) >= datetime.now():
                 wc_words_form_open = True
             elif user_result_in_monday_game and last_monday_game_rank and last_monday_game_rank.game_rank == user_result_in_monday_game.game_rank and game_no_start_date(today_game_no()) + timedelta(hours=23, minutes=59) >= datetime.now():
                 wc_words_form_open = True
