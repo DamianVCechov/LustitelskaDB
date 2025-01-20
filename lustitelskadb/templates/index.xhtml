@@ -5,10 +5,7 @@
 
 <body py:block="body" py:strip="True">
 	<?py
-from operator import lt, le, gt, ge
-from datetime import datetime
-
-now = datetime.now()
+now = h.now()
 
 first_special_dates = {
 	'01.01': '&#x1F386;', # Fireworks
@@ -78,15 +75,8 @@ badge = {
 	'leaf': '&#x1F343;', # Leaf Fluttering In Wind
 	'last': last_special_dates.get(now.strftime('%d.%m'), '&#x1F3EE;')
 }
-
-def wednesday_challenge_comming():
-	now = datetime.now()
-	if now.weekday() == 2 and now.hour >= 18 or now.weekday() == 3 and now.hour < 18:
-		return True
-	else:
-		return False
 ?>
-	<div class="bg-light rounded text-uppercase text-danger display-4 my-3" py:if="wednesday_challenge_comming()">
+	<div class="bg-light rounded text-uppercase text-danger display-4 my-3" py:if="h.wednesday_challenge_comming()">
 		<div class="d-flex align-items-center clearfix">
 			<img class="img-fluid rounded wednesday-challenge-img m-1" style="max-width: 128px;" src="${tg.url('/img/wednesday-challenge-256.webp')}" alt="Wednesday Challenge" />
 			<span class="fw-bolder mx-3">Don't forget the Wednesday challenge!</span>
@@ -126,7 +116,7 @@ def wednesday_challenge_comming():
 								<?py dsq_divided = True ?>
 							</tr>
 							<tr py:attrs="{'class': 'position-relative{}'.format({1: ' table-warning', 2: ' table-light', 3: ' table-success'}.get(row.game_rank, ' table-secondary' if row.wednesday_challenge == False else ''))}" title="${row.game_rank if row.game_rank else '?'}. ${_('place')}, ${row.game_points if row.game_points != None else '?'} ${_('point(s)')}">
-								<th scope="row" py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${Markup(badge.get('leaf')) if row.game_rows and gt(row.game_rows, 1) and row.game_time is None else Markup(badge.get('last', row.game_rank)) if row.game_rows and gt(row.game_rows, 1) and row.game_points == 0 and row.game_time is not None else Markup(badge.get(row.game_rank, row.game_rank)) if row.game_rank is not None else '?'}<a class="stretched-link" href="${tg.url('/detail/{}'.format(row.uid))}"></a></th>
+								<th scope="row" py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${Markup(badge.get('leaf')) if row.game_rows and h.gt(row.game_rows, 1) and row.game_time is None else Markup(badge.get('last', row.game_rank)) if row.game_rows and h.gt(row.game_rows, 1) and row.game_points == 0 and row.game_time is not None else Markup(badge.get(row.game_rank, row.game_rank)) if row.game_rank is not None else '?'}<a class="stretched-link" href="${tg.url('/detail/{}'.format(row.uid))}"></a></th>
 								<td py:attrs="{'class': 'text-center w-100{}'.format(' text-muted' if row.game_rows is None else '')}">${row.xtwitter.display_name}<span py:if="row.comment"> ${h.bicon('chat-left-dots', color="muted")}</span></td>
 								<td py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${"{}:{:02}".format(row.game_time.hour * 60 + row.game_time.minute, row.game_time.second) if row.game_time else '-'}</td>
 								<td py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${h.bicon('{}-circle-fill'.format(row.game_rows), color="{}".format(["success", "success", "primary", "primary", "danger", "danger"][row.game_rows-1])) if row.game_rows else h.bicon('emoji-frown-fill', color="dark")}</td>
@@ -146,16 +136,16 @@ def wednesday_challenge_comming():
 
 	<div class="row pt-1" py:if="games">
 		<div class="col-3">
-			<a class="btn btn-light w-100${' disabled' if le(latest_game.game_no, game_nums[0].game_no) else ''}" href="${tg.url('/{}'.format(latest_game.game_no))}">${h.icon('fast-backward')}</a>
+			<a class="btn btn-light w-100${' disabled' if h.le(latest_game.game_no, game_nums[0].game_no) else ''}" href="${tg.url('/{}'.format(latest_game.game_no))}">${h.icon('fast-backward')}</a>
 		</div>
 		<div class="col-3">
-			<a class="btn btn-light w-100${' disabled' if le(latest_game.game_no, game_nums[0].game_no) else ''}" href="${tg.url('/{}'.format(game_nums[0].game_no+2 if len(game_nums) and le(game_nums[0].game_no+2, latest_game.game_no) else latest_game.game_no))}">${h.icon('backward')}</a>
+			<a class="btn btn-light w-100${' disabled' if h.le(latest_game.game_no, game_nums[0].game_no) else ''}" href="${tg.url('/{}'.format(game_nums[0].game_no+2 if len(game_nums) and h.le(game_nums[0].game_no+2, latest_game.game_no) else latest_game.game_no))}">${h.icon('backward')}</a>
 		</div>
 		<div class="col-3">
-			<a class="btn btn-light w-100${' disabled' if ge(oldest_game.game_no, game_nums[1].game_no if gt(len(game_nums), 1) else oldest_game.game_no) else ''}" href="${tg.url('/{}'.format(game_nums[1].game_no-1 if gt(len(game_nums), 1) else oldest_game.game_no))}">${h.icon('forward')}</a>
+			<a class="btn btn-light w-100${' disabled' if h.ge(oldest_game.game_no, game_nums[1].game_no if h.gt(len(game_nums), 1) else oldest_game.game_no) else ''}" href="${tg.url('/{}'.format(game_nums[1].game_no-1 if h.gt(len(game_nums), 1) else oldest_game.game_no))}">${h.icon('forward')}</a>
 		</div>
 		<div class="col-3">
-			<a class="btn btn-light w-100${' disabled' if ge(oldest_game.game_no, game_nums[1].game_no if gt(len(game_nums), 1) else oldest_game.game_no) else ''}" href="${tg.url('/{}'.format(oldest_game.game_no))}">${h.icon('fast-forward')}</a>
+			<a class="btn btn-light w-100${' disabled' if h.ge(oldest_game.game_no, game_nums[1].game_no if h.gt(len(game_nums), 1) else oldest_game.game_no) else ''}" href="${tg.url('/{}'.format(oldest_game.game_no))}">${h.icon('fast-forward')}</a>
 		</div>
 	</div>
 
