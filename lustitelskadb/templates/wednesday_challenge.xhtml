@@ -35,7 +35,7 @@ HTMLBR = '<br>'
 
 		<h4 class="text-center text-danger my-5" py:if="not wc_words">Unfortunately (for now) there are no words known for the next or current Wednesday Challenge, please try again later!</h4>
 	</div>
-	<div class="mb-5" py:if="not wc_words and h.wednesday_challenge_comming() and wc_words_form_open">
+	<div class="mb-5" py:if="not wc_words and h.wednesday_challenge_words_window() and wc_words_form_open">
 		<h2 class="text-center mt-3 p-2 bg-light rounded opacity-90">
 			<span class="display-4 text-success">You are lucky!</span><br />
 			<span class="text-primary fw-light">You have chance to choose words for next Wednesday challenge!</span>
