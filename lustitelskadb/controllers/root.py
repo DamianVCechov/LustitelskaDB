@@ -57,6 +57,14 @@ import lustitelskadb.lib.forms as appforms
 from lustitelskadb.lib.injects import closing_deadline_jssrc
 from lustitelskadb.lib.utils import *
 
+user_rank_hours_offset = {
+    1: 0,
+    2: 5,
+    3: 10,
+    4: 15,
+    5: 20
+}
+
 __all__ = ['RootController']
 
 
@@ -572,14 +580,6 @@ class RootController(BaseController):
         """Handle page with words for next comming Wednesday challenge."""
         tmpl_context.form = appforms.WednesdayChallengeWordsForm()
 
-        user_rank_hours_offset = {
-            1: 0,
-            2: 5,
-            3: 10,
-            4: 15,
-            5: 20
-        }
-
         if request.validation.errors:
             tmpl_context.form.value = kw
             tmpl_context.form.error_msg = l_("Form filled with errors!")
@@ -602,13 +602,13 @@ class RootController(BaseController):
             if predicates.has_permission('manage') and wednesday_challenge_words_window():
                 wc_words_form_open = True
             elif session.has_key('me_on_xtwitter') and wednesday_challenge_words_window():
-                user_result_in_monday_game = DBSession.query(model.GameResult, model.XTwitter).join(model.XTwitter, model.XTwitter.uid == model.GameResult.xtwitter_uid).filter(model.GameResult.game_no == today_game_no() - 1).filter(model.XTwitter.xid == session.get('me_on_xtwitter', {}).get('data', {}).get('id', None)).first()
+                user_result_in_monday_game = DBSession.query(model.GameResult, model.XTwitter).join(model.XTwitter, model.XTwitter.uid == model.GameResult.xtwitter_uid).filter(model.GameResult.game_no == today_game_no() - 1, model.XTwitter.xid == session.get('me_on_xtwitter', {}).get('data', {}).get('id', None)).first()
                 last_monday_game_rank = DBSession.query(model.GameResult).filter(model.GameResult.game_no == today_game_no() - 1).order_by(model.GameResult.game_rank.desc(), model.GameResult.uid.desc()).first()
-                if user_result_in_monday_game and last_monday_game_rank and last_monday_game_rank.game_rank != user_result_in_monday_game[0].game_rank and game_no_start_date(today_game_no()) + timedelta(hours=user_rank_hours_offset.get(user_result_in_monday_game[0].game_rank, 24)) >= datetime.now():
+                if user_result_in_monday_game and last_monday_game_rank and last_monday_game_rank.game_rank != user_result_in_monday_game[0].game_rank and game_no_start_date(today_game_no()) + timedelta(hours=user_rank_hours_offset.get(user_result_in_monday_game[0].game_rank, 24)) <= datetime.now():
                     wc_words_form_open = True
-                elif user_result_in_monday_game and last_monday_game_rank and last_monday_game_rank[0].game_rank > 0 and last_monday_game_rank.game_rank != user_result_in_monday_game[0].game_rank and game_no_start_date(today_game_no()) + timedelta(hours=23) >= datetime.now():
+                elif user_result_in_monday_game and last_monday_game_rank and last_monday_game_rank.game_rank > 0 and last_monday_game_rank.game_rank != user_result_in_monday_game[0].game_rank and game_no_start_date(today_game_no()) + timedelta(hours=23) <= datetime.now():
                     wc_words_form_open = True
-                elif user_result_in_monday_game and last_monday_game_rank and last_monday_game_rank[0].game_rank == user_result_in_monday_game.game_rank and game_no_start_date(today_game_no()) + timedelta(hours=23, minutes=59) >= datetime.now():
+                elif user_result_in_monday_game and last_monday_game_rank and last_monday_game_rank.game_rank == user_result_in_monday_game[0].game_rank and game_no_start_date(today_game_no()) + timedelta(hours=23, minutes=59) <= datetime.now():
                     wc_words_form_open = True
 
         return dict(page="wednesday_challenge", wc_words=wc_words, next_wc=next_wc, wc_words_form_open=wc_words_form_open)
@@ -617,7 +617,7 @@ class RootController(BaseController):
     @validate(form=appforms.WednesdayChallengeWordsForm(), error_handler=wednesday_challenge)
     def save_wednesday_challenge_words(self, **kw):
         """Save Wednesday challenge words."""
-        if not session.has_key('me_on_xtwitter'):
+        if not (predicates.has_permission('manage') or session.has_key('me_on_xtwitter')):
             flash(_("Nice try, only authorized person can send Wednesday challenge words!"), 'error')
             return redirect('/')
 
@@ -628,20 +628,20 @@ class RootController(BaseController):
         wc_words_form_open = False
         wc_words = DBSession.query(model.WednesdayChallengeWord).filter(model.WednesdayChallengeWord.game_no >= today_game_no()).first()
 
-        if not wc_words:
+        if wc_words:
             flash(l_(u"Words for next Wednesday challenge is already in database! Try it again in next week!"))
             return redirect('/')
 
         if predicates.has_permission('manage') and wednesday_challenge_words_window():
             wc_words_form_open = True
         elif session.has_key('me_on_xtwitter') and wednesday_challenge_words_window():
-            user_result_in_monday_game = DBSession.query(model.GameResult, model.XTwitter).join(model.XTwitter, model.XTwitter.uid == model.GameResult.xtwitter_uid).filter(model.GameResult.game_no == today_game_no() - 1).filter(model.XTwitter.xid == session.get('me_on_xtwitter', {}).get('data', {}).get('id', None)).first()
+            user_result_in_monday_game = DBSession.query(model.GameResult, model.XTwitter).join(model.XTwitter, model.XTwitter.uid == model.GameResult.xtwitter_uid).filter(model.GameResult.game_no == today_game_no() - 1, model.XTwitter.xid == session.get('me_on_xtwitter', {}).get('data', {}).get('id', None)).first()
             last_monday_game_rank = DBSession.query(model.GameResult).filter(model.GameResult.game_no == today_game_no() - 1).order_by(model.GameResult.game_rank.desc(), model.GameResult.uid.desc()).first()
-            if user_result_in_monday_game and last_monday_game_rank and last_monday_game_rank.game_rank != user_result_in_monday_game[0].game_rank and game_no_start_date(today_game_no()) + timedelta(hours=user_rank_hours_offset.get(user_result_in_monday_game[0].game_rank, 24)) >= datetime.now():
+            if user_result_in_monday_game and last_monday_game_rank and last_monday_game_rank.game_rank != user_result_in_monday_game[0].game_rank and game_no_start_date(today_game_no()) + timedelta(hours=user_rank_hours_offset.get(user_result_in_monday_game[0].game_rank, 24)) <= datetime.now():
                 wc_words_form_open = True
-            elif user_result_in_monday_game and last_monday_game_rank and last_monday_game_rank[0].game_rank > 0 and last_monday_game_rank.game_rank != user_result_in_monday_game[0].game_rank and game_no_start_date(today_game_no()) + timedelta(hours=23) >= datetime.now():
+            elif user_result_in_monday_game and last_monday_game_rank and last_monday_game_rank.game_rank > 0 and last_monday_game_rank.game_rank != user_result_in_monday_game[0].game_rank and game_no_start_date(today_game_no()) + timedelta(hours=23) <= datetime.now():
                 wc_words_form_open = True
-            elif user_result_in_monday_game and last_monday_game_rank and last_monday_game_rank[0].game_rank == user_result_in_monday_game.game_rank and game_no_start_date(today_game_no()) + timedelta(hours=23, minutes=59) >= datetime.now():
+            elif user_result_in_monday_game and last_monday_game_rank and last_monday_game_rank.game_rank == user_result_in_monday_game[0].game_rank and game_no_start_date(today_game_no()) + timedelta(hours=23, minutes=59) <= datetime.now():
                 wc_words_form_open = True
 
         if not wc_words_form_open:
@@ -649,7 +649,7 @@ class RootController(BaseController):
             return redirect('/')
 
         xtwitter_user = DBSession.query(model.XTwitter).filter(model.XTwitter.xid == session['me_on_xtwitter']['data']['id']).first()
-        if not xtwitter_user:
+        if not xtwitter_user and not predicates.has_permission('manage'):
             flash(l_("Unknown user, sorry"))
             return redirect('/')
 
@@ -658,7 +658,8 @@ class RootController(BaseController):
             first_word=kw.get('first_word', '-----').upper(),
             second_word=kw.get('second_word', '-----').upper(),
             third_word=kw.get('third_word', '-----').upper(),
-            comment=kw.get('comment', None)
+            comment=kw.get('comment', None),
+            xtwitter_id=None if not xtwitter_user else xtwitter_user.uid
         )
 
         DBSession.add(wc_words)
