@@ -621,7 +621,7 @@ class RootController(BaseController):
             flash(_("Nice try, only authorized person can send Wednesday challenge words!"), 'error')
             return redirect('/')
 
-        if session['me_on_xtwitter']['data']['id'] != kw['xtwitter_uid']:
+        if session.has_key('me_on_xtwitter') and session['me_on_xtwitter']['data']['id'] != kw['xtwitter_uid']:
             flash(_("Really nice try, only authorized person can send Wednesday challenge words!"), 'error')
             return redirect('/')
 
