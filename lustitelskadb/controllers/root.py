@@ -57,14 +57,6 @@ import lustitelskadb.lib.forms as appforms
 from lustitelskadb.lib.injects import closing_deadline_jssrc
 from lustitelskadb.lib.utils import *
 
-user_rank_hours_offset = {
-    1: 0,
-    2: 5,
-    3: 10,
-    4: 15,
-    5: 20
-}
-
 __all__ = ['RootController']
 
 

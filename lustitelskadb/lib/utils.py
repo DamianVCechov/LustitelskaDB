@@ -12,7 +12,7 @@ from lustitelskadb.model import DBSession
 
 from datetime import datetime, timedelta
 
-__all__ = ('assemble_game_scoresheet', 'game_no_start_date', 'today_game_no')
+__all__ = ('assemble_game_scoresheet', 'game_no_start_date', 'today_game_no', 'user_rank_hours_offset')
 
 scoring = {
     0: 0,
@@ -21,6 +21,14 @@ scoring = {
     3: 4,
     4: 3,
     5: 2
+}
+
+user_rank_hours_offset = {
+    1: 0,
+    2: 5,
+    3: 10,
+    4: 15,
+    5: 20
 }
 
 HADEJSLOVA_STARTDATE = datetime(2022, 1, 14, 18)
