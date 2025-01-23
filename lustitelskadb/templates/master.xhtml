@@ -21,7 +21,7 @@
 	<!-- Navbar -->
 	<nav class="navbar navbar-expand-lg sticky-top bg-success opacity-90 fw-bolder" data-bs-theme="dark">
 		<div class="container-fluid">
-			<a class="navbar-brand link-warning" href="${tg.url('/')}"><img src="${tg.url('/img/turbogears_logo.png')}" height="20" class="d-inline-block align-text-top img-fluid" alt="Logo" /> ${getattr(tmpl_context, 'project_name', 'turbogears2')}</a>
+			<a class="navbar-brand link-warning" href="${tg.url('/')}"><img src="${tg.url('/img/logo-32.webp')}" width="32" class="d-inline-block align-text-top img-fluid rounded" alt="Logo" /> ${getattr(tmpl_context, 'project_name', 'turbogears2')}</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -73,8 +73,8 @@
 
 	<!-- Footer -->
 	<footer class="footer hidden-xs hidden-sm">
-		<a class="float-end" href="http://www.turbogears.org"><img class="rounded" style="vertical-align: middle;" src="${tg.url('/img/under_the_hood_blue.png')}" alt="TurboGears 2" /></a>
-		<p><div class="d-inline-block rounded p-2 bg-light">Copyright &copy; ${getattr(tmpl_context, 'project_name', 'TurboGears2')} ${h.current_year()}</div></p>
+		<a class="rounded float-end p-2 bg-light link-secondary" href="https://lustitele.nemachybu.cz"><img class="rounded" style="vertical-align: middle;" src="${tg.url('/img/logo-32.webp')}" alt="Logo" /><span class="ps-3">${tg.url('/', qualified=True)}</span></a>
+		<p><div class="d-inline-block rounded p-2 bg-light">Copyright &copy; ${getattr(tmpl_context, 'project_name', 'TurboGears2')} 2024-${h.current_year()}</div></p>
 	</footer>
 
 	<script src="${tg.url('/js/jquery-3.7.1.min.js')}"></script>

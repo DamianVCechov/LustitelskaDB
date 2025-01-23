@@ -15,6 +15,7 @@ def get_string_version(module, default=''):
 		return version
 ?>
 	<h1 class="d-inline-block bg-light mt-2 p-1 rounded opacity-90">
+		<img class="rounded" src="${tg.url('/img/logo-32.webp')}" alt="Logo" />
 		<span>About</span> ${getattr(tmpl_context, 'project_name', 'turbogears2')}
 		<py:with vars="version=get_string_version('lustitelskadb', default='')">
 			<small class="badge bg-success" py:if="version">${version}</small>
