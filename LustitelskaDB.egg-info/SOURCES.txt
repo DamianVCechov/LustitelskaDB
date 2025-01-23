@@ -90,6 +90,8 @@ lustitelskadb/public/fonts/glyphicons/glyphicons-halflings-regular.ttf
 lustitelskadb/public/fonts/glyphicons/glyphicons-halflings-regular.woff
 lustitelskadb/public/fonts/glyphicons/glyphicons-halflings-regular.woff2
 lustitelskadb/public/img/czech-wordle-game-rules-screenshot.webp
+lustitelskadb/public/img/favicon.ico
+lustitelskadb/public/img/favicon.xcf
 lustitelskadb/public/img/lustitele-preview.png
 lustitelskadb/public/img/lustitele-twitter-profile.webp
 lustitelskadb/public/img/turbogears_logo.png

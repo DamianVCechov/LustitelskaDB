@@ -63,7 +63,7 @@ if py_version != (3, 2):
 
 setup(
     name='LustitelskaDB',
-    version='0.45',
+    version='0.46',
     description='Hobby web application for statistics czech Wordle game named HadejSlova',
     author='ByCzech, DamianVCechov',
     author_email='byczech@gmail.com, lustitele@gmail.com',
