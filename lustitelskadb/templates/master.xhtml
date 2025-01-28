@@ -73,7 +73,7 @@
 
 	<!-- Footer -->
 	<footer class="footer hidden-xs hidden-sm">
-		<a class="rounded float-end p-2 bg-light link-secondary" href="https://lustitele.nemachybu.cz"><img class="rounded" style="vertical-align: middle;" src="${tg.url('/img/logo-32.webp')}" alt="Logo" /><span class="ps-3">${tg.url('/', qualified=True)}</span></a>
+		<a class="rounded float-end p-2 bg-light link-secondary" href="${tg.url('/')}"><img class="rounded" style="vertical-align: middle;" src="${tg.url('/img/logo-32.webp')}" alt="Logo" /><span class="ps-3">${tg.url('/', qualified=True)}</span></a>
 		<p><div class="d-inline-block rounded p-2 bg-light">Copyright &copy; ${getattr(tmpl_context, 'project_name', 'TurboGears2')} 2024-${h.current_year()}</div></p>
 	</footer>
 
