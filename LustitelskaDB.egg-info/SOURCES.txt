@@ -92,6 +92,8 @@ lustitelskadb/public/fonts/glyphicons/glyphicons-halflings-regular.woff2
 lustitelskadb/public/img/czech-wordle-game-rules-screenshot.webp
 lustitelskadb/public/img/favicon.ico
 lustitelskadb/public/img/favicon.xcf
+lustitelskadb/public/img/logo-32.webp
+lustitelskadb/public/img/logo-512.webp
 lustitelskadb/public/img/lustitele-preview.png
 lustitelskadb/public/img/lustitele-twitter-profile.webp
 lustitelskadb/public/img/turbogears_logo.png
