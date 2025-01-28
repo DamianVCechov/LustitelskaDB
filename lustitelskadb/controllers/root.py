@@ -651,7 +651,7 @@ class RootController(BaseController):
             second_word=kw.get('second_word', '-----').upper(),
             third_word=kw.get('third_word', '-----').upper(),
             comment=kw.get('comment', None),
-            xtwitter_id=None if not xtwitter_user else xtwitter_user.uid
+            xtwitter_uid=None if not xtwitter_user else xtwitter_user.uid
         )
 
         DBSession.add(wc_words)
