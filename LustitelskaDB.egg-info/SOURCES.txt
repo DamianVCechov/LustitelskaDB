@@ -334,6 +334,8 @@ lustitelskadb/templates/administration/xtwitter/__init__.py
 lustitelskadb/templates/administration/xtwitter/index.xhtml
 lustitelskadb/templates/api/__init__.py
 lustitelskadb/templates/api/index.xhtml
+lustitelskadb/templates/help/__init__.py
+lustitelskadb/templates/help/wednesday_challenge.xhtml
 lustitelskadb/templates/tgext/__init__.py
 lustitelskadb/templates/tgext/admin/__init__.py
 lustitelskadb/templates/tgext/admin/bootstrap_crud/__init__.py
