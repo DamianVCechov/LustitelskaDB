@@ -1,0 +1,30 @@
+<div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-scrollable modal-xl">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="helpModalLabel">
+					${h.bicon('info-circle')} <span>Help | Wednesday Challenge</span>
+				</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<p>Dear fellow puzzlers,</p>
+				<p>you certainly know that our Wednesday challenge is our special bonus over and above the basic rules of the game itself. The player who wins the Monday game, immediately after the winners are announced on Tuesday at 6 pm, is authorized to determine three words, which are the basis of our Wednesday challenge and which all willing players enter into the game and are awarded points for it.</p>
+				<p>Because we strive for your comfort as well as ours, we have created the comfort of entering words directly into the system for you.<span>🤗</span></p>
+				<p>We take into account that you may not have the desire, courage or just the time to devote yourself to this, so we have expanded the possibility of registration to each Monday player, according to the time that has passed since the winners were announced on Tuesday at 6 pm.</p>
+				<p>
+					At 6 pm, the possibility of registration opens on the page <a href="${tg.url('/wednesday_challenge')}">${tg.url('/wednesday_challenge', qualified=True)}</a> for the golden winner. Every 5 hours later, this option will open to everyone else. So after 23:00, you will be able to enter the words gold and silver. From 4:00, bronze will also be added, and so on. If the words have not been entered by Wednesday at 17:00, the form will already be open to all players who completed Monday's game. At 17:59, even for players with a lamp, but I'm telling you straight up, if I'm looking for words on Wednesday at 18:00, don't wish me, f*ck it!<span>😠</span>
+				</p>
+				<p>After entering the words, they will appear on the website immediately and anyone can immediately view them. I recommend that you all keep an eye on the words in this way.</p>
+				<p>If you have any problems, don't hesitate to contact any of us. We are nice and helpful.<span>😜</span></p>
+				<p class="text-end">Your friend and posterrer</p>
+				<p class="text-end">Damian<span>🐾</span></p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+					${h.bicon('x-circle')} <span>Close</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

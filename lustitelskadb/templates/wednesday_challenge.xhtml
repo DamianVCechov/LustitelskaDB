@@ -13,6 +13,7 @@ HTMLBR = '<br>'
 
 	<div class="text-center">
 		<img class="img-fluid rounded wednesday-challenge-img m-1" src="${tg.url('/img/wednesday-challenge-256.webp')}" alt="Wednesday Challenge" />
+		<button class="btn btn-lg btn-primary float-end" data-bs-toggle="modal" data-bs-target="#helpModal">${h.bicon('info-circle')}</button>
 	</div>
 
 	<div class="mt-5 mb-3 bg-light p-2 rounded opacity-90">
@@ -42,5 +43,6 @@ HTMLBR = '<br>'
 		</h2>
 		${tmpl_context.form.display()}
 	</div>
+	<py:include href="lustitelskadb.templates.help.wednesday_challenge"/>
 </body>
 </html>
