@@ -161,19 +161,22 @@ class RootController(BaseController):
         sess = requests.Session()
         r = sess.get('https://www.bing.com/hpimagearchive.aspx', params={'format': 'js', 'idx': 0, 'n': 1})
         if r.ok:
-            data = r.json()
+            if r.apparent_encoding:
+                data = r.json()
+            else:
+                data = None
 
-        url = data.get('images', [{}])[0].get('url', '')
-        if url:
-            r_img = sess.get("https://bing.com{}".format(url))
-            if r_img.ok:
-                mime_type = mime.from_buffer(r_img.content)
-                img = b64encode(r_img.content)
-        else:
-            mime_type = ''
-            img = ''
+        mime_type = ''
+        img = ''
+        if data:
+            url = data.get('images', [{}])[0].get('url', '')
+            if url:
+                r_img = sess.get("https://bing.com{}".format(url))
+                if r_img.ok:
+                    mime_type = mime.from_buffer(r_img.content)
+                    img = b64encode(r_img.content)
 
-        return dict(url="data:{};base64,{}".format(mime_type, img.decode('ascii')))
+        return dict(url="data:{};base64,{}".format(mime_type, '' if not img else img.decode('ascii')))
 
     @expose('lustitelskadb.templates.detail')
     def detail(self, uid=None, *args, **kw):
