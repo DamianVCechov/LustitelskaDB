@@ -4,7 +4,7 @@
 import logging
 log = logging.getLogger(__name__)
 
-from tg import expose, flash, require, url, lurl, abort
+from tg import expose, flash, require, url, lurl, abort, response
 from tg import request, redirect, tmpl_context, validate, session, config
 from tg.i18n import ugettext as _, lazy_ugettext as l_
 from tg.exceptions import HTTPFound
@@ -24,12 +24,13 @@ import tw2.core as twc
 import requests
 from requests_oauthlib import OAuth1Session, OAuth2Session
 
+import os
 import random
 import string
 from datetime import datetime, timedelta
 
-from base64 import b64encode
-from magic import Magic
+# from base64 import b64encode
+# from magic import Magic
 
 # Python 2 compatibility hack
 try:
@@ -156,27 +157,65 @@ class RootController(BaseController):
     @expose('json')
     def get_daily_wallpaper(self, **kw):
         """Get Daily Wallpaper"""
-        mime = Magic(mime=True)
+        # mime = Magic(mime=True)
 
-        sess = requests.Session()
-        r = sess.get('https://www.bing.com/hpimagearchive.aspx', params={'format': 'js', 'idx': 0, 'n': 1})
-        if r.ok:
-            if r.apparent_encoding:
-                data = r.json()
-            else:
-                data = None
+        cache_path = os.path.join(config.get('cache_dir'), 'cache', 'daily_wallpaper')
+        if not os.path.exists('cache_path'):
+            os.makedirs(cache_path, exist_ok=True)
 
-        mime_type = ''
-        img = ''
-        if data:
-            url = data.get('images', [{}])[0].get('url', '')
-            if url:
-                r_img = sess.get("https://bing.com{}".format(url))
+        if os.path.isfile(os.path.join(cache_path, 'wallpaper.json')):
+            with open(os.path.join(cache_path, 'wallpaper.json'), "r") as f:
+                data = json.load(f)
+        else:
+            data = None
+
+        if data and datetime.now() >= datetime.strptime(data.get('images', [{}])[0].get('fullstartdate'), "%Y%m%d%H%M"):
+            reload_wallpaper = True
+        else:
+            reload_wallpaper = False
+
+        if not data or reload_wallpaper:
+            sess = requests.Session()
+            r = sess.get('https://www.bing.com/hpimagearchive.aspx', params={'format': 'js', 'idx': 0, 'n': 1})
+            if r.ok:
+                if r.apparent_encoding:
+                    data = r.json()
+                    reload_wallpaper = True
+                    with open(os.path.join(cache_path, 'wallpaper.json'), "w") as f:
+                        json.dump(data, f)
+
+        # mime_type = ''
+        # img = ''
+        if data and reload_wallpaper:
+            img_url = data.get('images', [{}])[0].get('url', '')
+            if img_url:
+                r_img = sess.get("https://bing.com{}".format(img_url))
                 if r_img.ok:
-                    mime_type = mime.from_buffer(r_img.content)
-                    img = b64encode(r_img.content)
+                    # mime_type = mime.from_buffer(r_img.content)
+                    # img = b64encode(r_img.content)
+                    with open(os.path.join(cache_path, 'wallpaper_image'), "wb") as f:
+                        f.write(r_img.content)
 
+        if data:
+            return dict(url=url('/daily_wallpaper', params={'v': data.get('images', [{}])[0].get('fullstartdate')}))
+        else:
+            return dict(url='')
         return dict(url="data:{};base64,{}".format(mime_type, '' if not img else img.decode('ascii')))
+
+    @expose(content_type="image/jpeg")
+    def daily_wallpaper(self, **kw):
+        """Return cached wallpaper."""
+        cache_path = os.path.join(config.get('cache_dir'), 'cache', 'daily_wallpaper')
+        if not os.path.exists('cache_path'):
+            os.makedirs(cache_path, exist_ok=True)
+
+        response.headerlist.append(('Content-Disposition', 'inline; filename=daily_wallpaper.jpg'.format()))
+
+        if os.path.isfile(os.path.join(cache_path, 'wallpaper_image')):
+            with open(os.path.join(cache_path, 'wallpaper_image'), "rb") as f:
+                return f.read()
+        else:
+            return None
 
     @expose('lustitelskadb.templates.detail')
     def detail(self, uid=None, *args, **kw):
