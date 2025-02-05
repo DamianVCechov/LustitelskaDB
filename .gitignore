@@ -4,3 +4,4 @@
 __pycache__
 /development.ini
 /.mypy_cache/
+/data
