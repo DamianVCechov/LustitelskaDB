@@ -161,7 +161,10 @@ class RootController(BaseController):
 
         cache_path = os.path.join(config.get('cache_dir'), 'cache', 'daily_wallpaper')
         if not os.path.exists('cache_path'):
-            os.makedirs(cache_path, exist_ok=True)
+            try:
+                os.makedirs(cache_path)
+            except:
+                pass
 
         if os.path.isfile(os.path.join(cache_path, 'wallpaper.json')):
             with open(os.path.join(cache_path, 'wallpaper.json'), "r") as f:
@@ -207,7 +210,10 @@ class RootController(BaseController):
         """Return cached wallpaper."""
         cache_path = os.path.join(config.get('cache_dir'), 'cache', 'daily_wallpaper')
         if not os.path.exists('cache_path'):
-            os.makedirs(cache_path, exist_ok=True)
+            try:
+                os.makedirs(cache_path)
+            except:
+                pass
 
         response.headerlist.append(('Content-Disposition', 'inline; filename=daily_wallpaper.jpg'.format()))
 
