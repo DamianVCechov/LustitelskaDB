@@ -98,11 +98,15 @@ class GameResultsAdminCrudConfig(CrudRestControllerConfig):
         @expose(inherit=True)
         def post(self, *args, **kw):
             kw['xtwitter_uid'] = kw.pop('xtwitter')
+            if kw['wednesday_challenge'] == False and kw['game_no'] % 7 != 5:
+                kw['wednesday_challenge'] = None
             return EasyCrudRestController.post(self, *args, **kw)
 
         @expose(inherit=True)
         def put(self, *args, **kw):
             kw['xtwitter_uid'] = kw.pop('xtwitter')
+            if kw['wednesday_challenge'] == False and kw['game_no'] % 7 != 5:
+                kw['wednesday_challenge'] = None
             return EasyCrudRestController.put(self, *args, **kw)
 
 
