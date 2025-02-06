@@ -543,6 +543,10 @@ class RootController(BaseController):
         if sp_result[-2].endswith('min') and sp_result[-1].endswith('s'):
             parsed_vals['time'] = int(sp_result[-2].rstrip('min')) * 60 + int(sp_result[-1].rstrip('s')) if sp_result[-2].rstrip('min').isdigit() and sp_result[-1].rstrip('s').isdigit() else None
 
+        # Unicorns has no time in result
+        if parsed_vals['step'] == 1 and parsed_vals['time'] == None:
+            parsed_vals['time'] == 0
+
         if parsed_vals['game_no'] != today_game_no():
             flash(_("This result can't be saved, because isn't for actually ongoing game!"), 'error')
             redirect('/')
@@ -565,11 +569,11 @@ class RootController(BaseController):
         game_result = model.GameResult(
             xtwitter=xuser,
             game_no=parsed_vals['game_no'],
-            game_time=timedelta(seconds=parsed_vals['time']) if parsed_vals['time'] else None,
+            game_time=timedelta(seconds=parsed_vals['time']) if parsed_vals['time'] != None else None,
             game_rows=parsed_vals['step'],
             wednesday_challenge=kw.get('wednesday_challenge', None) if parsed_vals['game_no'] % 7 == 5 else None,
             comment=kw.get('comment', None) if kw.get('comment', None) else None,
-            game_result_time=timedelta(seconds=parsed_vals['time'] + (parsed_vals['step'] - 1) * 12) if parsed_vals['time'] and parsed_vals['step'] else None,
+            game_result_time=timedelta(seconds=parsed_vals['time'] + (parsed_vals['step'] - 1) * 12) if parsed_vals['time'] != None and parsed_vals['step'] else None,
             game_raw_data=kw.get('game_result', None)
         )
 
