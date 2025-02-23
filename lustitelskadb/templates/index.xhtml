@@ -62,6 +62,7 @@ last_special_dates = {
 
 badge = {
 	-1: '&#x1F4A9;',
+	'-last': '&#x1F4A9;',
 	0: '&#x1F984;',
 	1: first_special_dates.get(now.strftime('%d.%m'), '&#x1F947;'),
 	2: '&#x1F948;',
@@ -107,7 +108,7 @@ badge = {
 						</tr>
 					</thead>
 					<tbody py:with="losers_divided=False; nochallengers_divided=False; dsq_divided=False">
-						<py:for each="row in game">
+						<py:for each="idx, row in enumerate(game)">
 							<tr class="table-dark text-center" py:if="row.game_no % 7 == 5 and not nochallengers_divided and not row.wednesday_challenge">
 								<th scope="row" colspan="5">Not played the challenge</th>
 								<?py nochallengers_divided = True ?>
@@ -121,7 +122,7 @@ badge = {
 								<?py dsq_divided = True ?>
 							</tr>
 							<tr py:attrs="{'class': 'position-relative{}'.format({1: ' table-warning', 2: ' table-light', 3: ' table-success'}.get(row.game_rank, ' table-secondary' if row.wednesday_challenge == False else ''))}" title="${row.game_rank if row.game_rank is not None else '?'}. ${_('place')}, ${row.game_points if row.game_points != None else '?'} ${_('point(s)')}">
-								<th scope="row" py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${Markup(badge.get('leaf')) if row.game_rows and h.gt(row.game_rows, 1) and row.game_time is None else Markup(badge.get('last', row.game_rank)) if row.game_rows and h.gt(row.game_rows, 1) and row.game_points == 0 and row.game_time is not None else Markup(badge.get(row.game_rank, row.game_rank)) if row.game_rank is not None else '?'}<a class="stretched-link" href="${tg.url('/detail/{}'.format(row.uid))}"></a></th>
+								<th scope="row" py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${Markup(badge.get('-last', row.game_rank)) if idx+1 == len(game) and h.lt(row.game_rank, 0) else Markup(badge.get('leaf')) if row.game_rows and h.gt(row.game_rows, 1) and row.game_time is None else Markup(badge.get('last', row.game_rank)) if row.game_rows and h.gt(row.game_rows, 1) and row.game_points == 0 and row.game_time is not None else Markup(badge.get(row.game_rank, row.game_rank)) if row.game_rank is not None else '?'}<a class="stretched-link" href="${tg.url('/detail/{}'.format(row.uid))}"></a></th>
 								<td py:attrs="{'class': 'text-center w-100{}'.format(' text-muted' if row.game_rows is None else '')}">${row.xtwitter.display_name}<span py:if="row.comment"> ${h.bicon('chat-left-dots', color="muted")}</span></td>
 								<td py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${"{}:{:02}".format(row.game_time.hour * 60 + row.game_time.minute, row.game_time.second) if row.game_time is not None else '-'}</td>
 								<td py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${h.bicon('{}-circle-fill'.format(row.game_rows), color="{}".format(["success", "success", "primary", "primary", "danger", "danger"][row.game_rows-1])) if row.game_rows else h.bicon('emoji-frown-fill', color="dark")}</td>
