@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: LustitelskaDB 0.47\n"
+"Project-Id-Version: LustitelskaDB 0.50\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-01-30 08:07+0100\n"
+"POT-Creation-Date: 2025-02-23 03:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,9 +17,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: lustitelskadb/controllers/admin.py:187 lustitelskadb/controllers/admin.py:192
-#: lustitelskadb/controllers/admin.py:207 lustitelskadb/controllers/admin.py:289
-#: lustitelskadb/controllers/admin.py:303 lustitelskadb/controllers/admin.py:337
+#: lustitelskadb/controllers/admin.py:191 lustitelskadb/controllers/admin.py:196
+#: lustitelskadb/controllers/admin.py:211 lustitelskadb/controllers/admin.py:293
+#: lustitelskadb/controllers/admin.py:307 lustitelskadb/controllers/admin.py:341
 #: lustitelskadb/controllers/libricipher.py:56
 #: lustitelskadb/controllers/libricipher.py:108
 #: lustitelskadb/controllers/libricipher.py:143
@@ -30,37 +30,37 @@ msgstr ""
 msgid "Only for users with appropriate permissions"
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:189
+#: lustitelskadb/controllers/admin.py:193
 msgid "Do you really want restart application? This will be done immediately!"
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:199
+#: lustitelskadb/controllers/admin.py:203
 #: lustitelskadb/controllers/libricipher.py:115
-#: lustitelskadb/controllers/root.py:426 lustitelskadb/controllers/root.py:577
+#: lustitelskadb/controllers/root.py:474 lustitelskadb/controllers/root.py:606
 #: lustitelskadb/controllers/xtwitter.py:32
 msgid "Form filled with errors!"
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:212
+#: lustitelskadb/controllers/admin.py:216
 msgid "Missing CSV file for import"
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:282
+#: lustitelskadb/controllers/admin.py:286
 msgid ""
 "The import was successful. {all_count} records processed, {imported_count} "
 "records imported, {duplicity_skipped} duplicate records skipped, and "
 "{added_nicknames} users added."
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:284
+#: lustitelskadb/controllers/admin.py:288
 msgid "The import attempt ended with an error: \"{}\""
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:297
+#: lustitelskadb/controllers/admin.py:301
 msgid "Score Sheet successfully reassembled for {} games"
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:341
+#: lustitelskadb/controllers/admin.py:345
 msgid "Application successfully restarted"
 msgstr ""
 
@@ -143,29 +143,29 @@ msgstr ""
 msgid "Libri Cipher item successfully deleted"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:182
+#: lustitelskadb/controllers/root.py:230
 msgid "Missing unique ID of user game result"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:187
+#: lustitelskadb/controllers/root.py:235
 msgid "Requested user game result not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:215
+#: lustitelskadb/controllers/root.py:263
 msgid "Unknown source for authorization, canceled"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:231
+#: lustitelskadb/controllers/root.py:279
 msgid ""
 "There may have been an issue with the consumer_key or consumer_secret in "
 "application"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:263
+#: lustitelskadb/controllers/root.py:311
 msgid "Unknown type of OAuth in config"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:280
+#: lustitelskadb/controllers/root.py:328
 msgid ""
 "I cannot find the keys needed to continue in authorization process in the "
 "session. Maybe you are using a light version of the browser that cannot "
@@ -173,7 +173,7 @@ msgid ""
 "to a full-fledged browser or turn on the saving of cookies."
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:310
+#: lustitelskadb/controllers/root.py:358
 msgid ""
 "I cannot find the data needed to validate the authorization challenge in the "
 "session. Maybe you are using a light version of the browser that cannot "
@@ -181,110 +181,102 @@ msgid ""
 "to a full-fledged browser or turn on the saving of cookies."
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:329
+#: lustitelskadb/controllers/root.py:377
 msgid "Can't fetch access token"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:349
+#: lustitelskadb/controllers/root.py:397
 msgid "Can't get user info from Twitter"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:381
+#: lustitelskadb/controllers/root.py:429
 msgid "Successfully authorized"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:384
+#: lustitelskadb/controllers/root.py:432
 msgid "Succesfully authorized, but missing landing URL"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:401
+#: lustitelskadb/controllers/root.py:449
 msgid "Successfully detached from X/Twitter, the access token has been discarded"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:483
+#: lustitelskadb/controllers/root.py:531
 msgid "Nice try, only authorized person can send result!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:487
+#: lustitelskadb/controllers/root.py:535
 msgid "Really nice try, only authorized person can send their own result!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:505
+#: lustitelskadb/controllers/root.py:557
 msgid "This result can't be saved, because isn't for actually ongoing game!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:515
+#: lustitelskadb/controllers/root.py:567
 msgid "This game result is already in database"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:520
+#: lustitelskadb/controllers/root.py:572
 msgid "X/Twitter user not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:539
+#: lustitelskadb/controllers/root.py:591
 msgid ""
 "Something went wrong! Can't save game result to database, so it isn't sent to"
 " legacy website too!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:562
-msgid ""
-"Your result has been successfully saved to database and sent to the original "
-"website"
+#: lustitelskadb/controllers/root.py:596
+msgid "Your result has been successfully saved to database"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:564
-msgid ""
-"Your result has been successfully saved to database, but an error occurred "
-"while submitting the result from the form to legacy website. Let us know it!"
-msgstr ""
-
-#: lustitelskadb/controllers/root.py:613
+#: lustitelskadb/controllers/root.py:642
 msgid "Nice try, only authorized person can send Wednesday challenge words!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:617
+#: lustitelskadb/controllers/root.py:646
 msgid "Really nice try, only authorized person can send Wednesday challenge words!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:624
+#: lustitelskadb/controllers/root.py:653
 msgid ""
 "Words for next Wednesday challenge is already in database! Try it again in "
 "next week!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:640
+#: lustitelskadb/controllers/root.py:669
 msgid "You can't sent words for Wednesday challenge"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:645
+#: lustitelskadb/controllers/root.py:674
 msgid "Unknown user, sorry"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:660
+#: lustitelskadb/controllers/root.py:689
 msgid ""
 "Words has been successfully saved to database for next Wednesday challenge! "
 "Thanx!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:686
+#: lustitelskadb/controllers/root.py:715
 msgid "User not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:688
+#: lustitelskadb/controllers/root.py:717
 msgid "Invalid Password"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:692
+#: lustitelskadb/controllers/root.py:721
 msgid "Wrong credentials"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:709
+#: lustitelskadb/controllers/root.py:738
 #, python-format
 msgid "Welcome back, %s!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:722
+#: lustitelskadb/controllers/root.py:751
 msgid "We hope to see you soon!"
 msgstr ""
 

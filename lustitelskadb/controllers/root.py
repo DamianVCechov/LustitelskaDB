@@ -593,30 +593,7 @@ class RootController(BaseController):
 
         assemble_game_scoresheet(parsed_vals['game_no'])
 
-        # Send data to legacy form (temporary function)
-        viewform_url = "https://docs.google.com/forms/d/e/1FAIpQLSdHcMlAmXKOODsG0hZCc687_8oVZpFbv_GJXfA5P9aHn2IJgg/viewform"
-        formaction_url = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdHcMlAmXKOODsG0hZCc687_8oVZpFbv_GJXfA5P9aHn2IJgg/formResponse"
-
-        data = {
-            "entry.1414922346": kw.get('game_result', '').replace('\n', ' '),
-            "entry.125941353": kw.get('comment', ''),
-            "entry.1818535534.other_option_response": kw.get('xtwitter_username', ''),
-            "entry.1818535534": "__other_option__"
-        }
-        if kw.get('wednesday_challenge', False):
-            data["entry.2012937700"] = "✅"
-
-        rsess = requests.Session()
-        rsess.get(viewform_url)
-        r = rsess.post(formaction_url, data=data)
-
-        if r.ok:
-            flash(l_(u"Your result has been successfully saved to database and sent to the original website"))
-        else:
-            flash(l_(u"Your result has been successfully saved to database, but an error occurred while submitting the result from the form to legacy website. Let us know it!"), 'warning')
-
-        rsess.close()
-
+        flash(l_(u"Your result has been successfully saved to database"))
         return redirect('/')
 
     @expose('lustitelskadb.templates.wednesday_challenge')
