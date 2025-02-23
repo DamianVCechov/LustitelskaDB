@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-02-23 03:08+0100\n"
-"PO-Revision-Date: 2025-02-23 03:09+0100\n"
+"POT-Creation-Date: 2025-02-23 03:24+0100\n"
+"PO-Revision-Date: 2025-02-23 03:24+0100\n"
 "Last-Translator: Jaroslav Mikulík <jaroslav.mikulik@runtech.cz>\n"
 "Language: cs\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -268,9 +268,9 @@ msgstr ""
 " ani na původní web!"
 
 # | msgid "Your result has been successfully sent to the original website"
+# | msgid "" "Your result has been successfully saved to database and sent to
+# | the " "original website"
 #: lustitelskadb/controllers/root.py:596
-#| msgid "" "Your result has been successfully saved to database and sent to
-#| the " "original website"
 msgid "Your result has been successfully saved to database"
 msgstr "Váš výsledek byl úspěšně uložen do databáze"
 
@@ -715,7 +715,7 @@ msgstr "Detail herního výsledku uživatele"
 
 #: lustitelskadb/templates/detail.xhtml:28
 #: lustitelskadb/templates/detail.xhtml:148
-#: lustitelskadb/templates/index.xhtml:164
+#: lustitelskadb/templates/index.xhtml:169
 #: lustitelskadb/templates/master.xhtml:46
 #: lustitelskadb/templates/newresult.xhtml:17
 msgid "@"
@@ -818,7 +818,7 @@ msgstr "⌀ herní umístění"
 # | msgid "played"
 #: lustitelskadb/templates/api/index.xhtml:122
 #: lustitelskadb/templates/detail.xhtml:101
-#: lustitelskadb/templates/index.xhtml:118
+#: lustitelskadb/templates/index.xhtml:123
 msgid "place"
 msgstr "místo"
 
@@ -866,18 +866,24 @@ msgstr "Pomni, že je středeční výzva!"
 msgid "I accept the challenge!"
 msgstr "Výzvu přijímám!"
 
+# | msgid "Wednesday challenge"
+#: lustitelskadb/templates/index.xhtml:90
+#| msgid "Not played the challenge"
+msgid "Play the current game"
+msgstr "Hrát právě probíhající hru"
+
 #: lustitelskadb/templates/api/index.xhtml:98
-#: lustitelskadb/templates/index.xhtml:94
+#: lustitelskadb/templates/index.xhtml:99
 msgid "Hall of fame"
 msgstr "Síň slávy"
 
-#: lustitelskadb/templates/index.xhtml:94
+#: lustitelskadb/templates/index.xhtml:99
 msgid "Game in progress"
 msgstr "Probíhající hra"
 
 # | msgid "Wednesday challenge"
 #: lustitelskadb/templates/api/index.xhtml:111
-#: lustitelskadb/templates/index.xhtml:107
+#: lustitelskadb/templates/index.xhtml:112
 msgid "Not played the challenge"
 msgstr "Nehráli středeční výzvu"
 
@@ -885,30 +891,30 @@ msgstr "Nehráli středeční výzvu"
 # | msgid "lose"
 # | msgid "loss"
 #: lustitelskadb/templates/api/index.xhtml:115
-#: lustitelskadb/templates/index.xhtml:111
+#: lustitelskadb/templates/index.xhtml:116
 msgid "Losers"
 msgstr "Poražení"
 
 #: lustitelskadb/templates/api/index.xhtml:119
-#: lustitelskadb/templates/index.xhtml:115
+#: lustitelskadb/templates/index.xhtml:120
 msgid "Disqualified"
 msgstr "Diskvalifikovaní"
 
 #: lustitelskadb/templates/api/index.xhtml:122
-#: lustitelskadb/templates/index.xhtml:118
+#: lustitelskadb/templates/index.xhtml:123
 msgid "point(s)"
 msgstr "bod(y/ů)"
 
 #: lustitelskadb/templates/api/index.xhtml:133
-#: lustitelskadb/templates/index.xhtml:129
+#: lustitelskadb/templates/index.xhtml:134
 msgid "Played players"
 msgstr "Hrálo hráčů"
 
-#: lustitelskadb/templates/index.xhtml:171
+#: lustitelskadb/templates/index.xhtml:176
 msgid "Previous"
 msgstr "Předchozí"
 
-#: lustitelskadb/templates/index.xhtml:174
+#: lustitelskadb/templates/index.xhtml:179
 msgid "Next"
 msgstr "Následující"
 

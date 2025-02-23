@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.50\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-02-23 03:08+0100\n"
+"POT-Creation-Date: 2025-02-23 03:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -606,7 +606,7 @@ msgid "User game result detail"
 msgstr ""
 
 #: lustitelskadb/templates/detail.xhtml:28 lustitelskadb/templates/detail.xhtml:148
-#: lustitelskadb/templates/index.xhtml:164 lustitelskadb/templates/master.xhtml:46
+#: lustitelskadb/templates/index.xhtml:169 lustitelskadb/templates/master.xhtml:46
 #: lustitelskadb/templates/newresult.xhtml:17
 msgid "@"
 msgstr ""
@@ -695,7 +695,7 @@ msgid "⌀ game rank"
 msgstr ""
 
 #: lustitelskadb/templates/api/index.xhtml:122
-#: lustitelskadb/templates/detail.xhtml:101 lustitelskadb/templates/index.xhtml:118
+#: lustitelskadb/templates/detail.xhtml:101 lustitelskadb/templates/index.xhtml:123
 msgid "place"
 msgstr ""
 
@@ -736,45 +736,49 @@ msgstr ""
 msgid "I accept the challenge!"
 msgstr ""
 
+#: lustitelskadb/templates/index.xhtml:90
+msgid "Play the current game"
+msgstr ""
+
 #: lustitelskadb/templates/api/index.xhtml:98
-#: lustitelskadb/templates/index.xhtml:94
+#: lustitelskadb/templates/index.xhtml:99
 msgid "Hall of fame"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:94
+#: lustitelskadb/templates/index.xhtml:99
 msgid "Game in progress"
 msgstr ""
 
 #: lustitelskadb/templates/api/index.xhtml:111
-#: lustitelskadb/templates/index.xhtml:107
+#: lustitelskadb/templates/index.xhtml:112
 msgid "Not played the challenge"
 msgstr ""
 
 #: lustitelskadb/templates/api/index.xhtml:115
-#: lustitelskadb/templates/index.xhtml:111
+#: lustitelskadb/templates/index.xhtml:116
 msgid "Losers"
 msgstr ""
 
 #: lustitelskadb/templates/api/index.xhtml:119
-#: lustitelskadb/templates/index.xhtml:115
+#: lustitelskadb/templates/index.xhtml:120
 msgid "Disqualified"
 msgstr ""
 
 #: lustitelskadb/templates/api/index.xhtml:122
-#: lustitelskadb/templates/index.xhtml:118
+#: lustitelskadb/templates/index.xhtml:123
 msgid "point(s)"
 msgstr ""
 
 #: lustitelskadb/templates/api/index.xhtml:133
-#: lustitelskadb/templates/index.xhtml:129
+#: lustitelskadb/templates/index.xhtml:134
 msgid "Played players"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:171
+#: lustitelskadb/templates/index.xhtml:176
 msgid "Previous"
 msgstr ""
 
-#: lustitelskadb/templates/index.xhtml:174
+#: lustitelskadb/templates/index.xhtml:179
 msgid "Next"
 msgstr ""
 
