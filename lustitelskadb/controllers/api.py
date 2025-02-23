@@ -27,6 +27,7 @@ except:
 
 BADGE = {
     -1: unichr(0x1F4A9),  # Poop
+    '-last': unichr(0x1F4A9),  # Poop
     0: unichr(0x1F984),  # Unicorn
     1: unichr(0x1F947),  # Medal #1
     2: unichr(0x1F948),  # Medal #2
@@ -136,7 +137,7 @@ class APIController(BaseController):
         csv_writer = csv.DictWriter(csv_stream, fieldnames=[r[0] for r in data_cols], dialect="excel")
         csv_writer.writeheader()
 
-        for row in game_data.all():
+        for idx, row in enumerate(game_data.all()):
             csv_row = {}.fromkeys([r[0] for r in data_cols])
             for k, v in data_cols:
                 if '.' in v:
@@ -152,6 +153,8 @@ class APIController(BaseController):
                     csv_row['wednesday_challenge'] = encode(unichr(0x2705), 'utf-8')
                 if row.game_rank < 0 and not row.game_result_time:
                     csv_row['game_result_time'] = 'PROHRA'
+                elif idx+1 == len(game) and row.game_rank < 0:
+                    csv_row['game_rank'] = encode(BADGE.get('-last', row.game_rank), 'utf-8')
                 elif row.game_rank > 0 and row.game_rows > 1 and not row.game_result_time:
                     csv_row['game_rank'] = encode(BADGE.get('leaf', row.game_rank), 'utf-8')
                 elif row.game_rank > 0 and row.game_points == 0:
