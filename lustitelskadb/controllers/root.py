@@ -259,6 +259,8 @@ class RootController(BaseController):
     @expose()
     def xauthorize(self, **kw):
         """Authorize via X/Twitter."""
+        redirect('/xerror') # Temporarily hardcoded redirect, becase of non functional X/Twitter API
+
         if not session.has_key('xauthorized.redirect.url'):
             flash(_("Unknown source for authorization, canceled"))
             redirect('/')
