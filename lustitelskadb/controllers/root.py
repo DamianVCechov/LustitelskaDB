@@ -98,23 +98,6 @@ class RootController(BaseController):
             page_plain_template=u'<li%s><a class="page-link">%s</a></li>'
         )
 
-        daily_wallpaper_jssrc = twc.JSSource(src='''
-            $(() => {
-                $.getJSON("%(daily_img_url)s").done((data) => {
-                    if ('url' in data) {
-                        $('body').css({
-                            'background-image': 'url(' + data['url'] + ')',
-                            'background-repeat': 'no-repeat',
-                            'background-attachment': 'fixed',
-                            'background-position': 'center',
-                            'background-size': 'cover'
-                        });
-                    }
-                })
-            });
-        ''' % ({'daily_img_url': url('/get_daily_wallpaper')}))
-        daily_wallpaper_jssrc.inject()
-
     @expose('lustitelskadb.templates.index')
     def _default(self, game=None, *args, **kw):
         """Handle the front-page."""
@@ -259,7 +242,7 @@ class RootController(BaseController):
     @expose()
     def xauthorize(self, **kw):
         """Authorize via X/Twitter."""
-        redirect('/xerror') # Temporarily hardcoded redirect, becase of non functional X/Twitter API
+        redirect('/xerror')  # Temporarily hardcoded redirect, becase of non functional X/Twitter API
 
         if not session.has_key('xauthorized.redirect.url'):
             flash(_("Unknown source for authorization, canceled"))

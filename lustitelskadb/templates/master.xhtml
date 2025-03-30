@@ -18,6 +18,26 @@
 </head>
 
 <body>
+<?py
+import tw2.core as twc
+
+daily_wallpaper_jssrc = twc.JSSource(src='''
+	$(() => {
+		$.getJSON("%(daily_img_url)s").done((data) => {
+			if ('url' in data) {
+				$('body').css({
+					'background-image': 'url(' + data['url'] + ')',
+					'background-repeat': 'no-repeat',
+					'background-attachment': 'fixed',
+					'background-position': 'center',
+					'background-size': 'cover'
+				});
+			}
+		})
+	});
+''' % ({'daily_img_url': tg.url('/get_daily_wallpaper')}))
+daily_wallpaper_jssrc.inject()
+?>
 	<!-- Navbar -->
 	<nav class="navbar navbar-expand-lg sticky-top bg-success opacity-90 fw-bolder" data-bs-theme="dark">
 		<div class="container-fluid">
