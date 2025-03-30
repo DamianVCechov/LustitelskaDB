@@ -336,6 +336,12 @@ lustitelskadb/templates/api/__init__.py
 lustitelskadb/templates/api/index.xhtml
 lustitelskadb/templates/help/__init__.py
 lustitelskadb/templates/help/wednesday_challenge.xhtml
+lustitelskadb/templates/registration/__init__.py
+lustitelskadb/templates/registration/complete.xhtml
+lustitelskadb/templates/registration/register.xhtml
+lustitelskadb/templates/resetpassword/__init__.py
+lustitelskadb/templates/resetpassword/change_password.xhtml
+lustitelskadb/templates/resetpassword/index.xhtml
 lustitelskadb/templates/tgext/__init__.py
 lustitelskadb/templates/tgext/admin/__init__.py
 lustitelskadb/templates/tgext/admin/bootstrap_crud/__init__.py
