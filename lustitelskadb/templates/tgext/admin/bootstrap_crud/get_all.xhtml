@@ -21,7 +21,7 @@ PAGER_ARGS = tmpl_context.make_pager_args(
 )
 ?>
 
-	<div class="row" py:with="leftmenu=getattr(tmpl_context, 'menu_items', False)">
+	<div class="mt-5 mb-3 bg-light p-2 rounded opacity-90 row" py:with="leftmenu=getattr(tmpl_context, 'menu_items', False)">
 		<div py:if="leftmenu" class="col-lg-2">
 			<ul class="nav flex-column crud-sidebar d-none d-md-block">
 				<li class="nav-item" py:for="lower, item in sorted(tmpl_context.menu_items.items())"><a class="${item==model and 'nav-link active' or 'nav-link'}" href="${tmpl_context.crud_helpers.make_link(lower)}">$item</a></li>
