@@ -4,16 +4,16 @@
 </head>
 
 <body py:block="body" py:strip="True">
-	<h1 class="mb-5">Manage Libri Ciphers</h1>
+	<h1 class="mt-5 mb-3 bg-light p-2 rounded opacity-90">Manage Libri Ciphers</h1>
 
-	<p class="text-center lead m-5" py:if="not tmpl_context.paginators.data.page_count">
+	<p class="lead text-center mt-5 mb-3 bg-light p-2 rounded opacity-90" py:if="not tmpl_context.paginators.data.page_count">
 		No records found, you can <a href="${tg.url('/admin/libriciphers/edit')}">add some.</a>
 	</p>
 
-	<div class="table-responsive" py:if="tmpl_context.paginators.data.page_count">${tmpl_context.datagrid.display(value=data)}</div>
+	<div class="table-responsive mt-5 mb-3 bg-light p-2 rounded opacity-90" py:if="tmpl_context.paginators.data.page_count">${tmpl_context.datagrid.display(value=data)}</div>
 
 	<nav aria-label="Pagination">
-		<ul class="pagination justify-content-center" py:if="tmpl_context.paginators.data.page_count > 1">${tmpl_context.paginators.data.pager(**tmpl_context.pager_params)}
+		<ul class="pagination justify-content-center mt-5 mb-3 p-2 opacity-90" py:if="tmpl_context.paginators.data.page_count > 1">${tmpl_context.paginators.data.pager(**tmpl_context.pager_params)}
 		</ul>
 	</nav>
 </body>
