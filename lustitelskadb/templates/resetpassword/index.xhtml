@@ -1,0 +1,13 @@
+<html py:extends="master.xhtml" py:strip="True">
+<head py:block="head" py:strip="True">
+<title py:block="master_title">Request Password Reset</title>
+</head>
+
+<body py:block="body" py:strip="True">
+	<h1 class="mt-5 mb-3 bg-light p-2 rounded opacity-90">Request Password Reset</h1>
+
+	<div class="mt-5 mb-3 bg-light p-2 rounded opacity-90 row">
+		<div class="col-md-12">${reset_password_form.display(action=action)}</div>
+	</div>
+</body>
+</html>

@@ -6,7 +6,7 @@ This file complements development/deployment.ini.
 
 """
 from tg import FullStackApplicationConfigurator
-from tgext.pluggable import plug
+from tgext.pluggable import plug, replace_template
 
 import lustitelskadb
 from lustitelskadb import model, lib
@@ -160,14 +160,34 @@ except ImportError:
     pass
 
 try:
+    # Enable TGExt Mailer if available, install tgext.mailer to turn it on
+    plug(base_config, 'tgext.mailer')
+except ImportError:
+    pass
+
+try:
     # Enable User Registration if available, install tgapp-registration to turn it on
     plug(base_config, 'registration')
+    base_config.update_blueprint({
+        '_pluggable_registration_config': {
+            'form': 'lustitelskadb.lib.forms.UserRegistration'
+        }
+    })
+    replace_template(base_config, 'registration.templates.register', 'lustitelskadb.templates.registration.register')
+    replace_template(base_config, 'registration.templates.complete', 'lustitelskadb.templates.registration.complete')
 except ImportError:
     pass
 
 try:
     # Enable Reset Password if available, install tgapp-resetpassword to turn it on
     plug(base_config, 'resetpassword')
+    base_config.update_blueprint({
+        '_pluggable_resetpassword_config': {
+            'reset_password_form': 'lustitelskadb.lib.forms.ResetPasswordForm'
+        }
+    })
+    replace_template(base_config, 'resetpassword.templates.index', 'lustitelskadb.templates.resetpassword.index')
+    replace_template(base_config, 'resetpassword.templates.change_password', 'lustitelskadb.templates.resetpassword.change_password')
 except ImportError:
     pass
 

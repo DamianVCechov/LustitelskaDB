@@ -4,10 +4,11 @@
 </head>
 
 <body py:block="body" py:strip="True">
+	<?py from tgext.pluggable import plugged ?>
 	<h1 class="display-1 text-center mt-3 bg-light rounded opacity-90">Login</h1>
 
 	<div class="row mb-5">
-		<div class="col-md-8 offset-md-2 bg-light rounded p-5">
+		<div class="col-md-8 offset-md-2 bg-light rounded opacity-90 p-5">
 			<h2 class="display-3 text-center mb-4">${h.icon('lock')}</h2>
 			<form action="${tg.url('/login_handler', params=dict(came_from=came_from, __logins=login_counter))}" method="post" accept-charset="UTF-8" class="form-horizontal">
 				<div class="row mb-3">
@@ -22,10 +23,17 @@
 						<input id="passwordField" class="form-control" type="password" name="password" placeholder="${_('password')}" required="required" />
 					</div>
 				</div>
-				<div class="row mb-5">
+				<div class="row">
 					<div class="col-sm-10 offset-sm-2">
 						<div class="form-check form-switch">
 							<input id="rememberField" class="form-check-input" type="checkbox" name="remember" value="2252000" /> <label for="rememberField" class="form-check-label fw-bolder">remember me</label>
+						</div>
+					</div>
+				</div>
+				<div class="row mb-5" py:if="'resetpassword' in plugged()">
+					<div class="col-sm-12">
+						<div class="text-end">
+							<a href="${h.plug_url('resetpassword', '/')}">Forgot password?</a>
 						</div>
 					</div>
 				</div>
@@ -35,6 +43,12 @@
 					</div>
 				</div>
 			</form>
+		</div>
+	</div>
+
+	<div class="row mb-5" py:if="'registration' in plugged()">
+		<div class="col-md-8 offset-md-2 bg-light rounded opacity-90 p-3">
+			<div class="lead text-center">No user account yet? You can <a href="${h.plug_url('registration', '/')}">register</a> to get one!</div>
 		</div>
 	</div>
 </body>

@@ -17,6 +17,8 @@ import tw2.core as twc
 import tw2.forms as twf
 import tw2.dynforms as twd
 
+from registration.lib.validators import UniqueEmailValidator, UniqueUserValidator
+from resetpassword.lib.validators import RegisteredUserValidator
 from formencode import validators
 
 # Python 2.7 compatibility hack
@@ -33,7 +35,10 @@ except (ImportError, ModuleNotFoundError, SyntaxError):
     except:
         log.error("WebHelpers(2) helpers not available with this Python Version")
 
-__all__ = ('ResultForm', 'WednesdayChallengeWordsForm', 'LibriCipherForm', 'XTwitterPostForm', 'LegacyDataImportForm')
+__all__ = (
+    'ResultForm', 'WednesdayChallengeWordsForm', 'LibriCipherForm', 'XTwitterPostForm', 'LegacyDataImportForm',
+    'UserRegistration', 'NewPasswordForm', 'ResetPasswordForm', 'UserProfileEditForm', 'UserProfileChangePasswordForm'
+)
 
 
 class ResultForm(twf.Form):
@@ -268,4 +273,165 @@ class LegacyDataImportForm(twf.Form):
     submit = twf.SubmitButton(
         value=l_(u'Import'),
         css_class='btn btn-outline-secondary btn-lg'
+    )
+
+
+class UserRegistration(twf.Form):
+
+    css_class = 'clearfix'
+
+    class child(twf.TableLayout):
+
+        css_class = 'table table-borderless'
+
+        user_name = twf.TextField(
+            label=l_('User Name'),
+            help_text=l_(u"Allowed characters are a-z and A-Z (basic latin), 0-9, dot, underscore, minus and plus. First character can't be dot or plus"),
+            validator=UniqueUserValidator(not_empty=True),
+            css_class="form-control",
+            placeholder=l_('User Name'),
+            autofocus=True
+        )
+
+        email_address = twf.TextField(
+            label=l_('Email'),
+            help_text=l_(u"Your email for sending confirmation link and for the possibility of resetting a forgotten password"),
+            validator=UniqueEmailValidator(not_empty=True),
+            css_class="form-control",
+            placeholder=l_('Email')
+        )
+
+        password = twf.PasswordField(
+            label=l_('Password'),
+            help_text=l_(u"Choose a strong enough password for your security or let browser do suggested password"),
+            validator=twc.Required,
+            css_class="form-control",
+            placeholder=l_('Password')
+        )
+
+        password_confirm = twf.PasswordField(
+            label=l_('Confirm Password'),
+            help_text=l_(u"Enter same password again, to ensure that it is entered correctly without typos"),
+            validator=twc.Required,
+            css_class="form-control",
+            placeholder=l_('Confirm Password')
+        )
+
+    validator = validators.FieldsMatch('password', 'password_confirm')
+
+    attrs = {'role': 'form'}
+
+    submit = twf.SubmitButton(
+        value=l_(u'Register'),
+        css_class='btn btn-outline-secondary btn-lg float-end'
+    )
+
+
+class NewPasswordForm(twf.Form):
+
+    css_class = 'clearfix'
+
+    class child(twf.TableLayout):
+
+        css_class = 'table table-borderless'
+
+        data = twf.HiddenField()
+
+        password = twf.PasswordField(
+            label=l_('New password'),
+            validator=twc.Validator(required=True),
+            css_class="form-control",
+            placeholder=l_('New password'),
+            autofocus=True
+        )
+
+        password_confirm = twf.PasswordField(
+            label=l_('Confirm new password'),
+            validator=twc.Validator(required=True),
+            css_class="form-control",
+            placeholder=l_('Confirm new password')
+        )
+
+    validator = validators.FieldsMatch('password', 'password_confirm')
+
+    submit = twf.SubmitButton(
+        value=l_(u'Save new password'),
+        css_class='btn btn-outline-secondary btn-lg float-end'
+    )
+
+
+class ResetPasswordForm(twf.Form):
+
+    class child(twf.TableLayout):
+
+        css_class = 'table table-borderless'
+
+        email_address = twf.TextField(
+            label=l_('Email address'),
+            validator=RegisteredUserValidator(required=True),
+            css_class="form-control",
+            placeholder=l_('Email address'),
+            autofocus=True
+        )
+
+    submit = twf.SubmitButton(
+        value=l_('Send Request'),
+        css_class='btn btn-outline-secondary btn-lg float-end'
+    )
+
+
+class UserProfileEditForm(twf.Form):
+
+    class child(twf.TableLayout):
+
+        css_class = 'table table-borderless'
+
+        email_address = twf.TextField(
+            label=l_('Email Address'),
+            validator=RegisteredUserValidator(required=True),
+            css_class="form-control",
+            placeholder=l_('Email Address'),
+            autofocus=True
+        )
+
+        display_name = twf.TextField(
+            label=l_('Display Name'),
+            # help_text=l_(u'Enter new User Name'),
+            validator=UniqueUserValidator(not_empty=True),
+            css_class="form-control",
+            placeholder=l_('Display Name')
+        )
+
+    submit = twf.SubmitButton(
+        value=l_('Save'),
+        css_class='btn btn-light btn-lg'
+    )
+
+
+class UserProfileChangePasswordForm(twf.Form):
+
+    class child(twf.TableLayout):
+
+        css_class = 'table table-borderless'
+
+        password = twf.PasswordField(
+            label=l_('Password'),
+            validator=twc.Validator(required=True),
+            css_class="form-control",
+            placeholder=l_('New password'),
+            autofocus=True
+        )
+
+        verify_password = twf.PasswordField(
+            label=l_('Confirm Password'),
+            validator=twc.Validator(required=True),
+            css_class="form-control",
+            placeholder=l_('Confirm new password')
+        )
+
+    validator = validators.FieldsMatch('password', 'verify_password')
+
+    submit = twf.SubmitButton(
+        value=l_(u'Save'),
+        css_class='btn btn-light btn-lg'
     )
