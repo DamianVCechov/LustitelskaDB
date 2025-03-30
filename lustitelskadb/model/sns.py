@@ -24,6 +24,6 @@ class XTwitter(DeclarativeBase):
     user_info = Column(UnicodeText)
 
     user_id = Column(Integer, ForeignKey('tg_user.user_id'), index=True)
-    user = relationship('User', uselist=False,
-                        backref=backref('xusers',
+    user = relationship('User',
+                        backref=backref('xusers', uselist=False,
                                         cascade='all, delete-orphan'))
