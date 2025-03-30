@@ -435,6 +435,7 @@ class RootController(BaseController):
         return redirect('/')
 
     @expose('lustitelskadb.templates.newresult')
+    @require(predicates.not_anonymous(msg=l_('Only for users with appropriate permissions')))
     def newresult(self, **kw):
         """Handle page with registering new user game result."""
         tmpl_context.form = appforms.ResultForm()
@@ -446,6 +447,9 @@ class RootController(BaseController):
             tmpl_context.form.child.children.wednesday_challenge.required = True
 
         if not session.has_key('me_on_xtwitter') and asbool(config.get('xtwitter.authorize.enabled', True)):
+            flash(_("You need to have account linked to a X/Twitter profile to continue."), 'warning')
+            redirect('/')
+            # Temporarily disabled X/Twitter authorization
             session['xauthorized.redirect.url'] = url('/newresult')
             session.save()
             redirect('/xauthorize')
@@ -722,6 +726,11 @@ class RootController(BaseController):
         userid = request.identity['repoze.who.userid']
         flash(_('Welcome back, %s!') % userid)
 
+        user = request.identity['user']
+        if user.xuser:
+            session['me_on_xtwitter'] = json.loads(user.xuser.user_info)
+            session.save()
+
         # Do not use tg.redirect with tg.url as it will add the mountpoint
         # of the application twice.
         return HTTPFound(location=came_from)
@@ -733,5 +742,8 @@ class RootController(BaseController):
         goodbye as well.
 
         """
+        if session.has_key('me_on_xtwitter'):
+            del session['me_on_xtwitter']
+            session.save()
         flash(_('We hope to see you soon!'))
         return HTTPFound(location=came_from)
