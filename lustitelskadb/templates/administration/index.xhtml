@@ -51,6 +51,12 @@
 				<a href="${tg.url('/admin/restartapp')}" class="stretched-link link-secondary h5" py:attrs="{'onclick': 'return confirm(\'{}\')'.format(restart_confirmation_msg)}">Restart APP</a>
 			</div>
 		</div>
+		<div class="col-md-2">
+			<div class="text-center position-relative bg-light p-1 rounded mb-3">
+				<div class="display-1 text-secondary">${h.icon('check')}</div>
+				<a href="${h.plug_url('registration', '/admin')}" class="stretched-link link-secondary h5">Registration Admin</a>
+			</div>
+		</div>
 		<div class="col-md-2" py:for="plug in plugged()">
 			<div class="text-center position-relative bg-light p-1 rounded mb-3">
 				<div class="display-1 text-secondary">${h.icon('gift')}</div>
