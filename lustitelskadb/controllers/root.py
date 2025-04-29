@@ -226,7 +226,7 @@ class RootController(BaseController):
             func.avg(model.GameResult.game_rank).label('avg_rank'),
             func.avg(model.GameResult.game_points).label('avg_points'),
             func.count(model.GameResult.game_points).label('sum_points')
-        ).filter(model.GameResult.xtwitter_uid == gameresult.xtwitter_uid, model.GameResult.game_no <= gameresult.game_no).first()
+        ).filter(model.GameResult.xtwitter_uid == gameresult.xtwitter_uid, model.GameResult.game_no <= gameresult.game_no, model.GameResult.game_result_time != None).first()
 
         user_game_rank_stats = DBSession.query(
             model.GameResult.game_rank,
@@ -609,7 +609,7 @@ class RootController(BaseController):
             next_wc = game_no_start_date(wc_words.game_no)
         else:
             next_wc = None
-            if predicates.has_permission('manage') and wednesday_challenge_words_window():
+            if predicates.has_permission('wednesday_master') and wednesday_challenge_words_window():
                 wc_words_form_open = True
             elif session.has_key('me_on_xtwitter') and wednesday_challenge_words_window():
                 user_result_in_monday_game = DBSession.query(model.GameResult, model.XTwitter).join(model.XTwitter, model.XTwitter.uid == model.GameResult.xtwitter_uid).filter(model.GameResult.game_no == today_game_no() - 1, model.XTwitter.xid == session.get('me_on_xtwitter', {}).get('data', {}).get('id', None)).first()
