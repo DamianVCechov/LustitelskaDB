@@ -688,10 +688,10 @@ class RootController(BaseController):
         all_games = DBSession.query(model.GameResult.game_no).filter(model.GameResult.game_no < today_game_no())
 
         ranking = DBSession.query(
-            model.XTwitter.display_name.label('display_name'),
             func.count(model.GameResult.game_no).label('played_games'),
             func.sum(model.GameResult.game_points).label('points_sum'),
             func.avg(model.GameResult.game_points).label('points_avg'),
+            model.XTwitter.display_name.label('display_name')
         ).join(model.XTwitter).filter(model.GameResult.game_no < today_game_no())
 
         if period == "year":
