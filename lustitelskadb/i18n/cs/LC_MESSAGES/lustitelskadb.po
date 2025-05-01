@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-05-01 06:09+0200\n"
-"PO-Revision-Date: 2025-05-01 06:14+0200\n"
+"POT-Creation-Date: 2025-05-01 06:23+0200\n"
+"PO-Revision-Date: 2025-05-01 06:24+0200\n"
 "Last-Translator: Jaroslav Mikulík <jaroslav.mikulik@runtech.cz>\n"
 "Language: cs\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -983,6 +983,35 @@ msgstr "Síň slávy"
 msgid "Game in progress"
 msgstr "Probíhající hra"
 
+#: lustitelskadb/templates/index.xhtml:103
+#: lustitelskadb/templates/rankings.xhtml:37
+msgid "Rank"
+msgstr "Umístění"
+
+# | msgid "played"
+#: lustitelskadb/templates/index.xhtml:104
+#: lustitelskadb/templates/rankings.xhtml:38
+msgid "Player"
+msgstr "Hráč"
+
+# | msgid "⌀ game rank"
+# | msgid "⌀ game points"
+#: lustitelskadb/templates/index.xhtml:105
+#| msgid "game points"
+msgid "Game time"
+msgstr "Čas hry"
+
+# | msgid "Game"
+#: lustitelskadb/templates/index.xhtml:106
+#| msgid "games"
+msgid "Game rows"
+msgstr "Řádků hry"
+
+#: lustitelskadb/templates/index.xhtml:107
+#| msgid "Game result"
+msgid "Game result time"
+msgstr "Výsledný čas hry"
+
 # | msgid "Wednesday challenge"
 #: lustitelskadb/templates/api/index.xhtml:112
 #: lustitelskadb/templates/index.xhtml:113
@@ -1160,8 +1189,8 @@ msgstr " | Nový výsledek"
 msgid " | Rankings"
 msgstr " | Žebříčky"
 
+# | msgid "⌀ game rank"
 #: lustitelskadb/templates/rankings.xhtml:14
-#| msgid "⌀ game rank"
 msgid "Game Ranking"
 msgstr "Herní žebříček"
 
@@ -1170,8 +1199,8 @@ msgid "Full"
 msgstr "Celý"
 
 # | msgid "Detach"
+# | msgid "Search"
 #: lustitelskadb/templates/rankings.xhtml:20
-#| msgid "Search"
 msgid "Year"
 msgstr "Rok"
 
@@ -1191,18 +1220,9 @@ msgstr "3 dny"
 msgid "Ranking for {} players in {} games"
 msgstr "Žebříček pro {} hráče(ů) v(e) {} hře/hrách"
 
-#: lustitelskadb/templates/rankings.xhtml:37
-msgid "Rank"
-msgstr "Umístění"
-
-#: lustitelskadb/templates/rankings.xhtml:38
-#| msgid "played"
-msgid "Player"
-msgstr "Hráč"
-
 # | msgid "point(s)"
+# | msgid "points"
 #: lustitelskadb/templates/rankings.xhtml:39
-#| msgid "points"
 msgid "Points earned"
 msgstr "Načerpané body"
 
@@ -1214,8 +1234,8 @@ msgstr "Účast"
 msgid "Average points earned"
 msgstr "Průměrně načerpaných bodů"
 
+# | msgid "Played players"
 #: lustitelskadb/templates/rankings.xhtml:51
-#| msgid "Played players"
 msgid "Played {} games"
 msgstr "Odehrané hry: {}"
 

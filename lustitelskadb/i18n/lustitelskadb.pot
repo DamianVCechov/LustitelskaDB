@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.54\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-05-01 06:09+0200\n"
+"POT-Creation-Date: 2025-05-01 06:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -830,6 +830,28 @@ msgstr ""
 msgid "Game in progress"
 msgstr ""
 
+#: lustitelskadb/templates/index.xhtml:103
+#: lustitelskadb/templates/rankings.xhtml:37
+msgid "Rank"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:104
+#: lustitelskadb/templates/rankings.xhtml:38
+msgid "Player"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:105
+msgid "Game time"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:106
+msgid "Game rows"
+msgstr ""
+
+#: lustitelskadb/templates/index.xhtml:107
+msgid "Game result time"
+msgstr ""
+
 #: lustitelskadb/templates/api/index.xhtml:112
 #: lustitelskadb/templates/index.xhtml:113
 msgid "Not played the challenge"
@@ -1022,14 +1044,6 @@ msgstr ""
 
 #: lustitelskadb/templates/rankings.xhtml:34
 msgid "Ranking for {} players in {} games"
-msgstr ""
-
-#: lustitelskadb/templates/rankings.xhtml:37
-msgid "Rank"
-msgstr ""
-
-#: lustitelskadb/templates/rankings.xhtml:38
-msgid "Player"
 msgstr ""
 
 #: lustitelskadb/templates/rankings.xhtml:39

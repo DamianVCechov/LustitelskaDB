@@ -100,11 +100,11 @@ badge = {
 							<th class="rounded-top" scope="col" colspan="5"><span py:if="game_nums[idx].game_no != game_in_progress">Hall of fame</span><span py:if="game_nums[idx].game_no == game_in_progress">Game in progress</span> ${game_nums[idx].game_no}</th>
 						</tr>
 						<tr class="table-dark text-center">
-							<th scope="col">${h.bicon('graph-up-arrow')}</th>
-							<th scope="col" class="w-100">${h.bicon('person')}</th>
-							<th scope="col">${h.bicon('stopwatch')}</th>
-							<th scope="col">${h.bicon('justify')}</th>
-							<th scope="col">${h.bicon('clock')}</th>
+							<th scope="col" title="${_('Rank')}">${h.bicon('graph-up-arrow')}</th>
+							<th scope="col" class="w-100" title="${_('Player')}">${h.bicon('person')}</th>
+							<th scope="col" title="${_('Game time')}">${h.bicon('stopwatch')}</th>
+							<th scope="col" title="${_('Game rows')}">${h.bicon('justify')}</th>
+							<th scope="col" title="${_('Game result time')}">${h.bicon('clock')}</th>
 						</tr>
 					</thead>
 					<tbody py:with="losers_divided=False; nochallengers_divided=False; dsq_divided=False">
