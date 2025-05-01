@@ -316,6 +316,7 @@ lustitelskadb/templates/libriciphers.xhtml
 lustitelskadb/templates/login.xhtml
 lustitelskadb/templates/master.xhtml
 lustitelskadb/templates/newresult.xhtml
+lustitelskadb/templates/rankings.xhtml
 lustitelskadb/templates/template.xhtml.template
 lustitelskadb/templates/wednesday_challenge.xhtml
 lustitelskadb/templates/xdenied.xhtml
