@@ -49,10 +49,10 @@ daily_wallpaper_jssrc.inject()
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item"><a class="nav-link${' active' if tg.request.url == tg.url('/', qualified=True) else ''}" aria-current="page" href="${tg.url('/')}">${h.icon('home')}</a></li>
-					<li class="nav-item"><a class="nav-link${' active' if tg.request.url.startswith(tg.url('/newresult', qualified=True)) else ''}" href="${tg.url('/newresult')}" aria-disabled="true">New result</a></li>
-					<li class="nav-item"><a class="nav-link${' active' if tg.request.url.startswith(tg.url('/wednesday_challenge', qualified=True)) else ''}" href="${tg.url('/wednesday_challenge')}" aria-disabled="true">Wednesday challenge</a></li>
-					<li class="nav-item"><a class="nav-link${' active' if tg.request.url.startswith(tg.url('/libriciphers', qualified=True)) else ''}" href="${tg.url('/libriciphers')}" aria-disabled="true">Libri Ciphers</a></li>
-					<li class="nav-item"><a class="nav-link disabled${' active' if tg.request.url.startswith(tg.url('/stats', qualified=True)) else ''}" href="${tg.url('/stats')}" aria-disabled="true">Statistic</a></li>
+					<li class="nav-item"><a class="nav-link${' active' if tg.request.url.startswith(tg.url('/newresult', qualified=True)) else ''}" href="${tg.url('/newresult')}" aria-disabled="false">New result</a></li>
+					<li class="nav-item"><a class="nav-link${' active' if tg.request.url.startswith(tg.url('/wednesday_challenge', qualified=True)) else ''}" href="${tg.url('/wednesday_challenge')}" aria-disabled="false">Wednesday challenge</a></li>
+					<li class="nav-item"><a class="nav-link${' active' if tg.request.url.startswith(tg.url('/rankings', qualified=True)) else ''}" href="${tg.url('/rankings')}" aria-disabled="false">Rankings</a></li>
+					<li class="nav-item"><a class="nav-link${' active' if tg.request.url.startswith(tg.url('/libriciphers', qualified=True)) else ''}" href="${tg.url('/libriciphers')}" aria-disabled="false">Libri Ciphers</a></li>
 					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span>Other</span></a>
 						<ul class="dropdown-menu bg-success">
 							<li><a class="dropdown-item" href="${tg.url('http://hadejslova.cz')}" target="_blank">Czech Wordle Game</a></li>

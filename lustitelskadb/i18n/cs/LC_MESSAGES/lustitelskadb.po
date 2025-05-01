@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-03-30 05:33+0200\n"
-"PO-Revision-Date: 2025-03-30 05:43+0200\n"
+"POT-Creation-Date: 2025-05-01 06:09+0200\n"
+"PO-Revision-Date: 2025-05-01 06:14+0200\n"
 "Last-Translator: Jaroslav Mikulík <jaroslav.mikulik@runtech.cz>\n"
 "Language: cs\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -239,7 +239,8 @@ msgstr "Úspěšně odpojeno z X/Twitteru, přístupový žeton byl zahozen"
 #: lustitelskadb/controllers/root.py:450
 msgid "You need to have account linked to a X/Twitter profile to continue."
 msgstr ""
-"Potřebuješ mít účet propojen s Twitter profile, abys bylo možné pokračovat."
+"Potřebuješ mít účet propojen s Twitter profile, abys bylo možné "
+"pokračovat."
 
 #: lustitelskadb/controllers/root.py:520
 msgid "Nice try, only authorized person can send result!"
@@ -323,24 +324,24 @@ msgstr ""
 "Slova byla úspěšně uložena do databáze pro následující středeční výzvu! "
 "Díky!"
 
-#: lustitelskadb/controllers/root.py:704
+#: lustitelskadb/controllers/root.py:745
 msgid "User not found"
 msgstr "Uživatel nenalezen"
 
-#: lustitelskadb/controllers/root.py:706
+#: lustitelskadb/controllers/root.py:747
 msgid "Invalid Password"
 msgstr "Neplatné heslo"
 
-#: lustitelskadb/controllers/root.py:710
+#: lustitelskadb/controllers/root.py:751
 msgid "Wrong credentials"
 msgstr "Nesprávné přihlašovací údaje"
 
-#: lustitelskadb/controllers/root.py:727
+#: lustitelskadb/controllers/root.py:768
 #, python-format
 msgid "Welcome back, %s!"
 msgstr "Vítejte zpět, uživateli %s!"
 
-#: lustitelskadb/controllers/root.py:748
+#: lustitelskadb/controllers/root.py:789
 msgid "We hope to see you soon!"
 msgstr "Těšíme se příště!"
 
@@ -362,7 +363,7 @@ msgstr "Výsledek hry"
 msgid "Please Enter your game result (required)"
 msgstr "Vložte prosím váš výsledek hry"
 
-#: lustitelskadb/lib/forms.py:68 lustitelskadb/templates/master.xhtml:52
+#: lustitelskadb/lib/forms.py:68 lustitelskadb/templates/master.xhtml:53
 #: lustitelskadb/templates/wednesday_challenge.xhtml:12
 msgid "Wednesday challenge"
 msgstr "Středeční výzva"
@@ -483,8 +484,8 @@ msgid "Import"
 msgstr "Import"
 
 # | msgid "Username:"
+# | msgid "username"
 #: lustitelskadb/lib/forms.py:288 lustitelskadb/lib/forms.py:292
-#| msgid "username"
 msgid "User Name"
 msgstr "Uživatelské jméno"
 
@@ -496,8 +497,8 @@ msgstr ""
 "Povolené znaky jsou a-z a A-Z (bez diakritiky), 0-9, tečka, podtržítko, "
 "mínus a plus. První znak nemůže být tečka nebo plus"
 
+# | msgid "Detail"
 #: lustitelskadb/lib/forms.py:297 lustitelskadb/lib/forms.py:301
-#| msgid "Detail"
 msgid "Email"
 msgstr "Email"
 
@@ -506,13 +507,13 @@ msgid ""
 "Your email for sending confirmation link and for the possibility of "
 "resetting a forgotten password"
 msgstr ""
-"Váš email pro zaslání potvrzovacího odkazu a pro možnost "
-"resetu v případě zapomenutí hesla"
+"Váš email pro zaslání potvrzovacího odkazu a pro možnost resetu v případě"
+" zapomenutí hesla"
 
 # | msgid "Password:"
+# | msgid "password"
 #: lustitelskadb/lib/forms.py:305 lustitelskadb/lib/forms.py:309
 #: lustitelskadb/lib/forms.py:418
-#| msgid "password"
 msgid "Password"
 msgstr "Heslo"
 
@@ -525,9 +526,9 @@ msgstr ""
 "navrhnout prohlížečem"
 
 # | msgid "Password:"
+# | msgid "password"
 #: lustitelskadb/lib/forms.py:313 lustitelskadb/lib/forms.py:317
 #: lustitelskadb/lib/forms.py:426
-#| msgid "password"
 msgid "Confirm Password"
 msgstr "Potvrzení hesla"
 
@@ -536,17 +537,16 @@ msgid ""
 "Enter same password again, to ensure that it is entered correctly without"
 " typos"
 msgstr ""
-"Vložte znovu stejné heslo pro ujištění, že je zadáno správně bez "
-"překlepů"
+"Vložte znovu stejné heslo pro ujištění, že je zadáno správně bez překlepů"
 
-#: lustitelskadb/lib/forms.py:325
+#: lustitelskadb/lib/forms.py:325 lustitelskadb/templates/master.xhtml:72
 msgid "Register"
 msgstr "Registrace"
 
 # | msgid "Password:"
+# | msgid "password"
 #: lustitelskadb/lib/forms.py:341 lustitelskadb/lib/forms.py:344
 #: lustitelskadb/lib/forms.py:421
-#| msgid "password"
 msgid "New password"
 msgstr "Nové heslo"
 
@@ -556,8 +556,8 @@ msgid "Confirm new password"
 msgstr "Potvrďte nové heslo"
 
 # | msgid "Password:"
+# | msgid "password"
 #: lustitelskadb/lib/forms.py:358
-#| msgid "password"
 msgid "Save new password"
 msgstr "Uložte nové heslo"
 
@@ -582,7 +582,7 @@ msgid " | About page"
 msgstr "| Stránka o aplikaci"
 
 #: lustitelskadb/templates/about.xhtml:19
-#: lustitelskadb/templates/master.xhtml:74
+#: lustitelskadb/templates/master.xhtml:76
 msgid "About"
 msgstr "O aplikaci"
 
@@ -818,7 +818,7 @@ msgstr "Detail herního výsledku uživatele"
 #: lustitelskadb/templates/detail.xhtml:28
 #: lustitelskadb/templates/detail.xhtml:148
 #: lustitelskadb/templates/index.xhtml:170
-#: lustitelskadb/templates/master.xhtml:66
+#: lustitelskadb/templates/master.xhtml:67
 #: lustitelskadb/templates/newresult.xhtml:17
 msgid "@"
 msgstr "@"
@@ -1022,7 +1022,7 @@ msgstr "Následující"
 
 #: lustitelskadb/templates/administration/index.xhtml:14
 #: lustitelskadb/templates/libriciphers.xhtml:7
-#: lustitelskadb/templates/master.xhtml:53
+#: lustitelskadb/templates/master.xhtml:55
 msgid "Libri Ciphers"
 msgstr "Libri Šifry"
 
@@ -1053,6 +1053,7 @@ msgstr "Zobrazit odpověď"
 
 #: lustitelskadb/templates/login.xhtml:3 lustitelskadb/templates/login.xhtml:8
 #: lustitelskadb/templates/login.xhtml:42
+#: lustitelskadb/templates/master.xhtml:71
 msgid "Login"
 msgstr "Přihlášení"
 
@@ -1079,8 +1080,8 @@ msgid "remember me"
 msgstr "trvalé přihlášení"
 
 # | msgid "Password:"
+# | msgid "password"
 #: lustitelskadb/templates/login.xhtml:36
-#| msgid "password"
 msgid "Forgot password?"
 msgstr "Zapomenuto heslo?"
 
@@ -1096,54 +1097,54 @@ msgstr "registrovat"
 msgid "to get one!"
 msgstr "k jeho získání!"
 
-#: lustitelskadb/templates/master.xhtml:51
+#: lustitelskadb/templates/master.xhtml:52
 #: lustitelskadb/templates/newresult.xhtml:12
 msgid "New result"
 msgstr "Nový výsledek"
 
 #: lustitelskadb/templates/master.xhtml:54
-msgid "Statistic"
-msgstr "Statistika"
+msgid "Rankings"
+msgstr "Žebříčky"
 
-#: lustitelskadb/templates/master.xhtml:55
+#: lustitelskadb/templates/master.xhtml:56
 msgid "Other"
 msgstr "Ostatní"
 
-#: lustitelskadb/templates/master.xhtml:57
+#: lustitelskadb/templates/master.xhtml:58
 msgid "Czech Wordle Game"
 msgstr "Hra HádejSlova"
 
-#: lustitelskadb/templates/master.xhtml:58
+#: lustitelskadb/templates/master.xhtml:59
 msgid "Our X/Twitter"
 msgstr "Náš X/Twitter"
 
 # | msgid "original website"
 # | msgid "We built the original website"
-#: lustitelskadb/templates/master.xhtml:60
+#: lustitelskadb/templates/master.xhtml:61
 msgid "Original website"
 msgstr "Původní web"
 
-#: lustitelskadb/templates/master.xhtml:62
+#: lustitelskadb/templates/master.xhtml:63
 msgid "Misc"
 msgstr "Různé"
 
-#: lustitelskadb/templates/master.xhtml:66
+#: lustitelskadb/templates/master.xhtml:67
 msgid "Detach"
 msgstr "Odpojit"
 
-#: lustitelskadb/templates/master.xhtml:71
+#: lustitelskadb/templates/master.xhtml:73
 msgid "Logout"
 msgstr "Odhlášení"
 
-#: lustitelskadb/templates/master.xhtml:72
+#: lustitelskadb/templates/master.xhtml:74
 msgid "Admin"
 msgstr "Admin"
 
-#: lustitelskadb/templates/master.xhtml:98
+#: lustitelskadb/templates/master.xhtml:100
 msgid "Copyright © "
 msgstr "Copyright © "
 
-#: lustitelskadb/templates/master.xhtml:98
+#: lustitelskadb/templates/master.xhtml:100
 msgid " 2024-"
 msgstr " 2024-"
 
@@ -1154,6 +1155,69 @@ msgstr "Tady se objeví váš konkrétní titulek"
 #: lustitelskadb/templates/newresult.xhtml:3
 msgid " | New result"
 msgstr " | Nový výsledek"
+
+#: lustitelskadb/templates/rankings.xhtml:3
+msgid " | Rankings"
+msgstr " | Žebříčky"
+
+#: lustitelskadb/templates/rankings.xhtml:14
+#| msgid "⌀ game rank"
+msgid "Game Ranking"
+msgstr "Herní žebříček"
+
+#: lustitelskadb/templates/rankings.xhtml:19
+msgid "Full"
+msgstr "Celý"
+
+# | msgid "Detach"
+#: lustitelskadb/templates/rankings.xhtml:20
+#| msgid "Search"
+msgid "Year"
+msgstr "Rok"
+
+#: lustitelskadb/templates/rankings.xhtml:21
+msgid "Month"
+msgstr "Měsíc"
+
+#: lustitelskadb/templates/rankings.xhtml:22
+msgid "Week"
+msgstr "Týden"
+
+#: lustitelskadb/templates/rankings.xhtml:23
+msgid "3 days"
+msgstr "3 dny"
+
+#: lustitelskadb/templates/rankings.xhtml:34
+msgid "Ranking for {} players in {} games"
+msgstr "Žebříček pro {} hráče(ů) v(e) {} hře/hrách"
+
+#: lustitelskadb/templates/rankings.xhtml:37
+msgid "Rank"
+msgstr "Umístění"
+
+#: lustitelskadb/templates/rankings.xhtml:38
+#| msgid "played"
+msgid "Player"
+msgstr "Hráč"
+
+# | msgid "point(s)"
+#: lustitelskadb/templates/rankings.xhtml:39
+#| msgid "points"
+msgid "Points earned"
+msgstr "Načerpané body"
+
+#: lustitelskadb/templates/rankings.xhtml:40
+msgid "Attendance"
+msgstr "Účast"
+
+#: lustitelskadb/templates/rankings.xhtml:41
+msgid "Average points earned"
+msgstr "Průměrně načerpaných bodů"
+
+#: lustitelskadb/templates/rankings.xhtml:51
+#| msgid "Played players"
+msgid "Played {} games"
+msgstr "Odehrané hry: {}"
 
 # | msgid "Wednesday challenge"
 #: lustitelskadb/templates/wednesday_challenge.xhtml:3
@@ -1295,8 +1359,8 @@ msgstr "Restart APP"
 msgid "Registration Admin"
 msgstr "Administrace registrací"
 
+# | msgid " | Administration panel"
 #: lustitelskadb/templates/administration/restart.xhtml:3
-#| msgid " | Administration panel"
 msgid " | Administration panel | Restart APP progress"
 msgstr " | Administrační panel | Průběh restartu APP"
 
@@ -1493,8 +1557,8 @@ msgid ""
 "to activate the account, please proceed by clicking on the provided link "
 "to be able to login."
 msgstr ""
-"pro aktivaci účtu, prosím potvrďte kliknutím na uvedený odkaz, "
-"abyste se mohli přihlásit."
+"pro aktivaci účtu, prosím potvrďte kliknutím na uvedený odkaz, abyste se "
+"mohli přihlásit."
 
 #: lustitelskadb/templates/registration/register.xhtml:4
 msgid "Register New User"
@@ -1505,9 +1569,9 @@ msgid "New User Registration"
 msgstr "Registrace nového uživatele"
 
 # | msgid "Password:"
+# | msgid "password"
 #: lustitelskadb/templates/resetpassword/change_password.xhtml:3
 #: lustitelskadb/templates/resetpassword/change_password.xhtml:7
-#| msgid "password"
 msgid "Change Password"
 msgstr "Změna hesla"
 
@@ -1936,4 +2000,7 @@ msgstr " - Nový "
 #~ "databáze, ale došlo k chybě během "
 #~ "odesílání výsledku z formuláře na "
 #~ "původní web. Dej  nám to vědět!"
+
+#~ msgid "Statistic"
+#~ msgstr "Statistika"
 

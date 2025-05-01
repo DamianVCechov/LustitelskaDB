@@ -1,0 +1,62 @@
+<html py:extends="master.xhtml" py:strip="True">
+<head py:block="head" py:strip="True">
+<title py:block="master_title">${getattr(tmpl_context, 'project_name', 'turbogears2')} | Rankings</title>
+</head>
+
+<body py:block="body" py:strip="True">
+	<?py
+def count_rank(next_place, recentplace_counter, prev_points, actual_points):
+	if prev_points != actual_points:
+		return (next_place + recentplace_counter, 0)
+	else:
+		return (next_place, recentplace_counter)
+?>
+	<h1 class="bg-light p-1 rounded opacity-90 text-center">Game Ranking</h1>
+
+	<div class="row">
+		<div class="col-lg-6 offset-lg-3">
+			<div class="btn-group w-100 mt-4 text-center">
+				<a href="${tg.url('/rankings')}" class="btn btn-light${' active' if tg.request.url.endswith(tg.url('/rankings', qualified=True)) else ''}"><span>Full</span> ${h.bicon('ladder')}</a>
+				<a href="${tg.url('/rankings/year')}" class="btn btn-light${' active' if tg.request.url.endswith(tg.url('/rankings/year', qualified=True)) else ''}"><span>Year</span> ${h.bicon('arrow-return-left')}</a>
+				<a href="${tg.url('/rankings/month')}" class="btn btn-light${' active' if tg.request.url.endswith(tg.url('/rankings/month', qualified=True)) else ''}"><span>Month</span> ${h.bicon('arrow-return-left')}</a>
+				<a href="${tg.url('/rankings/week')}" class="btn btn-light${' active' if tg.request.url.endswith(tg.url('/rankings/week', qualified=True)) else ''}"><span>Week</span> ${h.bicon('arrow-return-left')}</a>
+				<a href="${tg.url('/rankings/3day')}" class="btn btn-light${' active' if tg.request.url.endswith(tg.url('/rankings/3day', qualified=True)) else ''}"><span>3 days</span> ${h.bicon('arrow-return-left')}</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-6 offset-lg-3">
+			<div class="table-responsive">
+				<table class="table table-sm table-striped mt-5">
+					<thead>
+						<tr class="table-dark text-center">
+							<th class="rounded-top" scope="col" colspan="5">${_("Ranking for {} players in {} games").format(len(ranking), all_games)}</th>
+						</tr>
+						<tr class="table-dark text-center">
+							<th scope="col" title="${_('Rank')}">${h.bicon('graph-up-arrow')}</th>
+							<th scope="col" class="w-100" title="${_('Player')}">${h.bicon('person')}</th>
+							<th scope="col" title="${_('Points earned')}">${h.bicon('fuel-pump')}</th>
+							<th scope="col" title="${_('Attendance')}">${h.bicon('calendar-check')}</th>
+							<th scope="col" title="${_('Average points earned')}">${h.bicon('speedometer2')}</th>
+						</tr>
+					</thead>
+					<tbody py:with="next_place=1; last_points=0; recentplace_counter=0">
+						<py:for each="row in ranking">
+							<?py next_place, recentplace_counter = count_rank(next_place, recentplace_counter, last_points, row.points_sum) ?>
+							<tr>
+								<th scope="row" class="text-end">${next_place}</th>
+								<td class="text-center">${row.display_name}</td>
+								<td class="text-center"><span class="mx-1">${row.points_sum}</span></td>
+								<td class="text-center" title="${_('Played {} games').format(row.played_games)}"><span class="mx-1">${"{:0.1f}%".format(row.played_games*100 / all_games)}</span></td>
+								<td class="text-center"><span class="mx-1">${"{:0.2f}".format(row.points_avg)}</span></td>
+							</tr>
+							<?py recentplace_counter += 1; last_points = row.points_sum ?>
+						</py:for>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

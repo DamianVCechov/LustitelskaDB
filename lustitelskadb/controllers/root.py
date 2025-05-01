@@ -679,6 +679,47 @@ class RootController(BaseController):
 
         return redirect('/')
 
+    @expose('lustitelskadb.templates.rankings')
+    def rankings(self, period=None, *kw):
+        """Handle game results rankings."""
+        if period not in ('year', 'month', 'week', '3day'):
+            period = None
+
+        all_games = DBSession.query(model.GameResult.game_no).filter(model.GameResult.game_no < today_game_no())
+
+        ranking = DBSession.query(
+            model.XTwitter.display_name.label('display_name'),
+            func.count(model.GameResult.game_no).label('played_games'),
+            func.sum(model.GameResult.game_points).label('points_sum'),
+            func.avg(model.GameResult.game_points).label('points_avg'),
+        ).join(model.XTwitter).filter(model.GameResult.game_no < today_game_no())
+
+        if period == "year":
+            ranking = ranking.filter(model.GameResult.game_no >= today_game_no() - 365)
+            all_games = all_games.filter(model.GameResult.game_no >= today_game_no() - 365)
+        elif period == "month":
+            ranking = ranking.filter(model.GameResult.game_no >= today_game_no() - 28)
+            all_games = all_games.filter(model.GameResult.game_no >= today_game_no() - 28)
+        elif period == "week":
+            ranking = ranking.filter(model.GameResult.game_no >= today_game_no() - 7)
+            all_games = all_games.filter(model.GameResult.game_no >= today_game_no() - 7)
+        elif period == "3day":
+            ranking = ranking.filter(model.GameResult.game_no >= today_game_no() - 3)
+            all_games = all_games.filter(model.GameResult.game_no >= today_game_no() - 3)
+
+        all_games = all_games.distinct().count()
+        ranking = ranking.group_by(model.GameResult.xtwitter_uid).order_by(func.sum(model.GameResult.game_points).desc()).all()
+
+        popover_titles_jssrc = twc.JSSource(src='''
+            $(() => {
+                $('[title]').popover({ trigger: "hover", placement: "top" });
+            });
+        ''')
+
+        popover_titles_jssrc.inject()
+
+        return dict(page="wednesday_challenge", all_games=all_games, ranking=ranking)
+
     @expose('lustitelskadb.templates.libriciphers')
     @paginate('libriciphers', items_per_page=1)
     def libriciphers(self, *args):
