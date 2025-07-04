@@ -19,8 +19,8 @@ class GameResult(DeclarativeBase):
     }
 
     uid = Column(Integer, primary_key=True)
-    xtwitter_uid = Column(Integer, ForeignKey('xtwitter.uid'), index=True)
-    xtwitter = relationship('XTwitter', backref=backref('results'))
+    user_id = Column(Integer, ForeignKey('tg_user.user_id'), index=True)
+    user = relationship('User', backref=backref('results'))
     game_no = Column(Integer, nullable=False, index=True, default=0)
     game_time = Column(Time, nullable=True, index=True)
     game_rows = Column(Integer, nullable=True, index=True)
@@ -47,8 +47,8 @@ class WednesdayChallengeWord(DeclarativeBase):
     }
 
     uid = Column(Integer, primary_key=True)
-    xtwitter_uid = Column(Integer, ForeignKey('xtwitter.uid'), index=True)
-    xtwitter = relationship('XTwitter', backref=backref('wednesday_challenges'))
+    user_id = Column(Integer, ForeignKey('tg_user.user_id'), index=True)
+    user = relationship('User', backref=backref('wednesday_challenges'))
     # Game no (modulo 7 need to be = 5)
     game_no = Column(Integer, nullable=False, index=True, default=0)
     # Words need to be 5 chars exactly

@@ -47,10 +47,6 @@ class ResultForm(twf.Form):
 
         css_class = 'list-unstyled bg-light p-3 rounded'
 
-        xtwitter_uid = twf.HiddenField()
-        xtwitter_username = twf.HiddenField()
-        xtwitter_displayname = twf.HiddenField()
-
         game_result = twf.TextArea(
             label=l_(u'Game result'),
             help_text=l_(u'Please Enter your game result (required)'),
@@ -105,10 +101,6 @@ class WednesdayChallengeWordsForm(twf.Form):
     class child(twf.ListLayout):
 
         css_class = 'list-unstyled bg-light p-3 rounded'
-
-        xtwitter_uid = twf.HiddenField()
-        xtwitter_username = twf.HiddenField()
-        xtwitter_displayname = twf.HiddenField()
 
         first_word = twf.TextField(
             label=l_(u'First word'),

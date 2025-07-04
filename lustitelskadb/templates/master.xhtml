@@ -22,6 +22,16 @@
 import tw2.core as twc
 from tgext.pluggable import plugged
 
+try:
+	import ujson as json
+except (ImportError, ModuleNotFoundError, SyntaxError):
+	try:
+		import simplejson as json
+	except (ImportError, ModuleNotFoundError, SyntaxError):
+		import json
+
+user_xtwitter = json.loads(tg.request.identity['user'].xuser.user_info or '{"data":{}}')
+
 daily_wallpaper_jssrc = twc.JSSource(src='''
 	$(() => {
 		$.getJSON("%(daily_img_url)s").done((data) => {
@@ -63,8 +73,8 @@ daily_wallpaper_jssrc.inject()
 							<li><a class="dropdown-item disabled" href="#">Misc</a></li>
 						</ul></li>
 				</ul>
-				<ul class="navbar-nav" py:if="session.has_key('me_on_xtwitter')">
-					<li class="nav-item"><a class="nav-link" href="${tg.url('/xdetach')}"><img class="img-responsive rounded-circle" style="max-height: 24px;" src="${session['me_on_xtwitter']['data']['profile_image_url']}" alt="${session['me_on_xtwitter']['data']['name']} @${session['me_on_xtwitter']['data']['username']}" py:if="'profile_image_url' in session['me_on_xtwitter']['data']" /> <span>Detach</span> <span py:if="'username' in session['me_on_xtwitter']['data']">@${session['me_on_xtwitter']['data']['username']}</span></a></li>
+				<ul class="navbar-nav" py:if="user_xtwitter['data']">
+					<li class="nav-item"><a class="nav-link" href="${tg.url('/xdetach')}"><img class="img-responsive rounded-circle" style="max-height: 24px;" src="${user_xtwitter['data']['profile_image_url']}" alt="${user_xtwitter['data']['name']} @${user_xtwitter['data']['username']}" py:if="'profile_image_url' in user_xtwitter['data']" /> <span>Detach</span> <span py:if="'username' in user_xtwitter['data']">@${user_xtwitter['data']['username']}</span></a></li>
 				</ul>
 				<ul class="navbar-nav">
 					<py:if test="tg.auth_stack_enabled">

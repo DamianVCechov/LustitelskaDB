@@ -81,8 +81,8 @@ class APIController(BaseController):
 
         data = [{
             'uid': item.uid,
-            'user_name': item.xtwitter.user_name,
-            'display_name': item.xtwitter.display_name,
+            'user_name': item.user.xuser.user_name,
+            'display_name': item.user.xuser.display_name,
             'game': item.game_no,
             'time': item.game_time,
             'rows': item.game_rows,
@@ -107,7 +107,7 @@ class APIController(BaseController):
 
         data_cols = (
             ('game_rank', 'game_rank'),
-            ('user_name', 'xtwitter.user_name'),
+            ('user_name', 'user.xuser.user_name'),
             ('game_time', 'game_time'),
             ('game_rows', 'game_rows'),
             ('wednesday_challenge', 'wednesday_challenge'),
@@ -141,8 +141,8 @@ class APIController(BaseController):
             csv_row = {}.fromkeys([r[0] for r in data_cols])
             for k, v in data_cols:
                 if '.' in v:
-                    c, m = v.split('.')
-                    csv_row[k] = encode(getattr(getattr(row, c, {}), m, ''), 'utf-8')
+                    u, c, m = v.split('.')
+                    csv_row[k] = encode(getattr(getattr(getattr(row, u, {}), c, {}), m, ''), 'utf-8')
                 else:
                     csv_row[k] = encode(getattr(row, v, ''), 'utf-8')
             if asbool(convert):

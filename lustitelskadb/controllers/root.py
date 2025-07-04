@@ -226,16 +226,16 @@ class RootController(BaseController):
             func.avg(model.GameResult.game_rank).label('avg_rank'),
             func.avg(model.GameResult.game_points).label('avg_points'),
             func.sum(model.GameResult.game_points).label('sum_points')
-        ).filter(model.GameResult.xtwitter_uid == gameresult.xtwitter_uid, model.GameResult.game_no <= gameresult.game_no, model.GameResult.game_result_time != None).first()
+        ).filter(model.GameResult.user_id == gameresult.user_id, model.GameResult.game_no <= gameresult.game_no, model.GameResult.game_result_time != None).first()
 
         user_game_rank_stats = DBSession.query(
             model.GameResult.game_rank,
             func.count(model.GameResult.game_rank)
-        ).filter(model.GameResult.xtwitter_uid == gameresult.xtwitter_uid, model.GameResult.game_no <= gameresult.game_no).group_by(model.GameResult.game_rank).order_by(model.GameResult.game_points.desc(), model.GameResult.game_rank).all()
+        ).filter(model.GameResult.user_id == gameresult.user_id, model.GameResult.game_no <= gameresult.game_no).group_by(model.GameResult.game_rank).order_by(model.GameResult.game_points.desc(), model.GameResult.game_rank).all()
 
-        played_games = DBSession.query(model.GameResult).filter(model.GameResult.xtwitter_uid == gameresult.xtwitter_uid, model.GameResult.game_no <= gameresult.game_no).count()
-        solved_games = DBSession.query(model.GameResult).filter(model.GameResult.xtwitter_uid == gameresult.xtwitter_uid, model.GameResult.game_no <= gameresult.game_no, model.GameResult.game_rows != None).count()
-        obtained_lanterns = DBSession.query(model.GameResult).filter(model.GameResult.xtwitter_uid == gameresult.xtwitter_uid, model.GameResult.game_no <= gameresult.game_no, model.GameResult.game_rows > 1, model.GameResult.game_time != None, model.GameResult.game_points == 0).count()
+        played_games = DBSession.query(model.GameResult).filter(model.GameResult.user_id == gameresult.user_id, model.GameResult.game_no <= gameresult.game_no).count()
+        solved_games = DBSession.query(model.GameResult).filter(model.GameResult.user_id == gameresult.user_id, model.GameResult.game_no <= gameresult.game_no, model.GameResult.game_rows != None).count()
+        obtained_lanterns = DBSession.query(model.GameResult).filter(model.GameResult.user_id == gameresult.user_id, model.GameResult.game_no <= gameresult.game_no, model.GameResult.game_rows > 1, model.GameResult.game_time != None, model.GameResult.game_points == 0).count()
 
         return dict(page="detail", gameresult=gameresult, user_game_stats=user_game_stats, played_games=played_games, solved_games=solved_games, obtained_lanterns=obtained_lanterns, user_game_rank_stats=user_game_rank_stats)
 
@@ -446,18 +446,6 @@ class RootController(BaseController):
             }
             tmpl_context.form.child.children.wednesday_challenge.required = True
 
-        if not session.has_key('me_on_xtwitter') and asbool(config.get('xtwitter.authorize.enabled', True)):
-            flash(_("You need to have account linked to a X/Twitter profile to continue."), 'warning')
-            redirect('/')
-            # Temporarily disabled X/Twitter authorization
-            session['xauthorized.redirect.url'] = url('/newresult')
-            session.save()
-            redirect('/xauthorize')
-        else:
-            if session.has_key('xauthorized.redirect.url'):
-                del(session['xauthorized.redirect.url'])
-                session.save()
-
         if request.validation.errors:
             tmpl_context.form.value = kw
             tmpl_context.form.error_msg = l_("Form filled with errors!")
@@ -465,11 +453,7 @@ class RootController(BaseController):
                 if value:
                     getattr(tmpl_context.form.child.children, key).error_msg = value
         else:
-            tmpl_context.form.value = {
-                'xtwitter_uid': session.get('me_on_xtwitter', {}).get('data', {}).get('id', None),
-                'xtwitter_username': session.get('me_on_xtwitter', {}).get('data', {}).get('username', None),
-                'xtwitter_displayname': session.get('me_on_xtwitter', {}).get('data', {}).get('name', None)
-            }
+            tmpl_context.form.value = dict()
 
         emoji_picker_jslnk = twc.JSLink(
             location="bodybottom",
@@ -513,17 +497,10 @@ class RootController(BaseController):
         return dict(page='newresult')
 
     @expose()
+    @require(predicates.not_anonymous(msg=l_('Only for users with appropriate permissions')))
     @validate(form=appforms.ResultForm(), error_handler=newresult)
     def save_result(self, **kw):
         """Save result."""
-        if not session.has_key('me_on_xtwitter'):
-            flash(_("Nice try, only authorized person can send result!"), 'error')
-            return redirect(url('/'))
-
-        if session['me_on_xtwitter']['data']['id'] != kw['xtwitter_uid']:
-            flash(_("Really nice try, only authorized person can send their own result!"), 'error')
-            return redirect(url('/'))
-
         parsed_vals = {
             'game_no': None,
             'step': None,
@@ -546,23 +523,18 @@ class RootController(BaseController):
             flash(_("This result can't be saved, because isn't for actually ongoing game!"), 'error')
             redirect('/')
 
-        game_result = DBSession.query(model.GameResult, model.XTwitter).join(model.XTwitter, model.XTwitter.uid == model.GameResult.xtwitter_uid)
+        game_result = DBSession.query(model.GameResult)
         game_result = game_result.filter(
             model.GameResult.game_no == parsed_vals['game_no'],
-            model.XTwitter.xid == kw.get('xtwitter_uid', None)
+            model.GameResult.user == request.identity['user']
         ).first()
 
         if game_result:
             flash(_(u"This game result is already in database"), 'warning')
             redirect('/')
 
-        xuser = DBSession.query(model.XTwitter).filter(model.XTwitter.xid == kw.get('xtwitter_uid')).first()
-        if not xuser:
-            flash(_(u"X/Twitter user not found"), 'warning')
-            redirect('/')
-
         game_result = model.GameResult(
-            xtwitter=xuser,
+            user=request.identity['user'],
             game_no=parsed_vals['game_no'],
             game_time=timedelta(seconds=parsed_vals['time']) if parsed_vals['time'] != None else None,
             game_rows=parsed_vals['step'],
@@ -596,12 +568,8 @@ class RootController(BaseController):
             for key, value in request.validation.errors.items():
                 if value:
                     getattr(tmpl_context.form.child.children, key).error_msg = value
-        elif session.has_key('me_on_xtwitter'):
-            tmpl_context.form.value = {
-                'xtwitter_uid': session.get('me_on_xtwitter', {}).get('data', {}).get('id', None),
-                'xtwitter_username': session.get('me_on_xtwitter', {}).get('data', {}).get('username', None),
-                'xtwitter_displayname': session.get('me_on_xtwitter', {}).get('data', {}).get('name', None)
-            }
+        else:
+            tmpl_context.form.value = dict()
 
         wc_words_form_open = False
         wc_words = DBSession.query(model.WednesdayChallengeWord).filter(model.WednesdayChallengeWord.game_no >= today_game_no()).first()
@@ -611,8 +579,8 @@ class RootController(BaseController):
             next_wc = None
             if predicates.has_permission('wednesday_master') and wednesday_challenge_words_window():
                 wc_words_form_open = True
-            elif session.has_key('me_on_xtwitter') and wednesday_challenge_words_window():
-                user_result_in_monday_game = DBSession.query(model.GameResult, model.XTwitter).join(model.XTwitter, model.XTwitter.uid == model.GameResult.xtwitter_uid).filter(model.GameResult.game_no == today_game_no() - 1, model.XTwitter.xid == session.get('me_on_xtwitter', {}).get('data', {}).get('id', None)).first()
+            elif predicates.not_anonymous() and wednesday_challenge_words_window():
+                user_result_in_monday_game = DBSession.query(model.GameResult, model.User).join(model.User, model.User.user_id == model.GameResult.user_id).filter(model.GameResult.game_no == today_game_no() - 1, model.User.user_id == request.identity['user'].user_id).first()
                 last_monday_game_rank = DBSession.query(model.GameResult).filter(model.GameResult.game_no == today_game_no() - 1).order_by(model.GameResult.game_rank.desc(), model.GameResult.uid.desc()).first()
                 if user_result_in_monday_game and last_monday_game_rank and last_monday_game_rank.game_rank != user_result_in_monday_game[0].game_rank and game_no_start_date(today_game_no()) + timedelta(hours=user_rank_hours_offset.get(user_result_in_monday_game[0].game_rank, 24)) <= datetime.now():
                     wc_words_form_open = True
@@ -627,14 +595,6 @@ class RootController(BaseController):
     @validate(form=appforms.WednesdayChallengeWordsForm(), error_handler=wednesday_challenge)
     def save_wednesday_challenge_words(self, **kw):
         """Save Wednesday challenge words."""
-        if not (predicates.has_permission('manage') or session.has_key('me_on_xtwitter')):
-            flash(_("Nice try, only authorized person can send Wednesday challenge words!"), 'error')
-            return redirect('/')
-
-        if session.has_key('me_on_xtwitter') and session['me_on_xtwitter']['data']['id'] != kw['xtwitter_uid']:
-            flash(_("Really nice try, only authorized person can send Wednesday challenge words!"), 'error')
-            return redirect('/')
-
         wc_words_form_open = False
         wc_words = DBSession.query(model.WednesdayChallengeWord).filter(model.WednesdayChallengeWord.game_no >= today_game_no()).first()
 
@@ -644,8 +604,8 @@ class RootController(BaseController):
 
         if predicates.has_permission('manage') and wednesday_challenge_words_window():
             wc_words_form_open = True
-        elif session.has_key('me_on_xtwitter') and wednesday_challenge_words_window():
-            user_result_in_monday_game = DBSession.query(model.GameResult, model.XTwitter).join(model.XTwitter, model.XTwitter.uid == model.GameResult.xtwitter_uid).filter(model.GameResult.game_no == today_game_no() - 1, model.XTwitter.xid == session.get('me_on_xtwitter', {}).get('data', {}).get('id', None)).first()
+        elif predicates.not_anonymous() and wednesday_challenge_words_window():
+            user_result_in_monday_game = DBSession.query(model.GameResult, model.User).join(model.User, model.User.user_id == model.GameResult.user_id).filter(model.GameResult.game_no == today_game_no() - 1, model.User.user_id == request.identity['user'].user_id).first()
             last_monday_game_rank = DBSession.query(model.GameResult).filter(model.GameResult.game_no == today_game_no() - 1).order_by(model.GameResult.game_rank.desc(), model.GameResult.uid.desc()).first()
             if user_result_in_monday_game and last_monday_game_rank and last_monday_game_rank.game_rank != user_result_in_monday_game[0].game_rank and game_no_start_date(today_game_no()) + timedelta(hours=user_rank_hours_offset.get(user_result_in_monday_game[0].game_rank, 24)) <= datetime.now():
                 wc_words_form_open = True
@@ -658,18 +618,13 @@ class RootController(BaseController):
             flash(l_("You can't sent words for Wednesday challenge"), 'error')
             return redirect('/')
 
-        xtwitter_user = DBSession.query(model.XTwitter).filter(model.XTwitter.xid == session['me_on_xtwitter']['data']['id']).first()
-        if not xtwitter_user and not predicates.has_permission('manage'):
-            flash(l_("Unknown user, sorry"))
-            return redirect('/')
-
         wc_words = model.WednesdayChallengeWord(
             game_no=today_game_no() + 1,
             first_word=kw.get('first_word', '-----').upper(),
             second_word=kw.get('second_word', '-----').upper(),
             third_word=kw.get('third_word', '-----').upper(),
             comment=kw.get('comment', None),
-            xtwitter_uid=None if not xtwitter_user else xtwitter_user.uid
+            user=request.identity['user']
         )
 
         DBSession.add(wc_words)
@@ -691,8 +646,8 @@ class RootController(BaseController):
             func.count(model.GameResult.game_no).label('played_games'),
             func.sum(model.GameResult.game_points).label('points_sum'),
             func.avg(model.GameResult.game_points).label('points_avg'),
-            model.XTwitter.display_name.label('display_name')
-        ).join(model.XTwitter).filter(model.GameResult.game_no < today_game_no())
+            model.User.display_name.label('display_name')
+        ).join(model.User).filter(model.GameResult.game_no < today_game_no())
 
         if period == "year":
             ranking = ranking.filter(model.GameResult.game_no >= today_game_no() - 365)
@@ -708,7 +663,7 @@ class RootController(BaseController):
             all_games = all_games.filter(model.GameResult.game_no >= today_game_no() - 3)
 
         all_games = all_games.distinct().count()
-        ranking = ranking.group_by(model.GameResult.xtwitter_uid).order_by(func.sum(model.GameResult.game_points).desc()).all()
+        ranking = ranking.group_by(model.GameResult.user_id).order_by(func.sum(model.GameResult.game_points).desc()).all()
 
         popover_titles_jssrc = twc.JSSource(src='''
             $(() => {
@@ -718,7 +673,7 @@ class RootController(BaseController):
 
         popover_titles_jssrc.inject()
 
-        return dict(page="wednesday_challenge", all_games=all_games, ranking=ranking)
+        return dict(page="rankings", all_games=all_games, ranking=ranking)
 
     @expose('lustitelskadb.templates.libriciphers')
     @paginate('libriciphers', items_per_page=1)
@@ -767,11 +722,6 @@ class RootController(BaseController):
         userid = request.identity['repoze.who.userid']
         flash(_('Welcome back, %s!') % userid)
 
-        user = request.identity['user']
-        if user.xuser:
-            session['me_on_xtwitter'] = json.loads(user.xuser.user_info)
-            session.save()
-
         # Do not use tg.redirect with tg.url as it will add the mountpoint
         # of the application twice.
         return HTTPFound(location=came_from)
@@ -783,8 +733,5 @@ class RootController(BaseController):
         goodbye as well.
 
         """
-        if session.has_key('me_on_xtwitter'):
-            del session['me_on_xtwitter']
-            session.save()
         flash(_('We hope to see you soon!'))
         return HTTPFound(location=came_from)
