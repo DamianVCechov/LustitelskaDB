@@ -16,7 +16,11 @@ except (ImportError, ModuleNotFoundError, SyntaxError):
 		import json
 
 htmlbr = '<br>'
-user_xtwitter = json.loads(tg.request.identity['user'].xuser.user_info or '{"data":{}}')
+
+if request.identity:
+	user_xtwitter = json.loads(tg.request.identity['user'].xuser.user_info)
+else:
+	user_xtwitter = {"data":{}}
 ?>
 	<h1 class="d-inline-block bg-light p-1 rounded opacity-90">New result</h1>
 

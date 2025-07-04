@@ -18,7 +18,11 @@ except (ImportError, ModuleNotFoundError, SyntaxError):
 
 HTMLBR = '<br>'
 GAMERANK_TABLE_ROWS = 11
-user_xtwitter = json.loads(gameresult.user.xuser.user_info or '{"data":{}}')
+
+if request.identity:
+	user_xtwitter = json.loads(tg.request.identity['user'].xuser.user_info)
+else:
+	user_xtwitter = {"data":{}}
 ?>
 	<h1 class="d-inline-block bg-light p-1 rounded opacity-90">User game result detail</h1>
 
@@ -145,7 +149,7 @@ user_xtwitter = json.loads(gameresult.user.xuser.user_info or '{"data":{}}')
 			<p class="fs-3">${gameresult.comment}</p>
 		</blockquote>
 		<figcaption class="blockquote-footer fs-5">
-			${gameresult.xtwitter.display_name} <cite title="Source Title">@${gameresult.xtwitter.user_name}</cite>
+			${gameresult.user.display_name} <cite title="Source Title">@${gameresult.user.user_name}</cite>
 		</figcaption>
 	</figure>
 </body>

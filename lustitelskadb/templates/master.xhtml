@@ -30,7 +30,10 @@ except (ImportError, ModuleNotFoundError, SyntaxError):
 	except (ImportError, ModuleNotFoundError, SyntaxError):
 		import json
 
-user_xtwitter = json.loads(tg.request.identity['user'].xuser.user_info or '{"data":{}}')
+if request.identity:
+	user_xtwitter = json.loads(tg.request.identity['user'].xuser.user_info)
+else:
+	user_xtwitter = {"data":{}}
 
 daily_wallpaper_jssrc = twc.JSSource(src='''
 	$(() => {
