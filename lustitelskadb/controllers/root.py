@@ -592,6 +592,7 @@ class RootController(BaseController):
         return dict(page="wednesday_challenge", wc_words=wc_words, next_wc=next_wc, wc_words_form_open=wc_words_form_open)
 
     @expose()
+    @require(predicates.not_anonymous(msg=l_('Only for users with appropriate permissions')))
     @validate(form=appforms.WednesdayChallengeWordsForm(), error_handler=wednesday_challenge)
     def save_wednesday_challenge_words(self, **kw):
         """Save Wednesday challenge words."""
