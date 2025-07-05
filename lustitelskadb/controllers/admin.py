@@ -184,12 +184,12 @@ class UserAdminCrudConfig(CrudRestControllerConfig):
 
         @expose(inherit=True)
         def post(self, *args, **kw):
-            kw['xtwitter_uid'] = kw.pop('xtwitter')
+            kw['xtwitter_uid'] = kw.pop('xuser')
             return EasyCrudRestController.post(self, *args, **kw)
 
         @expose(inherit=True)
         def put(self, *args, **kw):
-            kw['xtwitter_uid'] = kw.pop('xtwitter')
+            kw['xtwitter_uid'] = kw.pop('xuser')
             return EasyCrudRestController.put(self, *args, **kw)
 
 
