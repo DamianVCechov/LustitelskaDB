@@ -1,0 +1,44 @@
+<html py:extends="master.xhtml" py:strip="True">
+<head py:block="head" py:strip="True">
+<title py:block="master_title">${value_of('project_name', 'TurboGears')} Administration</title>
+</head>
+<body py:block="body" py:strip="True">
+	<?py from itertools import groupby ?>
+
+	<div class="row">
+		<div class="col-md-12">
+			<h1 class="page-header mt-5 mb-3 bg-light p-2 rounded opacity-90">${value_of('project_name', 'TurboGears')} Admin</h1>
+			<p class="lead mt-5 mb-3 bg-light p-2 rounded opacity-90" py:with="custom_payoff=value_of('payoff', None)">
+				<py:if test="custom_payoff is not None">
+					${custom_payoff}
+				</py:if><py:else>
+					This is a fully-configurable administrative tool to help you administer your website.<br />
+					Below is links to all of your models.
+					They will bring you to a listing of the objects in your database.
+				</py:else>
+			</p>
+		</div>
+	</div>
+
+	<br />
+
+	<div class="row">
+		<div class="col-md-12" py:with="groupkey=lambda m: getattr(model_config(m)[1], 'admin_group', 'Administration')">
+			<div py:for="group_name, models_group in groupby(sorted(models, key=groupkey), groupkey)" class="list-group">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title mt-5 mb-3 bg-light p-2 rounded opacity-90">${group_name}</h3>
+					</div>
+					<div class="list-group">
+						<a py:for="model in models_group" py:with="model_conf=model_config(model); modelid=model_conf[0]; modelcfg=model_conf[1]" class="list-group-item" href='${modelid}s/'>
+							<h4 class="list-group-item-heading" py:with="glyphicon=getattr(modelcfg, 'icon_class', 'glyphicon-list-alt')">
+								<span class="glyphicon ${glyphicon}"></span> <span>&nbsp; ${model}s</span>
+							</h4>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

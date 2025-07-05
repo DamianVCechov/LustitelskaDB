@@ -43,6 +43,8 @@ class CustomCheckbox(twf.CheckBox):
 
 class XTwitterAdminCrudConfig(CrudRestControllerConfig):
 
+    admin_group = 'Tables'
+
     class defaultCrudRestController(EasyCrudRestController):
         __table_options__ = {
             '__omit_fields__': [
@@ -60,6 +62,8 @@ class XTwitterAdminCrudConfig(CrudRestControllerConfig):
 
 
 class GameResultsAdminCrudConfig(CrudRestControllerConfig):
+
+    admin_group = 'Tables'
 
     class defaultCrudRestController(EasyCrudRestController):
         __table_options__ = {
@@ -112,6 +116,8 @@ class GameResultsAdminCrudConfig(CrudRestControllerConfig):
 
 class WednesdayChallengesWordsAdminCrudConfig(CrudRestControllerConfig):
 
+    admin_group = 'Tables'
+
     class defaultCrudRestController(EasyCrudRestController):
         # __table_options__ = {
         #     '__omit_fields__': [
@@ -144,7 +150,120 @@ class WednesdayChallengesWordsAdminCrudConfig(CrudRestControllerConfig):
             return EasyCrudRestController.put(self, *args, **kw)
 
 
+class UserAdminCrudConfig(CrudRestControllerConfig):
+
+    admin_group = 'Users and Groups'
+
+    class defaultCrudRestController(EasyCrudRestController):
+        __table_options__ = {
+            '__omit_fields__': [
+                '_password',
+                'password',
+                'results',
+                'wednesday_challenges'
+            ]
+        }
+
+        __form_edit_options__ = {
+            '__omit_fields__': [
+                '_password',
+                'created',
+                'results',
+                'wednesday_challenges'
+            ]
+        }
+
+        __form_new_options__ = {
+            '__omit_fields__': [
+                '_password',
+                'created',
+                'results',
+                'wednesday_challenges'
+            ]
+        }
+
+        @expose(inherit=True)
+        def post(self, *args, **kw):
+            kw['xtwitter_uid'] = kw.pop('xtwitter')
+            return EasyCrudRestController.post(self, *args, **kw)
+
+        @expose(inherit=True)
+        def put(self, *args, **kw):
+            kw['xtwitter_uid'] = kw.pop('xtwitter')
+            return EasyCrudRestController.put(self, *args, **kw)
+
+
+class GroupAdminCrudConfig(CrudRestControllerConfig):
+
+    admin_group = 'Users and Groups'
+
+    class defaultCrudRestController(EasyCrudRestController):
+        __table_options__ = {
+            '__omit_fields__': [
+                'group_id',
+                'created',
+                'users'
+            ]
+        }
+
+        __form_edit_options__ = {
+            '__omit_fields__': [
+                'group_id',
+                'created',
+                'users'
+            ]
+        }
+
+        __form_new_options__ = {
+            '__omit_fields__': [
+                'group_id',
+                'created',
+                'users'
+            ]
+        }
+
+        @expose(inherit=True)
+        def post(self, *args, **kw):
+            return EasyCrudRestController.post(self, *args, **kw)
+
+        @expose(inherit=True)
+        def put(self, *args, **kw):
+            return EasyCrudRestController.put(self, *args, **kw)
+
+
+class PermissionAdminCrudConfig(CrudRestControllerConfig):
+
+    admin_group = 'Users and Groups'
+
+    class defaultCrudRestController(EasyCrudRestController):
+        __table_options__ = {
+            '__omit_fields__': [
+                'permission_id'
+            ]
+        }
+
+        __form_edit_options__ = {
+            '__omit_fields__': [
+            ]
+        }
+
+        __form_new_options__ = {
+            '__omit_fields__': [
+            ]
+        }
+
+        @expose(inherit=True)
+        def post(self, *args, **kw):
+            return EasyCrudRestController.post(self, *args, **kw)
+
+        @expose(inherit=True)
+        def put(self, *args, **kw):
+            return EasyCrudRestController.put(self, *args, **kw)
+
+
 class CustomGroupedBootstrapAdminLayout(GroupedBootstrapAdminLayout):
+
+    template_index = 'lustitelskadb.templates.tgext.admin.bootstrap_grouped_index'
 
     crud_templates = {
         'get_all': [
@@ -172,6 +291,12 @@ class CustomAdminConfig(TGAdminConfig):
     gameresult = GameResultsAdminCrudConfig
 
     wednesdaychallengeword = WednesdayChallengesWordsAdminCrudConfig
+
+    user = UserAdminCrudConfig
+
+    group = GroupAdminCrudConfig
+
+    permission = PermissionAdminCrudConfig
 
 
 class AdministrationController(BaseController):
@@ -283,7 +408,7 @@ class AdministrationController(BaseController):
                         DBSession.add(game)
                         DBSession.flush()
                         statistics['imported_count'] += 1
-                flash(_(u"The import was successful. {all_count} records processed, {imported_count} records imported, {duplicity_skipped} duplicate records skipped, and {added_nicknames} users added.").format(**statistics))
+                flash(_(u"The import was successful. {all_count} records processed, {imported_count} records imported, {duplicity_skipped} duplicate records skipped, and {added_nicknames} ; added.").format(**statistics))
             except Exception as e:
                 flash(_(u'The import attempt ended with an error: "{}"').format(e))
 
