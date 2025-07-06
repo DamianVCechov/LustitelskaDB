@@ -88,8 +88,8 @@ daily_wallpaper_jssrc.inject()
 								<li><a class="dropdown-item${' active' if tg.request.url.startswith(h.plug_url('userprofile', '/', qualified=True)) else ''}" href="${h.plug_url('userprofile', '/')}">User profile</a></li>
 								<li><a class="dropdown-item${' active' if tg.request.url.startswith(h.plug_url('resetpassword', '/', qualified=True)) else ''}" href="${h.plug_url('resetpassword', '/')}">Reset password</a></li>
 								<li><a class="dropdown-item disabled" href="#">Social networks</a></li>
-								<li><hr class="dropdown-divider" /></li>
-								<li py:if="request.identity"><a class="dropdown-item${' active' if tg.request.url.startswith(tg.url('/admin', qualified=True)) else ''}" href="${tg.url('/admin')}">Admin</a></li>
+								<li py:if="'manage' in request.identity['permissions']"><hr class="dropdown-divider" /></li>
+								<li py:if="'manage' in request.identity['permissions']"><a class="dropdown-item${' active' if tg.request.url.startswith(tg.url('/admin', qualified=True)) else ''}" href="${tg.url('/admin')}">Admin</a></li>
 								<li><hr class="dropdown-divider" /></li>
 								<li><a class="dropdown-item" href="${tg.url('/logout_handler')}">Logout</a></li>
 							</ul></li>
