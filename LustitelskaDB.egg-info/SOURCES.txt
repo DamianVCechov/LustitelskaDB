@@ -35,6 +35,7 @@ lustitelskadb/lib/base.py
 lustitelskadb/lib/forms.py
 lustitelskadb/lib/helpers.py
 lustitelskadb/lib/injects.py
+lustitelskadb/lib/strings.py
 lustitelskadb/lib/utils.py
 lustitelskadb/model/__init__.py
 lustitelskadb/model/auth.py
@@ -345,6 +346,7 @@ lustitelskadb/templates/resetpassword/change_password.xhtml
 lustitelskadb/templates/resetpassword/index.xhtml
 lustitelskadb/templates/tgext/__init__.py
 lustitelskadb/templates/tgext/admin/__init__.py
+lustitelskadb/templates/tgext/admin/bootstrap_grouped_index.xhtml
 lustitelskadb/templates/tgext/admin/bootstrap_crud/__init__.py
 lustitelskadb/templates/tgext/admin/bootstrap_crud/edit.xhtml
 lustitelskadb/templates/tgext/admin/bootstrap_crud/get_all.xhtml
