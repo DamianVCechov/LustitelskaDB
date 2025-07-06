@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 1.1.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-07-05 13:56+0200\n"
+"POT-Creation-Date: 2025-07-06 15:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -457,11 +457,15 @@ msgstr ""
 msgid "Display Name"
 msgstr ""
 
+#: lustitelskadb/lib/strings.py:9
+msgid "edit"
+msgstr ""
+
 #: lustitelskadb/templates/about.xhtml:3
 msgid " | About page"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:19 lustitelskadb/templates/master.xhtml:89
+#: lustitelskadb/templates/about.xhtml:19 lustitelskadb/templates/master.xhtml:95
 msgid "About"
 msgstr ""
 
@@ -660,7 +664,7 @@ msgid "User game result detail"
 msgstr ""
 
 #: lustitelskadb/templates/detail.xhtml:29 lustitelskadb/templates/detail.xhtml:149
-#: lustitelskadb/templates/index.xhtml:170 lustitelskadb/templates/master.xhtml:80
+#: lustitelskadb/templates/index.xhtml:170
 #: lustitelskadb/templates/newresult.xhtml:30
 msgid "@"
 msgstr ""
@@ -959,23 +963,27 @@ msgstr ""
 msgid "Misc"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:80
-msgid "Detach"
+#: lustitelskadb/templates/master.xhtml:88
+msgid "User profile"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:86
+#: lustitelskadb/templates/master.xhtml:89
+msgid "Social networks"
+msgstr ""
+
+#: lustitelskadb/templates/master.xhtml:91
 msgid "Logout"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:87
+#: lustitelskadb/templates/master.xhtml:93
 msgid "Admin"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:113
+#: lustitelskadb/templates/master.xhtml:119
 msgid "Copyright © "
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:113
+#: lustitelskadb/templates/master.xhtml:119
 msgid " 2024-"
 msgstr ""
 

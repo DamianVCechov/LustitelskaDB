@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/bootstrap.min.css')}" />
 <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/bootstrap-glyphicons.min.css')}" />
 <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/bootstrap-icons.min.css')}" />
-<link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/style.css', params={'v': '20241205T0202'})}" />
+<link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/style.css', params={'v': '20250706T1415'})}" />
 
 <py:block name="head"></py:block>
 </head>
@@ -76,15 +76,22 @@ daily_wallpaper_jssrc.inject()
 							<li><a class="dropdown-item disabled" href="#">Misc</a></li>
 						</ul></li>
 				</ul>
-				<ul class="navbar-nav" py:if="user_xtwitter['data']">
+				<?py '''ul class="navbar-nav" py:if="user_xtwitter['data']">
 					<li class="nav-item"><a class="nav-link" href="${tg.url('/xdetach')}"><img class="img-responsive rounded-circle" style="max-height: 24px;" src="${user_xtwitter['data']['profile_image_url']}" alt="${user_xtwitter['data']['name']} @${user_xtwitter['data']['username']}" py:if="'profile_image_url' in user_xtwitter['data']" /> <span>Detach</span> <span py:if="'username' in user_xtwitter['data']">@${user_xtwitter['data']['username']}</span></a></li>
-				</ul>
+				</ul''' ?>
 				<ul class="navbar-nav">
 					<py:if test="tg.auth_stack_enabled">
 						<li class="nav-item" py:if="not request.identity"><a class="nav-link${' active' if tg.request.url.startswith(tg.url('/login', qualified=True)) else ''}" href="${tg.url('/login')}">Login</a></li>
 						<li class="nav-item" py:if="not request.identity and 'registration' in plugged()"><a class="nav-link${' active' if tg.request.url.startswith(tg.url('/registration', qualified=True)) else ''}" href="${h.plug_url('registration', '/')}">Register</a></li>
-						<li class="nav-item" py:if="request.identity"><a class="nav-link" href="${tg.url('/logout_handler')}">Logout</a></li>
-						<li class="nav-item" py:if="request.identity"><a class="nav-link${' active' if tg.request.url.startswith(tg.url('/admin', qualified=True)) else ''}" href="${tg.url('/admin')}">Admin</a></li>
+						<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> ${h.bicon('person-circle')} <span>${tg.request.identity['user'].display_name}</span></a>
+							<ul class="dropdown-menu bg-success">
+								<li><a class="dropdown-item${' active' if tg.request.url.startswith(h.plug_url('userprofile', '/', qualified=True)) else ''}" href="${h.plug_url('userprofile', '/')}">User profile</a></li>
+								<li><a class="dropdown-item disabled" href="#">Social networks</a></li>
+								<li><hr class="dropdown-divider" /></li>
+								<li py:if="request.identity"><a class="dropdown-item${' active' if tg.request.url.startswith(tg.url('/admin', qualified=True)) else ''}" href="${tg.url('/admin')}">Admin</a></li>
+								<li><hr class="dropdown-divider" /></li>
+								<li><a class="dropdown-item" href="${tg.url('/logout_handler')}">Logout</a></li>
+							</ul></li>
 					</py:if>
 					<li class="nav-item"><a class="nav-link${' active' if tg.request.url.startswith(tg.url('/about', qualified=True)) else ''}" href="${tg.url('/about')}">About</a></li>
 				</ul>

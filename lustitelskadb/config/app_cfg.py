@@ -5,7 +5,7 @@ Global configuration file for TG2-specific settings in LustitelskaDB.
 This file complements development/deployment.ini.
 
 """
-from tg import FullStackApplicationConfigurator
+from tg import FullStackApplicationConfigurator, milestones
 from tgext.pluggable import plug, replace_template
 
 import lustitelskadb
@@ -196,3 +196,16 @@ try:
     plug(base_config, 'userprofile')
 except ImportError:
     pass
+
+def replace_profile_form_layout():
+    from axf.bootstrap import BootstrapFormLayout
+    from userprofile.lib import UserForm
+    # from userprofile.lib import ChangePasswordForm
+
+    UserForm.child = BootstrapFormLayout(children=UserForm.child.children)
+    UserForm.submit.css_class = 'btn btn-outline-secondary mt-3'
+
+    # ChangePasswordForm.child = BootstrapFormLayout(children=ChangePasswordForm.child.children)
+    # ChangePasswordForm.submit.css_class = 'btn btn-outline-secondary mt-3'
+
+milestones.config_ready.register(replace_profile_form_layout)

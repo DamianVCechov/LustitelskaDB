@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-07-05 13:56+0200\n"
-"PO-Revision-Date: 2025-07-05 14:01+0200\n"
+"POT-Creation-Date: 2025-07-06 15:23+0200\n"
+"PO-Revision-Date: 2025-07-06 15:24+0200\n"
 "Last-Translator: Jaroslav Mikulík <jaroslav.mikulik@runtech.cz>\n"
 "Language: cs\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -54,10 +54,11 @@ msgstr "Formulář vyplněn s chybami!"
 msgid "Missing CSV file for import"
 msgstr "Schází CSV soubor k importu"
 
+# | msgid "" "The import was successful. {all_count} records processed, "
+# | "{imported_count} records imported, {duplicity_skipped} duplicate records
+# "
+# | "skipped, and {added_nicknames} users added."
 #: lustitelskadb/controllers/admin.py:411
-#| msgid "" "The import was successful. {all_count} records processed, "
-#| "{imported_count} records imported, {duplicity_skipped} duplicate records "
-#| "skipped, and {added_nicknames} users added."
 msgid ""
 "The import was successful. {all_count} records processed, "
 "{imported_count} records imported, {duplicity_skipped} duplicate records "
@@ -542,12 +543,17 @@ msgstr "Emailová adresa"
 msgid "Display Name"
 msgstr "Zobrazované jméno"
 
+#: lustitelskadb/lib/strings.py:9
+#| msgid "Edit"
+msgid "edit"
+msgstr "upravit"
+
 #: lustitelskadb/templates/about.xhtml:3
 msgid " | About page"
 msgstr "| Stránka o aplikaci"
 
 #: lustitelskadb/templates/about.xhtml:19
-#: lustitelskadb/templates/master.xhtml:89
+#: lustitelskadb/templates/master.xhtml:95
 msgid "About"
 msgstr "O aplikaci"
 
@@ -783,7 +789,6 @@ msgstr "Detail herního výsledku uživatele"
 #: lustitelskadb/templates/detail.xhtml:29
 #: lustitelskadb/templates/detail.xhtml:149
 #: lustitelskadb/templates/index.xhtml:170
-#: lustitelskadb/templates/master.xhtml:80
 #: lustitelskadb/templates/newresult.xhtml:30
 msgid "@"
 msgstr "@"
@@ -1122,23 +1127,28 @@ msgstr "Původní web"
 msgid "Misc"
 msgstr "Různé"
 
-#: lustitelskadb/templates/master.xhtml:80
-msgid "Detach"
-msgstr "Odpojit"
+#: lustitelskadb/templates/master.xhtml:88
+#| msgid "profile"
+msgid "User profile"
+msgstr "Profil uživatele"
 
-#: lustitelskadb/templates/master.xhtml:86
+#: lustitelskadb/templates/master.xhtml:89
+msgid "Social networks"
+msgstr "Sociální sítě"
+
+#: lustitelskadb/templates/master.xhtml:91
 msgid "Logout"
 msgstr "Odhlášení"
 
-#: lustitelskadb/templates/master.xhtml:87
+#: lustitelskadb/templates/master.xhtml:93
 msgid "Admin"
 msgstr "Admin"
 
-#: lustitelskadb/templates/master.xhtml:113
+#: lustitelskadb/templates/master.xhtml:119
 msgid "Copyright © "
 msgstr "Copyright © "
 
-#: lustitelskadb/templates/master.xhtml:113
+#: lustitelskadb/templates/master.xhtml:119
 msgid " 2024-"
 msgstr " 2024-"
 
@@ -1565,13 +1575,13 @@ msgstr "Změna hesla"
 msgid "Request Password Reset"
 msgstr "Požadavek na reset hesla"
 
+# | msgid "Administration"
 #: lustitelskadb/templates/tgext/admin/bootstrap_grouped_index.xhtml:3
-#| msgid "Administration"
 msgid " Administration"
 msgstr " Administrace"
 
+# | msgid "Admin"
 #: lustitelskadb/templates/tgext/admin/bootstrap_grouped_index.xhtml:10
-#| msgid "Admin"
 msgid " Admin"
 msgstr " Admin"
 
@@ -1580,9 +1590,8 @@ msgid ""
 "This is a fully-configurable administrative tool to help you administer "
 "your website."
 msgstr ""
-"Toto je plně konfigurovatelný administrativní nástroj pomáhající v"
-" administraci "
-"tvého webu."
+"Toto je plně konfigurovatelný administrativní nástroj pomáhající v "
+"administraci tvého webu."
 
 #: lustitelskadb/templates/tgext/admin/bootstrap_grouped_index.xhtml:16
 msgid ""
@@ -1591,8 +1600,7 @@ msgid ""
 "database."
 msgstr ""
 "Následují odkazy na vše ve tvých modelech.\n"
-"\t\t\t\t\tZobrazí vám seznam objektů ve tvé "
-"databázi."
+"\t\t\t\t\tZobrazí vám seznam objektů ve tvé databázi."
 
 #: lustitelskadb/templates/tgext/admin/bootstrap_grouped_index.xhtml:35
 msgid "s"
@@ -2055,4 +2063,7 @@ msgstr " - Nový "
 
 #~ msgid "Unknown user, sorry"
 #~ msgstr "Omlouvám se, neznámý uživatel"
+
+#~ msgid "Detach"
+#~ msgstr "Odpojit"
 

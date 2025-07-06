@@ -118,3 +118,21 @@ form span.error {
 .opacity-95 {
 	opacity: .95;
 }
+
+#userprofile_container {
+	background: white;
+	margin: 1rem;
+	padding: 1rem;
+	border-radius: var(--bs-border-radius) !important;
+	opacity: .90;
+}
+
+.userprofile-imagefield-image {
+	background-repeat: no-repeat;
+	margin: .5rem;
+	height: 32px;
+}
+
+.userprofile-imagefield-image span.glyphicon {
+	margin-left: 3rem;
+}
