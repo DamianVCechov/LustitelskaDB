@@ -145,6 +145,13 @@ class WednesdayChallengeWordsForm(twf.Form):
             css_class="form-control fs-4 my-3 noto-color-emoji-regular"
         )
 
+        emoji_picker = twf.LinkField(
+            label=html.literal('<div class="emoji-picker-tooltip" role="tooltip"><emoji-picker></emoji-picker></div>'),
+            text=html.literal('<i class="bi bi-emoji-smile"></i>'),
+            css_class="btn btn-outline-secondary",
+            link="#"
+        )
+
     action = lurl('/save_wednesday_challenge_words')
 
     submit = twf.SubmitButton(

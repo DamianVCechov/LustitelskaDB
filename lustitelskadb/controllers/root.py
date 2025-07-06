@@ -55,7 +55,7 @@ from lustitelskadb.controllers.admin import AdministrationController
 from lustitelskadb.controllers.api import APIController
 
 import lustitelskadb.lib.forms as appforms
-from lustitelskadb.lib.injects import closing_deadline_jssrc
+from lustitelskadb.lib.injects import closing_deadline_jssrc, emojipicker_init_jssrc
 from lustitelskadb.lib.utils import *
 
 __all__ = ['RootController']
@@ -462,37 +462,8 @@ class RootController(BaseController):
             template='kajiki:lustitelskadb.templates.tw2.core.jslink'
         )
 
-        newresult_jssrc = twc.JSSource(
-            location="bodybottom",
-            src='''"use strict;"
-                $('emoji-picker').on('emoji-click', (event) => {
-                    const commentFieldCaret = $('[name="comment"]').prop('selectionStart');
-                    const commentFieldText = $('[name="comment"]').val();
-                    $('[name="comment"]').focus();
-                    $('[name="comment"]').val(
-                        [commentFieldText.slice(0, commentFieldCaret), event.detail.unicode, commentFieldText.slice(commentFieldCaret)].join('')
-                    );
-                    $('[name="comment"]').prop('selectionStart', commentFieldCaret + event.detail.unicode.length);
-                    $('[name="comment"]').prop('selectionEnd', commentFieldCaret + event.detail.unicode.length);
-                });
-
-                $(() => {
-                    Popper.createPopper(document.querySelector('#emoji_picker'), document.querySelector('.emoji-picker-tooltip'), {
-                        placement: 'top'
-                    });
-                    $('#emoji_picker').click((e) => {
-                        e.preventDefault();
-                        document.querySelector('.emoji-picker-tooltip').classList.toggle("shown");
-                        $("#comment").focus();
-                    });
-
-                    $('[name=wednesday_challenge]').prop('indeterminate', true);
-                });
-            '''
-        )
-
         emoji_picker_jslnk.inject()
-        newresult_jssrc.inject()
+        emojipicker_init_jssrc.inject()
 
         return dict(page='newresult')
 
@@ -588,6 +559,16 @@ class RootController(BaseController):
                     wc_words_form_open = True
                 elif user_result_in_monday_game and last_monday_game_rank and last_monday_game_rank.game_rank == user_result_in_monday_game[0].game_rank and game_no_start_date(today_game_no()) + timedelta(hours=23, minutes=59) <= datetime.now():
                     wc_words_form_open = True
+
+        emoji_picker_jslnk = twc.JSLink(
+            location="bodybottom",
+            type="module",
+            link="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js",
+            template='kajiki:lustitelskadb.templates.tw2.core.jslink'
+        )
+
+        emoji_picker_jslnk.inject()
+        emojipicker_init_jssrc.inject()
 
         return dict(page="wednesday_challenge", wc_words=wc_words, next_wc=next_wc, wc_words_form_open=wc_words_form_open)
 

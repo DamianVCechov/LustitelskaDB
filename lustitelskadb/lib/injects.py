@@ -8,7 +8,7 @@ Created on 24. 8. 2024
 from tg import lurl
 from tw2.core import JSLink, JSSource
 
-__all__ = ['tinymce_link', 'tinymce_init', 'closing_deadline_jssrc']
+__all__ = ['tinymce_link', 'tinymce_init', 'closing_deadline_jssrc', 'emojipicker_init_jssrc']
 
 tinymce_version = '6.8.3'
 
@@ -135,3 +135,34 @@ function setClosingProgressBar() {
 $(() => {
     setClosingProgressBar();
 });''')
+
+emojipicker_init_jssrc = JSSource(
+    location="bodybottom",
+    src='''"use strict;"
+        $('emoji-picker').on('emoji-click', (event) => {
+            const commentFieldCaret = $('[name="comment"]').prop('selectionStart');
+            const commentFieldText = $('[name="comment"]').val();
+            $('[name="comment"]').focus();
+            $('[name="comment"]').val(
+                [commentFieldText.slice(0, commentFieldCaret), event.detail.unicode, commentFieldText.slice(commentFieldCaret)].join('')
+            );
+            $('[name="comment"]').prop('selectionStart', commentFieldCaret + event.detail.unicode.length);
+            $('[name="comment"]').prop('selectionEnd', commentFieldCaret + event.detail.unicode.length);
+        });
+
+        $(() => {
+            Popper.createPopper(document.querySelector('#emoji_picker'), document.querySelector('.emoji-picker-tooltip'), {
+                placement: 'top'
+            });
+            $('#emoji_picker').click((e) => {
+                e.preventDefault();
+                document.querySelector('.emoji-picker-tooltip').classList.toggle("shown");
+                $("#comment").focus();
+            });
+
+            if ($('[name=wednesday_challenge]').length) {
+                $('[name=wednesday_challenge]').prop('indeterminate', true);
+            }
+        });
+    '''
+)

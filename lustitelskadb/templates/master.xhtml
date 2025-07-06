@@ -83,7 +83,7 @@ daily_wallpaper_jssrc.inject()
 					<py:if test="tg.auth_stack_enabled">
 						<li class="nav-item" py:if="not request.identity"><a class="nav-link${' active' if tg.request.url.startswith(tg.url('/login', qualified=True)) else ''}" href="${tg.url('/login')}">Login</a></li>
 						<li class="nav-item" py:if="not request.identity and 'registration' in plugged()"><a class="nav-link${' active' if tg.request.url.startswith(tg.url('/registration', qualified=True)) else ''}" href="${h.plug_url('registration', '/')}">Register</a></li>
-						<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> ${h.bicon('person-circle')} <span>${tg.request.identity['user'].display_name}</span></a>
+						<li class="nav-item dropdown" py:if="request.identity"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> ${h.bicon('person-circle')} <span>${tg.request.identity['user'].display_name}</span></a>
 							<ul class="dropdown-menu bg-success">
 								<li><a class="dropdown-item${' active' if tg.request.url.startswith(h.plug_url('userprofile', '/', qualified=True)) else ''}" href="${h.plug_url('userprofile', '/')}">User profile</a></li>
 								<li><a class="dropdown-item${' active' if tg.request.url.startswith(h.plug_url('resetpassword', '/', qualified=True)) else ''}" href="${h.plug_url('resetpassword', '/')}">Reset password</a></li>
