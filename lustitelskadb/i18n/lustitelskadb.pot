@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: LustitelskaDB 1.1.0\n"
+"Project-Id-Version: LustitelskaDB 1.2.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-07-06 15:23+0200\n"
+"POT-Creation-Date: 2025-07-06 16:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -465,7 +465,7 @@ msgstr ""
 msgid " | About page"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:19 lustitelskadb/templates/master.xhtml:95
+#: lustitelskadb/templates/about.xhtml:19 lustitelskadb/templates/master.xhtml:97
 msgid "About"
 msgstr ""
 
@@ -968,22 +968,26 @@ msgid "User profile"
 msgstr ""
 
 #: lustitelskadb/templates/master.xhtml:89
+msgid "Reset password"
+msgstr ""
+
+#: lustitelskadb/templates/master.xhtml:90
 msgid "Social networks"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:91
-msgid "Logout"
-msgstr ""
-
-#: lustitelskadb/templates/master.xhtml:93
+#: lustitelskadb/templates/master.xhtml:92
 msgid "Admin"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:119
+#: lustitelskadb/templates/master.xhtml:94
+msgid "Logout"
+msgstr ""
+
+#: lustitelskadb/templates/master.xhtml:121
 msgid "Copyright © "
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:119
+#: lustitelskadb/templates/master.xhtml:121
 msgid " 2024-"
 msgstr ""
 

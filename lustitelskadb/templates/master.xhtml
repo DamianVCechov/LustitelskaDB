@@ -86,6 +86,7 @@ daily_wallpaper_jssrc.inject()
 						<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> ${h.bicon('person-circle')} <span>${tg.request.identity['user'].display_name}</span></a>
 							<ul class="dropdown-menu bg-success">
 								<li><a class="dropdown-item${' active' if tg.request.url.startswith(h.plug_url('userprofile', '/', qualified=True)) else ''}" href="${h.plug_url('userprofile', '/')}">User profile</a></li>
+								<li><a class="dropdown-item${' active' if tg.request.url.startswith(h.plug_url('resetpassword', '/', qualified=True)) else ''}" href="${h.plug_url('resetpassword', '/')}">Reset password</a></li>
 								<li><a class="dropdown-item disabled" href="#">Social networks</a></li>
 								<li><hr class="dropdown-divider" /></li>
 								<li py:if="request.identity"><a class="dropdown-item${' active' if tg.request.url.startswith(tg.url('/admin', qualified=True)) else ''}" href="${tg.url('/admin')}">Admin</a></li>

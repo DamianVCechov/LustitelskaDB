@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-07-06 15:23+0200\n"
-"PO-Revision-Date: 2025-07-06 15:24+0200\n"
+"POT-Creation-Date: 2025-07-06 16:06+0200\n"
+"PO-Revision-Date: 2025-07-06 16:06+0200\n"
 "Last-Translator: Jaroslav Mikulík <jaroslav.mikulik@runtech.cz>\n"
 "Language: cs\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -543,8 +543,8 @@ msgstr "Emailová adresa"
 msgid "Display Name"
 msgstr "Zobrazované jméno"
 
+# | msgid "Edit"
 #: lustitelskadb/lib/strings.py:9
-#| msgid "Edit"
 msgid "edit"
 msgstr "upravit"
 
@@ -553,7 +553,7 @@ msgid " | About page"
 msgstr "| Stránka o aplikaci"
 
 #: lustitelskadb/templates/about.xhtml:19
-#: lustitelskadb/templates/master.xhtml:95
+#: lustitelskadb/templates/master.xhtml:97
 msgid "About"
 msgstr "O aplikaci"
 
@@ -1127,28 +1127,35 @@ msgstr "Původní web"
 msgid "Misc"
 msgstr "Různé"
 
+# | msgid "profile"
 #: lustitelskadb/templates/master.xhtml:88
-#| msgid "profile"
 msgid "User profile"
 msgstr "Profil uživatele"
 
+# | msgid "Password:"
+# | msgid "password"
 #: lustitelskadb/templates/master.xhtml:89
+#| msgid "New password"
+msgid "Reset password"
+msgstr "Resetovat heslo"
+
+#: lustitelskadb/templates/master.xhtml:90
 msgid "Social networks"
 msgstr "Sociální sítě"
 
-#: lustitelskadb/templates/master.xhtml:91
-msgid "Logout"
-msgstr "Odhlášení"
-
-#: lustitelskadb/templates/master.xhtml:93
+#: lustitelskadb/templates/master.xhtml:92
 msgid "Admin"
 msgstr "Admin"
 
-#: lustitelskadb/templates/master.xhtml:119
+#: lustitelskadb/templates/master.xhtml:94
+msgid "Logout"
+msgstr "Odhlášení"
+
+#: lustitelskadb/templates/master.xhtml:121
 msgid "Copyright © "
 msgstr "Copyright © "
 
-#: lustitelskadb/templates/master.xhtml:119
+#: lustitelskadb/templates/master.xhtml:121
 msgid " 2024-"
 msgstr " 2024-"
 
