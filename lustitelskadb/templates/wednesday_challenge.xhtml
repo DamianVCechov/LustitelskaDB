@@ -31,7 +31,7 @@ HTMLBR = '<br>'
 		<h5 class="text-center mt-5 mb-3" py:if="wc_words">${Markup(_('Those of you who will participate in the challenge, please check the appropriate box on the form.\n\nThank you').replace('\n', HTMLBR) if not wc_words.comment else wc_words.comment.replace('\n', HTMLBR))}</h5>
 		<h5 class="text-center" py:if="wc_words">Any complaints about the quality of the challenge words should be directed directly to their author, who this time is</h5>
 		<h5 class="text-center mb-5" py:if="wc_words">
-			<a href="http://x.com/${None if not wc_words.xtwitter else wc_words.xtwitter.user_name}" target="_blank" py:strip="not wc_words.xtwitter">${_('Administrator') if not wc_words.xtwitter else wc_words.xtwitter.display_name}</a>
+			<a href="http://x.com/${None if not wc_words.user.xuser else wc_words.user.xuser.user_name}" target="_blank" py:strip="not wc_words.user.xuser">${wc_words.user.xuser.display_name if not wc_words.user.xuser else wc_words.user.xuser.display_name}</a>
 		</h5>
 
 		<h4 class="text-center text-danger my-5" py:if="not wc_words">Unfortunately (for now) there are no words known for the next or current Wednesday Challenge, please try again later!</h4>
