@@ -6,6 +6,10 @@
 <meta charset="${response.charset}" />
 
 <title py:block="master_title">Your generic title goes here</title>
+<link rel="preload" href="${tg.url('/css/loader.css')}" as="style" />
+<link rel="preload" href="${tg.url('/img/pacman-loader.svg')}" as="image" />
+<link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/loader.css')}" />
+
 <link rel="shortcut icon" href="/img/favicon.ico" />
 <link rel="icon" type="image/vnd.microsoft.icon" href="/img/favicon.ico" />
 
@@ -35,8 +39,16 @@ if request.identity:
 else:
 	user_xtwitter = {"data":{}}
 
-daily_wallpaper_jssrc = twc.JSSource(src='''
+loader_jssrc = twc.JSSource(
+	location="bodytop",
+	src='''document.write('<div id="loader"><img src="{}" alt="Pacman loader"></div>');'''.format(tg.url('/img/pacman-loader.svg'))
+)
+
+app_jssrc = twc.JSSource(
+	location="bodybottom",
+	src='''
 	$(() => {
+		$("#loader").fadeOut("slow");
 		$.getJSON("%(daily_img_url)s").done((data) => {
 			if ('url' in data) {
 				$('body').css({
@@ -50,7 +62,9 @@ daily_wallpaper_jssrc = twc.JSSource(src='''
 		})
 	});
 ''' % ({'daily_img_url': tg.url('/get_daily_wallpaper')}))
-daily_wallpaper_jssrc.inject()
+
+loader_jssrc.inject()
+app_jssrc.inject()
 ?>
 	<!-- Navbar -->
 	<nav class="navbar navbar-expand-lg sticky-top bg-success opacity-90 fw-bolder" data-bs-theme="dark">
