@@ -82,6 +82,7 @@ lustitelskadb/public/css/bootstrap.rtl.css
 lustitelskadb/public/css/bootstrap.rtl.css.map
 lustitelskadb/public/css/bootstrap.rtl.min.css
 lustitelskadb/public/css/bootstrap.rtl.min.css.map
+lustitelskadb/public/css/loader.css
 lustitelskadb/public/css/style.css
 lustitelskadb/public/css/fonts/bootstrap-icons.woff
 lustitelskadb/public/css/fonts/bootstrap-icons.woff2
@@ -97,6 +98,7 @@ lustitelskadb/public/img/logo-32.webp
 lustitelskadb/public/img/logo-512.webp
 lustitelskadb/public/img/lustitele-preview.png
 lustitelskadb/public/img/lustitele-twitter-profile.webp
+lustitelskadb/public/img/pacman-loader.svg
 lustitelskadb/public/img/turbogears_logo.png
 lustitelskadb/public/img/turbogears_logo_big.png
 lustitelskadb/public/img/under_the_hood_blue.png
