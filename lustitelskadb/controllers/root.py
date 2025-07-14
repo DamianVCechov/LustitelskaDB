@@ -12,7 +12,7 @@ from tg import predicates
 from tg.decorators import paginate
 from tg.support.converters import asbool
 
-from lustitelskadb.lib.helpers import wednesday_challenge_words_window
+from lustitelskadb.lib.helpers import wednesday_challenge_words_window, game_no_start_date
 
 from lustitelskadb import model
 from lustitelskadb.model import DBSession

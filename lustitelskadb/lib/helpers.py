@@ -2,7 +2,8 @@
 """Template Helpers used in LustitelskaDB."""
 import logging
 from markupsafe import Markup
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
+from lustitelskadb.lib.utils import HADEJSLOVA_STARTDATE
 
 log = logging.getLogger(__name__)
 
@@ -35,12 +36,18 @@ def wednesday_challenge_words_window():
     else:
         return False
 
+
 def wednesday_challenge_comming():
     now = datetime.now()
     if now.weekday() == 2 and now.hour >= 18 or now.weekday() == 3 and now.hour < 18:
         return True
     else:
         return False
+
+
+def game_no_start_date(game_no):
+    """Count date from and to for game no."""
+    return HADEJSLOVA_STARTDATE + timedelta(days=game_no)
 
 
 # Import some operators for using in templates, because of problematic using > and < chars

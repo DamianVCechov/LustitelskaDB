@@ -97,7 +97,10 @@ badge = {
 				<table class="table table-sm table-hover">
 					<thead>
 						<tr class="table-dark text-center">
-							<th class="rounded-top" scope="col" colspan="5"><span py:if="game_nums[idx].game_no != game_in_progress">Hall of fame</span><span py:if="game_nums[idx].game_no == game_in_progress">Game in progress</span> ${game_nums[idx].game_no}</th>
+							<th class="rounded-top" scope="col" colspan="5">
+								<div><span py:if="game_nums[idx].game_no != game_in_progress">Hall of fame</span><span py:if="game_nums[idx].game_no == game_in_progress">Game in progress</span> ${game_nums[idx].game_no}</div>
+								<div>${h.game_no_start_date(game_nums[idx].game_no).strftime("%Y-%m-%d")}</div>
+							</th>
 						</tr>
 						<tr class="table-dark text-center">
 							<th scope="col" title="${_('Rank')}">${h.bicon('graph-up-arrow')}</th>

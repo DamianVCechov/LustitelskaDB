@@ -12,7 +12,7 @@ from lustitelskadb.model import DBSession
 
 from datetime import datetime, timedelta
 
-__all__ = ('assemble_game_scoresheet', 'game_no_start_date', 'today_game_no', 'user_rank_hours_offset')
+__all__ = ('assemble_game_scoresheet', 'today_game_no', 'user_rank_hours_offset')
 
 scoring = {
     0: 0,
@@ -88,11 +88,6 @@ def assemble_game_scoresheet(game_no, dbflush=True):
         DBSession.flush()
 
     return 0
-
-
-def game_no_start_date(game_no):
-    """Count date from and to for game no."""
-    return HADEJSLOVA_STARTDATE + timedelta(days=game_no)
 
 
 def today_game_no():
