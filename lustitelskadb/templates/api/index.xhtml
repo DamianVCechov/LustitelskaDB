@@ -97,8 +97,8 @@ badge = {
 						<thead>
 							<tr class="table-dark text-center">
 								<th class="rounded-top" scope="col" colspan="5">
-									<div><span py:if="game_nums[idx].game_no != game_in_progress">Hall of fame</span><span py:if="game_nums[idx].game_no == game_in_progress">Game in progress</span> ${game_nums[idx].game_no}</div>
-									<div>${h.game_no_start_date(game_nums[idx].game_no).strftime("%Y-%m-%d")}</div>
+									<div><span>Hall of fame</span> ${game[0].game_no}</div>
+									<div>${h.game_no_start_date(game[0].game_no).strftime("%Y-%m-%d")}</div>
 								</th>
 							</tr>
 							<tr class="table-dark text-center">
