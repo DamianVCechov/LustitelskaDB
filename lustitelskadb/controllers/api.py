@@ -81,8 +81,8 @@ class APIController(BaseController):
 
         data = [{
             'uid': item.uid,
-            'user_name': item.user.xuser.user_name,
-            'display_name': item.user.xuser.display_name,
+            'user_name': item.user.xuser.user_name if item.user.xuser else ":{}".format(item.user.user_name),
+            'display_name': item.user.xuser.display_name if item.user.xuser else item.user.display_name,
             'game': item.game_no,
             'time': item.game_time,
             'rows': item.game_rows,
@@ -107,7 +107,7 @@ class APIController(BaseController):
 
         data_cols = (
             ('game_rank', 'game_rank'),
-            ('user_name', 'user.xuser.user_name'),
+            ('user_name', ['user.xuser.user_name', 'user.user_name']),
             ('game_time', 'game_time'),
             ('game_rows', 'game_rows'),
             ('wednesday_challenge', 'wednesday_challenge'),
@@ -140,11 +140,26 @@ class APIController(BaseController):
         for idx, row in enumerate(game_data.all()):
             csv_row = {}.fromkeys([r[0] for r in data_cols])
             for k, v in data_cols:
-                if '.' in v:
-                    u, c, m = v.split('.')
-                    csv_row[k] = encode(getattr(getattr(getattr(row, u, {}), c, {}), m, ''), 'utf-8')
+                if isinstance(v, list):
+                    for i in v:
+                        if '.' in i:
+                            d = row
+                            for o in i.split('.'):
+                                d = getattr(d, o, {})
+                            if 'xuser' in i:
+                                csv_row[k] = encode(d, 'utf-8')
+                            else:
+                                csv_row[k] = encode(":{}".format(d), 'utf-8')
+                        if csv_row[k]:
+                            break
                 else:
-                    csv_row[k] = encode(getattr(row, v, ''), 'utf-8')
+                    if '.' in v:
+                        d = row
+                        for o in i.split('.'):
+                            d = getattr(d, o, {})
+                        csv_row[k] = encode(d, 'utf-8')
+                    else:
+                        csv_row[k] = encode(getattr(row, v, ''), 'utf-8')
             if asbool(convert):
                 csv_row['game_rank'] = encode(BADGE.get(row.game_rank, row.game_rank), 'utf-8')
                 csv_row['game_time'] = "{}:{:02}".format(row.game_time.hour * 60 + row.game_time.minute, row.game_time.second) if row.game_time else ''
