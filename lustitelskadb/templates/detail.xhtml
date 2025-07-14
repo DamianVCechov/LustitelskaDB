@@ -19,17 +19,17 @@ except (ImportError, ModuleNotFoundError, SyntaxError):
 HTMLBR = '<br>'
 GAMERANK_TABLE_ROWS = 11
 
-user_xtwitter = json.loads(gameresult.user.xuser.user_info or '{"data":{}}')
+user_xtwitter = json.loads(gameresult.user.xuser.user_info if gameresult.user.xuser else '{"data":{}}')
 ?>
 	<h1 class="d-inline-block bg-light p-1 rounded opacity-90">User game result detail</h1>
 
 	<div class="mt-5 bg-light p-2 rounded opacity-90">
 		<img class="rounded-circle float-start me-3" src="${user_xtwitter['data']['profile_image_url']}" alt="${user_xtwitter['data']['name']} @${user_xtwitter['data']['username']}" py:if="'profile_image_url' in user_xtwitter['data']" />
 		<h5 class="position-relative">
-			<span>${gameresult.user.xuser.display_name}</span> <span py:if="'protected' in user_xtwitter['data'] and user_xtwitter['data']['protected']">${h.icon('lock')}</span> <span py:if="'verified' in user_xtwitter['data'] and user_xtwitter['data']['verified']">${h.icon('certificate')}</span><br /> <span class="small text-muted">@${gameresult.user.xuser.user_name}</span> <a class="stretched-link" href="${'https://x.com/{}'.format(gameresult.user.xuser.user_name)}" target="_blank"></a>
+			<span>${gameresult.user.xuser.display_name if gameresult.user.xuser else gameresult.user.display_name}</span> <span py:if="'protected' in user_xtwitter['data'] and user_xtwitter['data']['protected']">${h.icon('lock')}</span> <span py:if="'verified' in user_xtwitter['data'] and user_xtwitter['data']['verified']">${h.icon('certificate')}</span><br /> <span class="small text-muted">@${gameresult.user.xuser.user_name if gameresult.user.xuser else gameresult.user.user_name}</span> <a class="stretched-link" href="${'https://x.com/{}'.format(gameresult.user.xuser.user_name)}" target="_blank" py:if="gameresult.user.xuser"></a>
 		</h5>
 		<p class="lead" py:if="'description' in user_xtwitter['data']">${Markup(user_xtwitter['data']['description'].replace('\n', HTMLBR))}</p>
-		<p class="lead text-muted">
+		<p class="lead text-muted" py:if="gameresult.user.xuser">
 			<span class="text-nowrap ms-2" py:if="'location' in user_xtwitter['data']">${h.icon('map-marker')} ${user_xtwitter['data']['location']}</span> <span class="text-nowrap ms-2" py:if="'entities' in user_xtwitter['data'] and 'url' in user_xtwitter['data']['entities']">${h.icon('link')} <a class="text-decoration-none" href="${user_xtwitter['data']['entities']['url']['urls'][0]['expanded_url']}">${user_xtwitter['data']['entities']['url']['urls'][0]['display_url']}</a></span> <span class="text-nowrap ms-2" py:if="'created_at' in user_xtwitter['data']">${h.icon('calendar')} ${"{} {}".format(_('Joined'), parse_datetime(user_xtwitter['data']['created_at']).strftime("%d.%m.%Y %H:%M:%S"))}</span>
 		</p>
 		<p class="lead text-muted" py:if="'public_metrics' in user_xtwitter['data']">
