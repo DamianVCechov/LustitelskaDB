@@ -18,7 +18,7 @@ except (ImportError, ModuleNotFoundError, SyntaxError):
 htmlbr = '<br>'
 
 if request.identity:
-	user_xtwitter = json.loads(tg.request.identity['user'].xuser.user_info)
+	user_xtwitter = json.loads(tg.request.identity['user'].xuser.user_info if tg.request.identity['user'].xuser else '{"data":{}}')
 else:
 	user_xtwitter = {"data":{}}
 ?>
