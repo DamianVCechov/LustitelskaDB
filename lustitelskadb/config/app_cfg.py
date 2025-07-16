@@ -200,12 +200,12 @@ except ImportError:
 def replace_profile_form_layout():
     from axf.bootstrap import BootstrapFormLayout
     from userprofile.lib import UserForm
-    # from userprofile.lib import ChangePasswordForm
+    from resetpassword.lib.forms import NewPasswordForm
 
     UserForm.child = BootstrapFormLayout(children=UserForm.child.children)
     UserForm.submit.css_class = 'btn btn-outline-secondary mt-3'
 
-    # ChangePasswordForm.child = BootstrapFormLayout(children=ChangePasswordForm.child.children)
-    # ChangePasswordForm.submit.css_class = 'btn btn-outline-secondary mt-3'
+    NewPasswordForm.child = BootstrapFormLayout(children=NewPasswordForm.child.children)
+    NewPasswordForm.submit.css_class = 'btn btn-outline-secondary mt-3'
 
 milestones.config_ready.register(replace_profile_form_layout)
