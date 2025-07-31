@@ -5,6 +5,7 @@ Global configuration file for TG2-specific settings in LustitelskaDB.
 This file complements development/deployment.ini.
 
 """
+import tg
 from tg import FullStackApplicationConfigurator, milestones
 from tgext.pluggable import plug, replace_template
 
@@ -112,10 +113,14 @@ class ApplicationAuthMetadata(TGAuthMetadata):
 
 
 # Configure the authentication backend
+# TG < 2.5.0 or TG 2.5.0+
 base_config.update_blueprint({
+    'auth_backend': 'sqlalchemy'
+} if hasattr(tg, 'release') else {
     'sa_auth.enabled': True,
-    'auth_backend': 'sqlalchemy',  # Deprecated in 2.5.0+
+})
 
+base_config.update_blueprint({
     # YOU MUST CHANGE THIS VALUE IN PRODUCTION TO SECURE YOUR APP
     'sa_auth.cookie_secret': "41c16350-55ec-4ba4-a624-f3cab07a57f8",
     'sa_auth.authmetadata': ApplicationAuthMetadata(model.DBSession, model.User),
