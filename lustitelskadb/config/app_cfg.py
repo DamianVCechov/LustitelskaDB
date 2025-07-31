@@ -113,7 +113,8 @@ class ApplicationAuthMetadata(TGAuthMetadata):
 
 # Configure the authentication backend
 base_config.update_blueprint({
-    'auth_backend': 'sqlalchemy',
+    'sa_auth.enabled': True,
+    'auth_backend': 'sqlalchemy',  # Deprecated in 2.5.0+
 
     # YOU MUST CHANGE THIS VALUE IN PRODUCTION TO SECURE YOUR APP
     'sa_auth.cookie_secret': "41c16350-55ec-4ba4-a624-f3cab07a57f8",
@@ -145,6 +146,16 @@ base_config.update_blueprint({
     # to disable authmetadata and use only your own metadata providers
     # 'sa_auth.mdproviders': [('myprovider', SomeMDProvider()],
 })
+
+try:
+    plug(base_config, 'tgext.tw2')
+except:
+    print("tgext.tw2 not plugged")
+
+try:
+    plug(base_config, 'tgext.formencode')
+except:
+    print("tgext.formencode not plugged")
 
 try:
     # Enable DebugBar if available, install tgext.debugbar to turn it on
@@ -197,6 +208,7 @@ try:
 except ImportError:
     pass
 
+
 def replace_profile_form_layout():
     from axf.bootstrap import BootstrapFormLayout
     from userprofile.lib import UserForm
@@ -207,5 +219,6 @@ def replace_profile_form_layout():
 
     NewPasswordForm.child = BootstrapFormLayout(children=NewPasswordForm.child.children)
     NewPasswordForm.submit.css_class = 'btn btn-outline-secondary mt-3'
+
 
 milestones.config_ready.register(replace_profile_form_layout)
