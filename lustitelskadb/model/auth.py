@@ -19,7 +19,7 @@ __all__ = ['User', 'Group', 'Permission']
 
 from sqlalchemy import Table, ForeignKey, Column
 from sqlalchemy.types import Unicode, Integer, DateTime
-from sqlalchemy.orm import relation, synonym
+from sqlalchemy.orm import relationship, synonym
 
 from lustitelskadb.model import DeclarativeBase, metadata, DBSession
 
@@ -113,7 +113,7 @@ class Group(DeclarativeBase):
     group_name = Column(Unicode(16), unique=True, nullable=False)
     display_name = Column(Unicode(255))
     created = Column(DateTime, default=datetime.now)
-    users = relation('User', secondary='tg_user_group', backref='groups')
+    users = relationship('User', secondary='tg_user_group', backref='groups')
 
     def __repr__(self):
         return '<Group: name=%s>' % repr(self.group_name)
@@ -231,7 +231,7 @@ class Permission(DeclarativeBase):
     permission_name = Column(Unicode(63), unique=True, nullable=False)
     description = Column(Unicode(255))
 
-    groups = relation(Group, secondary='tg_group_permission',
+    groups = relationship(Group, secondary='tg_group_permission',
                       backref='permissions')
 
     def __repr__(self):
