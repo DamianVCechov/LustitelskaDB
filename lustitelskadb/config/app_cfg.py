@@ -115,9 +115,9 @@ class ApplicationAuthMetadata(TGAuthMetadata):
 # Configure the authentication backend
 # TG < 2.5.0 or TG 2.5.0+
 base_config.update_blueprint({
+    'sa_auth.enabled': True
+} if not hasattr(tg, 'release') else {
     'auth_backend': 'sqlalchemy'
-} if hasattr(tg, 'release') else {
-    'sa_auth.enabled': True,
 })
 
 base_config.update_blueprint({
