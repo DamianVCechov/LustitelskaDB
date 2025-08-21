@@ -27,6 +27,11 @@ import tw2.core as twc
 from tgext.pluggable import plugged
 
 try:
+	ModuleNotFoundError
+except:
+	ModuleNotFoundError = ImportError
+
+try:
 	import ujson as json
 except (ImportError, ModuleNotFoundError, SyntaxError):
 	try:
