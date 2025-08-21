@@ -39,7 +39,6 @@ lustitelskadb/lib/strings.py
 lustitelskadb/lib/utils.py
 lustitelskadb/model/__init__.py
 lustitelskadb/model/auth.py
-lustitelskadb/model/clan.py
 lustitelskadb/model/game.py
 lustitelskadb/model/libriciphers.py
 lustitelskadb/model/model.py.template
@@ -374,5 +373,4 @@ migration/versions/a00aefdc7189_display_name_changed_to_non_unique.py
 migration/versions/a01becafe8f7_create_local_accounts_if_does_not_exists.py
 migration/versions/da0888f6a8ae_initial_scheme.py
 migration/versions/e09a86ac2731_added_wednesday_challenge_words_table.py
-migration/versions/e35eb2537168_added_clans.py
 migration/versions/empty.txt
