@@ -57,10 +57,12 @@ def init_model(engine):
     # mapper(Reflected, t_reflected)
     return DBSession
 
+
 # Import your model modules here.
 from lustitelskadb.model.auth import User, Group, Permission
+from lustitelskadb.model.clan import Clan, ClanMember
 from lustitelskadb.model.libriciphers import LibriCipher
 from lustitelskadb.model.sns import XTwitter
 from lustitelskadb.model.game import GameResult, WednesdayChallengeWord
 
-__all__ = ('User', 'Group', 'Permission', 'Clan', 'LibriCipher', 'XTwitter', 'GameResult', 'WednesdayChallengeWord')
+__all__ = ('User', 'Group', 'Permission', 'Clan', 'ClanMember', 'LibriCipher', 'XTwitter', 'GameResult', 'WednesdayChallengeWord')
