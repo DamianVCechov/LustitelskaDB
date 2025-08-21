@@ -63,4 +63,4 @@ from lustitelskadb.model.libriciphers import LibriCipher
 from lustitelskadb.model.sns import XTwitter
 from lustitelskadb.model.game import GameResult, WednesdayChallengeWord
 
-__all__ = ('User', 'Group', 'Permission', 'LibriCipher', 'XTwitter', 'GameResult', 'WednesdayChallengeWord')
+__all__ = ('User', 'Group', 'Permission', 'Clan', 'LibriCipher', 'XTwitter', 'GameResult', 'WednesdayChallengeWord')
