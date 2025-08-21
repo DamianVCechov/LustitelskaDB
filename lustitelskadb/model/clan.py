@@ -7,7 +7,7 @@ from sqlalchemy.orm import relationship, backref
 
 from lustitelskadb.model import DeclarativeBase, metadata, DBSession
 
-__all__ = ['Clan']
+__all__ = ('Clan', 'ClanMember')
 
 
 class Clan(DeclarativeBase):
@@ -37,5 +37,6 @@ class ClanMember(DeclarativeBase):
 
     user_id = Column(Integer, ForeignKey('tg_user.user_id'), index=True)
     user = relationship('User', uselist=False,
-                        backref=backref('clan',
-                                        cascade='all, delete-orphan'))
+                        backref=backref('clan_member',
+                                        cascade='all, delete-orphan',
+                                        uselist=False))
