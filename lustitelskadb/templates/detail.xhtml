@@ -9,6 +9,11 @@ import math
 from aniso8601 import parse_datetime
 
 try:
+	ModuleNotFoundError
+except:
+	ModuleNotFoundError = ImportError
+
+try:
 	import ujson as json
 except (ImportError, ModuleNotFoundError, SyntaxError):
 	try:
