@@ -96,13 +96,14 @@ badge = {
 					<table class="table table-sm table-hover">
 						<thead>
 							<tr class="table-dark text-center">
-								<th class="rounded-top" scope="col" colspan="5">
+								<th class="rounded-top" scope="col" colspan="6">
 									<div><span>Hall of fame</span> ${game[0].game_no}</div>
 									<div>${h.game_no_start_date(game[0].game_no).strftime("%Y-%m-%d")}</div>
 								</th>
 							</tr>
 							<tr class="table-dark text-center">
 								<th scope="col">${h.bicon('graph-up-arrow')}</th>
+								<th scope="col" title="${_('Clan')}"></th>
 								<th scope="col" class="w-100">${h.bicon('person')}</th>
 								<th scope="col">${h.bicon('stopwatch')}</th>
 								<th scope="col">${h.bicon('justify')}</th>
@@ -112,19 +113,20 @@ badge = {
 						<tbody py:with="losers_divided=False; nochallengers_divided=False; dsq_divided=False">
 							<py:for each="idx, row in enumerate(game)">
 								<tr class="table-dark text-center" py:if="row.game_no % 7 == 5 and not nochallengers_divided and not row.wednesday_challenge">
-									<th scope="row" colspan="5">Not played the challenge</th>
+									<th scope="row" colspan="6">Not played the challenge</th>
 									<?py nochallengers_divided = True ?>
 								</tr>
 								<tr class="table-dark text-center" py:if="not losers_divided and not row.game_rows">
-									<th scope="row" colspan="5">Losers</th>
+									<th scope="row" colspan="6">Losers</th>
 									<?py losers_divided = True ?>
 								</tr>
 								<tr class="table-dark text-center" py:if="not dsq_divided and not row.game_time">
-									<th scope="row" colspan="5">Disqualified</th>
+									<th scope="row" colspan="6">Disqualified</th>
 									<?py dsq_divided = True ?>
 								</tr>
 								<tr py:attrs="{'class': 'position-relative{}'.format({1: ' table-warning', 2: ' table-light', 3: ' table-success'}.get(row.game_rank, ' table-secondary' if row.wednesday_challenge == False else ''))}" title="${row.game_rank if row.game_rank else '?'}. ${_('place')}, ${row.game_points if row.game_points != None else '?'} ${_('point(s)')}">
 									<th scope="row" py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${Markup(badge.get('-last', row.game_rank)) if idx+1 == len(game) and h.lt(row.game_rank, 0) else Markup(badge.get('leaf')) if row.game_rows and h.gt(row.game_rows, 1) and row.game_time is None else Markup(badge.get('last', row.game_rank)) if row.game_rows and h.gt(row.game_rows, 1) and row.game_points == 0 and row.game_time is not None else Markup(badge.get(row.game_rank, row.game_rank)) if row.game_rank is not None else '?'}<a class="stretched-link" href="${tg.url('/detail/{}'.format(row.uid))}"></a></th>
+									<td>${getattr(getattr(getattr(row.user, 'clan_member', {}), 'clan', {}), 'symbol', '')}</td>
 									<td py:attrs="{'class': 'text-center w-100{}'.format(' text-muted' if row.game_rows is None else '')}">${row.user.display_name}<span py:if="row.comment"> ${h.bicon('chat-left-dots', color="muted")}</span></td>
 									<td py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${"{}:{:02}".format(row.game_time.hour * 60 + row.game_time.minute, row.game_time.second) if row.game_time else '-'}</td>
 									<td py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${h.bicon('{}-circle-fill'.format(row.game_rows), color="{}".format(["success", "success", "primary", "primary", "danger", "danger"][row.game_rows-1])) if row.game_rows else h.bicon('emoji-frown-fill', color="dark")}</td>
@@ -134,7 +136,7 @@ badge = {
 						</tbody>
 						<tfoot>
 							<tr class="table-primary text-center">
-								<th scope="col" colspan="5"><span>Played players</span> ${len(game)}</th>
+								<th scope="col" colspan="6"><span>Played players</span> ${len(game)}</th>
 							</tr>
 						</tfoot>
 					</table>
