@@ -154,9 +154,16 @@ emojipicker_init_jssrc = JSSource(
             Popper.createPopper(document.querySelector('#emoji_picker'), document.querySelector('.emoji-picker-tooltip'), {
                 placement: 'top'
             });
+            $(document).click((e) => {
+                $('.emoji-picker-tooltip').removeClass("shown");
+            });
+            $('.emoji-picker-tooltip').click((e) => {
+                e.stopPropagation();
+            });
             $('#emoji_picker').click((e) => {
+                e.stopPropagation();
                 e.preventDefault();
-                document.querySelector('.emoji-picker-tooltip').classList.toggle("shown");
+                $('.emoji-picker-tooltip').toggleClass("shown");
                 $("#comment").focus();
             });
 
