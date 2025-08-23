@@ -238,7 +238,7 @@ class RootController(BaseController):
         obtained_lanterns = DBSession.query(model.GameResult).filter(model.GameResult.user_id == gameresult.user_id, model.GameResult.game_no <= gameresult.game_no, model.GameResult.game_rows > 1, model.GameResult.game_time != None, model.GameResult.game_points == 0).count()
 
         if request.identity:
-            user2day_result = DBSession.query(model.GameResult).filter(model.GameResult.user_id == request.identity['user'].user_id, model.GameResult.game_no == today_game_no())
+            user2day_result = DBSession.query(model.GameResult).filter(model.GameResult.user_id == request.identity['user'].user_id, model.GameResult.game_no == today_game_no()).first()
             exist2day_result = True if user2day_result else False
         else:
             exist2day_result = False
