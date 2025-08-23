@@ -143,9 +143,9 @@ user_xtwitter = json.loads(gameresult.user.xuser.user_info if gameresult.user.xu
 	</div>
 
 	<div class="mt-5 bg-light rounded p-1 opacity-90 d-inline-block overflow-auto mw-100">
-		<pre class="lead" py:if="game_in_progress != gameresult.game_no">${gameresult.game_raw_data}</pre>
-		<div class="h1 display-1" py:if="game_in_progress == gameresult.game_no">${h.bicon('incognito')}</div>
-		<div class="lead px-2" py:if="game_in_progress == gameresult.game_no">This game result isn't public yet!</div>
+		<pre class="lead" py:if="game_in_progress != gameresult.game_no or exist2day_result">${gameresult.game_raw_data}</pre>
+		<div class="h1 display-1" py:if="game_in_progress == gameresult.game_no and not exist2day_result">${h.bicon('incognito')}</div>
+		<div class="lead px-2" py:if="game_in_progress == gameresult.game_no and not exist2day_result">This game result isn't public yet!</div>
 	</div>
 
 	<figure class="my-5 bg-light rounded p-5 opacity-90 text-center" py:if="gameresult.comment">
