@@ -43,7 +43,7 @@ class CustomCheckbox(twf.CheckBox):
 
 class XTwitterAdminCrudConfig(CrudRestControllerConfig):
 
-    admin_group = 'Tables'
+    admin_group = 'SNS'
 
     class defaultCrudRestController(EasyCrudRestController):
         __table_options__ = {
@@ -63,7 +63,7 @@ class XTwitterAdminCrudConfig(CrudRestControllerConfig):
 
 class GameAdminCrudConfig(CrudRestControllerConfig):
 
-    admin_group = 'Tables'
+    admin_group = 'Game'
 
     class defaultCrudRestController(EasyCrudRestController):
         __table_options__ = {
@@ -92,7 +92,7 @@ class GameAdminCrudConfig(CrudRestControllerConfig):
 
 class GameResultsAdminCrudConfig(CrudRestControllerConfig):
 
-    admin_group = 'Tables'
+    admin_group = 'Game'
 
     class defaultCrudRestController(EasyCrudRestController):
         __table_options__ = {
@@ -145,7 +145,7 @@ class GameResultsAdminCrudConfig(CrudRestControllerConfig):
 
 class WednesdayChallengesWordsAdminCrudConfig(CrudRestControllerConfig):
 
-    admin_group = 'Tables'
+    admin_group = 'Game'
 
     class defaultCrudRestController(EasyCrudRestController):
         # __table_options__ = {
