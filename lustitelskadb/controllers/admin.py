@@ -179,6 +179,45 @@ class WednesdayChallengesWordsAdminCrudConfig(CrudRestControllerConfig):
             return EasyCrudRestController.put(self, *args, **kw)
 
 
+class ClanAdminCrudConfig(CrudRestControllerConfig):
+
+    admin_group = 'Clan'
+
+    class defaultCrudRestController(EasyCrudRestController):
+        __table_options__ = {
+            '__omit_fields__': [
+                'members'
+            ]
+        }
+
+        __form_options__ = {
+            '__omit_fields__': [
+                'members'
+            ]
+        }
+
+
+class ClanMemberAdminCrudConfig(CrudRestControllerConfig):
+
+    admin_group = 'Clan'
+
+    class defaultCrudRestController(EasyCrudRestController):
+        __table_options__ = {
+            '__omit_fields__': [
+                'clan_id',
+                'user_id'
+            ]
+        }
+
+        __form_options__ = {
+            '__omit_fields__': [
+                'uid',
+                'clan_id',
+                'user_id'
+            ]
+        }
+
+
 class UserAdminCrudConfig(CrudRestControllerConfig):
 
     admin_group = 'Users and Groups'
@@ -322,6 +361,10 @@ class CustomAdminConfig(TGAdminConfig):
     gameresult = GameResultsAdminCrudConfig
 
     wednesdaychallengeword = WednesdayChallengesWordsAdminCrudConfig
+
+    clan = ClanAdminCrudConfig
+
+    clanmember = ClanMemberAdminCrudConfig
 
     user = UserAdminCrudConfig
 
