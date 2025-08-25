@@ -1,12 +1,30 @@
 # -*- coding: utf-8 -*-
 """Game model module."""
 from sqlalchemy import Table, ForeignKey, Column, func
-from sqlalchemy.types import Integer, Unicode, DateTime, Time, UnicodeText, Boolean
+from sqlalchemy.types import Integer, Unicode, DateTime, Time, UnicodeText, Boolean, String
 from sqlalchemy.orm import relationship, backref
 
 from lustitelskadb.model import DeclarativeBase, metadata, DBSession
 
 __all__ = ['GameResult', 'WednesdayChallengeWord']
+
+
+class Game(DeclarativeBase):
+    """Games data table."""
+
+    __tablename__ = 'games'
+    __table_args__ = {
+                      'mysql_engine': 'InnoDB',
+                      'mysql_charset': 'utf8mb4'
+    }
+
+    uid = Column(Integer, primary_key=True)
+    game_no = Column(Integer, nullable=False, unique=True, default=0)
+    word = Column(Unicode(5), nullable=False, index=True, default='')
+    post_xid = Column(String(20), nullable=True)
+    # Meta data
+    created = Column(DateTime(timezone=True), server_default=func.now())
+    updated = Column(DateTime(timezone=True), onupdate=func.now())
 
 
 class GameResult(DeclarativeBase):
