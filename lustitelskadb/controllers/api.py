@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """API controller module"""
 
-from tg import expose, redirect, validate, flash, url, config, abort, response
-# from tg.i18n import ugettext as _
-# from tg import predicates
+from tg import expose, redirect, validate, flash, url, config, abort, response, require
+from tg.i18n import ugettext as _, lazy_ugettext as l_
+from tg import predicates
 from tg.support.converters import asbool
 
 from lustitelskadb.lib.base import BaseController
@@ -168,7 +168,7 @@ class APIController(BaseController):
                     csv_row['wednesday_challenge'] = encode(unichr(0x2705), 'utf-8')
                 if row.game_rank < 0 and not row.game_result_time:
                     csv_row['game_result_time'] = 'PROHRA'
-                elif idx+1 == len(game) and row.game_rank < 0:
+                elif idx + 1 == len(game) and row.game_rank < 0:
                     csv_row['game_rank'] = encode(BADGE.get('-last', row.game_rank), 'utf-8')
                 elif row.game_rank > 0 and row.game_rows > 1 and not row.game_result_time:
                     csv_row['game_rank'] = encode(BADGE.get('leaf', row.game_rank), 'utf-8')
@@ -180,3 +180,55 @@ class APIController(BaseController):
         response.headerlist.append(('Content-Disposition', 'attachment; filename=lustitelskadb_{}_game-{}.csv'.format(game, now)))
 
         return csv_stream.getvalue()
+
+    @expose('json')
+    @require(predicates.has_any_permission("api_manage", "api_manage_game", "api_manage_game_xpost"
+                                           , msg=l_('Only for users with appropriate permissions')))
+    def set_game_xpost(self, game_no='', post_xid='', **kw):
+        """Set Game X post thread."""
+        if not game_no.isdigit():
+            return dict(status=-1, status_msg="Error", status_desc="Game No. isn't digit")
+
+        if not post_xid.isdigit():
+            return dict(status=-2, status_msg="Error", status_desc="Post XID isn't digit")
+
+        game = DBSession.query(model.Game).filter(model.Game.game_no == game_no).first()
+        if game:
+            game.post_xid = post_xid
+            status_desc = "Post XID for game successfully modified"
+        else:
+            game = model.Game(
+                game_no=game_no,
+                post_xid=post_xid
+            )
+            DBSession.add(game)
+            status_desc = "Post XID for game successfully added"
+        DBSession.flush()
+
+        return dict(status=0, status_msg="OK", status_desc=status_desc)
+
+    @expose('json')
+    @require(predicates.has_any_permission("api_manage", "api_manage_game", "api_manage_game_word",
+                                           msg=l_('Only for users with appropriate permissions')))
+    def set_game_word(self, game_no='', word='', **kw):
+        """Set Game Word."""
+        if not game_no.isdigit():
+            return dict(status=-1, status_msg="Error", status_desc="Game No. isn't digit")
+
+        if len(word) != 5:
+            return dict(status=-2, status_msg="Error", status_desc="Word isn't valid")
+
+        game = DBSession.query(model.Game).filter(model.Game.game_no == game_no).first()
+        if game:
+            game.word = word
+            status_desc = "Word for game successfully modified"
+        else:
+            game = model.Game(
+                game_no=game_no,
+                word=word
+            )
+            DBSession.add(game)
+            status_desc = "Word for game successfully added"
+        DBSession.flush()
+
+        return dict(status=0, status_msg="OK", status_desc=status_desc)
