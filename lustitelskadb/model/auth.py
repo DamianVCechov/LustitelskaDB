@@ -62,7 +62,7 @@ class GroupPermission(DeclarativeBase):
 
 class UserGroup(DeclarativeBase):
     """
-    Uset-Group Table definition.
+    User-Group Table definition.
 
     This is the association table for the many-to-many relationship
 
