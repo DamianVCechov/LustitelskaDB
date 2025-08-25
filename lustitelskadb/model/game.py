@@ -6,7 +6,7 @@ from sqlalchemy.orm import relationship, backref
 
 from lustitelskadb.model import DeclarativeBase, metadata, DBSession
 
-__all__ = ['GameResult', 'WednesdayChallengeWord']
+__all__ = ['Game', 'GameResult', 'WednesdayChallengeWord']
 
 
 class Game(DeclarativeBase):

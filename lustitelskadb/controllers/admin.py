@@ -61,6 +61,35 @@ class XTwitterAdminCrudConfig(CrudRestControllerConfig):
         }
 
 
+class GameAdminCrudConfig(CrudRestControllerConfig):
+
+    admin_group = 'Tables'
+
+    class defaultCrudRestController(EasyCrudRestController):
+        __table_options__ = {
+            '__omit_fields__': [
+                'post_xid'
+            ]
+        }
+
+        __form_edit_options__ = {
+            '__omit_fields__': [
+                'post_xid',
+                'created',
+                'updated',
+            ]
+        }
+
+        __form_new_options__ = {
+            '__omit_fields__': [
+                'uid',
+                'post_xid',
+                'created',
+                'updated'
+            ]
+        }
+
+
 class GameResultsAdminCrudConfig(CrudRestControllerConfig):
 
     admin_group = 'Tables'
@@ -287,6 +316,8 @@ class CustomAdminConfig(TGAdminConfig):
     include_left_menu = False
 
     xtwitter = XTwitterAdminCrudConfig
+
+    game = GameAdminCrudConfig
 
     gameresult = GameResultsAdminCrudConfig
 
