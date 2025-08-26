@@ -28,7 +28,7 @@ user_xtwitter = json.loads(gameresult.user.xuser.user_info if gameresult.user.xu
 ?>
 	<h1 class="d-inline-block bg-light p-1 rounded opacity-90">User game result detail</h1>
 
-	<div class="btn-toolbar mt-3 bg-light p-1 px-2 rounded opacity-90" role="toolbar" aria-label="Toolbar for user" py:if="gameresult.user.user_id == tg.request.identity['user'].user_id">
+	<div class="btn-toolbar mt-3 bg-light p-1 px-2 rounded opacity-90" role="toolbar" aria-label="Toolbar for user" py:if="tg.request.identity and gameresult.user.user_id == tg.request.identity['user'].user_id">
 		<div class="btn-group btn-group-lg me-2 my-1" role="group" aria-label="X/Twitter">
 			<a href="${tg.url('/xtwitter_share/{}'.format(gameresult.uid))}" target="_blank" class="btn btn-outline-secondary" title="${_('Share result to X/Twitter')}">${h.bicon('twitter-x')}<small>${h.bicon('file-text')}</small></a>
 			<a href="${tg.url('/xtwitter_share/{}'.format(gameresult.uid), params={'inreply': 1})}" target="_blank" class="btn btn-outline-secondary disabled" title="${_('Share result to public thread on X/Twitter')}">${h.bicon('twitter-x')}<small>${h.bicon('reply')}</small></a>
