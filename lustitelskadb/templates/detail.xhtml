@@ -34,7 +34,7 @@ user_xtwitter = json.loads(gameresult.user.xuser.user_info if gameresult.user.xu
 			<a href="${tg.url('/xtwitter_share/{}'.format(gameresult.uid), params={'inreply': 1})}" target="_blank" class="btn btn-outline-secondary disabled" title="${_('Share result to public thread on X/Twitter')}">${h.bicon('twitter-x')}<small>${h.bicon('reply')}</small></a>
 		</div>
 		<div class="btn-group btn-group-lg me-2" role="group" aria-label="Bluesky">
-			<a href="${tg.url('/bluesky_share/{}'.format(gameresult.uid))}" target="_blank" class="btn btn-outline-secondary disabled" title="${_('Share result to Bluesky')}">${h.bicon('bluesky')}<small>${h.bicon('file-text')}</small></a>
+			<a href="${tg.url('/bluesky_share/{}'.format(gameresult.uid))}" target="_blank" class="btn btn-outline-secondary" title="${_('Share result to Bluesky')}">${h.bicon('bluesky')}<small>${h.bicon('file-text')}</small></a>
 			<a href="${tg.url('/bluesky_share/{}'.format(gameresult.uid), params={'inreply': 1})}" target="_blank" class="btn btn-outline-secondary disabled" title="${_('Share result to public thread on Bluesky')}">${h.bicon('bluesky')}<small>${h.bicon('reply')}</small></a>
 		</div>
 		<div class="btn-group btn-group-lg me-2" role="group" aria-label="Fediverse">
