@@ -47,7 +47,7 @@ user_xtwitter = json.loads(gameresult.user.xuser.user_info if gameresult.user.xu
 		</div>
 		<div class="btn-group btn-group-lg me-2 my-1" role="group" aria-label="Facebook">
 			<a href="${tg.url('/facebook_share/{}'.format(gameresult.uid))}" target="_blank" class="btn btn-outline-secondary disabled" title="${_('Share result to Facebook')}">${h.bicon('facebook')}<small>${h.bicon('file-text')}</small></a>
-			<a href="${tg.url('/facebook_share/{}'.format(gameresult.uid), params={'inreply': 1})}" target="_blank" class="btn btn-outline-secondary disabled" title="${_('Share result to group on Facebook')}">${h.bicon('threads')}<small>${h.bicon('reply')}</small></a>
+			<a href="${tg.url('/facebook_share/{}'.format(gameresult.uid), params={'inreply': 1})}" target="_blank" class="btn btn-outline-secondary disabled" title="${_('Share result to group on Facebook')}">${h.bicon('facebook')}<small>${h.bicon('reply')}</small></a>
 		</div>
 		<div class="btn-group btn-group-lg my-1" role="group" aria-label="Email">
 			<a href="${tg.url('/email_share/{}'.format(gameresult.uid))}" target="_blank" class="btn btn-outline-secondary disabled" title="${_('Share result via Email')}">${h.bicon('envelope-paper')}</a>
