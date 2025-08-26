@@ -724,6 +724,30 @@ class RootController(BaseController):
 
         redirect("https://bsky.app/intent/compose", params=payload)
 
+    @expose()
+    def threads_share(self, game_result, inreply=0, **kw):
+        """Share result on Threads."""
+        if not game_result.isdigit():
+            flash(_("Invalid game result, can't share it on Threads"), 'warning')
+            redirect('/')
+
+        result = DBSession.query(
+            func.ifnull(model.GameResult.comment, '').label("comment"),
+            func.ifnull(model.GameResult.game_raw_data, '').label("game_raw_data")
+        ).filter(model.GameResult.uid == game_result).first()
+
+        if not result:
+            flash(_("Requested game result to share on Threads not found"), 'warning')
+            redirect('/')
+
+        msg_tmpl = "{result.comment}\n{result.game_raw_data}"
+
+        payload = {
+            'text': msg_tmpl.format(result=result)
+        }
+
+        redirect("https://www.threads.net/intent/post", params=payload)
+
     @expose('lustitelskadb.templates.about')
     def about(self):
         """Handle the 'about' page."""
