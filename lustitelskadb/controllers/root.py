@@ -676,6 +676,30 @@ class RootController(BaseController):
 
         return dict(page='libriciphers', libriciphers=libriciphers)
 
+    @expose()
+    def xtwitter_share(self, game_result, inreply=0, **kw):
+        """Share result to X/Twitter."""
+        if not game_result.isdigit():
+            flash(_("Invalid game result, can't share it on X/Twitter"), 'warning')
+            redirect('/')
+
+        result = DBSession.query(
+            func.ifnull(model.GameResult.comment, '').label("comment"),
+            func.ifnull(model.GameResult.game_raw_data, '').label("game_raw_data")
+        ).filter(model.GameResult.uid == game_result).first()
+
+        if not result:
+            flash(_("Requested game result to share on X/Twitter not found"), 'warning')
+            redirect('/')
+
+        msg_tmpl = "{result.comment}\n{result.game_raw_data}"
+
+        payload = {
+            'text': msg_tmpl.format(result=result)
+        }
+
+        redirect("https://x.com/intent/tweet", params=payload)
+
     @expose('lustitelskadb.templates.about')
     def about(self):
         """Handle the 'about' page."""
