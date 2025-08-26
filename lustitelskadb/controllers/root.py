@@ -532,7 +532,8 @@ class RootController(BaseController):
         assemble_game_scoresheet(parsed_vals['game_no'])
 
         flash(l_(u"Your result has been successfully saved to database"))
-        return redirect('/')
+
+        return redirect('/detail/{}'.format(game_result.uid))
 
     @expose('lustitelskadb.templates.wednesday_challenge')
     def wednesday_challenge(self, **kw):
