@@ -24,7 +24,7 @@ except (ImportError, ModuleNotFoundError, SyntaxError):
 HTMLBR = '<br>'
 GAMERANK_TABLE_ROWS = 11
 
-user_xtwitter = json.loads(gameresult.user.xuser.user_info if gameresult.user.xuser else '{"data":{}}')
+user_xtwitter = json.loads(gameresult.user.xuser.user_info or '{"data":{}}') if gameresult.user.xuser else {"data":{}}
 ?>
 	<h1 class="d-inline-block bg-light p-1 rounded opacity-90">User game result detail</h1>
 

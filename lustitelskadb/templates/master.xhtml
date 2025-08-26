@@ -40,7 +40,7 @@ except (ImportError, ModuleNotFoundError, SyntaxError):
 		import json
 
 if request.identity:
-	user_xtwitter = json.loads(tg.request.identity['user'].xuser.user_info if tg.request.identity['user'].xuser else '{"data":{}}')
+	user_xtwitter = json.loads(tg.request.identity['user'].xuser.user_info or '{"data":{}}') if tg.request.identity['user'].xuser else {"data":{}}
 else:
 	user_xtwitter = {"data":{}}
 
