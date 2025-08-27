@@ -20,7 +20,7 @@ class Game(DeclarativeBase):
 
     uid = Column(Integer, primary_key=True)
     game_no = Column(Integer, nullable=False, unique=True, default=0)
-    word = Column(Unicode(5), nullable=False, index=True, default='')
+    word = Column(Unicode(5), nullable=True, index=True)
     post_xid = Column(String(20), nullable=True)
     # Meta data
     created = Column(DateTime(timezone=True), server_default=func.now())
