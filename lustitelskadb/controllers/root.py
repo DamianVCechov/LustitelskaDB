@@ -243,7 +243,13 @@ class RootController(BaseController):
         else:
             exist2day_result = False
 
-        return dict(page="detail", gameresult=gameresult, user_game_stats=user_game_stats, played_games=played_games, solved_games=solved_games, obtained_lanterns=obtained_lanterns, user_game_rank_stats=user_game_rank_stats, game_in_progress=today_game_no(), exist2day_result=exist2day_result)
+        post_xid_exists = False
+        previous_game = DBSession.query(model.Game).filter(model.Game.game_no == gameresult.game_no - 1).first()
+
+        if previous_game and previous_game.post_xid:
+            post_xid_exists = True
+
+        return dict(page="detail", gameresult=gameresult, user_game_stats=user_game_stats, played_games=played_games, solved_games=solved_games, obtained_lanterns=obtained_lanterns, user_game_rank_stats=user_game_rank_stats, game_in_progress=today_game_no(), exist2day_result=exist2day_result, post_xid_exists=post_xid_exists)
 
     @expose()
     def xauthorize(self, **kw):
@@ -685,7 +691,8 @@ class RootController(BaseController):
 
         result = DBSession.query(
             func.ifnull(model.GameResult.comment, '').label("comment"),
-            func.ifnull(model.GameResult.game_raw_data, '').label("game_raw_data")
+            func.ifnull(model.GameResult.game_raw_data, '').label("game_raw_data"),
+            model.GameResult.game_no
         ).filter(model.GameResult.uid == game_result).first()
 
         if not result:
@@ -697,6 +704,12 @@ class RootController(BaseController):
         payload = {
             'text': msg_tmpl.format(result=result)
         }
+
+        if inreply:
+            previous_game = DBSession.query(model.Game).filter(model.Game.game_no == result.game_no - 1).first()
+
+            if previous_game and previous_game.post_xid:
+                payload['in_reply_to'] = previous_game.post_xid
 
         redirect("https://x.com/intent/tweet", params=payload)
 
