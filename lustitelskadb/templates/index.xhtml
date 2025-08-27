@@ -61,8 +61,10 @@ last_special_dates = {
 }
 
 badge = {
-	-1: '&#x1F4A9;',
-	'-last': '&#x1F4A9;',
+	-1: '&#x1FAA3;',
+	-2: '&#x1FA9F;',
+	-3: '&#x1F52E;',
+	'-last': '&#x1F42E;',
 	0: '&#x1F984;',
 	1: first_special_dates.get(now.strftime('%d.%m'), '&#x1F947;'),
 	2: '&#x1F948;',
@@ -104,7 +106,7 @@ badge = {
 						</tr>
 						<tr class="table-dark text-center">
 							<th scope="col" title="${_('Rank')}">${h.bicon('graph-up-arrow')}</th>
-							<th scope="col" title="${_('Clan')}"></th>
+							<th scope="col" title="${_('Clan')}">${h.bicon('shield')}</th>
 							<th scope="col" class="w-100" title="${_('Player')}">${h.bicon('person')}</th>
 							<th scope="col" title="${_('Game time')}">${h.bicon('stopwatch')}</th>
 							<th scope="col" title="${_('Game rows')}">${h.bicon('justify')}</th>
