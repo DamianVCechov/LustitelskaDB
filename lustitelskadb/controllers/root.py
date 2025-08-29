@@ -682,6 +682,22 @@ class RootController(BaseController):
 
         return dict(page='libriciphers', libriciphers=libriciphers)
 
+    def filter_result(self, game_result):
+        """Filter game result if result is from ongoing game."""
+        rects = '⬜🟨🟩'
+        prev_line = ''
+        msg = ''
+
+        for line in game_result.splitlines():
+            if not any(r in line for r in rects):
+                if any(r in prev_line for r in rects):
+                    msg += prev_line + '\n'
+                msg += line + '\n'
+
+            prev_line = line
+
+        return msg[:-1]
+
     @expose()
     def xtwitter_share(self, game_result, inreply=0, **kw):
         """Share result to X/Twitter."""
@@ -699,10 +715,8 @@ class RootController(BaseController):
             flash(_("Requested game result to share on X/Twitter not found"), 'warning')
             redirect('/')
 
-        msg_tmpl = "{result.comment}\n{result.game_raw_data}"
-
         payload = {
-            'text': msg_tmpl.format(result=result)
+            'text': "{}\n{}".format(result.comment, self.filter_result(result.game_raw_data) if today_game_no() == result.game_no else result.game_raw_data)
         }
 
         if inreply:
@@ -722,17 +736,16 @@ class RootController(BaseController):
 
         result = DBSession.query(
             func.ifnull(model.GameResult.comment, '').label("comment"),
-            func.ifnull(model.GameResult.game_raw_data, '').label("game_raw_data")
+            func.ifnull(model.GameResult.game_raw_data, '').label("game_raw_data"),
+            model.GameResult.game_no
         ).filter(model.GameResult.uid == game_result).first()
 
         if not result:
             flash(_("Requested game result to share on Bluesky not found"), 'warning')
             redirect('/')
 
-        msg_tmpl = "{result.comment}\n{result.game_raw_data}"
-
         payload = {
-            'text': msg_tmpl.format(result=result)
+            'text': "{}\n{}".format(result.comment, self.filter_result(result.game_raw_data) if today_game_no() == result.game_no else result.game_raw_data)
         }
 
         redirect("https://bsky.app/intent/compose", params=payload)
@@ -746,17 +759,16 @@ class RootController(BaseController):
 
         result = DBSession.query(
             func.ifnull(model.GameResult.comment, '').label("comment"),
-            func.ifnull(model.GameResult.game_raw_data, '').label("game_raw_data")
+            func.ifnull(model.GameResult.game_raw_data, '').label("game_raw_data"),
+            model.GameResult.game_no
         ).filter(model.GameResult.uid == game_result).first()
 
         if not result:
             flash(_("Requested game result to share on Threads not found"), 'warning')
             redirect('/')
 
-        msg_tmpl = "{result.comment}\n{result.game_raw_data}"
-
         payload = {
-            'text': msg_tmpl.format(result=result)
+            'text': "{}\n{}".format(result.comment, self.filter_result(result.game_raw_data) if today_game_no() == result.game_no else result.game_raw_data)
         }
 
         redirect("https://www.threads.net/intent/post", params=payload)
