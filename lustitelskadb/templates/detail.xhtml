@@ -108,35 +108,35 @@ user_xtwitter = json.loads(gameresult.user.xuser.user_info or '{"data":{}}') if 
 						<td>${h.bicon('arrow{}-right'.format("" if solved_games == played_games else "-up" if gameresult.game_rows != None else "-down"))}</td>
 						<td class="text-end bg-light">${"{:0.2f}".format(100 * solved_games / played_games)} <span>%</span></td>
 					</tr>
-					<tr>
+					<tr py:with="average=user_game_stats.avg_rows or 0; result=gameresult.game_rows or 7">
 						<th scope="row">&#x2300; for all games</th>
-						<td py:with="average=user_game_stats.avg_rows; result=gameresult.game_rows or 7">${h.bicon('arrow{}-right'.format('' if average == result else "-up" if h.gt(average, result) else "-down"))}</td>
-						<td class="text-end bg-light">${"{:0.1f}".format(user_game_stats.avg_rows)} <span>rows</span></td>
+						<td>${h.bicon('arrow{}-right'.format('' if average == result else "-up" if h.gt(average, result) else "-down"))}</td>
+						<td class="text-end bg-light">${"{:0.1f}".format(average)} <span>rows</span></td>
 					</tr>
-					<tr>
+					<tr py:with="average=user_game_stats.avg_solved_rows or 0; result=gameresult.game_rows or 7">
 						<th scope="row">&#x2300; for solved games</th>
-						<td py:with="average=user_game_stats.avg_solved_rows; result=gameresult.game_rows or 7">${h.bicon('arrow{}-right'.format('' if average == result else "-up" if h.gt(average, result) else "-down"))}</td>
-						<td class="text-end bg-light">${"{:0.1f}".format(user_game_stats.avg_solved_rows)} <span>rows</span></td>
+						<td>${h.bicon('arrow{}-right'.format('' if average == result else "-up" if h.gt(average, result) else "-down"))}</td>
+						<td class="text-end bg-light">${"{:0.1f}".format(average)} <span>rows</span></td>
 					</tr>
-					<tr>
+					<tr py:with="average=user_game_stats.avg_time or 0; result=float('inf') if not gameresult.game_result_time else gameresult.game_time.second + gameresult.game_time.minute*60 + gameresult.game_time.hour*60**2">
 						<th scope="row">&#x2300; time for solved games</th>
-						<td py:with="average=user_game_stats.avg_time; result=float('inf') if not gameresult.game_result_time else gameresult.game_time.second + gameresult.game_time.minute*60 + gameresult.game_time.hour*60**2">${h.bicon('arrow{}-right'.format('' if average == result else "-up" if h.gt(average, result) else "-down"))}</td>
-						<td class="text-end bg-light">${"{}:{:02.0f}".format(user_game_stats.avg_time // 60, user_game_stats.avg_time % 60)} <span>min</span></td>
+						<td>${h.bicon('arrow{}-right'.format('' if average == result else "-up" if h.gt(average, result) else "-down"))}</td>
+						<td class="text-end bg-light">${"{}:{:02.0f}".format(average // 60, average % 60)} <span>min</span></td>
 					</tr>
-					<tr>
+					<tr py:with="average=user_game_stats.avg_result_time or 0; result=float('inf') if not gameresult.game_result_time else gameresult.game_result_time.second + gameresult.game_result_time.minute*60 + gameresult.game_result_time.hour*60**2">
 						<th scope="row">&#x2300; result time for solved games</th>
-						<td py:with="average=user_game_stats.avg_result_time; result=float('inf') if not gameresult.game_result_time else gameresult.game_result_time.second + gameresult.game_result_time.minute*60 + gameresult.game_result_time.hour*60**2">${h.bicon('arrow{}-right'.format('' if average == result else "-up" if h.gt(average, result) else "-down"))}</td>
-						<td class="text-end bg-light">${"{}:{:02.0f}".format(user_game_stats.avg_result_time // 60, user_game_stats.avg_result_time % 60)} <span>min</span></td>
+						<td>${h.bicon('arrow{}-right'.format('' if average == result else "-up" if h.gt(average, result) else "-down"))}</td>
+						<td class="text-end bg-light">${"{}:{:02.0f}".format(average // 60, average % 60)} <span>min</span></td>
 					</tr>
-					<tr>
+					<tr py:with="average=user_game_stats.avg_rank or 0; result=gameresult.game_rank">
 						<th scope="row">&#x2300; game rank</th>
-						<td py:with="average=user_game_stats.avg_rank; result=gameresult.game_rank">${h.bicon('arrow{}-right'.format('' if average == result else "-up" if h.gt(average, result) else "-down"))}</td>
-						<td class="text-end bg-light">${"{:0.0f}".format(user_game_stats.avg_rank)} <span>place</span></td>
+						<td>${h.bicon('arrow{}-right'.format('' if average == result else "-up" if h.gt(average, result) else "-down"))}</td>
+						<td class="text-end bg-light">${"{:0.0f}".format(average)} <span>place</span></td>
 					</tr>
-					<tr>
+					<tr py:with="average=user_game_stats.avg_points or 0; result=gameresult.game_points">
 						<th scope="row">&#x2300; game points</th>
-						<td py:with="average=user_game_stats.avg_points; result=gameresult.game_points">${h.bicon('arrow{}-right'.format('' if average == result else "-down" if h.gt(average, result) else "-up"))}</td>
-						<td class="text-end bg-light">${"{:0.1f}".format(user_game_stats.avg_points)} <span>points</span></td>
+						<td>${h.bicon('arrow{}-right'.format('' if average == result else "-down" if h.gt(average, result) else "-up"))}</td>
+						<td class="text-end bg-light">${"{:0.1f}".format(average)} <span>points</span></td>
 					</tr>
 				</tbody>
 			</table>
