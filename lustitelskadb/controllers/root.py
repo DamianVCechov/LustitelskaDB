@@ -771,6 +771,12 @@ class RootController(BaseController):
 
         redirect("https://www.threads.net/intent/post", params=payload)
 
+    @expose('lustitelskadb.templates.sns')
+    @require(predicates.not_anonymous(msg=l_('Only for users with appropriate permissions')))
+    def sns(self):
+        """Handle the Social Network Services page"""
+        return dict(page='sns')
+
     @expose('lustitelskadb.templates.about')
     def about(self):
         """Handle the 'about' page."""

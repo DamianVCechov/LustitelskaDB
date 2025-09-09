@@ -1,0 +1,24 @@
+<html py:extends="master.xhtml" py:strip="True">
+<head py:block="head" py:strip="True">
+<title py:block="master_title">${getattr(tmpl_context, 'project_name', 'turbogears2')} | Social network services</title>
+</head>
+
+<body py:block="body" py:strip="True">
+	<h1 class="d-inline-block bg-light p-1 rounded opacity-90">Social Network Services</h1>
+
+	<section class="mt-3 bg-light p-1 rounded">
+		<ul class="nav nav-tabs">
+			<li class="nav-item"><a class="nav-link active" aria-current="page" href="#xtwitter">X/Twitter</a></li>
+			<li class="nav-item"><a class="nav-link disabled" href="#bluesky" aria-disabled="true">Bluesky</a></li>
+			<li class="nav-item"><a class="nav-link disabled" href="#fediverse" aria-disabled="true">Fediverse</a></li>
+			<li class="nav-item"><a class="nav-link disabled" href="#threads" aria-disabled="true">Threads</a></li>
+		</ul>
+		<div class="tab-content">
+			<div class="tab-pane fade show active" id="xtwitter" role="tabpanel">X/Twitter</div>
+			<div class="tab-pane fade" id="bluesky" role="tabpanel">Bluesky</div>
+			<div class="tab-pane fade" id="fediverse" role="tabpanel">Fediverse</div>
+			<div class="tab-pane fade" id="threads" role="tabpanel">Threads</div>
+		</div>
+	</section>
+</body>
+</html>
