@@ -13,7 +13,7 @@
 <link rel="shortcut icon" href="/img/favicon.ico" />
 <link rel="icon" type="image/vnd.microsoft.icon" href="/img/favicon.ico" />
 
-<link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/bootstrap.min.css')}" />
+<link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/bootstrap.min.css', params={'v': '5.3.8'})}" />
 <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/bootstrap-glyphicons.min.css')}" />
 <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/bootstrap-icons.min.css', params={'v': '1.13.1'})}" />
 <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/style.css', params={'v': '20250706T1415'})}" />
@@ -141,6 +141,6 @@ app_jssrc.inject()
 
 	<script src="${tg.url('/js/jquery-3.7.1.min.js')}"></script>
 	<script src="${tg.url('/js/popper-2.11.8.min.js')}"></script>
-	<script src="${tg.url('/js/bootstrap.min.js')}"></script>
+	<script src="${tg.url('/js/bootstrap.min.js', params={'v': '5.3.8'})}"></script>
 </body>
 </html>
