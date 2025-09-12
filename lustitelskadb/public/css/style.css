@@ -83,11 +83,6 @@ emoji-picker {
 	border-top: 1px solid #e5e5e5;
 }
 
-.footer p {
-	margin-bottom: 0;
-	color: #555;
-}
-
 .crud-sidebar {
 	display: list-item;
 }
