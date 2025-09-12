@@ -106,7 +106,7 @@ app_jssrc.inject()
 							<ul class="dropdown-menu bg-success">
 								<li><a class="dropdown-item${' active' if tg.request.url.startswith(h.plug_url('userprofile', '/', qualified=True)) else ''}" href="${h.plug_url('userprofile', '/')}" py:if="'userprofile' in plugged()">User profile</a></li>
 								<li><a class="dropdown-item${' active' if tg.request.url.startswith(h.plug_url('resetpassword', '/', qualified=True)) else ''}" href="${h.plug_url('userprofile', '/reset_password')}" py:if="'resetpassword' in plugged()">Change password</a></li>
-								<li><a class="dropdown-item" href="${tg.url('/sns')}">Social networks</a></li>
+								<li><a class="dropdown-item disabled" href="${tg.url('/sns')}">Social networks</a></li>
 								<li py:if="'manage' in request.identity['permissions']"><hr class="dropdown-divider" /></li>
 								<li py:if="'manage' in request.identity['permissions']"><a class="dropdown-item${' active' if tg.request.url.startswith(tg.url('/admin', qualified=True)) else ''}" href="${tg.url('/admin')}">Admin</a></li>
 								<li><hr class="dropdown-divider" /></li>
