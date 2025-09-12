@@ -87,6 +87,19 @@ lustitelskadb/public/css/loader.css
 lustitelskadb/public/css/style.css
 lustitelskadb/public/css/fonts/bootstrap-icons.woff
 lustitelskadb/public/css/fonts/bootstrap-icons.woff2
+lustitelskadb/public/fonts/NotoColorEmoji.otf
+lustitelskadb/public/fonts/NotoColorEmoji.ttf
+lustitelskadb/public/fonts/NotoColorEmoji.woff
+lustitelskadb/public/fonts/NotoColorEmoji.woff2
+lustitelskadb/public/fonts/NotoSans-Italic.ttf
+lustitelskadb/public/fonts/NotoSans.otf
+lustitelskadb/public/fonts/NotoSans.ttf
+lustitelskadb/public/fonts/NotoSans.woff
+lustitelskadb/public/fonts/NotoSans.woff2
+lustitelskadb/public/fonts/NotoSansMono.otf
+lustitelskadb/public/fonts/NotoSansMono.ttf
+lustitelskadb/public/fonts/NotoSansMono.woff
+lustitelskadb/public/fonts/NotoSansMono.woff2
 lustitelskadb/public/fonts/glyphicons/glyphicons-halflings-regular.eot
 lustitelskadb/public/fonts/glyphicons/glyphicons-halflings-regular.svg
 lustitelskadb/public/fonts/glyphicons/glyphicons-halflings-regular.ttf
@@ -321,6 +334,7 @@ lustitelskadb/templates/login.xhtml
 lustitelskadb/templates/master.xhtml
 lustitelskadb/templates/newresult.xhtml
 lustitelskadb/templates/rankings.xhtml
+lustitelskadb/templates/sns.xhtml
 lustitelskadb/templates/template.xhtml.template
 lustitelskadb/templates/wednesday_challenge.xhtml
 lustitelskadb/templates/xdenied.xhtml
