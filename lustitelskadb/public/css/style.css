@@ -1,4 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Noto+Sans+Mono:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@font-face{
+	font-family: "Noto Color Emoji";
+	src:
+		url("../fonts/NotoColorEmoji.woff2") format("woff2"),
+		url("../fonts/NotoColorEmoji.woff") format("woff"),
+		url("../fonts/NotoColorEmoji.otf") format("opentype"),
+		url("../fonts/NotoColorEmoji.ttf") format("truetype");
+	unicode-range: U+1F000-1FAFF;
+}
+
+@font-face{
+	font-family: "Noto Sans";
+	src:
+		url("../fonts/NotoSans.woff2") format("woff2"),
+		url("../fonts/NotoSans.woff") format("woff"),
+		url("../fonts/NotoSans.otf") format("opentype"),
+		url("../fonts/NotoSans.ttf") format("truetype");
+}
+
+@font-face{
+	font-family: "Noto Sans Mono";
+	src:
+		url("../fonts/NotoSansMono.woff2") format("woff2"),
+		url("../fonts/NotoSansMono.woff") format("woff"),
+		url("../fonts/NotoSansMono.otf") format("opentype"),
+		url("../fonts/NotoSansMono.ttf") format("truetype");
+}
 
 :root {
 	--bs-font-sans-serif: "Noto Sans", "Noto Color Emoji", sans-serif;
