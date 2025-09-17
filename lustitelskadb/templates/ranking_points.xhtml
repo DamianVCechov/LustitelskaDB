@@ -31,10 +31,11 @@ def count_rank(next_place, recentplace_counter, prev_points, actual_points):
 				<table class="table table-sm table-striped mt-5">
 					<thead>
 						<tr class="table-dark text-center">
-							<th class="rounded-top" scope="col" colspan="5">${_("Ranking for {} players in {} games").format(len(ranking), all_games)}</th>
+							<th class="rounded-top" scope="col" colspan="6">${_("Ranking for {} players in {} games").format(len(ranking), all_games)}</th>
 						</tr>
 						<tr class="table-dark text-center">
 							<th scope="col" title="${_('Rank')}">${h.bicon('graph-up-arrow')}</th>
+							<th scope="col" title="${_('Clan')}">${h.bicon('shield')}</th>
 							<th scope="col" class="w-100" title="${_('Player')}">${h.bicon('person')}</th>
 							<th scope="col" title="${_('Points earned')}">${h.bicon('fuel-pump')}</th>
 							<th scope="col" title="${_('Attendance')}">${h.bicon('calendar-check')}</th>
@@ -46,6 +47,7 @@ def count_rank(next_place, recentplace_counter, prev_points, actual_points):
 							<?py next_place, recentplace_counter = count_rank(next_place, recentplace_counter, last_points, row.points_sum) ?>
 							<tr>
 								<th scope="row" class="text-end">${next_place}</th>
+								<td>${row.clan_symbol}</td>
 								<td class="text-center">${row.display_name}</td>
 								<td class="text-center"><span class="mx-1">${row.points_sum}</span></td>
 								<td class="text-center" title="${_('Played {} games').format(row.played_games)}"><span class="mx-1">${"{:0.1f}%".format(row.played_games*100 / all_games)}</span></td>

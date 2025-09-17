@@ -17,6 +17,7 @@ from lustitelskadb.lib.helpers import wednesday_challenge_words_window, game_no_
 from lustitelskadb import model
 from lustitelskadb.model import DBSession
 
+from sqlalchemy.orm import contains_eager
 from sqlalchemy.sql.expression import func
 
 import tw2.core as twc
@@ -639,8 +640,11 @@ class RootController(BaseController):
             func.count(model.GameResult.game_no).label('played_games'),
             func.sum(model.GameResult.game_points).label('points_sum'),
             func.avg(model.GameResult.game_points).label('points_avg'),
-            model.User.display_name.label('display_name')
-        ).join(model.User).filter(model.GameResult.game_no < today_game_no())
+            model.User.display_name,
+            model.Clan.symbol.label('clan_symbol')
+        ).join(model.User).join(model.ClanMember, isouter=True).join(model.Clan, isouter=True)
+
+        ranking = ranking.filter(model.GameResult.game_no < today_game_no())
 
         if period == "year":
             ranking = ranking.filter(model.GameResult.game_no >= today_game_no() - 365)
@@ -677,8 +681,11 @@ class RootController(BaseController):
             func.count(model.GameResult.game_no).label('played_games'),
             func.sum(func.ifnull(model.GameResult.game_rows, 7)).label('rows_sum'),
             func.avg(func.ifnull(model.GameResult.game_rows, 7)).label('rows_avg'),
-            model.User.display_name.label('display_name')
-        ).join(model.User).filter(model.GameResult.game_no < today_game_no())
+            model.User.display_name,
+            model.Clan.symbol.label('clan_symbol')
+        ).join(model.User).join(model.ClanMember, isouter=True).join(model.Clan, isouter=True)
+
+        ranking = ranking.filter(model.GameResult.game_no < today_game_no())
 
         if period == "year":
             ranking = ranking.filter(model.GameResult.game_no >= today_game_no() - 365)
