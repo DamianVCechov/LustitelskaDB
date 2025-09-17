@@ -5,6 +5,9 @@ Global configuration file for TG2-specific settings in LustitelskaDB.
 This file complements development/deployment.ini.
 
 """
+import logging
+log = logging.getLogger(__name__)
+
 import tg
 from tg import FullStackApplicationConfigurator, milestones
 from tgext.pluggable import plug, replace_template
@@ -155,19 +158,19 @@ base_config.update_blueprint({
 try:
     plug(base_config, 'tgext.tw2')
 except:
-    print("tgext.tw2 not plugged")
+    log.error("tgext.tw2 not plugged")
 
 try:
     plug(base_config, 'tgext.formencode')
 except:
-    print("tgext.formencode not plugged")
+    log.info("tgext.formencode not plugged")
 
 try:
     # Enable DebugBar if available, install tgext.debugbar to turn it on
     from tgext.debugbar import enable_debugbar
     enable_debugbar(base_config)
 except ImportError:
-    pass
+    log.error("Debugbar not loader due exception")
 
 try:
     # Enable TGapp Permissions if available, install tgapp-permissions to turn it on
