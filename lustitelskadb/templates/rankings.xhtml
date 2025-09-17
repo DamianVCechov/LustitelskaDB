@@ -1,6 +1,6 @@
 <html py:extends="master.xhtml" py:strip="True">
 <head py:block="head" py:strip="True">
-<title py:block="master_title">${getattr(tmpl_context, 'project_name', 'turbogears2')} | Rankings</title>
+<title py:block="master_title">${getattr(tmpl_context, 'project_name', 'turbogears2')} | Ranking by points</title>
 </head>
 
 <body py:block="body" py:strip="True">
@@ -16,11 +16,11 @@ def count_rank(next_place, recentplace_counter, prev_points, actual_points):
 	<div class="row">
 		<div class="col-lg-6 offset-lg-3">
 			<div class="btn-group w-100 mt-4 text-center">
-				<a href="${tg.url('/rankings')}" class="btn btn-light${' active' if tg.request.url.endswith(tg.url('/rankings', qualified=True)) else ''}"><span>Full</span> ${h.bicon('ladder')}</a>
-				<a href="${tg.url('/rankings/year')}" class="btn btn-light${' active' if tg.request.url.endswith(tg.url('/rankings/year', qualified=True)) else ''}"><span>Year</span> ${h.bicon('arrow-return-left')}</a>
-				<a href="${tg.url('/rankings/month')}" class="btn btn-light${' active' if tg.request.url.endswith(tg.url('/rankings/month', qualified=True)) else ''}"><span>Month</span> ${h.bicon('arrow-return-left')}</a>
-				<a href="${tg.url('/rankings/week')}" class="btn btn-light${' active' if tg.request.url.endswith(tg.url('/rankings/week', qualified=True)) else ''}"><span>Week</span> ${h.bicon('arrow-return-left')}</a>
-				<a href="${tg.url('/rankings/3day')}" class="btn btn-light${' active' if tg.request.url.endswith(tg.url('/rankings/3day', qualified=True)) else ''}"><span>3 days</span> ${h.bicon('arrow-return-left')}</a>
+				<a href="${tg.url('/ranking_points')}" class="btn btn-light${' active' if tg.request.url.endswith(tg.url('/ranking_points', qualified=True)) else ''}"><span>Full</span> ${h.bicon('ladder')}</a>
+				<a href="${tg.url('/ranking_points/year')}" class="btn btn-light${' active' if tg.request.url.endswith(tg.url('/ranking_points/year', qualified=True)) else ''}"><span>Year</span> ${h.bicon('arrow-return-left')}</a>
+				<a href="${tg.url('/ranking_points/month')}" class="btn btn-light${' active' if tg.request.url.endswith(tg.url('/ranking_points/month', qualified=True)) else ''}"><span>Month</span> ${h.bicon('arrow-return-left')}</a>
+				<a href="${tg.url('/ranking_points/week')}" class="btn btn-light${' active' if tg.request.url.endswith(tg.url('/ranking_points/week', qualified=True)) else ''}"><span>Week</span> ${h.bicon('arrow-return-left')}</a>
+				<a href="${tg.url('/ranking_points/3day')}" class="btn btn-light${' active' if tg.request.url.endswith(tg.url('/ranking_points/3day', qualified=True)) else ''}"><span>3 days</span> ${h.bicon('arrow-return-left')}</a>
 			</div>
 		</div>
 	</div>
