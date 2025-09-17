@@ -627,7 +627,7 @@ class RootController(BaseController):
 
         return redirect('/')
 
-    @expose('lustitelskadb.templates.rankings')
+    @expose('lustitelskadb.templates.ranking_points')
     def ranking_points(self, period=None, *kw):
         """Handle game results rankings."""
         if period not in ('year', 'month', 'week', '3day'):
