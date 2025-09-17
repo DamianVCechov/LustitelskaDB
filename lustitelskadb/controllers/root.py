@@ -666,7 +666,7 @@ class RootController(BaseController):
 
         popover_titles_jssrc.inject()
 
-        return dict(page="rankings", all_games=all_games, ranking=ranking)
+        return dict(page="ranking-points", all_games=all_games, ranking=ranking)
 
     @expose('lustitelskadb.templates.libriciphers')
     @paginate('libriciphers', items_per_page=1)
