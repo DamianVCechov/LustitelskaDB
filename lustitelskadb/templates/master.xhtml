@@ -8,6 +8,10 @@
 <title py:block="master_title">Your generic title goes here</title>
 <link rel="preload" href="${tg.url('/css/loader.css')}" as="style" />
 <link rel="preload" href="${tg.url('/img/pacman-loader.svg')}" as="image" />
+<link rel="preload" href="${tg.url('/fonts/NotoSans.woff2')}" as="font" type="font/woff2" crossorigin="crossorigin" />
+<link rel="preload" href="${tg.url('/fonts/NotoSansMono.woff2')}" as="font" type="font/woff2" crossorigin="crossorigin" />
+<link rel="preload" href="${tg.url('/fonts/NotoColorEmoji.woff2')}" as="font" type="font/woff2" crossorigin="crossorigin" />
+
 <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/loader.css')}" />
 
 <link rel="shortcut icon" href="${tg.url('/img/favicon.ico')}" />
@@ -83,7 +87,11 @@ app_jssrc.inject()
 					<li class="nav-item"><a class="nav-link${' active' if tg.request.url == tg.url('/', qualified=True) else ''}" aria-current="page" href="${tg.url('/')}">${h.icon('home')}</a></li>
 					<li class="nav-item"><a class="nav-link${' active' if tg.request.url.startswith(tg.url('/newresult', qualified=True)) else ''}" href="${tg.url('/newresult')}" aria-disabled="false">New result</a></li>
 					<li class="nav-item"><a class="nav-link${' active' if tg.request.url.startswith(tg.url('/wednesday_challenge', qualified=True)) else ''}" href="${tg.url('/wednesday_challenge')}" aria-disabled="false">Wednesday challenge</a></li>
-					<li class="nav-item"><a class="nav-link${' active' if tg.request.url.startswith(tg.url('/rankings', qualified=True)) else ''}" href="${tg.url('/rankings')}" aria-disabled="false">Rankings</a></li>
+					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span>Rankings</span></a>
+						<ul class="dropdown-menu bg-success">
+							<li><a class="dropdown-item${' active' if tg.request.url.startswith(tg.url('/ranking_points', qualified=True)) else ''}" href="${tg.url('/ranking_points')}">By game points</a></li>
+							<li><a class="dropdown-item${' active' if tg.request.url.startswith(tg.url('/ranking_rows', qualified=True)) else ''}" href="${tg.url('/ranking_rows')}">By game rows</a></li>
+						</ul></li>
 					<li class="nav-item"><a class="nav-link${' active' if tg.request.url.startswith(tg.url('/libriciphers', qualified=True)) else ''}" href="${tg.url('/libriciphers')}" aria-disabled="false">Libri Ciphers</a></li>
 					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span>Other</span></a>
 						<ul class="dropdown-menu bg-success">

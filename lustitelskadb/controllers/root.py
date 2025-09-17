@@ -668,6 +668,44 @@ class RootController(BaseController):
 
         return dict(page="ranking-points", all_games=all_games, ranking=ranking)
 
+    @expose('lustitelskadb.templates.rankings_rows')
+    def ranking_rows(self, period=None, **kw):
+
+        all_games = DBSession.query(model.GameResult.game_no).filter(model.GameResult.game_no < today_game_no())
+
+        ranking = DBSession.query(
+            func.count(model.GameResult.game_no).label('played_games'),
+            func.sum(func.ifnull(model.GameResult.game_rows, 7)).label('rows_sum'),
+            func.avg(func.ifnull(model.GameResult.game_rows, 7)).label('rows_avg'),
+            model.User.display_name.label('display_name')
+        ).join(model.User).filter(model.GameResult.game_no < today_game_no())
+
+        if period == "year":
+            ranking = ranking.filter(model.GameResult.game_no >= today_game_no() - 365)
+            all_games = all_games.filter(model.GameResult.game_no >= today_game_no() - 365)
+        elif period == "month":
+            ranking = ranking.filter(model.GameResult.game_no >= today_game_no() - 28)
+            all_games = all_games.filter(model.GameResult.game_no >= today_game_no() - 28)
+        elif period == "week":
+            ranking = ranking.filter(model.GameResult.game_no >= today_game_no() - 7)
+            all_games = all_games.filter(model.GameResult.game_no >= today_game_no() - 7)
+        elif period == "3day":
+            ranking = ranking.filter(model.GameResult.game_no >= today_game_no() - 3)
+            all_games = all_games.filter(model.GameResult.game_no >= today_game_no() - 3)
+
+        all_games = all_games.distinct().count()
+        ranking = ranking.group_by(model.GameResult.user_id).order_by(func.avg(func.ifnull(model.GameResult.game_rows, 7))).all()
+
+        popover_titles_jssrc = twc.JSSource(src='''
+            $(() => {
+                $('[title]').popover({ trigger: "hover", placement: "top" });
+            });
+        ''')
+
+        popover_titles_jssrc.inject()
+
+        return dict(page="ranking-rows", ranking=ranking, all_games=all_games)
+
     @expose('lustitelskadb.templates.libriciphers')
     @paginate('libriciphers', items_per_page=1)
     def libriciphers(self, *args):
