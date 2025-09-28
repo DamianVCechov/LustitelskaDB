@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: LustitelskaDB 1.10.0\n"
+"Project-Id-Version: LustitelskaDB 1.11.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-09-17 04:58+0200\n"
+"POT-Creation-Date: 2025-09-17 06:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,8 +26,8 @@ msgstr ""
 #: lustitelskadb/controllers/libricipher.py:143
 #: lustitelskadb/controllers/libricipher.py:167
 #: lustitelskadb/controllers/libricipher.py:182
-#: lustitelskadb/controllers/root.py:448 lustitelskadb/controllers/root.py:481
-#: lustitelskadb/controllers/root.py:587 lustitelskadb/controllers/root.py:813
+#: lustitelskadb/controllers/root.py:449 lustitelskadb/controllers/root.py:482
+#: lustitelskadb/controllers/root.py:588 lustitelskadb/controllers/root.py:820
 #: lustitelskadb/controllers/xtwitter.py:25
 #: lustitelskadb/controllers/xtwitter.py:44
 msgid "Only for users with appropriate permissions"
@@ -39,7 +39,7 @@ msgstr ""
 
 #: lustitelskadb/controllers/admin.py:402
 #: lustitelskadb/controllers/libricipher.py:115
-#: lustitelskadb/controllers/root.py:461 lustitelskadb/controllers/root.py:549
+#: lustitelskadb/controllers/root.py:462 lustitelskadb/controllers/root.py:550
 #: lustitelskadb/controllers/xtwitter.py:32
 msgid "Form filled with errors!"
 msgstr ""
@@ -149,29 +149,29 @@ msgstr ""
 msgid "Libri Cipher item successfully deleted"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:213
+#: lustitelskadb/controllers/root.py:214
 msgid "Missing unique ID of user game result"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:218
+#: lustitelskadb/controllers/root.py:219
 msgid "Requested user game result not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:258
+#: lustitelskadb/controllers/root.py:259
 msgid "Unknown source for authorization, canceled"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:274
+#: lustitelskadb/controllers/root.py:275
 msgid ""
 "There may have been an issue with the consumer_key or consumer_secret in "
 "application"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:306
+#: lustitelskadb/controllers/root.py:307
 msgid "Unknown type of OAuth in config"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:323
+#: lustitelskadb/controllers/root.py:324
 msgid ""
 "I cannot find the keys needed to continue in authorization process in the "
 "session. Maybe you are using a light version of the browser that cannot "
@@ -179,7 +179,7 @@ msgid ""
 "to a full-fledged browser or turn on the saving of cookies."
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:353
+#: lustitelskadb/controllers/root.py:354
 msgid ""
 "I cannot find the data needed to validate the authorization challenge in the "
 "session. Maybe you are using a light version of the browser that cannot "
@@ -187,102 +187,102 @@ msgid ""
 "to a full-fledged browser or turn on the saving of cookies."
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:372
+#: lustitelskadb/controllers/root.py:373
 msgid "Can't fetch access token"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:392
+#: lustitelskadb/controllers/root.py:393
 msgid "Can't get user info from Twitter"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:424
+#: lustitelskadb/controllers/root.py:425
 msgid "Successfully authorized"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:427
+#: lustitelskadb/controllers/root.py:428
 msgid "Succesfully authorized, but missing landing URL"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:444
+#: lustitelskadb/controllers/root.py:445
 msgid "Successfully detached from X/Twitter, the access token has been discarded"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:504
+#: lustitelskadb/controllers/root.py:505
 msgid "This result can't be saved, because isn't for actually ongoing game!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:514
+#: lustitelskadb/controllers/root.py:515
 msgid "This game result is already in database"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:533
+#: lustitelskadb/controllers/root.py:534
 msgid ""
 "Something went wrong! Can't save game result to database, so it isn't sent to"
 " legacy website too!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:538
+#: lustitelskadb/controllers/root.py:539
 msgid "Your result has been successfully saved to database"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:595
+#: lustitelskadb/controllers/root.py:596
 msgid ""
 "Words for next Wednesday challenge is already in database! Try it again in "
 "next week!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:611
+#: lustitelskadb/controllers/root.py:612
 msgid "You can't sent words for Wednesday challenge"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:626
+#: lustitelskadb/controllers/root.py:627
 msgid ""
 "Words has been successfully saved to database for next Wednesday challenge! "
 "Thanx!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:741
+#: lustitelskadb/controllers/root.py:748
 msgid "Invalid game result, can't share it on X/Twitter"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:751
+#: lustitelskadb/controllers/root.py:758
 msgid "Requested game result to share on X/Twitter not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:770
+#: lustitelskadb/controllers/root.py:777
 msgid "Invalid game result, can't share it on Bluesky"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:780
+#: lustitelskadb/controllers/root.py:787
 msgid "Requested game result to share on Bluesky not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:793
+#: lustitelskadb/controllers/root.py:800
 msgid "Invalid game result, can't share it on Threads"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:803
+#: lustitelskadb/controllers/root.py:810
 msgid "Requested game result to share on Threads not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:828
+#: lustitelskadb/controllers/root.py:835
 msgid "User not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:830
+#: lustitelskadb/controllers/root.py:837
 msgid "Invalid Password"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:834
+#: lustitelskadb/controllers/root.py:841
 msgid "Wrong credentials"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:851
+#: lustitelskadb/controllers/root.py:858
 #, python-format
 msgid "Welcome back, %s!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:864
+#: lustitelskadb/controllers/root.py:871
 msgid "We hope to see you soon!"
 msgstr ""
 
@@ -901,12 +901,14 @@ msgstr ""
 
 #: lustitelskadb/templates/api/index.xhtml:108
 #: lustitelskadb/templates/index.xhtml:109 lustitelskadb/templates/index.xhtml:130
+#: lustitelskadb/templates/ranking_points.xhtml:38
+#: lustitelskadb/templates/rankings_rows.xhtml:38
 msgid "Clan"
 msgstr ""
 
 #: lustitelskadb/templates/index.xhtml:110
-#: lustitelskadb/templates/ranking_points.xhtml:38
-#: lustitelskadb/templates/rankings_rows.xhtml:38
+#: lustitelskadb/templates/ranking_points.xhtml:39
+#: lustitelskadb/templates/rankings_rows.xhtml:39
 msgid "Player"
 msgstr ""
 
@@ -1139,22 +1141,21 @@ msgstr ""
 msgid "Ranking for {} players in {} games"
 msgstr ""
 
-#: lustitelskadb/templates/ranking_points.xhtml:39
-msgid "Points earned"
-msgstr ""
-
 #: lustitelskadb/templates/ranking_points.xhtml:40
-#: lustitelskadb/templates/rankings_rows.xhtml:40
-msgid "Attendance"
+msgid "Points earned"
 msgstr ""
 
 #: lustitelskadb/templates/ranking_points.xhtml:41
 #: lustitelskadb/templates/rankings_rows.xhtml:41
+msgid "Attendance"
+msgstr ""
+
+#: lustitelskadb/templates/ranking_points.xhtml:42
 msgid "Average points earned"
 msgstr ""
 
-#: lustitelskadb/templates/ranking_points.xhtml:51
-#: lustitelskadb/templates/rankings_rows.xhtml:51
+#: lustitelskadb/templates/ranking_points.xhtml:53
+#: lustitelskadb/templates/rankings_rows.xhtml:53
 #, python-brace-format
 msgid "Played {} games"
 msgstr ""
@@ -1167,8 +1168,12 @@ msgstr ""
 msgid "Game Ranking by rows"
 msgstr ""
 
-#: lustitelskadb/templates/rankings_rows.xhtml:39
+#: lustitelskadb/templates/rankings_rows.xhtml:40
 msgid "Rows summary"
+msgstr ""
+
+#: lustitelskadb/templates/rankings_rows.xhtml:42
+msgid "Average rows played"
 msgstr ""
 
 #: lustitelskadb/templates/sns.xhtml:3
