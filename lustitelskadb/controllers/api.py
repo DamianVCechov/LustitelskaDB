@@ -70,6 +70,8 @@ class APIController(BaseController):
         return dict(game=game.all())
 
     @expose('json')
+    @require(predicates.has_any_permission("api_manage", "api_manage_game", "api_manage_game_getnew"
+                                           , msg=l_('Only for users with appropriate permissions')))
     def get_new_records(self, last_fetched_uid=None, **kw):
         """Get new records from last UID"""
         if not last_fetched_uid:
@@ -100,6 +102,8 @@ class APIController(BaseController):
         return dict(data=data, status_code=0, status_txt="OK", error=False, status_msg="New records found.")
 
     @expose()
+    @require(predicates.has_any_permission("api_manage", "api_manage_game", "api_manage_game_export"
+                                           , msg=l_('Only for users with appropriate permissions')))
     def fetch_game_data(self, game=None, convert=False, **kw):
         """Export game data."""
         if game not in ('ongoing', 'final'):
