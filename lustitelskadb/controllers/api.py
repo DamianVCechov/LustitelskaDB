@@ -236,3 +236,24 @@ class APIController(BaseController):
         DBSession.flush()
 
         return dict(status=0, status_msg="OK", status_desc=status_desc)
+
+    @expose('json')
+    @require(predicates.has_any_permission("api_manage", "api_manage_game", "api_manage_game_wwc_exists",
+                                           msg=l_('Only for users with appropriate permissions')))
+    def wednesday_words_exists(self, game_no=None, **kw):
+        """Test if Wednesday Challenge Words exist for game_no."""
+        if not game_no.isdigit():
+            return dict(status=-1, status_msg="Error", status_desc="Game No. isn't digit", wcw_exists=None)
+
+        wcw = DBSession.query(model.WednesdayChallengeWord).filter(model.WednesdayChallengeWord.game_no == game_no).first()
+        if not wcw:
+            status_desc = "Game not found in wednesday challenge words table"
+            wcw_exists = False
+        else:
+            status_desc="Wednesday challenge words existence checked successfully for requested game"
+            if wcw.first_word and wcw.second_word and wcw.third_word:
+                wcw_exists = True
+            else:
+                wcw_exists = False
+
+        return dict(status=0, status_msg="OK", status_desc=status_desc, wcw_exists=wcw_exists)
