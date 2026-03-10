@@ -4,14 +4,14 @@
 # project.
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
-# SPDX-FileCopyrightText: 2024, 2025 Jaroslav Mikulík
+# SPDX-FileCopyrightText: 2024, 2025, 2026 Jaroslav Mikulík
 # <jaroslav.mikulik@runtech.cz>
 msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-09-17 06:36+0200\n"
-"PO-Revision-Date: 2025-09-17 06:36+0200\n"
+"POT-Creation-Date: 2026-03-10 20:52+0100\n"
+"PO-Revision-Date: 2026-03-10 20:52+0100\n"
 "Last-Translator: Jaroslav Mikulík <jaroslav.mikulik@runtech.cz>\n"
 "Language: cs\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -27,8 +27,9 @@ msgstr ""
 #: lustitelskadb/controllers/admin.py:410
 #: lustitelskadb/controllers/admin.py:492
 #: lustitelskadb/controllers/admin.py:506
-#: lustitelskadb/controllers/admin.py:540 lustitelskadb/controllers/api.py:186
-#: lustitelskadb/controllers/api.py:212
+#: lustitelskadb/controllers/admin.py:540 lustitelskadb/controllers/api.py:74
+#: lustitelskadb/controllers/api.py:106 lustitelskadb/controllers/api.py:190
+#: lustitelskadb/controllers/api.py:216 lustitelskadb/controllers/api.py:242
 #: lustitelskadb/controllers/libricipher.py:56
 #: lustitelskadb/controllers/libricipher.py:108
 #: lustitelskadb/controllers/libricipher.py:143
@@ -699,9 +700,11 @@ msgstr "vláknech"
 msgid "@Lustitele"
 msgstr "@Lustitele"
 
+# | msgid ", which we announce every day after 6 p.m. We would like to see
+# you."
 #: lustitelskadb/templates/about.xhtml:37
-msgid ", which we announce every day after 6 p.m. We would like to see you."
-msgstr ", která vyhlašujeme každý den po 18 hodině. Rádi Vás uvidíme."
+msgid ", which we announce every day after 1 p.m. We would like to see you."
+msgstr ", která vyhlašujeme každý den po 13 hodině. Rádi Vás uvidíme."
 
 #: lustitelskadb/templates/about.xhtml:40
 msgid ""
@@ -749,20 +752,17 @@ msgstr ""
 msgid "@ByCzech"
 msgstr "@ByCzech"
 
-#: lustitelskadb/templates/about.xhtml:43
-msgid "and"
-msgstr "a"
-
-#: lustitelskadb/templates/about.xhtml:43
-msgid "@Tlucek_P"
-msgstr "@Tlucek_P"
-
+# | msgid "" "(they built it themselves) we have this amazing site with its
+# own
+# | " "database and simple"
+# | msgid "" "(he built it himselv) we have this amazing site with its own
+# | database and" " simple"
 #: lustitelskadb/templates/about.xhtml:43
 msgid ""
-"(they built it themselves) we have this amazing site with its own "
-"database and simple"
+"(he built it himself) we have this amazing site with its own database and"
+" simple"
 msgstr ""
-"(postavili to sami) tuto úžasnou stránku s vlastní databází a jednoduchou"
+"(postavil to sám) tuto úžasnou stránku s vlastní databází a jednoduchou"
 " obsluhou"
 
 #: lustitelskadb/templates/about.xhtml:43
@@ -777,9 +777,23 @@ msgstr ""
 "No, kdyby jste si s něčím nevěděli rady, neváhejte se na mne obrátit buď "
 "na mém"
 
+#: lustitelskadb/templates/about.xhtml:47 lustitelskadb/templates/sns.xhtml:12
+#: lustitelskadb/templates/sns.xhtml:18
+msgid "Bluesky"
+msgstr "Bluesky"
+
 #: lustitelskadb/templates/about.xhtml:47
 msgid "profile"
 msgstr "profilu"
+
+# | msgid "@DamianVCechov"
+#: lustitelskadb/templates/about.xhtml:47
+msgid "@damianvcechov.link"
+msgstr "@damianvcechov.link"
+
+#: lustitelskadb/templates/about.xhtml:47
+msgid "or my"
+msgstr "nebo mém"
 
 #: lustitelskadb/templates/about.xhtml:47
 msgid "@DamianVCechov"
@@ -790,8 +804,18 @@ msgid "or our joint profile"
 msgstr "nebo našem společném"
 
 #: lustitelskadb/templates/about.xhtml:47
-msgid "or you can contact me via email"
-msgstr "a nebo mě můžete kontaktovat e-mailem"
+msgid "@lusteni.nemachybu.cz"
+msgstr "@lusteni.nemachybu.cz"
+
+# | msgid "Bluesky"
+#: lustitelskadb/templates/about.xhtml:47
+msgid "(Bluesky) or"
+msgstr "(Bluesky) nebo"
+
+# | msgid "or you can contact me via email"
+#: lustitelskadb/templates/about.xhtml:47
+msgid "(X/Twitter) or you can contact me via email"
+msgstr "(X/Twitter) a nebo mě můžete kontaktovat e-mailem"
 
 #: lustitelskadb/templates/about.xhtml:47
 msgid "lustitele@gmail.com"
@@ -1374,8 +1398,8 @@ msgstr "Herní žebříček dle řádků"
 msgid "Rows summary"
 msgstr "Součet řádků"
 
+# | msgid "Average points earned"
 #: lustitelskadb/templates/rankings_rows.xhtml:42
-#| msgid "Average points earned"
 msgid "Average rows played"
 msgstr "Průměrně zahráno řádků"
 
@@ -1388,10 +1412,6 @@ msgstr " | Sociální sítě"
 #: lustitelskadb/templates/sns.xhtml:7
 msgid "Social Network Services"
 msgstr "Sociální sítě"
-
-#: lustitelskadb/templates/sns.xhtml:12 lustitelskadb/templates/sns.xhtml:18
-msgid "Bluesky"
-msgstr "Bluesky"
 
 #: lustitelskadb/templates/sns.xhtml:13 lustitelskadb/templates/sns.xhtml:19
 msgid "Fediverse"
@@ -2263,3 +2283,9 @@ msgstr " - Nový "
 # | msgid "⌀ game rank"
 #~ msgid "Game Ranking"
 #~ msgstr "Herní žebříček"
+
+#~ msgid "and"
+#~ msgstr "a"
+
+#~ msgid "@Tlucek_P"
+#~ msgstr "@Tlucek_P"
