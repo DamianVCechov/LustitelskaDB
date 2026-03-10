@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-03-10 20:52+0100\n"
-"PO-Revision-Date: 2026-03-10 20:52+0100\n"
+"POT-Creation-Date: 2026-03-10 21:34+0100\n"
+"PO-Revision-Date: 2026-03-10 21:34+0100\n"
 "Last-Translator: Jaroslav Mikulík <jaroslav.mikulik@runtech.cz>\n"
 "Language: cs\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -762,8 +762,8 @@ msgid ""
 "(he built it himself) we have this amazing site with its own database and"
 " simple"
 msgstr ""
-"(postavil to sám) tuto úžasnou stránku s vlastní databází a jednoduchou"
-" obsluhou"
+"(postavil to sám) tuto úžasnou stránku s vlastní databází a jednoduchou "
+"obsluhou"
 
 #: lustitelskadb/templates/about.xhtml:43
 msgid "handling. For which I thank them very much."
@@ -1445,8 +1445,9 @@ msgid ""
 msgstr "Na středeční výzvu, která se bude hrát od"
 
 #: lustitelskadb/templates/wednesday_challenge.xhtml:32
-msgid "6:00 PM to next day 6:00 PM:"
-msgstr "18:00 h do příštího dne 18:00 h,  byla vybrána následující slova:"
+#| msgid "6:00 PM to next day 6:00 PM:"
+msgid "1:00 PM to next day 1:00 PM:"
+msgstr "13:00 h do příštího dne 13:00 h,  byla vybrána následující slova:"
 
 #: lustitelskadb/templates/wednesday_challenge.xhtml:37
 msgid ""
