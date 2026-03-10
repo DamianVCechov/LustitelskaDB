@@ -107,12 +107,12 @@ function setClosingProgressBar() {
     let dayInMillisec = 24 * 60 * 60 * 1000;
     let leftPercent = 0;
 
-    target.setHours(18);
+    target.setHours(13);
     target.setMinutes(0);
     target.setSeconds(0);
     target.setMilliseconds(0);
 
-    if (now.getHours() >= 18) {
+    if (now.getHours() >= 13) {
         target = new Date(target.getTime() + dayInMillisec);
     }
 

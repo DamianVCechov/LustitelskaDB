@@ -31,7 +31,7 @@ user_rank_hours_offset = {
     5: 20
 }
 
-HADEJSLOVA_STARTDATE = datetime(2022, 1, 14, 18)
+HADEJSLOVA_STARTDATE = datetime(2022, 1, 14, 13)
 
 
 def assemble_game_scoresheet(game_no, dbflush=True):
@@ -94,11 +94,11 @@ def today_game_no():
     """Count today's game no."""
     now = datetime.now()
     td = timedelta(1)
-    if now.hour < 18:
-        game_begin = datetime((now - td).year, (now - td).month, (now - td).day, 18)
-        game_finish = datetime(now.year, now.month, now.day, 17, 59, 59, 999999)
+    if now.hour < 13:
+        game_begin = datetime((now - td).year, (now - td).month, (now - td).day, 13)
+        game_finish = datetime(now.year, now.month, now.day, 12, 59, 59, 999999)
     else:
-        game_begin = datetime(now.year, now.month, now.day, 18)
-        game_finish = datetime((now + td).year, (now + td).month, (now + td).day, 17, 59, 59, 999999)
+        game_begin = datetime(now.year, now.month, now.day, 13)
+        game_finish = datetime((now + td).year, (now + td).month, (now + td).day, 12, 59, 59, 999999)
 
     return (game_finish - HADEJSLOVA_STARTDATE).days
