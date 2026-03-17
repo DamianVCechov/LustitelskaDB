@@ -31,7 +31,7 @@ def bicon(icon_name, fs=None, color=None):
 
 def wednesday_challenge_words_window():
     now = datetime.now()
-    if now.weekday() == 1 and now.hour >= 13 or now.weekday() == 2 and now.hour < 13:
+    if now.weekday() == 1 and now.hour >= 18 or now.weekday() == 2 and now.hour < 18:
         return True
     else:
         return False
@@ -39,7 +39,7 @@ def wednesday_challenge_words_window():
 
 def wednesday_challenge_comming():
     now = datetime.now()
-    if now.weekday() == 2 and now.hour >= 13 or now.weekday() == 3 and now.hour < 13:
+    if now.weekday() == 2 and now.hour >= 18 or now.weekday() == 3 and now.hour < 18:
         return True
     else:
         return False
