@@ -36,8 +36,9 @@ except (ImportError, ModuleNotFoundError, SyntaxError):
         log.error("WebHelpers(2) helpers not available with this Python Version")
 
 __all__ = (
-    'ResultForm', 'WednesdayChallengeWordsForm', 'LibriCipherForm', 'XTwitterPostForm', 'LegacyDataImportForm',
-    'UserRegistration', 'NewPasswordForm', 'ResetPasswordForm', 'UserProfileEditForm', 'UserProfileChangePasswordForm'
+    'ResultForm', 'ResultAdminForm' 'WednesdayChallengeWordsForm', 'LibriCipherForm', 'XTwitterPostForm',
+    'LegacyDataImportForm', 'UserRegistration', 'NewPasswordForm', 'ResetPasswordForm', 'UserProfileEditForm',
+    'UserProfileChangePasswordForm'
 )
 
 
@@ -89,6 +90,38 @@ class ResultForm(twf.Form):
         )
 
     action = lurl('/save_result')
+
+    submit = twf.SubmitButton(
+        value=l_(u'Save'),
+        css_class='btn btn-light btn-lg'
+    )
+
+
+class ResultAdminForm(twf.Form):
+
+    class child(ResultForm.child):
+
+        user_id = twf.SingleSelectField(
+            label=l_("User"),
+            help_text=l_("Please select the user whose result you want to save."),
+            placeholder=l_("User"),
+            options=[],
+            validator=validators.Int(not_empty=True),
+            required=True,
+            css_class="form-select noto-color-emoji-regular"
+        )
+
+        @classmethod
+        def post_define(cls):
+            if not getattr(cls, 'children', None):
+                return
+
+            for i, w in enumerate(cls.children):
+                if getattr(w, 'id', None) == 'user_id':
+                    cls.children.insert(0, cls.children.pop(i))
+                    break
+
+    action = lurl('/admin/save_result')
 
     submit = twf.SubmitButton(
         value=l_(u'Save'),

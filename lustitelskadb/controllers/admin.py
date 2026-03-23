@@ -33,6 +33,9 @@ import requests
 import tw2.core as twc
 import tw2.forms as twf
 
+from lustitelskadb.lib.injects import closing_deadline_jssrc, emojipicker_init_jssrc
+from lustitelskadb.lib.utils import today_game_no
+
 __all__ = ['AdministrationController']
 
 
@@ -390,6 +393,101 @@ class AdministrationController(BaseController):
     @require(has_any_permission('manage', 'dashboard', msg=l_('Only for users with appropriate permissions')))
     def index(self, **kw):
         return dict(page='administration/index', restart_confirmation_msg=_('Do you really want restart application? This will be done immediately!'))
+
+    @expose('lustitelskadb.templates.administration.result')
+    @require(has_any_permission('manage', 'resultsadmin', msg=l_('Only for users with appropriate permissions')))
+    def result(self, **kw):
+        """Create/Edit game result."""
+        tmpl_context.form = appforms.ResultAdminForm()
+
+        if today_game_no() % 7 == 5:
+            tmpl_context.form.child.children.wednesday_challenge.container_attrs = {
+                'style': 'color: var(--bs-danger);'
+            }
+            tmpl_context.form.child.children.wednesday_challenge.required = True
+
+        users = DBSession.query(model.User).all()
+        tmpl_context.form.child.children.user_id.options = [(user.user_id, u"{} @{}".format(user.display_name, user.user_name)) for user in users]
+
+        if request.validation.errors:
+            tmpl_context.form.value = kw
+            tmpl_context.form.error_msg = l_("Form filled with errors!")
+            for key, value in request.validation.errors.items():
+                if value:
+                    getattr(tmpl_context.form.child.children, key).error_msg = value
+        else:
+            tmpl_context.form.value = dict()
+
+        emoji_picker_jslnk = twc.JSLink(
+            location="bodybottom",
+            type="module",
+            link="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js",
+            template='kajiki:lustitelskadb.templates.tw2.core.jslink'
+        )
+
+        emoji_picker_jslnk.inject()
+        emojipicker_init_jssrc.inject()
+
+        return dict(page='administration/result')
+
+    @expose()
+    @require(has_any_permission('manage', 'resultsadmin', msg=l_('Only for users with appropriate permissions')))
+    @validate(form=appforms.ResultAdminForm(), error_handler=result)
+    def save_result(self, **kw):
+        """Save result."""
+        parsed_vals = {
+            'game_no': None,
+            'step': None,
+            'time': None
+        }
+        sp_result = kw.get('game_result', '').split()
+        for s in sp_result:
+            if s.find('#den') != -1:
+                parsed_vals['game_no'] = int(s.lstrip('#den')) if s.lstrip('#den').isdigit() else None
+            elif s.find('#krok') != -1:
+                parsed_vals['step'] = int(s.lstrip('#krok')) if s.lstrip('#krok').isdigit() else None
+        if sp_result[-2].endswith('min') and sp_result[-1].endswith('s'):
+            parsed_vals['time'] = int(sp_result[-2].rstrip('min')) * 60 + int(sp_result[-1].rstrip('s')) if sp_result[-2].rstrip('min').isdigit() and sp_result[-1].rstrip('s').isdigit() else None
+
+        # Unicorns has no time in result
+        if parsed_vals['step'] == 1 and parsed_vals['time'] == None:
+            parsed_vals['time'] == 0
+
+        game_result = DBSession.query(model.GameResult)
+        game_result = game_result.filter(
+            model.GameResult.game_no == parsed_vals['game_no'],
+            model.GameResult.user_id == kw.get('user_id')
+        ).first()
+
+        if game_result:
+            flash(_(u"Result of this user game is already in database"), 'warning')
+            redirect('/admin')
+
+        game_result = model.GameResult(
+            user_id=kw.get('user_id', None),
+            game_no=parsed_vals['game_no'],
+            game_time=timedelta(seconds=parsed_vals['time']) if parsed_vals['time'] != None else None,
+            game_rows=parsed_vals['step'],
+            wednesday_challenge=kw.get('wednesday_challenge', None) if parsed_vals['game_no'] % 7 == 5 else None,
+            comment=kw.get('comment', None) if kw.get('comment', None) else None,
+            game_result_time=timedelta(seconds=parsed_vals['time'] + (parsed_vals['step'] - 1) * 12) if parsed_vals['time'] != None and parsed_vals['step'] else None,
+            game_raw_data=kw.get('game_result', None)
+        )
+
+        DBSession.add(game_result)
+
+        try:
+            DBSession.flush()
+            DBSession.refresh(game_result)
+        except Exception as e:
+            flash(_(u"Something went wrong! Can't save game result to database!"), 'error')
+            redirect('/')
+
+        assemble_game_scoresheet(parsed_vals['game_no'])
+
+        flash(l_(u"Your result has been successfully saved to database"))
+
+        return redirect('/admin')
 
     @expose('lustitelskadb.templates.administration.importlegacydata')
     @require(has_any_permission('manage', 'legacyimport', msg=l_('Only for users with appropriate permissions')))
