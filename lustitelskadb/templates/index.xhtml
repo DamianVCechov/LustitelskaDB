@@ -4,81 +4,6 @@
 </head>
 
 <body py:block="body" py:strip="True">
-	<?py
-now = h.now()
-
-first_special_dates = {
-	'01.01': '&#x1F386;', # Fireworks
-	'14.03': '&Pi;', # Pi Day
-	'01.04': '&#x1F0CF;', # Playing Card Black Joker - Fool's day
-	'01.11': '&#x1F47B;', # Ghost - All Saints Day & Día de los Muertos
-	'02.11': '&#x1F47B;', # Ghost - Día de los Muertos
-	'24.12': '&#x1F384;', # Christmas Tree
-	'25.12': '&#x1F384;', # Christmas Tree
-	'26.12': '&#x1F384;', # Christmas Tree
-	'31.12': '&#x1F386;' # Fireworks
-}
-
-second_special_dates = {
-	'14.03': '&pi;' # pi Day
-}
-
-fourth_special_dates = {
-	'08.03': '&#x1F339;', # Rose - International Women's Day
-	'14.03': '&#x1F967;', # Pie - Pi Day
-	'15.03': '&#x1F634;', # Sleeping Face - World Sleep Day
-	'31.07': '&#x1F346;', # Aubergine - National Orgasm Day
-	'08.08': '&#x1F346;' # Aubergine - International Female Orgasm Day
-}
-
-fifth_special_dates = {
-	'14.03': '&#x1F427;', # Penguin - Czech name-day Rút
-	'15.03': '&#x1F6CC;', # Sleeping Accommodation - World Sleep Day
-	'26.03': '&#x1F410;', # Goat - Free The Nipple Day
-	'01.04': '&#x1F40C;', # Snail
-	'17.09': '&#x1F427;', # Penguin - 1st release of Linux
-	'13.10': '&#x1F410;', # Goat - National Bra Day
-	'24.12': '&#x26C4;', # Snowman Without Snow
-	'25.12': '&#x26C4;', # Snowman Without Snow
-	'26.12': '&#x26C4;' # Snowman Without Snow
-}
-
-last_special_dates = {
-	'01.01': '&#x1F387;', # Firework Sparkler
-	'15.02': '&#x1F4BB;', # Personal Computer - World Computer Day
-	'12.03': '&#x1F526;', # Electric torch - Invented in 12.3.1898
-	'15.03': '&#x1F4A4;', # Sleeping Symbol - World Sleep Day
-	'17.03': '&#x1F382;', # Birthday cake - This DB B-day
-	'15.09': '&#x1F365;', # Fish Cake with Swirl Design - 1st releaseof Debian
-	'21.10': '&#x1F4A1;', # Bulb - Invented in 21.10.1879
-	'29.10': '&#x1FA94;', # Aladdin's lamp - name-day of Aladdin
-	'31.10': '&#x1F383;', # Jack-O-Lantern - Halloween
-	'01.11': '&#x1F56F;', # Candle - All Saints Day & Día de los Muertos
-	'24.12': '&#x2744;', # Snowflake
-	'25.12': '&#x2744;', # Snowflake
-	'26.12': '&#x2744;', # Snowflake
-	'31.12': '&#x1F387;' # Firework Sparkler
-}
-
-badge = {
-	-1: '&#x1FAA3;',
-	-2: '&#x1FA9F;',
-	-3: '&#x1F52E;',
-	'-last': '&#x1F42E;',
-	0: '&#x1F984;',
-	1: first_special_dates.get(now.strftime('%d.%m'), '&#x1F947;'),
-	2: '&#x1F948;',
-	3: '&#x1F949;',
-	4: fourth_special_dates.get(now.strftime('%d.%m'), '&#x1F954;'),
-	5: fifth_special_dates.get(now.strftime('%d.%m'), '&#x1F422;'),
-	# 6: '&#x1FBF6;',
-	# 7: '&#x1FBF7;',
-	# 8: '&#x1FBF8;',
-	# 9: '&#x1FBF9;',
-	'leaf': '&#x1F343;', # Leaf Fluttering In Wind
-	'last': last_special_dates.get(now.strftime('%d.%m'), '&#x1F3EE;')
-}
-?>
 	<div class="bg-light rounded text-uppercase text-danger display-4 my-3" py:if="h.wednesday_challenge_comming()">
 		<div class="d-flex align-items-center clearfix">
 			<img class="img-fluid rounded wednesday-challenge-img m-1" style="max-width: 128px;" src="${tg.url('/img/wednesday-challenge-256.webp')}" alt="Wednesday Challenge" />
@@ -128,7 +53,7 @@ badge = {
 								<?py dsq_divided = True ?>
 							</tr>
 							<tr py:attrs="{'class': 'position-relative{}'.format({1: ' table-warning', 2: ' table-light', 3: ' table-success'}.get(row.game_rank, ' table-secondary' if row.wednesday_challenge == False else ''))}" title="${row.game_rank if row.game_rank is not None else '?'}. ${_('place')}, ${row.game_points if row.game_points != None else '?'} ${_('point(s)')} ${'{}: {}'.format(_('Clan'), getattr(getattr(getattr(row.user, 'clan_member', {}), 'clan', {}), 'name', '')) if getattr(getattr(getattr(row.user, 'clan_member', {}), 'clan', {}), 'name', '') else ''}">
-								<th scope="row" class="text-center">${Markup(badge.get('-last', row.game_rank)) if idx+1 == len(game) and h.lt(row.game_rank, 0) else Markup(badge.get('leaf')) if row.game_rows and h.gt(row.game_rows, 1) and row.game_time is None else Markup(badge.get('last', row.game_rank)) if row.game_rows and h.gt(row.game_rows, 1) and row.game_points == 0 and row.game_time is not None else Markup(badge.get(row.game_rank, row.game_rank)) if row.game_rank is not None else '?'}<a class="stretched-link" href="${tg.url('/detail/{}'.format(row.uid))}"></a></th>
+								<th scope="row" class="text-center">${Markup(h.BADGE.get('-last', row.game_rank)) if idx+1 == len(game) and h.lt(row.game_rank, 0) else Markup(h.BADGE.get('leaf')) if row.game_rows and h.gt(row.game_rows, 1) and row.game_time is None else Markup(h.BADGE.get('last', row.game_rank)) if row.game_rows and h.gt(row.game_rows, 1) and row.game_points == 0 and row.game_time is not None else Markup(h.BADGE.get(row.game_rank, row.game_rank)) if row.game_rank is not None else '?'}<a class="stretched-link" href="${tg.url('/detail/{}'.format(row.uid))}"></a></th>
 								<td>${getattr(getattr(getattr(row.user, 'clan_member', {}), 'clan', {}), 'symbol', '')}</td>
 								<td py:attrs="{'class': 'text-center w-100{}'.format(' text-muted' if row.game_rows is None else '')}">${row.user.display_name}<span py:if="row.comment"> ${h.bicon('chat-left-dots', color="muted")}</span></td>
 								<td py:attrs="{'class': 'text-center{}'.format(' text-muted' if row.game_rows is None else '')}">${"{}:{:02}".format(row.game_time.hour * 60 + row.game_time.minute, row.game_time.second) if row.game_time is not None else '-'}</td>
