@@ -346,6 +346,7 @@ lustitelskadb/templates/administration/__init__.py
 lustitelskadb/templates/administration/importlegacydata.xhtml
 lustitelskadb/templates/administration/index.xhtml
 lustitelskadb/templates/administration/restart.xhtml
+lustitelskadb/templates/administration/result.xhtml
 lustitelskadb/templates/administration/libricipher/__init__.py
 lustitelskadb/templates/administration/libricipher/detail.xhtml
 lustitelskadb/templates/administration/libricipher/edit.xhtml
