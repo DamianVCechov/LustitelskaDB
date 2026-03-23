@@ -512,7 +512,7 @@ class RootController(BaseController):
         ).first()
 
         if game_result:
-            flash(_(u"This game result is already in database"), 'warning')
+            flash(_(u"Result of this user game is already in database"), 'warning')
             redirect('/')
 
         game_result = model.GameResult(
@@ -532,7 +532,7 @@ class RootController(BaseController):
             DBSession.flush()
             DBSession.refresh(game_result)
         except Exception as e:
-            flash(_(u"Something went wrong! Can't save game result to database, so it isn't sent to legacy website too!"), 'error')
+            flash(_(u"Something went wrong! Can't save game result to database!"), 'error')
             redirect('/')
 
         assemble_game_scoresheet(parsed_vals['game_no'])
