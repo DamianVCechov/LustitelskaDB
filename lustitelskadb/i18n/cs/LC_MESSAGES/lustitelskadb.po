@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-03-23 03:33+0100\n"
-"PO-Revision-Date: 2026-03-23 03:36+0100\n"
+"POT-Creation-Date: 2026-03-23 22:35+0100\n"
+"PO-Revision-Date: 2026-03-23 22:36+0100\n"
 "Last-Translator: Jaroslav Mikulík <jaroslav.mikulik@runtech.cz>\n"
 "Language: cs\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -56,14 +56,14 @@ msgstr "Chcete opravdu restartovat aplikaci? Toto bude provedeno okamžitě!"
 msgid "Form filled with errors!"
 msgstr "Formulář vyplněn s chybami!"
 
+# | msgid "This game result is already in database"
 #: lustitelskadb/controllers/admin.py:463 lustitelskadb/controllers/root.py:515
-#| msgid "This game result is already in database"
 msgid "Result of this user game is already in database"
 msgstr "Herní výsledek této hry uživatele se v databázi už nachází"
 
+# | msgid "" "Something went wrong! Can't save game result to database, so it
+# | isn't " "sent to legacy website too!"
 #: lustitelskadb/controllers/admin.py:483 lustitelskadb/controllers/root.py:535
-#| msgid "" "Something went wrong! Can't save game result to database, so it
-#| isn't " "sent to legacy website too!"
 msgid "Something went wrong! Can't save game result to database!"
 msgstr "Něco se pokazilo! Nemohu uložit herní výsledek do databáze!"
 
@@ -393,8 +393,8 @@ msgid "Save"
 msgstr "Uložit"
 
 # | msgid "Username:"
+# | msgid "username"
 #: lustitelskadb/lib/forms.py:105 lustitelskadb/lib/forms.py:107
-#| msgid "username"
 msgid "User"
 msgstr "Uživatel"
 
@@ -920,7 +920,7 @@ msgstr "Pozvat nového uživatele na tento web přes Email"
 
 #: lustitelskadb/templates/detail.xhtml:61
 #: lustitelskadb/templates/detail.xhtml:183
-#: lustitelskadb/templates/index.xhtml:177
+#: lustitelskadb/templates/index.xhtml:102
 #: lustitelskadb/templates/newresult.xhtml:35
 msgid "@"
 msgstr "@"
@@ -1020,9 +1020,9 @@ msgid "⌀ game rank"
 msgstr "⌀ herní umístění"
 
 # | msgid "played"
-#: lustitelskadb/templates/api/index.xhtml:129
+#: lustitelskadb/templates/api/index.xhtml:54
 #: lustitelskadb/templates/detail.xhtml:134
-#: lustitelskadb/templates/index.xhtml:130
+#: lustitelskadb/templates/index.xhtml:55
 msgid "place"
 msgstr "místo"
 
@@ -1046,6 +1046,14 @@ msgstr "Statistika umístění"
 msgid "This game result isn't public yet!"
 msgstr "Tento herní výsledek ještě není veřejný!"
 
+# | msgid "⌀ rows for all games"
+# | msgid "⌀ for all games"
+#: lustitelskadb/templates/detail.xhtml:183
+#: lustitelskadb/templates/index.xhtml:102
+#| msgid "for game #"
+msgid "Game #"
+msgstr "Hra č."
+
 #: lustitelskadb/templates/error.xhtml:3
 msgid "A "
 msgstr "Nějaká"
@@ -1065,49 +1073,52 @@ msgid " | Welcome"
 msgstr " | Vítejte"
 
 # | msgid "Wednesday challenge"
-#: lustitelskadb/templates/index.xhtml:85
+#: lustitelskadb/templates/index.xhtml:10
 msgid "Don't forget the Wednesday challenge!"
 msgstr "Pomni, že je středeční výzva!"
 
 # | msgid "Wednesday challenge"
 # | msgid "Not played the challenge"
-#: lustitelskadb/templates/index.xhtml:88
+#: lustitelskadb/templates/index.xhtml:13
 msgid "I accept the challenge!"
 msgstr "Výzvu přijímám!"
 
 # | msgid "Wednesday challenge"
 # | msgid "Not played the challenge"
-#: lustitelskadb/templates/index.xhtml:93
+#: lustitelskadb/templates/index.xhtml:18
 #: lustitelskadb/templates/wednesday_challenge.xhtml:21
 msgid "Play the current game"
 msgstr "Hrát právě probíhající hru"
 
-#: lustitelskadb/templates/api/index.xhtml:102
-#: lustitelskadb/templates/index.xhtml:103
+#: lustitelskadb/templates/api/index.xhtml:27
+#: lustitelskadb/templates/index.xhtml:28
 msgid "Hall of fame"
 msgstr "Síň slávy"
 
-#: lustitelskadb/templates/index.xhtml:103
+#: lustitelskadb/templates/index.xhtml:28
 msgid "Game in progress"
 msgstr "Probíhající hra"
 
-#: lustitelskadb/templates/index.xhtml:108
+#: lustitelskadb/templates/api/index.xhtml:32
+#: lustitelskadb/templates/index.xhtml:33
 #: lustitelskadb/templates/ranking_points.xhtml:37
 #: lustitelskadb/templates/rankings_rows.xhtml:37
 msgid "Rank"
 msgstr "Umístění"
 
 # | msgid "plan."
-#: lustitelskadb/templates/api/index.xhtml:108
-#: lustitelskadb/templates/index.xhtml:109
-#: lustitelskadb/templates/index.xhtml:130
+#: lustitelskadb/templates/api/index.xhtml:33
+#: lustitelskadb/templates/api/index.xhtml:54
+#: lustitelskadb/templates/index.xhtml:34
+#: lustitelskadb/templates/index.xhtml:55
 #: lustitelskadb/templates/ranking_points.xhtml:38
 #: lustitelskadb/templates/rankings_rows.xhtml:38
 msgid "Clan"
 msgstr "Klan"
 
 # | msgid "played"
-#: lustitelskadb/templates/index.xhtml:110
+#: lustitelskadb/templates/api/index.xhtml:34
+#: lustitelskadb/templates/index.xhtml:35
 #: lustitelskadb/templates/ranking_points.xhtml:39
 #: lustitelskadb/templates/rankings_rows.xhtml:39
 msgid "Player"
@@ -1116,55 +1127,58 @@ msgstr "Hráč"
 # | msgid "⌀ game rank"
 # | msgid "⌀ game points"
 # | msgid "game points"
-#: lustitelskadb/templates/index.xhtml:111
+#: lustitelskadb/templates/api/index.xhtml:35
+#: lustitelskadb/templates/index.xhtml:36
 msgid "Game time"
 msgstr "Čas hry"
 
 # | msgid "Game"
 # | msgid "games"
-#: lustitelskadb/templates/index.xhtml:112
+#: lustitelskadb/templates/api/index.xhtml:36
+#: lustitelskadb/templates/index.xhtml:37
 msgid "Game rows"
 msgstr "Řádků hry"
 
 # | msgid "Game result"
-#: lustitelskadb/templates/index.xhtml:113
+#: lustitelskadb/templates/api/index.xhtml:37
+#: lustitelskadb/templates/index.xhtml:38
 msgid "Game result time"
 msgstr "Výsledný čas hry"
 
 # | msgid "Wednesday challenge"
-#: lustitelskadb/templates/api/index.xhtml:118
-#: lustitelskadb/templates/index.xhtml:119
+#: lustitelskadb/templates/api/index.xhtml:43
+#: lustitelskadb/templates/index.xhtml:44
 msgid "Not played the challenge"
 msgstr "Nehráli středeční výzvu"
 
 # | msgid "loose"
 # | msgid "lose"
 # | msgid "loss"
-#: lustitelskadb/templates/api/index.xhtml:122
-#: lustitelskadb/templates/index.xhtml:123
+#: lustitelskadb/templates/api/index.xhtml:47
+#: lustitelskadb/templates/index.xhtml:48
 msgid "Losers"
 msgstr "Poražení"
 
-#: lustitelskadb/templates/api/index.xhtml:126
-#: lustitelskadb/templates/index.xhtml:127
+#: lustitelskadb/templates/api/index.xhtml:51
+#: lustitelskadb/templates/index.xhtml:52
 msgid "Disqualified"
 msgstr "Diskvalifikovaní"
 
-#: lustitelskadb/templates/api/index.xhtml:129
-#: lustitelskadb/templates/index.xhtml:130
+#: lustitelskadb/templates/api/index.xhtml:54
+#: lustitelskadb/templates/index.xhtml:55
 msgid "point(s)"
 msgstr "bod(y/ů)"
 
-#: lustitelskadb/templates/api/index.xhtml:141
-#: lustitelskadb/templates/index.xhtml:142
+#: lustitelskadb/templates/api/index.xhtml:66
+#: lustitelskadb/templates/index.xhtml:67
 msgid "Played players"
 msgstr "Hrálo hráčů"
 
-#: lustitelskadb/templates/index.xhtml:184
+#: lustitelskadb/templates/index.xhtml:109
 msgid "Previous"
 msgstr "Předchozí"
 
-#: lustitelskadb/templates/index.xhtml:187
+#: lustitelskadb/templates/index.xhtml:112
 msgid "Next"
 msgstr "Následující"
 
@@ -1550,8 +1564,8 @@ msgstr "Administrace"
 msgid "Legacy Data Import"
 msgstr "Importuj původní data"
 
+# | msgid "User game result detail"
 #: lustitelskadb/templates/administration/index.xhtml:32
-#| msgid "User game result detail"
 msgid "User game result"
 msgstr "Herní výsledek uživatele"
 
@@ -1584,13 +1598,13 @@ msgstr " | Administrační panel | Průběh restartu APP"
 msgid "Restarting..."
 msgstr "Restartuji..."
 
+# | msgid " | New result"
 #: lustitelskadb/templates/administration/result.xhtml:3
-#| msgid " | New result"
 msgid " | User result"
 msgstr " | Výsledek uživatele"
 
+# | msgid "New result"
 #: lustitelskadb/templates/administration/result.xhtml:7
-#| msgid "New result"
 msgid "User result"
 msgstr "Výsledek uživatele"
 
@@ -1642,7 +1656,7 @@ msgstr " | X/Twitter administrace"
 msgid " | Last completed game for screenshot"
 msgstr " | Poslední kompletní hra pro snímek obrazovky"
 
-#: lustitelskadb/templates/api/index.xhtml:94
+#: lustitelskadb/templates/api/index.xhtml:19
 msgid "No data :-("
 msgstr "Žádná data :-("
 
@@ -1722,7 +1736,6 @@ msgstr "V 13 h se otevírá možnost zápisu na stránce"
 # | be " "open to all players who completed Monday's game. At 17:59, even for
 # "
 # | "players with a lamp, but I'm telling you straight up, if I'm looking for
-# "
 # | "words on Wednesday at 18:00, don't wish me, f*ck it!"
 #: lustitelskadb/templates/help/wednesday_challenge.xhtml:16
 msgid ""

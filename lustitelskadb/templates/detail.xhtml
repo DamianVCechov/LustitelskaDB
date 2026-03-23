@@ -180,7 +180,7 @@ user_xtwitter = json.loads(gameresult.user.xuser.user_info or '{"data":{}}') if 
 			<p class="fs-3">${gameresult.comment}</p>
 		</blockquote>
 		<figcaption class="blockquote-footer fs-5">
-			${gameresult.user.display_name} <cite title="Source Title">@${gameresult.user.user_name}</cite>
+			${gameresult.user.display_name} <cite title="${_('Game #')}${gameresult.game_no}">@${gameresult.user.user_name}</cite>
 		</figcaption>
 	</figure>
 </body>
