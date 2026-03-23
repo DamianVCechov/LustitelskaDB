@@ -530,6 +530,7 @@ class RootController(BaseController):
 
         try:
             DBSession.flush()
+            DBSession.refresh(game_result)
         except Exception as e:
             flash(_(u"Something went wrong! Can't save game result to database, so it isn't sent to legacy website too!"), 'error')
             redirect('/')
