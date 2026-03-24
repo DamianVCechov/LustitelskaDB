@@ -82,16 +82,16 @@ def bicon(icon_name, fs=None, color=None):
 
 
 def wednesday_challenge_words_window():
-    now = now()
-    if now.weekday() == 1 and now.hour >= 18 or now.weekday() == 2 and now.hour < 18:
+    now_dt = now()
+    if now_dt.weekday() == 1 and now_dt.hour >= 18 or now_dt.weekday() == 2 and now_dt.hour < 18:
         return True
     else:
         return False
 
 
 def wednesday_challenge_comming():
-    now = datetime.now()
-    if now.weekday() == 2 and now.hour >= 18 or now.weekday() == 3 and now.hour < 18:
+    now_dt = now()
+    if now_dt.weekday() == 2 and now_dt.hour >= 18 or now_dt.weekday() == 3 and now_dt.hour < 18:
         return True
     else:
         return False
