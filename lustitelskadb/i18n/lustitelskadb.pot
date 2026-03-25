@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: LustitelskaDB 1.13.3\n"
+"Project-Id-Version: LustitelskaDB 1.13.4\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-03-23 22:35+0100\n"
+"POT-Creation-Date: 2026-03-25 02:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -562,8 +562,8 @@ msgstr ""
 
 #: lustitelskadb/templates/about.xhtml:33
 msgid ""
-".You will then be able to enter your result from the game into the web form. "
-"In the original"
+". You will then be able to enter your result from the game into the web form."
+" In the original"
 msgstr ""
 
 #: lustitelskadb/templates/about.xhtml:33
@@ -590,7 +590,7 @@ msgid "@Lustitele"
 msgstr ""
 
 #: lustitelskadb/templates/about.xhtml:37
-msgid ", which we announce every day after 1 p.m. We would like to see you."
+msgid ", which we announce every day after 6 p.m. We would like to see you."
 msgstr ""
 
 #: lustitelskadb/templates/about.xhtml:40
@@ -1242,7 +1242,7 @@ msgid ""
 msgstr ""
 
 #: lustitelskadb/templates/wednesday_challenge.xhtml:32
-msgid "1:00 PM to next day 1:00 PM:"
+msgid "6:00 PM to next day 6:00 PM:"
 msgstr ""
 
 #: lustitelskadb/templates/wednesday_challenge.xhtml:37
@@ -1420,7 +1420,7 @@ msgstr ""
 msgid ""
 "you certainly know that our Wednesday challenge is our special bonus over and"
 " above the basic rules of the game itself. The player who wins the Monday "
-"game, immediately after the winners are announced on Tuesday at 1 pm, is "
+"game, immediately after the winners are announced on Tuesday at 6 pm, is "
 "authorized to determine three words, which are the basis of our Wednesday "
 "challenge and which all willing players enter into the game and are awarded "
 "points for it."
@@ -1441,22 +1441,22 @@ msgid ""
 "We take into account that you may not have the desire, courage or just the "
 "time to devote yourself to this, so we have expanded the possibility of "
 "registration to each Monday player, according to the time that has passed "
-"since the winners were announced on Tuesday at 1 pm."
+"since the winners were announced on Tuesday at 6 pm."
 msgstr ""
 
 #: lustitelskadb/templates/help/wednesday_challenge.xhtml:16
-msgid "At 1 pm, the possibility of registration opens on the page"
+msgid "At 6 pm, the possibility of registration opens on the page"
 msgstr ""
 
 #: lustitelskadb/templates/help/wednesday_challenge.xhtml:16
 msgid ""
 "for the golden winner. Every 5 hours later, this option will open to everyone"
-" else. So after 6:00 pm, you will be able to enter the words gold and silver."
-" From 11:00 pm, bronze will also be added, and so on. If the words have not "
-"been entered by Wednesday at 12:00 pm, the form will already be open to all "
-"players who completed Monday's game. At 12:59 pm, even for players with a "
-"lamp, but I'm telling you straight up, if I'm looking for words on Wednesday "
-"at 1:00 pm, don't wish me, f*ck it!"
+" else. So after 11:00 pm, you will be able to enter the words gold and "
+"silver. From 4:00 am next day, bronze will also be added, and so on. If the "
+"words have not been entered by Wednesday at 5:00 pm, the form will already be"
+" open to all players who completed Monday's game. At 5:59 pm, even for "
+"players with a lamp, but I'm telling you straight up, if I'm looking for "
+"words on Wednesday at 5:00 pm, don't wish me, f*ck it!"
 msgstr ""
 
 #: lustitelskadb/templates/help/wednesday_challenge.xhtml:16

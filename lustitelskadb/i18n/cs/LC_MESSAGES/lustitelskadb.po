@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-03-23 22:35+0100\n"
-"PO-Revision-Date: 2026-03-23 22:36+0100\n"
+"POT-Creation-Date: 2026-03-25 02:03+0100\n"
+"PO-Revision-Date: 2026-03-25 02:08+0100\n"
 "Last-Translator: Jaroslav Mikulík <jaroslav.mikulik@runtech.cz>\n"
 "Language: cs\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -673,12 +673,14 @@ msgid "X/Twitter"
 msgstr "X/Twitter"
 
 #: lustitelskadb/templates/about.xhtml:33
+#| msgid "" ".You will then be able to enter your result from the game into the
+#| web " "form. In the original"
 msgid ""
-".You will then be able to enter your result from the game into the web "
+". You will then be able to enter your result from the game into the web "
 "form. In the original"
 msgstr ""
-"u. Pak budete mít možnost zadat svůj výsledek ze hry do formuláře. V "
-"původní hře"
+"u. Pak budete mít možnost zadat svůj výsledek ze hry do "
+"formuláře. V původní hře"
 
 #: lustitelskadb/templates/about.xhtml:33
 msgid ""
@@ -715,8 +717,9 @@ msgstr "@Lustitele"
 # | msgid ", which we announce every day after 6 p.m. We would like to see
 # you."
 #: lustitelskadb/templates/about.xhtml:37
-msgid ", which we announce every day after 1 p.m. We would like to see you."
-msgstr ", která vyhlašujeme každý den po 13 hodině. Rádi Vás uvidíme."
+#| msgid ", which we announce every day after 1 p.m. We would like to see you."
+msgid ", which we announce every day after 6 p.m. We would like to see you."
+msgstr ", která vyhlašujeme každý den po 18 hodině. Rádi Vás uvidíme."
 
 #: lustitelskadb/templates/about.xhtml:40
 msgid ""
@@ -1048,9 +1051,9 @@ msgstr "Tento herní výsledek ještě není veřejný!"
 
 # | msgid "⌀ rows for all games"
 # | msgid "⌀ for all games"
+# | msgid "for game #"
 #: lustitelskadb/templates/detail.xhtml:183
 #: lustitelskadb/templates/index.xhtml:102
-#| msgid "for game #"
 msgid "Game #"
 msgstr "Hra č."
 
@@ -1472,8 +1475,9 @@ msgstr "Na středeční výzvu, která se bude hrát od"
 
 # | msgid "6:00 PM to next day 6:00 PM:"
 #: lustitelskadb/templates/wednesday_challenge.xhtml:32
-msgid "1:00 PM to next day 1:00 PM:"
-msgstr "13:00 h do příštího dne 13:00 h,  byla vybrána následující slova:"
+#| msgid "1:00 PM to next day 1:00 PM:"
+msgid "6:00 PM to next day 6:00 PM:"
+msgstr "18:00 h do příštího dne 18:00 h,  byla vybrána následující slova:"
 
 #: lustitelskadb/templates/wednesday_challenge.xhtml:37
 msgid ""
@@ -1678,19 +1682,25 @@ msgstr "Vážení spoluhráči luštitelé,"
 # into
 # | the game and" " are awarded points for it."
 #: lustitelskadb/templates/help/wednesday_challenge.xhtml:12
+#| msgid "" "you certainly know that our Wednesday challenge is our special
+#| bonus over" " and above the basic rules of the game itself. The player who
+#| wins the " "Monday game, immediately after the winners are announced on
+#| Tuesday at 1 " "pm, is authorized to determine three words, which are the
+#| basis of our " "Wednesday challenge and which all willing players enter into
+#| the game and" " are awarded points for it."
 msgid ""
 "you certainly know that our Wednesday challenge is our special bonus over"
 " and above the basic rules of the game itself. The player who wins the "
-"Monday game, immediately after the winners are announced on Tuesday at 1 "
+"Monday game, immediately after the winners are announced on Tuesday at 6 "
 "pm, is authorized to determine three words, which are the basis of our "
 "Wednesday challenge and which all willing players enter into the game and"
 " are awarded points for it."
 msgstr ""
-"jistě víte, že naše středeční výzva je naším speciálním bonusem nad  "
-"základní pravidla hry samotné. Hráč, který zvítězí  v pondělní hře, hned "
-"po vyhlášení vítězů v úterý v 13 h je zmocněn určit tři slova, kterážto "
-"jsou základem naší středeční výzvy a která všichni ochotní hráči naší "
-"hráči zadávají do hry a  jsou za to bodově ohodnocováni."
+"jistě víte, že naše středeční výzva je naším speciálním bonusem nad"
+" základní pravidla hry samotné. Hráč, který zvítězí  v pondělní hře, hned "
+"po vyhlášení vítězů v úterý v 18 h je zmocněn určit tři slova, kterážto "
+"jsou základem naší středeční výzvy a která všichni ochotní hráči naší"
+" hráči zadávají do hry a  jsou za to bodově ohodnocováni."
 
 #: lustitelskadb/templates/help/wednesday_challenge.xhtml:13
 msgid ""
@@ -1711,20 +1721,25 @@ msgstr "🤗"
 # time
 # | that has " "passed since the winners were announced on Tuesday at 6 pm."
 #: lustitelskadb/templates/help/wednesday_challenge.xhtml:14
+#| msgid "" "We take into account that you may not have the desire, courage or
+#| just " "the time to devote yourself to this, so we have expanded the
+#| possibility " "of registration to each Monday player, according to the time
+#| that has " "passed since the winners were announced on Tuesday at 1 pm."
 msgid ""
 "We take into account that you may not have the desire, courage or just "
 "the time to devote yourself to this, so we have expanded the possibility "
 "of registration to each Monday player, according to the time that has "
-"passed since the winners were announced on Tuesday at 1 pm."
+"passed since the winners were announced on Tuesday at 6 pm."
 msgstr ""
 "Bereme v potaz, že nemusíte mít chuť, odvahu či jen prostě čas se nám v "
 "tomto věnovat, proto jsme rozšířili možnost zápisu každému pondělnímu "
-"hráči, a to podle času, který uběhl od vyhlášení vítězů v úterý v 13 h."
+"hráči, a to podle času, který uběhl od vyhlášení vítězů v úterý v 18 h."
 
 # | msgid "At 6 pm, the possibility of registration opens on the page"
 #: lustitelskadb/templates/help/wednesday_challenge.xhtml:16
-msgid "At 1 pm, the possibility of registration opens on the page"
-msgstr "V 13 h se otevírá možnost zápisu na stránce"
+#| msgid "At 1 pm, the possibility of registration opens on the page"
+msgid "At 6 pm, the possibility of registration opens on the page"
+msgstr "V 18 h se otevírá možnost zápisu na stránce"
 
 # | msgid "" "for the golden winner. Every 5 hours later, this option will
 # open
@@ -1738,21 +1753,29 @@ msgstr "V 13 h se otevírá možnost zápisu na stránce"
 # | "players with a lamp, but I'm telling you straight up, if I'm looking for
 # | "words on Wednesday at 18:00, don't wish me, f*ck it!"
 #: lustitelskadb/templates/help/wednesday_challenge.xhtml:16
+#| msgid "" "for the golden winner. Every 5 hours later, this option will open
+#| to " "everyone else. So after 6:00 pm, you will be able to enter the words
+#| gold" " and silver. From 11:00 pm, bronze will also be added, and so on. If
+#| the " "words have not been entered by Wednesday at 12:00 pm, the form will "
+#| "already be open to all players who completed Monday's game. At 12:59 pm, "
+#| "even for players with a lamp, but I'm telling you straight up, if I'm "
+#| "looking for words on Wednesday at 1:00 pm, don't wish me, f*ck it!"
 msgid ""
 "for the golden winner. Every 5 hours later, this option will open to "
-"everyone else. So after 6:00 pm, you will be able to enter the words gold"
-" and silver. From 11:00 pm, bronze will also be added, and so on. If the "
-"words have not been entered by Wednesday at 12:00 pm, the form will "
-"already be open to all players who completed Monday's game. At 12:59 pm, "
-"even for players with a lamp, but I'm telling you straight up, if I'm "
-"looking for words on Wednesday at 1:00 pm, don't wish me, f*ck it!"
+"everyone else. So after 11:00 pm, you will be able to enter the words "
+"gold and silver. From 4:00 am next day, bronze will also be added, and so"
+" on. If the words have not been entered by Wednesday at 5:00 pm, the form"
+" will already be open to all players who completed Monday's game. At 5:59"
+" pm, even for players with a lamp, but I'm telling you straight up, if "
+"I'm looking for words on Wednesday at 5:00 pm, don't wish me, f*ck it!"
 msgstr ""
 "zlatému vítězi. O každých 5 hodin později se tato možnost otevře každému "
-"dalšímu. Tedy po 18:00 bude mít možnost zadat slova zlatý i stříbrný. Od "
-"23:00 přibude i bronzový, a tak dále. Pokud by slova nebyla zadána ani ve"
-" středu ve 12:00, formulář již bude otevřen pro všechny hráče, kteří "
+"dalšímu. Tedy po 23:00 bude mít možnost zadat slova zlatý i stříbrný. Od "
+"4:00 dalšího dne přibude i bronzový, a tak dále. Pokud by slova nebyla zadána "
+"ani ve"
+" středu v 17:00, formulář již bude otevřen pro všechny hráče, kteří "
 "dokončili pondělní hru. Ve 12:59 už i pro hráče s lampičkou, ale říkám "
-"Vám na rovinu, jestli budu ve středu v 13:00 shánět slova, tak si mne, "
+"Vám na rovinu, jestli budu ve středu v 17:00 shánět slova, tak si mne, "
 "kur****x, nepřejte!"
 
 #: lustitelskadb/templates/help/wednesday_challenge.xhtml:16
