@@ -89,8 +89,17 @@ app_jssrc.inject()
 					<li class="nav-item"><a class="nav-link${' active' if tg.request.url.startswith(tg.url('/wednesday_challenge', qualified=True)) else ''}" href="${tg.url('/wednesday_challenge')}" aria-disabled="false">Wednesday challenge</a></li>
 					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span>Rankings</span></a>
 						<ul class="dropdown-menu bg-success">
-							<li><a class="dropdown-item${' active' if tg.request.url.startswith(tg.url('/ranking_points', qualified=True)) else ''}" href="${tg.url('/ranking_points')}">By game points</a></li>
-							<li><a class="dropdown-item${' active' if tg.request.url.startswith(tg.url('/ranking_rows', qualified=True)) else ''}" href="${tg.url('/ranking_rows')}">By game rows</a></li>
+							<h6 class="dropdown-header text-warning fw-bolder">&#x1F3C1; <span>Daily games</span></h6>
+							<li><a class="dropdown-item${' active' if tg.request.url.startswith(tg.url('/ranking_points/daily', qualified=True)) else ''}" href="${tg.url('/ranking_points/daily')}">By game points</a></li>
+							<li><a class="dropdown-item${' active' if tg.request.url.startswith(tg.url('/ranking_rows/daily', qualified=True)) else ''}" href="${tg.url('/ranking_rows/daily')}">By game rows</a></li>
+							<li><hr class="dropdown-divider" /></li>
+							<h6 class="dropdown-header text-warning fw-bolder">&#x1F977; <span>Wednesday Challengers</span></h6>
+							<li><a class="dropdown-item${' active' if tg.request.url.startswith(tg.url('/ranking_points/challenge', qualified=True)) else ''}" href="${tg.url('/ranking_points/challenge')}">By game points</a></li>
+							<li><a class="dropdown-item${' active' if tg.request.url.startswith(tg.url('/ranking_rows/challenge', qualified=True)) else ''}" href="${tg.url('/ranking_rows/challenge')}">By game rows</a></li>
+							<li><hr class="dropdown-divider" /></li>
+							<h6 class="dropdown-header text-warning fw-bolder">&#x1F423; <span>Wednesday Chickens</span></h6>
+							<li><a class="dropdown-item${' active' if tg.request.url.startswith(tg.url('/ranking_points/chicken', qualified=True)) else ''}" href="${tg.url('/ranking_points/chicken')}">By game points</a></li>
+							<li><a class="dropdown-item${' active' if tg.request.url.startswith(tg.url('/ranking_rows/chicken', qualified=True)) else ''}" href="${tg.url('/ranking_rows/chicken')}">By game rows</a></li>
 						</ul></li>
 					<li class="nav-item"><a class="nav-link${' active' if tg.request.url.startswith(tg.url('/libriciphers', qualified=True)) else ''}" href="${tg.url('/libriciphers')}" aria-disabled="false">Libri Ciphers</a></li>
 					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span>Other</span></a>

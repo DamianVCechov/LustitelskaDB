@@ -11,16 +11,19 @@ def count_rank(next_place, recentplace_counter, prev_points, actual_points):
 	else:
 		return (next_place, recentplace_counter)
 ?>
-	<h1 class="bg-light p-1 rounded opacity-90 text-center">Game Ranking by points</h1>
+	<div class="bg-light p-1 rounded opacity-90">
+		<h1 class="text-center">Game Ranking by points</h1>
+		<h2 class="text-center text-muted">${{'daily': _("Daily games"), 'challenge': _("Wednesday Challengers"), 'chicken': _("Wednesday Chickens")}.get(gametype, None)}</h2>
+	</div>
 
 	<div class="row">
 		<div class="col-lg-6 offset-lg-3">
 			<div class="btn-group w-100 mt-4 text-center">
-				<a href="${tg.url('/ranking_points')}" class="btn btn-light${' active' if tg.request.url.endswith(tg.url('/ranking_points', qualified=True)) else ''}"><span>Full</span> ${h.bicon('ladder')}</a>
-				<a href="${tg.url('/ranking_points/year')}" class="btn btn-light${' active' if tg.request.url.endswith(tg.url('/ranking_points/year', qualified=True)) else ''}"><span>Year</span> ${h.bicon('arrow-return-left')}</a>
-				<a href="${tg.url('/ranking_points/month')}" class="btn btn-light${' active' if tg.request.url.endswith(tg.url('/ranking_points/month', qualified=True)) else ''}"><span>Month</span> ${h.bicon('arrow-return-left')}</a>
-				<a href="${tg.url('/ranking_points/week')}" class="btn btn-light${' active' if tg.request.url.endswith(tg.url('/ranking_points/week', qualified=True)) else ''}"><span>Week</span> ${h.bicon('arrow-return-left')}</a>
-				<a href="${tg.url('/ranking_points/3day')}" class="btn btn-light${' active' if tg.request.url.endswith(tg.url('/ranking_points/3day', qualified=True)) else ''}"><span>3 days</span> ${h.bicon('arrow-return-left')}</a>
+				<a href="${tg.url('/ranking_points/{}'.format(gametype))}" class="btn btn-light${' active' if period is None else ''}"><span>Full</span> ${h.bicon('ladder')}</a>
+				<a href="${tg.url('/ranking_points/{}/year'.format(gametype))}" class="btn btn-light${' active' if period == 'year' else ''}"><span>Year</span> ${h.bicon('arrow-return-left')}</a>
+				<a href="${tg.url('/ranking_points/{}/month'.format(gametype))}" class="btn btn-light${' active' if period == 'month' else ''}"><span>Month</span> ${h.bicon('arrow-return-left')}</a>
+				<a href="${tg.url('/ranking_points/{}/week'.format(gametype))}" class="btn btn-light${' active' if period == 'week' else ''}"><span>Week</span> ${h.bicon('arrow-return-left')}</a>
+				<a href="${tg.url('/ranking_points/{}/3day'.format(gametype))}" class="btn btn-light${' active' if period == '3day' else ''}"><span>3 days</span> ${h.bicon('arrow-return-left')}</a>
 			</div>
 		</div>
 	</div>

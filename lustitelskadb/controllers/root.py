@@ -630,12 +630,18 @@ class RootController(BaseController):
         return redirect('/')
 
     @expose('lustitelskadb.templates.ranking_points')
-    def ranking_points(self, period=None, *kw):
-        """Handle game results rankings."""
+    def ranking_points(self, gametype="daily", period=None, *kw):
+        """Handle game results rankings by points."""
+        if gametype not in ('daily', 'challenge', 'chicken'):
+            gametype = 'daily'
         if period not in ('year', 'month', 'week', '3day'):
             period = None
 
         all_games = DBSession.query(model.GameResult.game_no).filter(model.GameResult.game_no < today_game_no())
+        if gametype == 'challenge':
+            all_games = all_games.filter((model.GameResult.game_no % 7 == 5) & (model.GameResult.wednesday_challenge == True))
+        elif gametype == 'chicken':
+            all_games = all_games.filter((model.GameResult.game_no % 7 == 5) & (model.GameResult.wednesday_challenge == False))
 
         ranking = DBSession.query(
             func.count(model.GameResult.game_no).label('played_games'),
@@ -646,6 +652,12 @@ class RootController(BaseController):
         ).join(model.User).join(model.ClanMember, isouter=True).join(model.Clan, isouter=True)
 
         ranking = ranking.filter(model.GameResult.game_no < today_game_no())
+        if gametype == 'daily':
+            ranking = ranking.filter((model.GameResult.game_no % 7 != 5) | ((model.GameResult.game_no % 7 == 5) & (model.GameResult.wednesday_challenge == True)))
+        elif gametype == 'challenge':
+            ranking = ranking.filter((model.GameResult.game_no % 7 == 5) & (model.GameResult.wednesday_challenge == True))
+        elif gametype == 'chicken':
+            ranking = ranking.filter((model.GameResult.game_no % 7 == 5) & (model.GameResult.wednesday_challenge == False))
 
         if period == "year":
             ranking = ranking.filter(model.GameResult.game_no >= today_game_no() - 365)
@@ -671,12 +683,21 @@ class RootController(BaseController):
 
         popover_titles_jssrc.inject()
 
-        return dict(page="ranking-points", all_games=all_games, ranking=ranking)
+        return dict(page="ranking-points", all_games=all_games, ranking=ranking, gametype=gametype, period=period)
 
     @expose('lustitelskadb.templates.rankings_rows')
-    def ranking_rows(self, period=None, **kw):
+    def ranking_rows(self, gametype="daily", period=None, **kw):
+        """Handle game results rankings by rows."""
+        if gametype not in ('daily', 'challenge', 'chicken'):
+            gametype = 'daily'
+        if period not in ('year', 'month', 'week', '3day'):
+            period = None
 
         all_games = DBSession.query(model.GameResult.game_no).filter(model.GameResult.game_no < today_game_no())
+        if gametype == 'challenge':
+            all_games = all_games.filter((model.GameResult.game_no % 7 == 5) & (model.GameResult.wednesday_challenge == True))
+        elif gametype == 'chicken':
+            all_games = all_games.filter((model.GameResult.game_no % 7 == 5) & (model.GameResult.wednesday_challenge == False))
 
         ranking = DBSession.query(
             func.count(model.GameResult.game_no).label('played_games'),
@@ -687,6 +708,12 @@ class RootController(BaseController):
         ).join(model.User).join(model.ClanMember, isouter=True).join(model.Clan, isouter=True)
 
         ranking = ranking.filter(model.GameResult.game_no < today_game_no())
+        if gametype == 'daily':
+            ranking = ranking.filter((model.GameResult.game_no % 7 != 5) | ((model.GameResult.game_no % 7 == 5) & (model.GameResult.wednesday_challenge == True)))
+        elif gametype == 'challenge':
+            ranking = ranking.filter((model.GameResult.game_no % 7 == 5) & (model.GameResult.wednesday_challenge == True))
+        elif gametype == 'chicken':
+            ranking = ranking.filter((model.GameResult.game_no % 7 == 5) & (model.GameResult.wednesday_challenge == False))
 
         if period == "year":
             ranking = ranking.filter(model.GameResult.game_no >= today_game_no() - 365)
@@ -712,7 +739,7 @@ class RootController(BaseController):
 
         popover_titles_jssrc.inject()
 
-        return dict(page="ranking-rows", ranking=ranking, all_games=all_games)
+        return dict(page="ranking-rows", ranking=ranking, all_games=all_games, gametype=gametype, period=period)
 
     @expose('lustitelskadb.templates.libriciphers')
     @paginate('libriciphers', items_per_page=1)

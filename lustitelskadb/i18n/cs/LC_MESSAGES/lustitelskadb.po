@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-03-25 02:03+0100\n"
-"PO-Revision-Date: 2026-03-25 02:08+0100\n"
+"POT-Creation-Date: 2026-05-24 18:17+0200\n"
+"PO-Revision-Date: 2026-05-24 18:19+0200\n"
 "Last-Translator: Jaroslav Mikulík <jaroslav.mikulik@runtech.cz>\n"
 "Language: cs\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -38,7 +38,7 @@ msgstr ""
 #: lustitelskadb/controllers/libricipher.py:167
 #: lustitelskadb/controllers/libricipher.py:182
 #: lustitelskadb/controllers/root.py:449 lustitelskadb/controllers/root.py:482
-#: lustitelskadb/controllers/root.py:589 lustitelskadb/controllers/root.py:821
+#: lustitelskadb/controllers/root.py:589 lustitelskadb/controllers/root.py:848
 #: lustitelskadb/controllers/xtwitter.py:25
 #: lustitelskadb/controllers/xtwitter.py:44
 msgid "Only for users with appropriate permissions"
@@ -298,54 +298,54 @@ msgstr ""
 "Slova byla úspěšně uložena do databáze pro následující středeční výzvu! "
 "Díky!"
 
-#: lustitelskadb/controllers/root.py:749
+#: lustitelskadb/controllers/root.py:776
 msgid "Invalid game result, can't share it on X/Twitter"
 msgstr "Chybný herní výsledek, nemohu jej sdílet na X/Twitteru"
 
 # | msgid "Requested Libri Cipher not found"
 # | msgid "Requested user game result not found"
-#: lustitelskadb/controllers/root.py:759
+#: lustitelskadb/controllers/root.py:786
 msgid "Requested game result to share on X/Twitter not found"
 msgstr "Požadovaný herní výsledek, ke sdílení na X/Twitteru nenalezen"
 
-#: lustitelskadb/controllers/root.py:778
+#: lustitelskadb/controllers/root.py:805
 msgid "Invalid game result, can't share it on Bluesky"
 msgstr "Chybný herní výsledek, nemohu jej sdílet na Bluesky"
 
 # | msgid "Requested Libri Cipher not found"
 # | msgid "Requested user game result not found"
-#: lustitelskadb/controllers/root.py:788
+#: lustitelskadb/controllers/root.py:815
 msgid "Requested game result to share on Bluesky not found"
 msgstr "Požadovaný herní výsledek, ke sdílení na Bluesky nenalezen"
 
-#: lustitelskadb/controllers/root.py:801
+#: lustitelskadb/controllers/root.py:828
 msgid "Invalid game result, can't share it on Threads"
 msgstr "Chybný herní výsledek, nemohu jej sdílet na Threads"
 
 # | msgid "Requested Libri Cipher not found"
 # | msgid "Requested user game result not found"
-#: lustitelskadb/controllers/root.py:811
+#: lustitelskadb/controllers/root.py:838
 msgid "Requested game result to share on Threads not found"
 msgstr "Požadovaný herní výsledek, ke sdílení na Threads nenalezen"
 
-#: lustitelskadb/controllers/root.py:836
+#: lustitelskadb/controllers/root.py:863
 msgid "User not found"
 msgstr "Uživatel nenalezen"
 
-#: lustitelskadb/controllers/root.py:838
+#: lustitelskadb/controllers/root.py:865
 msgid "Invalid Password"
 msgstr "Neplatné heslo"
 
-#: lustitelskadb/controllers/root.py:842
+#: lustitelskadb/controllers/root.py:869
 msgid "Wrong credentials"
 msgstr "Nesprávné přihlašovací údaje"
 
-#: lustitelskadb/controllers/root.py:859
+#: lustitelskadb/controllers/root.py:886
 #, python-format
 msgid "Welcome back, %s!"
 msgstr "Vítejte zpět, uživateli %s!"
 
-#: lustitelskadb/controllers/root.py:872
+#: lustitelskadb/controllers/root.py:899
 msgid "We hope to see you soon!"
 msgstr "Těšíme se příště!"
 
@@ -554,7 +554,7 @@ msgid ""
 msgstr ""
 "Vložte znovu stejné heslo pro ujištění, že je zadáno správně bez překlepů"
 
-#: lustitelskadb/lib/forms.py:357 lustitelskadb/templates/master.xhtml:112
+#: lustitelskadb/lib/forms.py:357 lustitelskadb/templates/master.xhtml:121
 msgid "Register"
 msgstr "Registrace"
 
@@ -602,7 +602,7 @@ msgid " | About page"
 msgstr "| Stránka o aplikaci"
 
 #: lustitelskadb/templates/about.xhtml:19
-#: lustitelskadb/templates/master.xhtml:124
+#: lustitelskadb/templates/master.xhtml:133
 msgid "About"
 msgstr "O aplikaci"
 
@@ -672,15 +672,16 @@ msgstr "nahoře v menu, budete požádáni o autorizaci stran"
 msgid "X/Twitter"
 msgstr "X/Twitter"
 
+# | msgid "" ".You will then be able to enter your result from the game into
+# the
+# | web " "form. In the original"
 #: lustitelskadb/templates/about.xhtml:33
-#| msgid "" ".You will then be able to enter your result from the game into the
-#| web " "form. In the original"
 msgid ""
 ". You will then be able to enter your result from the game into the web "
 "form. In the original"
 msgstr ""
-"u. Pak budete mít možnost zadat svůj výsledek ze hry do "
-"formuláře. V původní hře"
+"u. Pak budete mít možnost zadat svůj výsledek ze hry do formuláře. V "
+"původní hře"
 
 #: lustitelskadb/templates/about.xhtml:33
 msgid ""
@@ -716,8 +717,9 @@ msgstr "@Lustitele"
 
 # | msgid ", which we announce every day after 6 p.m. We would like to see
 # you."
+# | msgid ", which we announce every day after 1 p.m. We would like to see
+# you."
 #: lustitelskadb/templates/about.xhtml:37
-#| msgid ", which we announce every day after 1 p.m. We would like to see you."
 msgid ", which we announce every day after 6 p.m. We would like to see you."
 msgstr ", která vyhlašujeme každý den po 18 hodině. Rádi Vás uvidíme."
 
@@ -1104,8 +1106,8 @@ msgstr "Probíhající hra"
 
 #: lustitelskadb/templates/api/index.xhtml:32
 #: lustitelskadb/templates/index.xhtml:33
-#: lustitelskadb/templates/ranking_points.xhtml:37
-#: lustitelskadb/templates/rankings_rows.xhtml:37
+#: lustitelskadb/templates/ranking_points.xhtml:40
+#: lustitelskadb/templates/rankings_rows.xhtml:36
 msgid "Rank"
 msgstr "Umístění"
 
@@ -1114,16 +1116,16 @@ msgstr "Umístění"
 #: lustitelskadb/templates/api/index.xhtml:54
 #: lustitelskadb/templates/index.xhtml:34
 #: lustitelskadb/templates/index.xhtml:55
-#: lustitelskadb/templates/ranking_points.xhtml:38
-#: lustitelskadb/templates/rankings_rows.xhtml:38
+#: lustitelskadb/templates/ranking_points.xhtml:41
+#: lustitelskadb/templates/rankings_rows.xhtml:37
 msgid "Clan"
 msgstr "Klan"
 
 # | msgid "played"
 #: lustitelskadb/templates/api/index.xhtml:34
 #: lustitelskadb/templates/index.xhtml:35
-#: lustitelskadb/templates/ranking_points.xhtml:39
-#: lustitelskadb/templates/rankings_rows.xhtml:39
+#: lustitelskadb/templates/ranking_points.xhtml:42
+#: lustitelskadb/templates/rankings_rows.xhtml:38
 msgid "Player"
 msgstr "Hráč"
 
@@ -1187,7 +1189,7 @@ msgstr "Následující"
 
 #: lustitelskadb/templates/administration/index.xhtml:14
 #: lustitelskadb/templates/libriciphers.xhtml:7
-#: lustitelskadb/templates/master.xhtml:95
+#: lustitelskadb/templates/master.xhtml:104
 msgid "Libri Ciphers"
 msgstr "Libri Šifry"
 
@@ -1218,7 +1220,7 @@ msgstr "Zobrazit odpověď"
 
 #: lustitelskadb/templates/login.xhtml:3 lustitelskadb/templates/login.xhtml:8
 #: lustitelskadb/templates/login.xhtml:42
-#: lustitelskadb/templates/master.xhtml:111
+#: lustitelskadb/templates/master.xhtml:120
 msgid "Login"
 msgstr "Přihlášení"
 
@@ -1271,70 +1273,107 @@ msgstr "Nový výsledek"
 msgid "Rankings"
 msgstr "Žebříčky"
 
+#: lustitelskadb/templates/master.xhtml:92
+msgid "🏁"
+msgstr "🏁"
+
+#: lustitelskadb/templates/master.xhtml:92
+#: lustitelskadb/templates/ranking_points.xhtml:16
+#: lustitelskadb/templates/rankings_rows.xhtml:16
+#| msgid "Display Name"
+msgid "Daily games"
+msgstr "Každodenní hry"
+
 # | msgid "⌀ game rank"
 # | msgid "⌀ game points"
-#: lustitelskadb/templates/master.xhtml:92
+#: lustitelskadb/templates/master.xhtml:93
+#: lustitelskadb/templates/master.xhtml:97
+#: lustitelskadb/templates/master.xhtml:101
 msgid "By game points"
 msgstr "Dle herních bodů"
 
 # | msgid "Game"
 # | msgid "games"
 # | msgid "Game rows"
-#: lustitelskadb/templates/master.xhtml:93
+#: lustitelskadb/templates/master.xhtml:94
+#: lustitelskadb/templates/master.xhtml:98
+#: lustitelskadb/templates/master.xhtml:102
 msgid "By game rows"
 msgstr "Dle řádků hry"
 
 #: lustitelskadb/templates/master.xhtml:96
+msgid "🥷"
+msgstr "🥷"
+
+#: lustitelskadb/templates/master.xhtml:96
+#: lustitelskadb/templates/ranking_points.xhtml:16
+#: lustitelskadb/templates/rankings_rows.xhtml:16
+#| msgid "Wednesday challenge"
+msgid "Wednesday Challengers"
+msgstr "Středeční vyzyvatelé"
+
+#: lustitelskadb/templates/master.xhtml:100
+msgid "🐣"
+msgstr "🐣"
+
+#: lustitelskadb/templates/master.xhtml:100
+#: lustitelskadb/templates/ranking_points.xhtml:16
+#: lustitelskadb/templates/rankings_rows.xhtml:16
+#| msgid "Wednesday challenge"
+msgid "Wednesday Chickens"
+msgstr "Středeční strašpytlíci"
+
+#: lustitelskadb/templates/master.xhtml:105
 msgid "Other"
 msgstr "Ostatní"
 
-#: lustitelskadb/templates/master.xhtml:98
+#: lustitelskadb/templates/master.xhtml:107
 msgid "Czech Wordle Game"
 msgstr "Hra HádejSlova"
 
-#: lustitelskadb/templates/master.xhtml:99
+#: lustitelskadb/templates/master.xhtml:108
 msgid "Our X/Twitter"
 msgstr "Náš X/Twitter"
 
 # | msgid "original website"
 # | msgid "We built the original website"
-#: lustitelskadb/templates/master.xhtml:101
+#: lustitelskadb/templates/master.xhtml:110
 msgid "Original website"
 msgstr "Původní web"
 
-#: lustitelskadb/templates/master.xhtml:103
+#: lustitelskadb/templates/master.xhtml:112
 msgid "Misc"
 msgstr "Různé"
 
 # | msgid "profile"
-#: lustitelskadb/templates/master.xhtml:115
+#: lustitelskadb/templates/master.xhtml:124
 msgid "User profile"
 msgstr "Profil uživatele"
 
 # | msgid "Password:"
 # | msgid "password"
 # | msgid "Change Password"
-#: lustitelskadb/templates/master.xhtml:116
+#: lustitelskadb/templates/master.xhtml:125
 msgid "Change password"
 msgstr "Změna hesla"
 
-#: lustitelskadb/templates/master.xhtml:117
+#: lustitelskadb/templates/master.xhtml:126
 msgid "Social networks"
 msgstr "Sociální sítě"
 
-#: lustitelskadb/templates/master.xhtml:119
+#: lustitelskadb/templates/master.xhtml:128
 msgid "Admin"
 msgstr "Admin"
 
-#: lustitelskadb/templates/master.xhtml:121
+#: lustitelskadb/templates/master.xhtml:130
 msgid "Logout"
 msgstr "Odhlášení"
 
-#: lustitelskadb/templates/master.xhtml:147
+#: lustitelskadb/templates/master.xhtml:156
 msgid "Copyright © "
 msgstr "Copyright © "
 
-#: lustitelskadb/templates/master.xhtml:147
+#: lustitelskadb/templates/master.xhtml:156
 msgid " 2024-"
 msgstr " 2024-"
 
@@ -1353,61 +1392,61 @@ msgstr " | Žebříček dle bodů"
 
 # | msgid " | Rankings"
 # | msgid " | Ranking by points"
-#: lustitelskadb/templates/ranking_points.xhtml:14
+#: lustitelskadb/templates/ranking_points.xhtml:15
 msgid "Game Ranking by points"
 msgstr "Herní žebříček dle bodů"
 
-#: lustitelskadb/templates/ranking_points.xhtml:19
-#: lustitelskadb/templates/rankings_rows.xhtml:19
+#: lustitelskadb/templates/ranking_points.xhtml:22
+#: lustitelskadb/templates/rankings_rows.xhtml:22
 msgid "Full"
 msgstr "Celý"
 
 # | msgid "Detach"
 # | msgid "Search"
-#: lustitelskadb/templates/ranking_points.xhtml:20
-#: lustitelskadb/templates/rankings_rows.xhtml:20
+#: lustitelskadb/templates/ranking_points.xhtml:23
+#: lustitelskadb/templates/rankings_rows.xhtml:22
 msgid "Year"
 msgstr "Rok"
 
-#: lustitelskadb/templates/ranking_points.xhtml:21
-#: lustitelskadb/templates/rankings_rows.xhtml:21
+#: lustitelskadb/templates/ranking_points.xhtml:24
+#: lustitelskadb/templates/rankings_rows.xhtml:22
 msgid "Month"
 msgstr "Měsíc"
 
-#: lustitelskadb/templates/ranking_points.xhtml:22
+#: lustitelskadb/templates/ranking_points.xhtml:25
 #: lustitelskadb/templates/rankings_rows.xhtml:22
 msgid "Week"
 msgstr "Týden"
 
-#: lustitelskadb/templates/ranking_points.xhtml:23
-#: lustitelskadb/templates/rankings_rows.xhtml:23
+#: lustitelskadb/templates/ranking_points.xhtml:26
+#: lustitelskadb/templates/rankings_rows.xhtml:22
 msgid "3 days"
 msgstr "3 dny"
 
-#: lustitelskadb/templates/ranking_points.xhtml:34
-#: lustitelskadb/templates/rankings_rows.xhtml:34
+#: lustitelskadb/templates/ranking_points.xhtml:37
+#: lustitelskadb/templates/rankings_rows.xhtml:33
 #, python-brace-format
 msgid "Ranking for {} players in {} games"
 msgstr "Žebříček pro {} hráče(ů) v(e) {} hře/hrách"
 
 # | msgid "point(s)"
 # | msgid "points"
-#: lustitelskadb/templates/ranking_points.xhtml:40
+#: lustitelskadb/templates/ranking_points.xhtml:43
 msgid "Points earned"
 msgstr "Načerpané body"
 
-#: lustitelskadb/templates/ranking_points.xhtml:41
-#: lustitelskadb/templates/rankings_rows.xhtml:41
+#: lustitelskadb/templates/ranking_points.xhtml:44
+#: lustitelskadb/templates/rankings_rows.xhtml:40
 msgid "Attendance"
 msgstr "Účast"
 
-#: lustitelskadb/templates/ranking_points.xhtml:42
+#: lustitelskadb/templates/ranking_points.xhtml:45
 msgid "Average points earned"
 msgstr "Průměrně načerpaných bodů"
 
 # | msgid "Played players"
-#: lustitelskadb/templates/ranking_points.xhtml:53
-#: lustitelskadb/templates/rankings_rows.xhtml:53
+#: lustitelskadb/templates/ranking_points.xhtml:56
+#: lustitelskadb/templates/rankings_rows.xhtml:52
 #, python-brace-format
 msgid "Played {} games"
 msgstr "Odehrané hry: {}"
@@ -1419,16 +1458,16 @@ msgstr " | Žebříček dle řádků"
 
 # | msgid "⌀ game rank"
 # | msgid "Game Ranking"
-#: lustitelskadb/templates/rankings_rows.xhtml:14
+#: lustitelskadb/templates/rankings_rows.xhtml:15
 msgid "Game Ranking by rows"
 msgstr "Herní žebříček dle řádků"
 
-#: lustitelskadb/templates/rankings_rows.xhtml:40
+#: lustitelskadb/templates/rankings_rows.xhtml:39
 msgid "Rows summary"
 msgstr "Součet řádků"
 
 # | msgid "Average points earned"
-#: lustitelskadb/templates/rankings_rows.xhtml:42
+#: lustitelskadb/templates/rankings_rows.xhtml:41
 msgid "Average rows played"
 msgstr "Průměrně zahráno řádků"
 
@@ -1474,8 +1513,8 @@ msgid ""
 msgstr "Na středeční výzvu, která se bude hrát od"
 
 # | msgid "6:00 PM to next day 6:00 PM:"
+# | msgid "1:00 PM to next day 1:00 PM:"
 #: lustitelskadb/templates/wednesday_challenge.xhtml:32
-#| msgid "1:00 PM to next day 1:00 PM:"
 msgid "6:00 PM to next day 6:00 PM:"
 msgstr "18:00 h do příštího dne 18:00 h,  byla vybrána následující slova:"
 
@@ -1681,13 +1720,10 @@ msgstr "Vážení spoluhráči luštitelé,"
 # | basis of our " "Wednesday challenge and which all willing players enter
 # into
 # | the game and" " are awarded points for it."
+# | Tuesday at 1 " "pm, is authorized to determine three words, which are the
+# | basis of our " "Wednesday challenge and which all willing players enter
+# into
 #: lustitelskadb/templates/help/wednesday_challenge.xhtml:12
-#| msgid "" "you certainly know that our Wednesday challenge is our special
-#| bonus over" " and above the basic rules of the game itself. The player who
-#| wins the " "Monday game, immediately after the winners are announced on
-#| Tuesday at 1 " "pm, is authorized to determine three words, which are the
-#| basis of our " "Wednesday challenge and which all willing players enter into
-#| the game and" " are awarded points for it."
 msgid ""
 "you certainly know that our Wednesday challenge is our special bonus over"
 " and above the basic rules of the game itself. The player who wins the "
@@ -1696,11 +1732,11 @@ msgid ""
 "Wednesday challenge and which all willing players enter into the game and"
 " are awarded points for it."
 msgstr ""
-"jistě víte, že naše středeční výzva je naším speciálním bonusem nad"
-" základní pravidla hry samotné. Hráč, který zvítězí  v pondělní hře, hned "
+"jistě víte, že naše středeční výzva je naším speciálním bonusem nad "
+"základní pravidla hry samotné. Hráč, který zvítězí  v pondělní hře, hned "
 "po vyhlášení vítězů v úterý v 18 h je zmocněn určit tři slova, kterážto "
-"jsou základem naší středeční výzvy a která všichni ochotní hráči naší"
-" hráči zadávají do hry a  jsou za to bodově ohodnocováni."
+"jsou základem naší středeční výzvy a která všichni ochotní hráči naší "
+"hráči zadávají do hry a  jsou za to bodově ohodnocováni."
 
 #: lustitelskadb/templates/help/wednesday_challenge.xhtml:13
 msgid ""
@@ -1720,11 +1756,12 @@ msgstr "🤗"
 # | possibility " "of registration to each Monday player, according to the
 # time
 # | that has " "passed since the winners were announced on Tuesday at 6 pm."
+# | msgid "" "We take into account that you may not have the desire, courage
+# or
+# | possibility " "of registration to each Monday player, according to the
+# time
+# | that has " "passed since the winners were announced on Tuesday at 1 pm."
 #: lustitelskadb/templates/help/wednesday_challenge.xhtml:14
-#| msgid "" "We take into account that you may not have the desire, courage or
-#| just " "the time to devote yourself to this, so we have expanded the
-#| possibility " "of registration to each Monday player, according to the time
-#| that has " "passed since the winners were announced on Tuesday at 1 pm."
 msgid ""
 "We take into account that you may not have the desire, courage or just "
 "the time to devote yourself to this, so we have expanded the possibility "
@@ -1736,8 +1773,8 @@ msgstr ""
 "hráči, a to podle času, který uběhl od vyhlášení vítězů v úterý v 18 h."
 
 # | msgid "At 6 pm, the possibility of registration opens on the page"
+# | msgid "At 1 pm, the possibility of registration opens on the page"
 #: lustitelskadb/templates/help/wednesday_challenge.xhtml:16
-#| msgid "At 1 pm, the possibility of registration opens on the page"
 msgid "At 6 pm, the possibility of registration opens on the page"
 msgstr "V 18 h se otevírá možnost zápisu na stránce"
 
@@ -1752,14 +1789,18 @@ msgstr "V 18 h se otevírá možnost zápisu na stránce"
 # "
 # | "players with a lamp, but I'm telling you straight up, if I'm looking for
 # | "words on Wednesday at 18:00, don't wish me, f*ck it!"
+# | msgid "" "for the golden winner. Every 5 hours later, this option will
+# open
+# | to " "everyone else. So after 6:00 pm, you will be able to enter the words
+# | gold" " and silver. From 11:00 pm, bronze will also be added, and so on.
+# If
+# | the " "words have not been entered by Wednesday at 12:00 pm, the form will
+# "
+# | "already be open to all players who completed Monday's game. At 12:59 pm,
+# "
+# | "even for players with a lamp, but I'm telling you straight up, if I'm "
+# | "looking for words on Wednesday at 1:00 pm, don't wish me, f*ck it!"
 #: lustitelskadb/templates/help/wednesday_challenge.xhtml:16
-#| msgid "" "for the golden winner. Every 5 hours later, this option will open
-#| to " "everyone else. So after 6:00 pm, you will be able to enter the words
-#| gold" " and silver. From 11:00 pm, bronze will also be added, and so on. If
-#| the " "words have not been entered by Wednesday at 12:00 pm, the form will "
-#| "already be open to all players who completed Monday's game. At 12:59 pm, "
-#| "even for players with a lamp, but I'm telling you straight up, if I'm "
-#| "looking for words on Wednesday at 1:00 pm, don't wish me, f*ck it!"
 msgid ""
 "for the golden winner. Every 5 hours later, this option will open to "
 "everyone else. So after 11:00 pm, you will be able to enter the words "
@@ -1771,12 +1812,11 @@ msgid ""
 msgstr ""
 "zlatému vítězi. O každých 5 hodin později se tato možnost otevře každému "
 "dalšímu. Tedy po 23:00 bude mít možnost zadat slova zlatý i stříbrný. Od "
-"4:00 dalšího dne přibude i bronzový, a tak dále. Pokud by slova nebyla zadána "
-"ani ve"
-" středu v 17:00, formulář již bude otevřen pro všechny hráče, kteří "
-"dokončili pondělní hru. Ve 12:59 už i pro hráče s lampičkou, ale říkám "
-"Vám na rovinu, jestli budu ve středu v 17:00 shánět slova, tak si mne, "
-"kur****x, nepřejte!"
+"4:00 dalšího dne přibude i bronzový, a tak dále. Pokud by slova nebyla "
+"zadána ani ve středu v 17:00, formulář již bude otevřen pro všechny "
+"hráče, kteří dokončili pondělní hru. Ve 12:59 už i pro hráče s lampičkou,"
+" ale říkám Vám na rovinu, jestli budu ve středu v 17:00 shánět slova, tak"
+" si mne, kur****x, nepřejte!"
 
 #: lustitelskadb/templates/help/wednesday_challenge.xhtml:16
 msgid "😠"

@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: LustitelskaDB 1.13.4\n"
+"Project-Id-Version: LustitelskaDB 1.13.5\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-03-25 02:03+0100\n"
+"POT-Creation-Date: 2026-05-24 18:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgstr ""
 #: lustitelskadb/controllers/libricipher.py:167
 #: lustitelskadb/controllers/libricipher.py:182
 #: lustitelskadb/controllers/root.py:449 lustitelskadb/controllers/root.py:482
-#: lustitelskadb/controllers/root.py:589 lustitelskadb/controllers/root.py:821
+#: lustitelskadb/controllers/root.py:589 lustitelskadb/controllers/root.py:848
 #: lustitelskadb/controllers/xtwitter.py:25
 #: lustitelskadb/controllers/xtwitter.py:44
 msgid "Only for users with appropriate permissions"
@@ -241,48 +241,48 @@ msgid ""
 "Thanx!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:749
+#: lustitelskadb/controllers/root.py:776
 msgid "Invalid game result, can't share it on X/Twitter"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:759
+#: lustitelskadb/controllers/root.py:786
 msgid "Requested game result to share on X/Twitter not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:778
+#: lustitelskadb/controllers/root.py:805
 msgid "Invalid game result, can't share it on Bluesky"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:788
+#: lustitelskadb/controllers/root.py:815
 msgid "Requested game result to share on Bluesky not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:801
+#: lustitelskadb/controllers/root.py:828
 msgid "Invalid game result, can't share it on Threads"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:811
+#: lustitelskadb/controllers/root.py:838
 msgid "Requested game result to share on Threads not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:836
+#: lustitelskadb/controllers/root.py:863
 msgid "User not found"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:838
+#: lustitelskadb/controllers/root.py:865
 msgid "Invalid Password"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:842
+#: lustitelskadb/controllers/root.py:869
 msgid "Wrong credentials"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:859
+#: lustitelskadb/controllers/root.py:886
 #, python-format
 msgid "Welcome back, %s!"
 msgstr ""
 
-#: lustitelskadb/controllers/root.py:872
+#: lustitelskadb/controllers/root.py:899
 msgid "We hope to see you soon!"
 msgstr ""
 
@@ -461,7 +461,7 @@ msgid ""
 "typos"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:357 lustitelskadb/templates/master.xhtml:112
+#: lustitelskadb/lib/forms.py:357 lustitelskadb/templates/master.xhtml:121
 msgid "Register"
 msgstr ""
 
@@ -503,7 +503,7 @@ msgstr ""
 msgid " | About page"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:19 lustitelskadb/templates/master.xhtml:124
+#: lustitelskadb/templates/about.xhtml:19 lustitelskadb/templates/master.xhtml:133
 msgid "About"
 msgstr ""
 
@@ -920,23 +920,23 @@ msgstr ""
 
 #: lustitelskadb/templates/api/index.xhtml:32
 #: lustitelskadb/templates/index.xhtml:33
-#: lustitelskadb/templates/ranking_points.xhtml:37
-#: lustitelskadb/templates/rankings_rows.xhtml:37
+#: lustitelskadb/templates/ranking_points.xhtml:40
+#: lustitelskadb/templates/rankings_rows.xhtml:36
 msgid "Rank"
 msgstr ""
 
 #: lustitelskadb/templates/api/index.xhtml:33
 #: lustitelskadb/templates/api/index.xhtml:54
 #: lustitelskadb/templates/index.xhtml:34 lustitelskadb/templates/index.xhtml:55
-#: lustitelskadb/templates/ranking_points.xhtml:38
-#: lustitelskadb/templates/rankings_rows.xhtml:38
+#: lustitelskadb/templates/ranking_points.xhtml:41
+#: lustitelskadb/templates/rankings_rows.xhtml:37
 msgid "Clan"
 msgstr ""
 
 #: lustitelskadb/templates/api/index.xhtml:34
 #: lustitelskadb/templates/index.xhtml:35
-#: lustitelskadb/templates/ranking_points.xhtml:39
-#: lustitelskadb/templates/rankings_rows.xhtml:39
+#: lustitelskadb/templates/ranking_points.xhtml:42
+#: lustitelskadb/templates/rankings_rows.xhtml:38
 msgid "Player"
 msgstr ""
 
@@ -990,7 +990,7 @@ msgstr ""
 
 #: lustitelskadb/templates/administration/index.xhtml:14
 #: lustitelskadb/templates/libriciphers.xhtml:7
-#: lustitelskadb/templates/master.xhtml:95
+#: lustitelskadb/templates/master.xhtml:104
 msgid "Libri Ciphers"
 msgstr ""
 
@@ -1020,7 +1020,7 @@ msgid "Show answer"
 msgstr ""
 
 #: lustitelskadb/templates/login.xhtml:3 lustitelskadb/templates/login.xhtml:8
-#: lustitelskadb/templates/login.xhtml:42 lustitelskadb/templates/master.xhtml:111
+#: lustitelskadb/templates/login.xhtml:42 lustitelskadb/templates/master.xhtml:120
 msgid "Login"
 msgstr ""
 
@@ -1070,58 +1070,90 @@ msgid "Rankings"
 msgstr ""
 
 #: lustitelskadb/templates/master.xhtml:92
+msgid "🏁"
+msgstr ""
+
+#: lustitelskadb/templates/master.xhtml:92
+#: lustitelskadb/templates/ranking_points.xhtml:16
+#: lustitelskadb/templates/rankings_rows.xhtml:16
+msgid "Daily games"
+msgstr ""
+
+#: lustitelskadb/templates/master.xhtml:93 lustitelskadb/templates/master.xhtml:97
+#: lustitelskadb/templates/master.xhtml:101
 msgid "By game points"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:93
+#: lustitelskadb/templates/master.xhtml:94 lustitelskadb/templates/master.xhtml:98
+#: lustitelskadb/templates/master.xhtml:102
 msgid "By game rows"
 msgstr ""
 
 #: lustitelskadb/templates/master.xhtml:96
+msgid "🥷"
+msgstr ""
+
+#: lustitelskadb/templates/master.xhtml:96
+#: lustitelskadb/templates/ranking_points.xhtml:16
+#: lustitelskadb/templates/rankings_rows.xhtml:16
+msgid "Wednesday Challengers"
+msgstr ""
+
+#: lustitelskadb/templates/master.xhtml:100
+msgid "🐣"
+msgstr ""
+
+#: lustitelskadb/templates/master.xhtml:100
+#: lustitelskadb/templates/ranking_points.xhtml:16
+#: lustitelskadb/templates/rankings_rows.xhtml:16
+msgid "Wednesday Chickens"
+msgstr ""
+
+#: lustitelskadb/templates/master.xhtml:105
 msgid "Other"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:98
+#: lustitelskadb/templates/master.xhtml:107
 msgid "Czech Wordle Game"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:99
+#: lustitelskadb/templates/master.xhtml:108
 msgid "Our X/Twitter"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:101
+#: lustitelskadb/templates/master.xhtml:110
 msgid "Original website"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:103
+#: lustitelskadb/templates/master.xhtml:112
 msgid "Misc"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:115
+#: lustitelskadb/templates/master.xhtml:124
 msgid "User profile"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:116
+#: lustitelskadb/templates/master.xhtml:125
 msgid "Change password"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:117
+#: lustitelskadb/templates/master.xhtml:126
 msgid "Social networks"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:119
+#: lustitelskadb/templates/master.xhtml:128
 msgid "Admin"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:121
+#: lustitelskadb/templates/master.xhtml:130
 msgid "Logout"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:147
+#: lustitelskadb/templates/master.xhtml:156
 msgid "Copyright © "
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:147
+#: lustitelskadb/templates/master.xhtml:156
 msgid " 2024-"
 msgstr ""
 
@@ -1137,56 +1169,56 @@ msgstr ""
 msgid " | Ranking by points"
 msgstr ""
 
-#: lustitelskadb/templates/ranking_points.xhtml:14
+#: lustitelskadb/templates/ranking_points.xhtml:15
 msgid "Game Ranking by points"
-msgstr ""
-
-#: lustitelskadb/templates/ranking_points.xhtml:19
-#: lustitelskadb/templates/rankings_rows.xhtml:19
-msgid "Full"
-msgstr ""
-
-#: lustitelskadb/templates/ranking_points.xhtml:20
-#: lustitelskadb/templates/rankings_rows.xhtml:20
-msgid "Year"
-msgstr ""
-
-#: lustitelskadb/templates/ranking_points.xhtml:21
-#: lustitelskadb/templates/rankings_rows.xhtml:21
-msgid "Month"
 msgstr ""
 
 #: lustitelskadb/templates/ranking_points.xhtml:22
 #: lustitelskadb/templates/rankings_rows.xhtml:22
-msgid "Week"
+msgid "Full"
 msgstr ""
 
 #: lustitelskadb/templates/ranking_points.xhtml:23
-#: lustitelskadb/templates/rankings_rows.xhtml:23
+#: lustitelskadb/templates/rankings_rows.xhtml:22
+msgid "Year"
+msgstr ""
+
+#: lustitelskadb/templates/ranking_points.xhtml:24
+#: lustitelskadb/templates/rankings_rows.xhtml:22
+msgid "Month"
+msgstr ""
+
+#: lustitelskadb/templates/ranking_points.xhtml:25
+#: lustitelskadb/templates/rankings_rows.xhtml:22
+msgid "Week"
+msgstr ""
+
+#: lustitelskadb/templates/ranking_points.xhtml:26
+#: lustitelskadb/templates/rankings_rows.xhtml:22
 msgid "3 days"
 msgstr ""
 
-#: lustitelskadb/templates/ranking_points.xhtml:34
-#: lustitelskadb/templates/rankings_rows.xhtml:34
+#: lustitelskadb/templates/ranking_points.xhtml:37
+#: lustitelskadb/templates/rankings_rows.xhtml:33
 #, python-brace-format
 msgid "Ranking for {} players in {} games"
 msgstr ""
 
-#: lustitelskadb/templates/ranking_points.xhtml:40
+#: lustitelskadb/templates/ranking_points.xhtml:43
 msgid "Points earned"
 msgstr ""
 
-#: lustitelskadb/templates/ranking_points.xhtml:41
-#: lustitelskadb/templates/rankings_rows.xhtml:41
+#: lustitelskadb/templates/ranking_points.xhtml:44
+#: lustitelskadb/templates/rankings_rows.xhtml:40
 msgid "Attendance"
 msgstr ""
 
-#: lustitelskadb/templates/ranking_points.xhtml:42
+#: lustitelskadb/templates/ranking_points.xhtml:45
 msgid "Average points earned"
 msgstr ""
 
-#: lustitelskadb/templates/ranking_points.xhtml:53
-#: lustitelskadb/templates/rankings_rows.xhtml:53
+#: lustitelskadb/templates/ranking_points.xhtml:56
+#: lustitelskadb/templates/rankings_rows.xhtml:52
 #, python-brace-format
 msgid "Played {} games"
 msgstr ""
@@ -1195,15 +1227,15 @@ msgstr ""
 msgid " | Ranking by rows"
 msgstr ""
 
-#: lustitelskadb/templates/rankings_rows.xhtml:14
+#: lustitelskadb/templates/rankings_rows.xhtml:15
 msgid "Game Ranking by rows"
 msgstr ""
 
-#: lustitelskadb/templates/rankings_rows.xhtml:40
+#: lustitelskadb/templates/rankings_rows.xhtml:39
 msgid "Rows summary"
 msgstr ""
 
-#: lustitelskadb/templates/rankings_rows.xhtml:42
+#: lustitelskadb/templates/rankings_rows.xhtml:41
 msgid "Average rows played"
 msgstr ""
 
