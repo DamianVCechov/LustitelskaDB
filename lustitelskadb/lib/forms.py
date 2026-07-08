@@ -36,9 +36,9 @@ except (ImportError, ModuleNotFoundError, SyntaxError):
         log.error("WebHelpers(2) helpers not available with this Python Version")
 
 __all__ = (
-    'ResultForm', 'ResultAdminForm' 'WednesdayChallengeWordsForm', 'LibriCipherForm', 'XTwitterPostForm',
-    'LegacyDataImportForm', 'UserRegistration', 'NewPasswordForm', 'ResetPasswordForm', 'UserProfileEditForm',
-    'UserProfileChangePasswordForm'
+    'ResultForm', 'ResultAdminForm', 'WarmerResultForm', 'WarmerResultAdminForm', 'WednesdayChallengeWordsForm',
+    'LibriCipherForm', 'XTwitterPostForm', 'LegacyDataImportForm',
+    'UserRegistration', 'NewPasswordForm', 'ResetPasswordForm', 'UserProfileEditForm', 'UserProfileChangePasswordForm'
 )
 
 
@@ -122,6 +122,81 @@ class ResultAdminForm(twf.Form):
                     break
 
     action = lurl('/admin/save_result')
+
+    submit = twf.SubmitButton(
+        value=l_(u'Save'),
+        css_class='btn btn-light btn-lg'
+    )
+
+
+class WarmerResultForm(twf.Form):
+
+    class child(twf.ListLayout):
+
+        css_class = 'list-unstyled bg-light p-3 rounded'
+
+        game_guesses = twf.NumberField(
+            label=l_(u'Game guesses'),
+            help_text=l_(u'Please Enter your game guesses (required)'),
+            placeholder=l_(u'Game guesses'),
+            validator=validators.Int(min=1),
+            min=1,
+            max=32767,
+            required=True,
+            autofocus=True,
+            css_class="form-control font-monospace fs-4 my-3"
+        )
+
+        comment = twf.TextArea(
+            label=l_(u'Comments'),
+            help_text=l_(u'Please Enter any comments (optional)'),
+            placeholder=l_(u'Comments'),
+            validator=validators.ByteString(),
+            required=False,
+            rows=5,
+            css_class="form-control fs-4 my-3 noto-color-emoji-regular"
+        )
+
+        emoji_picker = twf.LinkField(
+            label=html.literal('<div class="emoji-picker-tooltip" role="tooltip"><emoji-picker></emoji-picker></div>'),
+            text=html.literal('<i class="bi bi-emoji-smile"></i>'),
+            css_class="btn btn-outline-secondary",
+            link="#"
+        )
+
+    action = lurl('/save_warmer_result')
+
+    submit = twf.SubmitButton(
+        value=l_(u'Save'),
+        css_class='btn btn-light btn-lg'
+    )
+
+
+class WarmerResultAdminForm(twf.Form):
+
+    class child(WarmerResultForm.child):
+
+        user_id = twf.SingleSelectField(
+            label=l_("User"),
+            help_text=l_("Please select the user whose result you want to save."),
+            placeholder=l_("User"),
+            options=[],
+            validator=validators.Int(not_empty=True),
+            required=True,
+            css_class="form-select noto-color-emoji-regular"
+        )
+
+        @classmethod
+        def post_define(cls):
+            if not getattr(cls, 'children', None):
+                return
+
+            for i, w in enumerate(cls.children):
+                if getattr(w, 'id', None) == 'user_id':
+                    cls.children.insert(0, cls.children.pop(i))
+                    break
+
+    action = lurl('/admin/save_warmer_result')
 
     submit = twf.SubmitButton(
         value=l_(u'Save'),

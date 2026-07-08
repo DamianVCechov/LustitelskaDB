@@ -26,7 +26,7 @@ import lustitelskadb.lib.forms as appforms
 from lustitelskadb.lib.utils import assemble_game_scoresheet
 
 from pathlib import Path
-from datetime import datetime, timedelta
+from datetime import datetime, date, time, timedelta
 import csv
 import requests
 
@@ -247,6 +247,58 @@ class WednesdayChallengesWordsAdminCrudConfig(CrudRestControllerConfig):
             return EasyCrudRestController.put(self, *args, **kw)
 
 
+class WarmerGameAdminCrudConfig(CrudRestControllerConfig):
+
+    admin_group = 'Game Warmer'
+
+    class defaultCrudRestController(EasyCrudRestController):
+        __table_options__ = {
+            '__omit_fields__': [
+            ]
+        }
+
+        __form_edit_options__ = {
+            '__omit_fields__': [
+                'created',
+                'updated',
+            ]
+        }
+
+        __form_new_options__ = {
+            '__omit_fields__': [
+                'uid',
+                'created',
+                'updated'
+            ]
+        }
+
+
+class WarmerGameResultsAdminCrudConfig(CrudRestControllerConfig):
+
+    admin_group = 'Game Warmer'
+
+    class defaultCrudRestController(EasyCrudRestController):
+        __table_options__ = {
+            '__omit_fields__': [
+            ]
+        }
+
+        __form_edit_options__ = {
+            '__omit_fields__': [
+                'created',
+                'updated',
+            ]
+        }
+
+        __form_new_options__ = {
+            '__omit_fields__': [
+                'uid',
+                'created',
+                'updated'
+            ]
+        }
+
+
 class ClanAdminCrudConfig(CrudRestControllerConfig):
 
     admin_group = 'Clan'
@@ -455,6 +507,10 @@ class CustomAdminConfig(TGAdminConfig):
 
     wednesdaychallengeword = WednesdayChallengesWordsAdminCrudConfig
 
+    warmergame = WarmerGameAdminCrudConfig
+
+    warmergameresult = WarmerGameResultsAdminCrudConfig
+
     clan = ClanAdminCrudConfig
 
     clanmember = ClanMemberAdminCrudConfig
@@ -576,6 +632,73 @@ class AdministrationController(BaseController):
         assemble_game_scoresheet(parsed_vals['game_no'])
 
         flash(l_(u"Your result has been successfully saved to database"))
+
+        return redirect('/admin')
+
+    @expose('lustitelskadb.templates.administration.warmer_result')
+    @require(has_any_permission('manage', 'resultsadmin', msg=l_('Only for users with appropriate permissions')))
+    def warmer_result(self, **kw):
+        """Create/Edit Warmer game result."""
+        tmpl_context.form = appforms.WarmerResultAdminForm()
+
+        users = DBSession.query(model.User).all()
+        tmpl_context.form.child.children.user_id.options = [(user.user_id, u"{} @{}".format(user.display_name, user.user_name)) for user in users]
+
+        if request.validation.errors:
+            tmpl_context.form.value = kw
+            tmpl_context.form.error_msg = l_("Form filled with errors!")
+            for key, value in request.validation.errors.items():
+                if value:
+                    getattr(tmpl_context.form.child.children, key).error_msg = value
+        else:
+            tmpl_context.form.value = dict()
+
+        emoji_picker_jslnk = twc.JSLink(
+            location="bodybottom",
+            type="module",
+            link="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js",
+            template='kajiki:lustitelskadb.templates.tw2.core.jslink'
+        )
+
+        emoji_picker_jslnk.inject()
+        emojipicker_init_jssrc.inject()
+
+        return dict(page='administration/warmer_result')
+
+    @expose()
+    @require(has_any_permission('manage', 'resultsadmin', msg=l_('Only for users with appropriate permissions')))
+    @validate(form=appforms.WarmerResultAdminForm(), error_handler=result)
+    def save_warmer_result(self, **kw):
+        """Save Warmer result."""
+        now = datetime.now()
+        today = datetime.today() if now.time() >= time(3, 0) else datetime.today() - timedelta(days=1)
+
+        warmer_game_result = DBSession.query(model.WarmerGameResult)
+        warmer_game_result = warmer_game_result.filter(
+            model.WarmerGameResult.game_date == today,
+            model.WarmerGameResult.user_id == kw.get('user_id')
+        ).first()
+
+        if warmer_game_result:
+            flash(_(u"Result of this user Warmer game is already in database"), 'warning')
+            redirect('/admin')
+
+        warmer_game_result = model.WarmerGameResult(
+            user_id=kw.get('user_id', None),
+            game_date=today,
+            comment=kw.get('comment', None) if kw.get('comment', None) else None
+        )
+
+        DBSession.add(warmer_game_result)
+
+        try:
+            DBSession.flush()
+            DBSession.refresh(warmer_game_result)
+        except Exception as e:
+            flash(_(u"Something went wrong! Can't save Warmer game result to database!"), 'error')
+            redirect('/')
+
+        flash(l_(u"Your Warmer result has been successfully saved to database"))
 
         return redirect('/admin')
 
