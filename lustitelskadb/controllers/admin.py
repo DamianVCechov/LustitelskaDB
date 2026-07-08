@@ -39,9 +39,26 @@ from lustitelskadb.lib.utils import today_game_no
 __all__ = ['AdministrationController']
 
 
+def xuser_options():
+    return [
+        (r.uid, u"{}: @{}".format(r.display_name, r.user_name))
+        for r in DBSession.query(model.XTwitter)
+    ]
+
+
 class CustomCheckbox(twf.CheckBox):
 
     css_class = "form-check-input h4"
+
+
+class CustomSingleSelectField(twf.SingleSelectField):
+
+    css_class = "form-select"
+
+
+class XUserSingleSelectField(CustomSingleSelectField):
+
+    options = twc.Deferred(xuser_options)
 
 
 class XTwitterAdminCrudConfig(CrudRestControllerConfig):
@@ -240,8 +257,15 @@ class UserAdminCrudConfig(CrudRestControllerConfig):
                 '_password',
                 'created',
                 'results',
-                'wednesday_challenges'
-            ]
+                'wednesday_challenges',
+                'clan_member'
+            ],
+            '__field_widgets__': {
+                'xuser': XUserSingleSelectField(
+                    key="xuser",
+                    label="X/Twitter User"
+                )
+            }
         }
 
         __form_new_options__ = {
