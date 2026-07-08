@@ -37,6 +37,9 @@ lustitelskadb/lib/helpers.py
 lustitelskadb/lib/injects.py
 lustitelskadb/lib/strings.py
 lustitelskadb/lib/utils.py
+lustitelskadb/lib/monkeypatch/__init__.py
+lustitelskadb/lib/monkeypatch/patch_sprox_sqla20.py
+lustitelskadb/lib/monkeypatch/patch_tgext_crud_registered_validate.py
 lustitelskadb/model/__init__.py
 lustitelskadb/model/auth.py
 lustitelskadb/model/clan.py
@@ -385,6 +388,7 @@ lustitelskadb/websetup/schema.py
 migration/env.py
 migration/script.py.mako
 migration/versions/0fb9d06c44cb_change_relations_to_games_and_wc.py
+migration/versions/5d68c085511f_added_atmosphere_sns_users.py
 migration/versions/8d930c69a0a5_enlarged_libriciphers_description_and_.py
 migration/versions/a00aefdc7189_display_name_changed_to_non_unique.py
 migration/versions/a01becafe8f7_create_local_accounts_if_does_not_exists.py
