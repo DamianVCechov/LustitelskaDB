@@ -47,6 +47,7 @@ lustitelskadb/model/game.py
 lustitelskadb/model/libriciphers.py
 lustitelskadb/model/model.py.template
 lustitelskadb/model/sns.py
+lustitelskadb/model/warmergame.py
 lustitelskadb/public/favicon.ico
 lustitelskadb/public/css/bootstrap-glyphicons.css
 lustitelskadb/public/css/bootstrap-glyphicons.min.css
@@ -350,6 +351,7 @@ lustitelskadb/templates/administration/importlegacydata.xhtml
 lustitelskadb/templates/administration/index.xhtml
 lustitelskadb/templates/administration/restart.xhtml
 lustitelskadb/templates/administration/result.xhtml
+lustitelskadb/templates/administration/warmer_result.xhtml
 lustitelskadb/templates/administration/libricipher/__init__.py
 lustitelskadb/templates/administration/libricipher/detail.xhtml
 lustitelskadb/templates/administration/libricipher/edit.xhtml
@@ -389,6 +391,7 @@ migration/env.py
 migration/script.py.mako
 migration/versions/0fb9d06c44cb_change_relations_to_games_and_wc.py
 migration/versions/5d68c085511f_added_atmosphere_sns_users.py
+migration/versions/8059f6120ba3_added_warmer_game_model.py
 migration/versions/8d930c69a0a5_enlarged_libriciphers_description_and_.py
 migration/versions/a00aefdc7189_display_name_changed_to_non_unique.py
 migration/versions/a01becafe8f7_create_local_accounts_if_does_not_exists.py
