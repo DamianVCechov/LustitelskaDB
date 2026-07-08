@@ -196,7 +196,7 @@ except ImportError:
 
 try:
     # Enable User Registration if available, install tgapp-registration to turn it on
-    plug(base_config, 'registration')
+    plug(base_config, 'registration', global_models=True)
     base_config.update_blueprint({
         '_pluggable_registration_config': {
             'form': 'lustitelskadb.lib.forms.UserRegistration'
@@ -222,7 +222,7 @@ except ImportError:
 
 try:
     # Enable User Profile if available, install tgapp-userprofile to turn it on
-    plug(base_config, 'userprofile')
+    plug(base_config, 'userprofile', global_models=True)
 except ImportError:
     pass
 
