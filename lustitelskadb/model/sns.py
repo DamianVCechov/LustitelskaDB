@@ -7,7 +7,7 @@ from sqlalchemy.orm import relationship, backref
 
 from lustitelskadb.model import DeclarativeBase, metadata, DBSession
 
-__all__ = ['XTwitter']
+__all__ = ['XTwitter', 'Atmosphere']
 
 
 class XTwitter(DeclarativeBase):
@@ -26,4 +26,22 @@ class XTwitter(DeclarativeBase):
     user_id = Column(Integer, ForeignKey('tg_user.user_id'), index=True)
     user = relationship('User',
                         backref=backref('xuser', uselist=False,
+                                        cascade='all, delete-orphan'))
+
+class Atmosphere(DeclarativeBase):
+    __tablename__ = 'atmosphere'
+    __table_args__ = {
+                      'mysql_engine': 'InnoDB',
+                      'mysql_charset': 'utf8mb4'
+    }
+
+    uid = Column(Integer, primary_key=True)
+    did = Column(String(300), unique=True, nullable=False, default='', server_default='')
+    user_name = Column(String(255), unique=True, nullable=False, default='', server_default='')
+    display_name = Column(Unicode(64), nullable=True)
+    user_info = Column(UnicodeText, nullable=True)
+
+    user_id = Column(Integer, ForeignKey('tg_user.user_id'), index=True)
+    user = relationship('User',
+                        backref=backref('atuser', uselist=False,
                                         cascade='all, delete-orphan'))

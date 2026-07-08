@@ -46,6 +46,13 @@ def xuser_options():
     ]
 
 
+def atuser_options():
+    return [
+        (r.uid, u"{}: @{}".format(r.display_name, r.user_name))
+        for r in DBSession.query(model.Atmosphere)
+    ]
+
+
 class CustomCheckbox(twf.CheckBox):
 
     css_class = "form-check-input h4"
@@ -59,6 +66,11 @@ class CustomSingleSelectField(twf.SingleSelectField):
 class XUserSingleSelectField(CustomSingleSelectField):
 
     options = twc.Deferred(xuser_options)
+
+
+class ATUserSingleSelectField(CustomSingleSelectField):
+
+    options = twc.Deferred(atuser_options)
 
 
 class XTwitterAdminCrudConfig(CrudRestControllerConfig):
@@ -79,6 +91,42 @@ class XTwitterAdminCrudConfig(CrudRestControllerConfig):
                 'results'
             ]
         }
+
+
+class AtmosphereAdminCrudConfig(CrudRestControllerConfig):
+
+    admin_group = 'SNS'
+
+    class defaultCrudRestController(EasyCrudRestController):
+        __table_options__ = {
+            '__omit_fields__': [
+                'user_info',
+                # 'results'
+            ]
+        }
+
+        __form_new_options__ = {
+            '__omit_fields__': [
+                'uid',
+                'user_info'
+            ]
+        }
+
+        __form_edit_options__ = {
+            '__omit_fields__': [
+                'user_info'
+            ]
+        }
+
+        @expose(inherit=True)
+        def post(self, *args, **kw):
+            kw['user_id'] = kw.pop('user')
+            return EasyCrudRestController.post(self, *args, **kw)
+
+        @expose(inherit=True)
+        def put(self, *args, **kw):
+            kw['user_id'] = kw.pop('user')
+            return EasyCrudRestController.put(self, *args, **kw)
 
 
 class GameAdminCrudConfig(CrudRestControllerConfig):
@@ -264,6 +312,10 @@ class UserAdminCrudConfig(CrudRestControllerConfig):
                 'xuser': XUserSingleSelectField(
                     key="xuser",
                     label="X/Twitter User"
+                ),
+                'atuser': ATUserSingleSelectField(
+                    key="atuser",
+                    label="AT proto User"
                 )
             }
         }
@@ -279,6 +331,10 @@ class UserAdminCrudConfig(CrudRestControllerConfig):
                 'xuser': XUserSingleSelectField(
                     key="xuser",
                     label="X/Twitter User"
+                ),
+                'atuser': ATUserSingleSelectField(
+                    key="atuser",
+                    label="AT proto User"
                 )
             }
         }
@@ -388,6 +444,8 @@ class CustomAdminConfig(TGAdminConfig):
     include_left_menu = False
 
     xtwitter = XTwitterAdminCrudConfig
+
+    atmosphere = AtmosphereAdminCrudConfig
 
     game = GameAdminCrudConfig
 

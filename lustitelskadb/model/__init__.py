@@ -62,7 +62,7 @@ def init_model(engine):
 from lustitelskadb.model.auth import User, Group, Permission
 from lustitelskadb.model.clan import Clan, ClanMember
 from lustitelskadb.model.libriciphers import LibriCipher
-from lustitelskadb.model.sns import XTwitter
+from lustitelskadb.model.sns import XTwitter, Atmosphere
 from lustitelskadb.model.game import Game, GameResult, WednesdayChallengeWord
 
-__all__ = ('User', 'Group', 'Permission', 'Clan', 'ClanMember', 'LibriCipher', 'XTwitter', 'Game', 'GameResult', 'WednesdayChallengeWord')
+__all__ = ('User', 'Group', 'Permission', 'Clan', 'ClanMember', 'LibriCipher', 'XTwitter', 'Atmosphere', 'Game', 'GameResult', 'WednesdayChallengeWord')
