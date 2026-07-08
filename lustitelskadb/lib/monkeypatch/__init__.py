@@ -1,3 +1,4 @@
 from lustitelskadb.lib.monkeypatch.patch_sprox_sqla20 import patch_sprox_sqla20
+from lustitelskadb.lib.monkeypatch.patch_tgext_crud_registered_validate import patch_tgext_crud_registered_validate
 
-__all__ = ('patch_sprox_sqla20',)
+__all__ = ('patch_sprox_sqla20', 'patch_tgext_crud_registered_validate')

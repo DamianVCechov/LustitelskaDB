@@ -65,6 +65,9 @@ from lustitelskadb.lib.monkeypatch import *
 # Monkeypatching for Sprox + SQLAlchemy 2.0+
 patch_sprox_sqla20()
 
+# Monkeypatching for tgext.crud and TG2 2.5.0+
+patch_tgext_crud_registered_validate()
+
 
 # This tells to TurboGears how to retrieve the data for your user
 from tg.configuration.auth import TGAuthMetadata
