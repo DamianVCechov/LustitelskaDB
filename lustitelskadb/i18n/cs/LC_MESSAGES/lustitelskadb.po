@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LustitelskaDB 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-08 17:14+0200\n"
-"PO-Revision-Date: 2026-07-08 17:15+0200\n"
+"POT-Creation-Date: 2026-07-09 00:25+0200\n"
+"PO-Revision-Date: 2026-07-09 00:28+0200\n"
 "Last-Translator: Jaroslav Mikulík <jaroslav.mikulik@runtech.cz>\n"
 "Language: cs\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -22,14 +22,16 @@ msgstr ""
 "Generated-By: Babel 2.17.0\n"
 "X-Generator: Lokalize 25.04.0\n"
 
-#: lustitelskadb/controllers/admin.py:481
-#: lustitelskadb/controllers/admin.py:486
-#: lustitelskadb/controllers/admin.py:522
-#: lustitelskadb/controllers/admin.py:581
-#: lustitelskadb/controllers/admin.py:596
-#: lustitelskadb/controllers/admin.py:678
-#: lustitelskadb/controllers/admin.py:692
-#: lustitelskadb/controllers/admin.py:726 lustitelskadb/controllers/api.py:74
+#: lustitelskadb/controllers/admin.py:539
+#: lustitelskadb/controllers/admin.py:544
+#: lustitelskadb/controllers/admin.py:580
+#: lustitelskadb/controllers/admin.py:639
+#: lustitelskadb/controllers/admin.py:669
+#: lustitelskadb/controllers/admin.py:706
+#: lustitelskadb/controllers/admin.py:721
+#: lustitelskadb/controllers/admin.py:803
+#: lustitelskadb/controllers/admin.py:817
+#: lustitelskadb/controllers/admin.py:851 lustitelskadb/controllers/api.py:74
 #: lustitelskadb/controllers/api.py:106 lustitelskadb/controllers/api.py:190
 #: lustitelskadb/controllers/api.py:216 lustitelskadb/controllers/api.py:242
 #: lustitelskadb/controllers/libricipher.py:56
@@ -44,12 +46,13 @@ msgstr ""
 msgid "Only for users with appropriate permissions"
 msgstr "Pouze pro uživatele s odpovídajícími oprávněními"
 
-#: lustitelskadb/controllers/admin.py:483
+#: lustitelskadb/controllers/admin.py:541
 msgid "Do you really want restart application? This will be done immediately!"
 msgstr "Chcete opravdu restartovat aplikaci? Toto bude provedeno okamžitě!"
 
-#: lustitelskadb/controllers/admin.py:502
-#: lustitelskadb/controllers/admin.py:588
+#: lustitelskadb/controllers/admin.py:560
+#: lustitelskadb/controllers/admin.py:649
+#: lustitelskadb/controllers/admin.py:713
 #: lustitelskadb/controllers/libricipher.py:115
 #: lustitelskadb/controllers/root.py:462 lustitelskadb/controllers/root.py:551
 #: lustitelskadb/controllers/xtwitter.py:32
@@ -57,24 +60,45 @@ msgid "Form filled with errors!"
 msgstr "Formulář vyplněn s chybami!"
 
 # | msgid "This game result is already in database"
-#: lustitelskadb/controllers/admin.py:551 lustitelskadb/controllers/root.py:515
+#: lustitelskadb/controllers/admin.py:609 lustitelskadb/controllers/root.py:515
 msgid "Result of this user game is already in database"
 msgstr "Herní výsledek této hry uživatele se v databázi už nachází"
 
 # | msgid "" "Something went wrong! Can't save game result to database, so it
 # | isn't " "sent to legacy website too!"
-#: lustitelskadb/controllers/admin.py:571 lustitelskadb/controllers/root.py:535
+#: lustitelskadb/controllers/admin.py:629 lustitelskadb/controllers/root.py:535
 msgid "Something went wrong! Can't save game result to database!"
 msgstr "Něco se pokazilo! Nemohu uložit herní výsledek do databáze!"
 
 # | msgid "Your result has been successfully sent to the original website"
 # | msgid "" "Your result has been successfully saved to database and sent to
 # | the " "original website"
-#: lustitelskadb/controllers/admin.py:576 lustitelskadb/controllers/root.py:540
+#: lustitelskadb/controllers/admin.py:634 lustitelskadb/controllers/root.py:540
 msgid "Your result has been successfully saved to database"
 msgstr "Váš výsledek byl úspěšně uložen do databáze"
 
-#: lustitelskadb/controllers/admin.py:601
+# | msgid "This game result is already in database"
+#: lustitelskadb/controllers/admin.py:683
+#| msgid "Result of this user game is already in database"
+msgid "Result of this user Warmer game is already in database"
+msgstr "Herní výsledek této hry Přihořívá uživatele se v databázi už nachází"
+
+# | msgid "" "Something went wrong! Can't save game result to database, so it
+# | isn't " "sent to legacy website too!"
+#: lustitelskadb/controllers/admin.py:698
+#| msgid "Something went wrong! Can't save game result to database!"
+msgid "Something went wrong! Can't save Warmer game result to database!"
+msgstr "Něco se pokazilo! Nemohu uložit herní výsledek Přihořívá do databáze!"
+
+# | msgid "Your result has been successfully sent to the original website"
+# | msgid "" "Your result has been successfully saved to database and sent to
+# | the " "original website"
+#: lustitelskadb/controllers/admin.py:701
+#| msgid "Your result has been successfully saved to database"
+msgid "Your Warmer result has been successfully saved to database"
+msgstr "Váš výsledek Přihořívá byl úspěšně uložen do databáze"
+
+#: lustitelskadb/controllers/admin.py:726
 msgid "Missing CSV file for import"
 msgstr "Schází CSV soubor k importu"
 
@@ -82,7 +106,7 @@ msgstr "Schází CSV soubor k importu"
 # | "{imported_count} records imported, {duplicity_skipped} duplicate records
 # "
 # | "skipped, and {added_nicknames} users added."
-#: lustitelskadb/controllers/admin.py:671
+#: lustitelskadb/controllers/admin.py:796
 #, python-brace-format
 msgid ""
 "The import was successful. {all_count} records processed, "
@@ -93,19 +117,19 @@ msgstr ""
 "záznamů importováno, {duplicity_skipped} duplicitních záznamů přeskočeno "
 "a {added_nicknames} uživatelů přidáno."
 
-#: lustitelskadb/controllers/admin.py:673
+#: lustitelskadb/controllers/admin.py:798
 #, python-brace-format
 msgid "The import attempt ended with an error: \"{}\""
 msgstr "Pokus o import skončil chybou: \"{}\""
 
-#: lustitelskadb/controllers/admin.py:686
+#: lustitelskadb/controllers/admin.py:811
 #, python-brace-format
 msgid "Score Sheet successfully reassembled for {} games"
 msgstr "Výsledovka úspěšně znovusestavena pro {} her"
 
 # | msgid "Result successfully added"
 # | msgid "Libri Cipher item successfully created"
-#: lustitelskadb/controllers/admin.py:730
+#: lustitelskadb/controllers/admin.py:855
 msgid "Application successfully restarted"
 msgstr "Aplikace úspěšně restartována"
 
@@ -149,19 +173,19 @@ msgid "Really delete?"
 msgstr "Opravdu smazat?"
 
 # | msgid "Part:"
-#: lustitelskadb/controllers/libricipher.py:82 lustitelskadb/lib/forms.py:205
-#: lustitelskadb/lib/forms.py:207
+#: lustitelskadb/controllers/libricipher.py:82 lustitelskadb/lib/forms.py:280
+#: lustitelskadb/lib/forms.py:282
 msgid "Part"
 msgstr "Díl"
 
-#: lustitelskadb/controllers/libricipher.py:86 lustitelskadb/lib/forms.py:215
-#: lustitelskadb/lib/forms.py:217
+#: lustitelskadb/controllers/libricipher.py:86 lustitelskadb/lib/forms.py:290
+#: lustitelskadb/lib/forms.py:292
 msgid "Question"
 msgstr "Otázka"
 
 # | msgid "Show answer"
-#: lustitelskadb/controllers/libricipher.py:93 lustitelskadb/lib/forms.py:234
-#: lustitelskadb/lib/forms.py:236
+#: lustitelskadb/controllers/libricipher.py:93 lustitelskadb/lib/forms.py:309
+#: lustitelskadb/lib/forms.py:311
 msgid "Answer"
 msgstr "Odpověď"
 
@@ -378,133 +402,147 @@ msgid "Please check it if you play wednesday challenge"
 msgstr "Tohle zaškrtněte, pokud hrajete středeční výzvu"
 
 #: lustitelskadb/lib/forms.py:76 lustitelskadb/lib/forms.py:78
-#: lustitelskadb/lib/forms.py:172 lustitelskadb/lib/forms.py:174
+#: lustitelskadb/lib/forms.py:151 lustitelskadb/lib/forms.py:153
+#: lustitelskadb/lib/forms.py:247 lustitelskadb/lib/forms.py:249
 msgid "Comments"
 msgstr "Komentáře"
 
-#: lustitelskadb/lib/forms.py:77 lustitelskadb/lib/forms.py:173
+#: lustitelskadb/lib/forms.py:77 lustitelskadb/lib/forms.py:152
+#: lustitelskadb/lib/forms.py:248
 msgid "Please Enter any comments (optional)"
 msgstr "Vložte prosím libovolné sdělení (volitelné)"
 
 #: lustitelskadb/lib/forms.py:95 lustitelskadb/lib/forms.py:127
-#: lustitelskadb/lib/forms.py:191 lustitelskadb/lib/forms.py:246
-#: lustitelskadb/lib/forms.py:438 lustitelskadb/lib/forms.py:467
+#: lustitelskadb/lib/forms.py:170 lustitelskadb/lib/forms.py:202
+#: lustitelskadb/lib/forms.py:266 lustitelskadb/lib/forms.py:321
+#: lustitelskadb/lib/forms.py:513 lustitelskadb/lib/forms.py:542
 msgid "Save"
 msgstr "Uložit"
 
 # | msgid "Username:"
 # | msgid "username"
 #: lustitelskadb/lib/forms.py:105 lustitelskadb/lib/forms.py:107
+#: lustitelskadb/lib/forms.py:180 lustitelskadb/lib/forms.py:182
 msgid "User"
 msgstr "Uživatel"
 
-#: lustitelskadb/lib/forms.py:106
+#: lustitelskadb/lib/forms.py:106 lustitelskadb/lib/forms.py:181
 msgid "Please select the user whose result you want to save."
 msgstr "Vyberte uživatele, jehož výsledek chcete uložit."
 
-#: lustitelskadb/lib/forms.py:139
+#: lustitelskadb/lib/forms.py:139 lustitelskadb/lib/forms.py:141
+#| msgid "Game in progress"
+msgid "Game guesses"
+msgstr "Herních pokusů"
+
+#: lustitelskadb/lib/forms.py:140
+#| msgid "Please Enter your game result (required)"
+msgid "Please Enter your game guesses (required)"
+msgstr "Vložte prosím váš počet herních pokusů"
+
+#: lustitelskadb/lib/forms.py:214
 msgid "First word"
 msgstr "První slovo"
 
 # | msgid "Please Enter your nickname (required)"
 # | msgid "Please Enter description (required)"
-#: lustitelskadb/lib/forms.py:140
+#: lustitelskadb/lib/forms.py:215
 msgid "Please Enter Wednesday challenge first word (required)"
 msgstr "Vložte prosím první slovo středeční výzvy (povinné)"
 
-#: lustitelskadb/lib/forms.py:141
+#: lustitelskadb/lib/forms.py:216
 msgid "First"
 msgstr "První"
 
-#: lustitelskadb/lib/forms.py:152
+#: lustitelskadb/lib/forms.py:227
 msgid "Second word"
 msgstr "Druhé slovo"
 
 # | msgid "Please Enter your nickname (required)"
 # | msgid "Please Enter description (required)"
-#: lustitelskadb/lib/forms.py:153
+#: lustitelskadb/lib/forms.py:228
 msgid "Please Enter Wednesday challenge second word (required)"
 msgstr "Vložte prosím druhé slovo středeční výzvy (povinné)"
 
-#: lustitelskadb/lib/forms.py:154
+#: lustitelskadb/lib/forms.py:229
 msgid "Second"
 msgstr "Druhé"
 
-#: lustitelskadb/lib/forms.py:162
+#: lustitelskadb/lib/forms.py:237
 msgid "Third word"
 msgstr "Třetí slovo"
 
 # | msgid "Please Enter your nickname (required)"
 # | msgid "Please Enter description (required)"
-#: lustitelskadb/lib/forms.py:163
+#: lustitelskadb/lib/forms.py:238
 msgid "Please Enter Wednesday challenge third word (required)"
 msgstr "Vložte prosím třetí slovo středeční výzvy (povinné)"
 
 # | msgid "threads"
-#: lustitelskadb/lib/forms.py:164
+#: lustitelskadb/lib/forms.py:239
 msgid "Third"
 msgstr "Třetí"
 
 # | msgid "Please Enter your nickname (required)"
-#: lustitelskadb/lib/forms.py:206
+#: lustitelskadb/lib/forms.py:281
 msgid "Please Enter part number (required)"
 msgstr "Vložte prosím číslo dílu (povinné)"
 
 # | msgid "Please Enter your game result (required)"
-#: lustitelskadb/lib/forms.py:216
+#: lustitelskadb/lib/forms.py:291
 msgid "Please Enter Question (required)"
 msgstr "Vložte prosím otázku (povinné)"
 
-#: lustitelskadb/lib/forms.py:224 lustitelskadb/lib/forms.py:226
+#: lustitelskadb/lib/forms.py:299 lustitelskadb/lib/forms.py:301
 msgid "Description"
 msgstr "Popis"
 
 # | msgid "Please Enter your nickname (required)"
-#: lustitelskadb/lib/forms.py:225
+#: lustitelskadb/lib/forms.py:300
 msgid "Please Enter description (required)"
 msgstr "Vložte prosím popis položky (povinné)"
 
 # | msgid "Please Enter your nickname (required)"
-#: lustitelskadb/lib/forms.py:235
+#: lustitelskadb/lib/forms.py:310
 msgid "Please Enter Answer (required)"
 msgstr "Vložte prosím otázku (povinné)"
 
-#: lustitelskadb/lib/forms.py:258 lustitelskadb/lib/forms.py:260
+#: lustitelskadb/lib/forms.py:333 lustitelskadb/lib/forms.py:335
 msgid "Post text"
 msgstr "Text příspěvku"
 
-#: lustitelskadb/lib/forms.py:259
+#: lustitelskadb/lib/forms.py:334
 msgid "Please Enter X/Twitter post text"
 msgstr "Vložtě prosím test X/Twitter příspěvku"
 
-#: lustitelskadb/lib/forms.py:274
+#: lustitelskadb/lib/forms.py:349
 msgid "Media list"
 msgstr "Seznam médií"
 
-#: lustitelskadb/lib/forms.py:285
+#: lustitelskadb/lib/forms.py:360
 msgid "Submit"
 msgstr "Odeslat"
 
-#: lustitelskadb/lib/forms.py:297
+#: lustitelskadb/lib/forms.py:372
 msgid "CSV file with legacy data"
 msgstr "CSV soubor s původními daty"
 
-#: lustitelskadb/lib/forms.py:298
+#: lustitelskadb/lib/forms.py:373
 msgid "Please browse CSV file with legacy data to import it into database"
 msgstr ""
 "Prosím nalistujte CSV soubor s původními daty k jejich importu do databáze"
 
-#: lustitelskadb/lib/forms.py:306
+#: lustitelskadb/lib/forms.py:381
 msgid "Import"
 msgstr "Import"
 
 # | msgid "Username:"
 # | msgid "username"
-#: lustitelskadb/lib/forms.py:320 lustitelskadb/lib/forms.py:324
+#: lustitelskadb/lib/forms.py:395 lustitelskadb/lib/forms.py:399
 msgid "User Name"
 msgstr "Uživatelské jméno"
 
-#: lustitelskadb/lib/forms.py:321
+#: lustitelskadb/lib/forms.py:396
 msgid ""
 "Allowed characters are a-z and A-Z (basic latin), 0-9, dot, underscore, "
 "minus and plus. First character can't be dot or plus"
@@ -513,11 +551,11 @@ msgstr ""
 "mínus a plus. První znak nemůže být tečka nebo plus"
 
 # | msgid "Detail"
-#: lustitelskadb/lib/forms.py:329 lustitelskadb/lib/forms.py:333
+#: lustitelskadb/lib/forms.py:404 lustitelskadb/lib/forms.py:408
 msgid "Email"
 msgstr "Email"
 
-#: lustitelskadb/lib/forms.py:330
+#: lustitelskadb/lib/forms.py:405
 msgid ""
 "Your email for sending confirmation link and for the possibility of "
 "resetting a forgotten password"
@@ -527,12 +565,12 @@ msgstr ""
 
 # | msgid "Password:"
 # | msgid "password"
-#: lustitelskadb/lib/forms.py:337 lustitelskadb/lib/forms.py:341
-#: lustitelskadb/lib/forms.py:450
+#: lustitelskadb/lib/forms.py:412 lustitelskadb/lib/forms.py:416
+#: lustitelskadb/lib/forms.py:525
 msgid "Password"
 msgstr "Heslo"
 
-#: lustitelskadb/lib/forms.py:338
+#: lustitelskadb/lib/forms.py:413
 msgid ""
 "Choose a strong enough password for your security or let browser do "
 "suggested password"
@@ -542,53 +580,53 @@ msgstr ""
 
 # | msgid "Password:"
 # | msgid "password"
-#: lustitelskadb/lib/forms.py:345 lustitelskadb/lib/forms.py:349
-#: lustitelskadb/lib/forms.py:458
+#: lustitelskadb/lib/forms.py:420 lustitelskadb/lib/forms.py:424
+#: lustitelskadb/lib/forms.py:533
 msgid "Confirm Password"
 msgstr "Potvrzení hesla"
 
-#: lustitelskadb/lib/forms.py:346
+#: lustitelskadb/lib/forms.py:421
 msgid ""
 "Enter same password again, to ensure that it is entered correctly without"
 " typos"
 msgstr ""
 "Vložte znovu stejné heslo pro ujištění, že je zadáno správně bez překlepů"
 
-#: lustitelskadb/lib/forms.py:357 lustitelskadb/templates/master.xhtml:124
+#: lustitelskadb/lib/forms.py:432 lustitelskadb/templates/master.xhtml:124
 msgid "Register"
 msgstr "Registrace"
 
 # | msgid "Password:"
 # | msgid "password"
-#: lustitelskadb/lib/forms.py:373 lustitelskadb/lib/forms.py:376
-#: lustitelskadb/lib/forms.py:453
+#: lustitelskadb/lib/forms.py:448 lustitelskadb/lib/forms.py:451
+#: lustitelskadb/lib/forms.py:528
 msgid "New password"
 msgstr "Nové heslo"
 
-#: lustitelskadb/lib/forms.py:381 lustitelskadb/lib/forms.py:384
-#: lustitelskadb/lib/forms.py:461
+#: lustitelskadb/lib/forms.py:456 lustitelskadb/lib/forms.py:459
+#: lustitelskadb/lib/forms.py:536
 msgid "Confirm new password"
 msgstr "Potvrďte nové heslo"
 
 # | msgid "Password:"
 # | msgid "password"
-#: lustitelskadb/lib/forms.py:390
+#: lustitelskadb/lib/forms.py:465
 msgid "Save new password"
 msgstr "Uložte nové heslo"
 
-#: lustitelskadb/lib/forms.py:402 lustitelskadb/lib/forms.py:405
+#: lustitelskadb/lib/forms.py:477 lustitelskadb/lib/forms.py:480
 msgid "Email address"
 msgstr "Emailová adresa"
 
-#: lustitelskadb/lib/forms.py:410
+#: lustitelskadb/lib/forms.py:485
 msgid "Send Request"
 msgstr "Zaslat požadavek"
 
-#: lustitelskadb/lib/forms.py:422 lustitelskadb/lib/forms.py:425
+#: lustitelskadb/lib/forms.py:497 lustitelskadb/lib/forms.py:500
 msgid "Email Address"
 msgstr "Emailová adresa"
 
-#: lustitelskadb/lib/forms.py:430 lustitelskadb/lib/forms.py:434
+#: lustitelskadb/lib/forms.py:505 lustitelskadb/lib/forms.py:509
 msgid "Display Name"
 msgstr "Zobrazované jméno"
 
@@ -1330,8 +1368,8 @@ msgstr "Ostatní"
 msgid "Czech Wordle Game"
 msgstr "Hra HádejSlova"
 
+# | msgid "Czech Wordle Game"
 #: lustitelskadb/templates/master.xhtml:108
-#| msgid "Czech Wordle Game"
 msgid "Czech Contexto Game"
 msgstr "Hra Přihořívá"
 
@@ -1339,8 +1377,8 @@ msgstr "Hra Přihořívá"
 msgid "Our X/Twitter"
 msgstr "Náš X/Twitter"
 
+# | msgid "Bluesky"
 #: lustitelskadb/templates/master.xhtml:111
-#| msgid "Bluesky"
 msgid "Our Bluesky"
 msgstr "Náš Bluesky"
 
@@ -1618,26 +1656,27 @@ msgstr "Importuj původní data"
 
 # | msgid "User game result detail"
 #: lustitelskadb/templates/administration/index.xhtml:32
+#: lustitelskadb/templates/administration/index.xhtml:38
 msgid "User game result"
 msgstr "Herní výsledek uživatele"
 
-#: lustitelskadb/templates/administration/index.xhtml:42
+#: lustitelskadb/templates/administration/index.xhtml:48
 msgid "Counting..."
 msgstr "Počítám..."
 
-#: lustitelskadb/templates/administration/index.xhtml:45
+#: lustitelskadb/templates/administration/index.xhtml:51
 msgid "Reassemble Score Sheet"
 msgstr "Znovusestavit výsledovku"
 
-#: lustitelskadb/templates/administration/index.xhtml:51
+#: lustitelskadb/templates/administration/index.xhtml:57
 msgid "DB admin"
 msgstr "DB admin"
 
-#: lustitelskadb/templates/administration/index.xhtml:57
+#: lustitelskadb/templates/administration/index.xhtml:63
 msgid "Restart APP"
 msgstr "Restart APP"
 
-#: lustitelskadb/templates/administration/index.xhtml:63
+#: lustitelskadb/templates/administration/index.xhtml:69
 msgid "Registration Admin"
 msgstr "Administrace registrací"
 
@@ -1659,6 +1698,18 @@ msgstr " | Výsledek uživatele"
 #: lustitelskadb/templates/administration/result.xhtml:7
 msgid "User result"
 msgstr "Výsledek uživatele"
+
+# | msgid " | New result"
+#: lustitelskadb/templates/administration/warmer_result.xhtml:3
+#| msgid " | User result"
+msgid " | User Warming result"
+msgstr " | Výsledek Přihořívá uživatele"
+
+# | msgid "User game result detail"
+#: lustitelskadb/templates/administration/warmer_result.xhtml:7
+#| msgid "User game result"
+msgid "User Warming result"
+msgstr "Herní výsledek Přihořívá uživatele"
 
 #: lustitelskadb/templates/administration/libricipher/detail.xhtml:3
 #: lustitelskadb/templates/administration/libricipher/edit.xhtml:3
