@@ -274,7 +274,13 @@ class UserAdminCrudConfig(CrudRestControllerConfig):
                 'created',
                 'results',
                 'wednesday_challenges'
-            ]
+            ],
+            '__field_widgets__': {
+                'xuser': XUserSingleSelectField(
+                    key="xuser",
+                    label="X/Twitter User"
+                )
+            }
         }
 
         @expose(inherit=True)
