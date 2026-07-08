@@ -4,9 +4,9 @@ Created on 8. 7. 2026
 @author: jarda
 '''
 
-import sqlalchemy
-
 def patch_sprox_sqla20():
+    import sqlalchemy
+
     if sqlalchemy.__version__.startswith('2.'):
         from sqlalchemy import Table, MetaData
         from sqlalchemy.orm import DeclarativeMeta
