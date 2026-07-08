@@ -18,7 +18,7 @@ def upgrade():
     op.alter_column(
         'games',
         'word',
-        type_=sa.UnicodeText(5),
+        type_=sa.Unicode(5),
         nullable=True,
         index=True
     )
@@ -28,7 +28,7 @@ def downgrade():
     op.alter_column(
         'games',
         'word',
-        type_=sa.UnicodeText(5),
+        type_=sa.Unicode(5),
         nullable=False,
         index=True,
         default=''
