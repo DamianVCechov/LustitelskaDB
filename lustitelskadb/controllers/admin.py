@@ -306,7 +306,8 @@ class UserAdminCrudConfig(CrudRestControllerConfig):
                 'created',
                 'results',
                 'wednesday_challenges',
-                'clan_member'
+                'clan_member',
+                'registration'
             ],
             '__field_widgets__': {
                 'xuser': XUserSingleSelectField(
@@ -325,7 +326,8 @@ class UserAdminCrudConfig(CrudRestControllerConfig):
                 '_password',
                 'created',
                 'results',
-                'wednesday_challenges'
+                'wednesday_challenges',
+                'registration'
             ],
             '__field_widgets__': {
                 'xuser': XUserSingleSelectField(
