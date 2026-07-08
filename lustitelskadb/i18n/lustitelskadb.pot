@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: LustitelskaDB 1.13.5\n"
+"Project-Id-Version: LustitelskaDB 1.14.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-05-24 18:17+0200\n"
+"POT-Creation-Date: 2026-07-08 17:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,10 +17,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: lustitelskadb/controllers/admin.py:393 lustitelskadb/controllers/admin.py:398
-#: lustitelskadb/controllers/admin.py:434 lustitelskadb/controllers/admin.py:493
-#: lustitelskadb/controllers/admin.py:508 lustitelskadb/controllers/admin.py:590
-#: lustitelskadb/controllers/admin.py:604 lustitelskadb/controllers/admin.py:638
+#: lustitelskadb/controllers/admin.py:481 lustitelskadb/controllers/admin.py:486
+#: lustitelskadb/controllers/admin.py:522 lustitelskadb/controllers/admin.py:581
+#: lustitelskadb/controllers/admin.py:596 lustitelskadb/controllers/admin.py:678
+#: lustitelskadb/controllers/admin.py:692 lustitelskadb/controllers/admin.py:726
 #: lustitelskadb/controllers/api.py:74 lustitelskadb/controllers/api.py:106
 #: lustitelskadb/controllers/api.py:190 lustitelskadb/controllers/api.py:216
 #: lustitelskadb/controllers/api.py:242 lustitelskadb/controllers/libricipher.py:56
@@ -35,34 +35,34 @@ msgstr ""
 msgid "Only for users with appropriate permissions"
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:395
+#: lustitelskadb/controllers/admin.py:483
 msgid "Do you really want restart application? This will be done immediately!"
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:414 lustitelskadb/controllers/admin.py:500
+#: lustitelskadb/controllers/admin.py:502 lustitelskadb/controllers/admin.py:588
 #: lustitelskadb/controllers/libricipher.py:115
 #: lustitelskadb/controllers/root.py:462 lustitelskadb/controllers/root.py:551
 #: lustitelskadb/controllers/xtwitter.py:32
 msgid "Form filled with errors!"
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:463 lustitelskadb/controllers/root.py:515
+#: lustitelskadb/controllers/admin.py:551 lustitelskadb/controllers/root.py:515
 msgid "Result of this user game is already in database"
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:483 lustitelskadb/controllers/root.py:535
+#: lustitelskadb/controllers/admin.py:571 lustitelskadb/controllers/root.py:535
 msgid "Something went wrong! Can't save game result to database!"
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:488 lustitelskadb/controllers/root.py:540
+#: lustitelskadb/controllers/admin.py:576 lustitelskadb/controllers/root.py:540
 msgid "Your result has been successfully saved to database"
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:513
+#: lustitelskadb/controllers/admin.py:601
 msgid "Missing CSV file for import"
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:583
+#: lustitelskadb/controllers/admin.py:671
 #, python-brace-format
 msgid ""
 "The import was successful. {all_count} records processed, {imported_count} "
@@ -70,17 +70,17 @@ msgid ""
 "{added_nicknames} ; added."
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:585
+#: lustitelskadb/controllers/admin.py:673
 #, python-brace-format
 msgid "The import attempt ended with an error: \"{}\""
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:598
+#: lustitelskadb/controllers/admin.py:686
 #, python-brace-format
 msgid "Score Sheet successfully reassembled for {} games"
 msgstr ""
 
-#: lustitelskadb/controllers/admin.py:642
+#: lustitelskadb/controllers/admin.py:730
 msgid "Application successfully restarted"
 msgstr ""
 
@@ -461,7 +461,7 @@ msgid ""
 "typos"
 msgstr ""
 
-#: lustitelskadb/lib/forms.py:357 lustitelskadb/templates/master.xhtml:121
+#: lustitelskadb/lib/forms.py:357 lustitelskadb/templates/master.xhtml:124
 msgid "Register"
 msgstr ""
 
@@ -503,7 +503,7 @@ msgstr ""
 msgid " | About page"
 msgstr ""
 
-#: lustitelskadb/templates/about.xhtml:19 lustitelskadb/templates/master.xhtml:133
+#: lustitelskadb/templates/about.xhtml:19 lustitelskadb/templates/master.xhtml:136
 msgid "About"
 msgstr ""
 
@@ -1020,7 +1020,7 @@ msgid "Show answer"
 msgstr ""
 
 #: lustitelskadb/templates/login.xhtml:3 lustitelskadb/templates/login.xhtml:8
-#: lustitelskadb/templates/login.xhtml:42 lustitelskadb/templates/master.xhtml:120
+#: lustitelskadb/templates/login.xhtml:42 lustitelskadb/templates/master.xhtml:123
 msgid "Login"
 msgstr ""
 
@@ -1118,42 +1118,50 @@ msgid "Czech Wordle Game"
 msgstr ""
 
 #: lustitelskadb/templates/master.xhtml:108
-msgid "Our X/Twitter"
+msgid "Czech Contexto Game"
 msgstr ""
 
 #: lustitelskadb/templates/master.xhtml:110
+msgid "Our X/Twitter"
+msgstr ""
+
+#: lustitelskadb/templates/master.xhtml:111
+msgid "Our Bluesky"
+msgstr ""
+
+#: lustitelskadb/templates/master.xhtml:113
 msgid "Original website"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:112
+#: lustitelskadb/templates/master.xhtml:115
 msgid "Misc"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:124
+#: lustitelskadb/templates/master.xhtml:127
 msgid "User profile"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:125
+#: lustitelskadb/templates/master.xhtml:128
 msgid "Change password"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:126
+#: lustitelskadb/templates/master.xhtml:129
 msgid "Social networks"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:128
+#: lustitelskadb/templates/master.xhtml:131
 msgid "Admin"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:130
+#: lustitelskadb/templates/master.xhtml:133
 msgid "Logout"
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:156
+#: lustitelskadb/templates/master.xhtml:159
 msgid "Copyright © "
 msgstr ""
 
-#: lustitelskadb/templates/master.xhtml:156
+#: lustitelskadb/templates/master.xhtml:159
 msgid " 2024-"
 msgstr ""
 
