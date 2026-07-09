@@ -7,3 +7,7 @@ __pycache__
 /data
 /dist
 /.idea/
+/.junie/
+/.cursor/
+/.codex/
+/.ai/
