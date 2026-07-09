@@ -49,7 +49,9 @@ class WarmerGameResult(DeclarativeBase):
     game_date = Column(Date, nullable=False, index=True, default=func.now(), server_default=func.now())
     game_guesses = Column(SmallInteger, nullable=True, index=True)
     comment = Column(UnicodeText, nullable=True)
-
+    # Results
+    game_rank = Column(Integer, nullable=True, index=True)
+    game_points = Column(Integer, nullable=False, index=True, default=0)
     # Meta data
     created = Column(DateTime(timezone=True), server_default=func.now())
     updated = Column(DateTime(timezone=True), onupdate=func.now())
