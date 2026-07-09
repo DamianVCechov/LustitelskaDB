@@ -1,6 +1,4 @@
 .gitignore
-.project
-.pydevproject
 MANIFEST.in
 README.txt
 development.ini.template
@@ -344,8 +342,6 @@ lustitelskadb/templates/template.xhtml.template
 lustitelskadb/templates/wednesday_challenge.xhtml
 lustitelskadb/templates/xdenied.xhtml
 lustitelskadb/templates/xerror.xhtml
-lustitelskadb/templates/__pycache__/__init__.cpython-311.pyc
-lustitelskadb/templates/__pycache__/__init__.pypy39.pyc
 lustitelskadb/templates/administration/__init__.py
 lustitelskadb/templates/administration/importlegacydata.xhtml
 lustitelskadb/templates/administration/index.xhtml
