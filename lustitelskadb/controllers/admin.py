@@ -686,6 +686,7 @@ class AdministrationController(BaseController):
         warmer_game_result = model.WarmerGameResult(
             user_id=kw.get('user_id', None),
             game_date=today,
+            game_guesses=kw.get('game_guesses', None),
             comment=kw.get('comment', None) if kw.get('comment', None) else None
         )
 
