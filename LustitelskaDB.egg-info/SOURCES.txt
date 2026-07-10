@@ -1,4 +1,6 @@
 .gitignore
+.project
+.pydevproject
 MANIFEST.in
 README.txt
 development.ini.template
@@ -339,6 +341,7 @@ lustitelskadb/templates/ranking_points.xhtml
 lustitelskadb/templates/rankings_rows.xhtml
 lustitelskadb/templates/sns.xhtml
 lustitelskadb/templates/template.xhtml.template
+lustitelskadb/templates/warmer_tables.xhtml
 lustitelskadb/templates/wednesday_challenge.xhtml
 lustitelskadb/templates/xdenied.xhtml
 lustitelskadb/templates/xerror.xhtml
@@ -385,10 +388,12 @@ lustitelskadb/websetup/bootstrap.py
 lustitelskadb/websetup/schema.py
 migration/env.py
 migration/script.py.mako
+migration/versions/0543b312c75d_add_game_rank_for_warmer_game_result.py
 migration/versions/0fb9d06c44cb_change_relations_to_games_and_wc.py
 migration/versions/5d68c085511f_added_atmosphere_sns_users.py
 migration/versions/8059f6120ba3_added_warmer_game_model.py
 migration/versions/8d930c69a0a5_enlarged_libriciphers_description_and_.py
+migration/versions/8f4aa376a76e_add_game_points_to_warmer_game_result.py
 migration/versions/a00aefdc7189_display_name_changed_to_non_unique.py
 migration/versions/a01becafe8f7_create_local_accounts_if_does_not_exists.py
 migration/versions/b3c0eaa7022f_modified_word_in_game_table.py
