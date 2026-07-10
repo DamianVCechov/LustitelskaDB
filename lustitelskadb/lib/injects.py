@@ -8,7 +8,7 @@ Created on 24. 8. 2024
 from tg import lurl
 from tw2.core import JSLink, JSSource
 
-__all__ = ['tinymce_link', 'tinymce_init', 'closing_deadline_jssrc', 'emojipicker_init_jssrc']
+__all__ = ['tinymce_link', 'tinymce_init', 'closing_deadline_jssrc', 'closing_deadline_warmer_jssrc', 'emojipicker_init_jssrc']
 
 tinymce_version = '6.8.3'
 
@@ -86,7 +86,7 @@ tinymce.init({
 });
 """
 
-closing_deadline_jssrc = JSSource(src='''"use strict";
+closing_deadline_source = '''"use strict";
 function milisecsToTimeString(timeInMilisecs) {
     let h, m, s;
 
@@ -107,12 +107,12 @@ function setClosingProgressBar() {
     let dayInMillisec = 24 * 60 * 60 * 1000;
     let leftPercent = 0;
 
-    target.setHours(18);
+    target.setHours({{deadline}});
     target.setMinutes(0);
     target.setSeconds(0);
     target.setMilliseconds(0);
 
-    if (now.getHours() >= 18) {
+    if (now.getHours() >= {{deadline}}) {
         target = new Date(target.getTime() + dayInMillisec);
     }
 
@@ -134,7 +134,11 @@ function setClosingProgressBar() {
 
 $(() => {
     setClosingProgressBar();
-});''')
+});'''
+
+
+closing_deadline_jssrc = JSSource(src=closing_deadline_source.replace('{{deadline}}', '18'))
+closing_deadline_warmer_jssrc = JSSource(src=closing_deadline_source.replace('{{deadline}}', '3'))
 
 emojipicker_init_jssrc = JSSource(
     location="bodybottom",
