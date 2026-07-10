@@ -23,9 +23,9 @@ Requires-Dist: pathlib; python_version < "3.4"
 Requires-Dist: Babel
 Provides-Extra: testing
 Requires-Dist: WebTest>=1.2.3; extra == "testing"
+Requires-Dist: nose; extra == "testing"
 Requires-Dist: coverage; extra == "testing"
 Requires-Dist: gearbox; extra == "testing"
-Requires-Dist: nose; extra == "testing"
 Provides-Extra: full
 Requires-Dist: ujson; extra == "full"
 Dynamic: author
