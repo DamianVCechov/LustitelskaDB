@@ -10,9 +10,9 @@ Created on 16. 10. 2024
 from lustitelskadb import model
 from lustitelskadb.model import DBSession
 
-from datetime import datetime, timedelta
+from datetime import datetime, time, timedelta
 
-__all__ = ('assemble_game_scoresheet', 'today_game_no', 'user_rank_hours_offset')
+__all__ = ('assemble_game_scoresheet', 'assemble_warmergame_scoresheet', 'today_game_no', 'today_warmergame_date', 'user_rank_hours_offset')
 
 scoring = {
     0: 0,
@@ -38,9 +38,13 @@ def assemble_game_scoresheet(game_no, dbflush=True):
     """Assemble Game Scoresheet"""
     game = DBSession.query(model.GameResult).filter(model.GameResult.game_no == game_no)
     if game_no % 7 == 5:
-        game = game.order_by(model.GameResult.game_rows == None, model.GameResult.game_result_time == None, model.GameResult.wednesday_challenge.desc(), model.GameResult.game_result_time, model.GameResult.game_rows, model.GameResult.game_time.desc())
+        game = game.order_by(model.GameResult.game_rows == None, model.GameResult.game_result_time == None,
+                             model.GameResult.wednesday_challenge.desc(), model.GameResult.game_result_time,
+                             model.GameResult.game_rows, model.GameResult.game_time.desc())
     else:
-        game = game.order_by(model.GameResult.game_rows == None, model.GameResult.game_result_time == None, model.GameResult.game_result_time, model.GameResult.game_rows, model.GameResult.game_time.desc())
+        game = game.order_by(model.GameResult.game_rows == None, model.GameResult.game_result_time == None,
+                             model.GameResult.game_result_time, model.GameResult.game_rows,
+                             model.GameResult.game_time.desc())
 
     next_place = 1
     recentplace_counter = 0
@@ -72,7 +76,8 @@ def assemble_game_scoresheet(game_no, dbflush=True):
             if game_no % 7 == 5 and prev_row and prev_row.wednesday_challenge and not row.wednesday_challenge:
                 next_place = -1
                 recentplace_counter = 0
-            if not (prev_row and prev_row.game_time == row.game_time and prev_row.game_rows == row.game_rows and prev_row.game_result_time == row.game_result_time):
+            if not (
+                    prev_row and prev_row.game_time == row.game_time and prev_row.game_rows == row.game_rows and prev_row.game_result_time == row.game_result_time):
                 next_place -= recentplace_counter
                 recentplace_counter = 0
             row.game_rank = next_place
@@ -83,6 +88,34 @@ def assemble_game_scoresheet(game_no, dbflush=True):
 
     if row.game_rows and row.game_rank > 5:
         row.game_points = 0
+
+    if dbflush:
+        DBSession.flush()
+
+    return 0
+
+
+def assemble_warmergame_scoresheet(game_date, dbflush=True):
+    """Assemble Warmer Game Scoresheet."""
+    game = DBSession.query(model.WarmerGameResult).filter(model.WarmerGameResult.game_date== game_date)
+    game = game.order_by(model.WarmerGameResult.game_guesses)
+
+    next_place = 1
+    recentplace_counter = 0
+    prev_row = None
+
+    for row in game.all():
+        if not (prev_row and prev_row.game_guesses == row.game_guesses):
+            next_place += recentplace_counter
+            recentplace_counter = 0
+
+        row.game_rank = next_place
+        row.game_points = scoring.get(next_place, 1)
+        recentplace_counter += 1
+
+        prev_row = row
+
+    row.game_points = 0
 
     if dbflush:
         DBSession.flush()
@@ -102,3 +135,12 @@ def today_game_no():
         game_finish = datetime((now + td).year, (now + td).month, (now + td).day, 17, 59, 59, 999999)
 
     return (game_finish - HADEJSLOVA_STARTDATE).days
+
+
+def today_warmergame_date():
+    """Count today's Warmer game date."""
+
+    now = datetime.now()
+    today_game = datetime.today() if now.time() >= time(3, 0) else datetime.today() - timedelta(days=1)
+
+    return today_game

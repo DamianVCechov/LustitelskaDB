@@ -1,0 +1,94 @@
+<html py:extends="master.xhtml" py:strip="True">
+<head py:block="head" py:strip="True">
+<title py:block="master_title">${getattr(tmpl_context, 'project_name', 'turbogears2')} | Warmer game tables</title>
+</head>
+
+<body py:block="body" py:strip="True">
+<?py from datetime import timedelta ?>
+	<div class="row py-3">
+		<div class="col-2">
+			<a class="btn btn-light btn-lg w-100 fs-4" href="${tg.url('/')}">← ${h.bicon('trophy')}</a>
+		</div>
+		<div class="col-10">
+			<a class="btn btn-light btn-lg w-100 fs-4" href="http://prihorivahori.cz" target="_blank">${h.bicon('controller')} <span class="mx-2">Play the current game</span> ${h.bicon('box-arrow-up-right')}</a>
+		</div>
+	</div>
+	<div class="row pt-1" py:if="games">
+		<div class="col-lg-6" py:for="idx, game in enumerate(games)">
+			<div class="table-responsive">
+				<table class="table table-sm table-hover">
+					<thead>
+						<tr class="table-dark text-center">
+							<th class="rounded-top" scope="col" colspan="6">
+								<div><span py:if="game_dates[idx].game_date != game_in_progress">Hall of fame</span><span py:if="game_dates[idx].game_date == game_in_progress">Game in progress</span> ${game_dates[idx].game_date}</div>
+							</th>
+						</tr>
+						<tr class="table-dark text-center">
+							<th scope="col" title="${_('Rank')}">${h.bicon('graph-up-arrow')}</th>
+							<th scope="col" title="${_('Clan')}">${h.bicon('shield')}</th>
+							<th scope="col" class="w-100" title="${_('Player')}">${h.bicon('person')}</th>
+							<th scope="col" title="${_('Game rows')}">${h.bicon('justify')}</th>
+						</tr>
+					</thead>
+					<tbody py:with="losers_divided=False; nochallengers_divided=False; dsq_divided=False">
+						<py:for each="idx, row in enumerate(game)">
+							<tr py:attrs="{'class': 'position-relative{}'.format({1: ' table-warning', 2: ' table-light', 3: ' table-success'}.get(row.game_rank, ''))}" title="${row.game_rank if row.game_rank is not None else '?'}. ${_('place')}, ${row.game_points if row.game_points != None else '?'} ${_('point(s)')} ${'{}: {}'.format(_('Clan'), getattr(getattr(getattr(row.user, 'clan_member', {}), 'clan', {}), 'name', '')) if getattr(getattr(getattr(row.user, 'clan_member', {}), 'clan', {}), 'name', '') else ''}">
+								<th scope="row" class="text-center">${Markup(h.badge('last', row.game_rank)) if h.eq(idx+1, len(game)) else Markup(h.badge(row.game_rank, row.game_rank)) if row.game_rank is not None else '?'}<a class="stretched-link" href="${tg.url('/detail_warmer/{}'.format(row.uid))}"></a></th>
+								<td>${getattr(getattr(getattr(row.user, 'clan_member', {}), 'clan', {}), 'symbol', '')}</td>
+								<td py:attrs="{'class': 'text-center w-100'}">${row.user.display_name}<span py:if="row.comment"> ${h.bicon('chat-left-dots', color="muted")}</span></td>
+								<td py:attrs="{'class': 'text-center text-{} fw-bold'.format('success' if h.le(row.game_guesses, 25) else 'warning' if h.gt(row.game_guesses, 25) and h.le(row.game_guesses, 50) else 'primary' if h.gt(row.game_guesses, 50) and h.le(row.game_guesses, 75) else 'dark' if h.gt(row.game_guesses, 75) and h.le(row.game_guesses, 100) else 'danger')}">${row.game_guesses}</td>
+							</tr>
+						</py:for>
+					</tbody>
+					<tfoot>
+						<tr class="table-primary text-center">
+							<th scope="col" colspan="6"><span>Played players</span> ${len(game)}</th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<div class="row pt-1" py:if="games">
+		<div class="col-3">
+			<a class="btn btn-light w-100${' disabled' if h.le(latest_game.game_date, game_dates[0].game_date) else ''}" href="${tg.url('/{}'.format(latest_game.game_date))}">${h.icon('fast-backward')}</a>
+		</div>
+		<div class="col-3">
+			<a class="btn btn-light w-100${' disabled' if h.le(latest_game.game_date, game_dates[0].game_date) else ''}" href="${tg.url('/{}'.format(game_dates[0].game_date+timedelta(days=2) if len(game_dates) and h.le(game_dates[0].game_date++timedelta(days=2), latest_game.game_date) else latest_game.game_date))}">${h.icon('backward')}</a>
+		</div>
+		<div class="col-3">
+			<a class="btn btn-light w-100${' disabled' if h.ge(oldest_game.game_date, game_dates[1].game_date if h.gt(len(game_dates), 1) else oldest_game.game_date) else ''}" href="${tg.url('/{}'.format(game_dates[1].game_date-timedelta(days=1) if h.gt(len(game_dates), 1) else oldest_game.game_date))}">${h.icon('forward')}</a>
+		</div>
+		<div class="col-3">
+			<a class="btn btn-light w-100${' disabled' if h.ge(oldest_game.game_date, game_dates[1].game_date if h.gt(len(game_dates), 1) else oldest_game.game_date) else ''}" href="${tg.url('/{}'.format(oldest_game.game_date))}">${h.icon('fast-forward')}</a>
+		</div>
+	</div>
+
+	<div id="closingDeadlineProgress" class="progress my-4" style="height: 2rem;" role="progressbar" aria-label="Closing deadline progress bar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+		<div class="progress-bar progress-bar-striped progress-bar-animated fw-bold fs-6"></div>
+	</div>
+
+	<div id="carouselComments" class="carousel carousel-dark slide bg-light rounded-3 mt-3 p-2" data-bs-ride="carousel">
+		<div class="carousel-inner">
+			<div class="carousel-item${' active' if idx == 0 else ''}" py:for="idx, item in enumerate(comments)">
+				<figure class="my-5">
+					<blockquote class="blockquote">
+						<p class="text-center fs-3">${item.comment}</p>
+					</blockquote>
+					<figcaption class="blockquote-footer text-center fs-5">
+						${item.user.display_name} <cite title="${_('Game #')}${item.game_date}">@${item.user.user_name}</cite>
+					</figcaption>
+				</figure>
+			</div>
+		</div>
+
+		<button class="carousel-control-prev" type="button" data-bs-target="#carouselComments" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#carouselComments" data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="visually-hidden">Next</span>
+		</button>
+	</div>
+</body>
+</html>

@@ -23,7 +23,7 @@ from lustitelskadb import model
 from lustitelskadb.model import DBSession
 
 import lustitelskadb.lib.forms as appforms
-from lustitelskadb.lib.utils import assemble_game_scoresheet
+from lustitelskadb.lib.utils import assemble_game_scoresheet, assemble_warmergame_scoresheet
 
 from pathlib import Path
 from datetime import datetime, date, time, timedelta
@@ -699,6 +699,8 @@ class AdministrationController(BaseController):
             flash(_(u"Something went wrong! Can't save Warmer game result to database!"), 'error')
             redirect('/')
 
+        assemble_warmergame_scoresheet(today)
+
         flash(l_(u"Your Warmer result has been successfully saved to database"))
 
         return redirect('/admin')
@@ -801,13 +803,27 @@ class AdministrationController(BaseController):
         redirect('/admin')
 
     @expose()
-    @require(has_any_permission('manage', 'legacyimport', msg=l_('Only for users with appropriate permissions')))
+    @require(has_any_permission('manage', msg=l_('Only for users with appropriate permissions')))
     def reassemble_scoresheet(self, **kw):
         """Reassemble score sheet."""
         games_nums = DBSession.query(model.GameResult.game_no).order_by(model.GameResult.game_no).distinct()
 
         for game_no in games_nums:
             assemble_game_scoresheet(game_no.game_no, dbflush=False)
+
+        flash(_(u'Score Sheet successfully reassembled for {} games').format(games_nums.count()))
+        DBSession.flush()
+
+        redirect('/admin')
+
+    @expose()
+    @require(has_any_permission('manage', msg=l_('Only for users with appropriate permissions')))
+    def reassemble_warmer_scoresheet(self, **kw):
+        """Reassemble Warmer score sheet."""
+        games_nums = DBSession.query(model.WarmerGameResult.game_date).order_by(model.WarmerGameResult.game_date).distinct()
+
+        for game_date in games_nums:
+            assemble_warmergame_scoresheet(game_date.game_date, dbflush=False)
 
         flash(_(u'Score Sheet successfully reassembled for {} games').format(games_nums.count()))
         DBSession.flush()

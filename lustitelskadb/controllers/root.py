@@ -138,6 +138,41 @@ class RootController(BaseController):
 
         return dict(page='index', comments=comments, game_nums=game_nums, games=games, latest_game=latest_game, oldest_game=oldest_game, game_in_progress=game_in_progress)
 
+    @expose('lustitelskadb.templates.warmer_tables')
+    def warmer(self, game=None, *args, **kw):
+        """Handle Warmer game tables."""
+        comments = DBSession.query(model.WarmerGameResult).filter(model.WarmerGameResult.comment != None, model.WarmerGameResult.comment != '').order_by(func.random()).limit(100).all()
+
+        game_dates = DBSession.query(model.WarmerGameResult.game_date)
+        if game and game.isdigit():
+            game_dates = game_dates.filter(model.GameReWarmerGameResultsult.game_date <= game)
+        elif game and not game.isdigit():
+            abort(404)
+        game_dates = game_dates.order_by(model.WarmerGameResult.game_date.desc()).distinct().limit(2).all()
+        if not game_dates:
+            abort(404)
+
+        latest_game = DBSession.query(model.WarmerGameResult.game_date).order_by(model.WarmerGameResult.game_date.desc()).first()
+        oldest_game = DBSession.query(model.WarmerGameResult.game_date).order_by(model.WarmerGameResult.game_date).first()
+
+        games = []
+        for lg in game_dates:
+            game = DBSession.query(model.WarmerGameResult).filter(model.WarmerGameResult.game_date == lg.game_date)
+            game = game.order_by(model.WarmerGameResult.game_guesses)
+            games.append(game.all())
+
+        game_in_progress = today_warmergame_date()
+
+        popover_titles_jssrc = twc.JSSource(src='''
+            $(() => {
+                $('[title]').popover({ trigger: "hover", placement: "top" });
+            });
+        ''')
+
+        popover_titles_jssrc.inject()
+
+        return dict(page='warmer', comments=comments, game_dates=game_dates, games=games, latest_game=latest_game, oldest_game=oldest_game, game_in_progress=game_in_progress)
+
     @expose('json')
     def get_daily_wallpaper(self, **kw):
         """Get Daily Wallpaper"""
