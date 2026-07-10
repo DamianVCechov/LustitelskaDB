@@ -52,16 +52,16 @@
 
 	<div class="row pt-1" py:if="games">
 		<div class="col-3">
-			<a class="btn btn-light w-100${' disabled' if h.le(latest_game.game_date, game_dates[0].game_date) else ''}" href="${tg.url('/{}'.format(latest_game.game_date))}">${h.icon('fast-backward')}</a>
+			<a class="btn btn-light w-100${' disabled' if h.le(latest_game.game_date, game_dates[0].game_date) else ''}" href="${tg.url('/warmer/{}'.format(latest_game.game_date))}">${h.icon('fast-backward')}</a>
 		</div>
 		<div class="col-3">
-			<a class="btn btn-light w-100${' disabled' if h.le(latest_game.game_date, game_dates[0].game_date) else ''}" href="${tg.url('/{}'.format(game_dates[0].game_date+timedelta(days=2) if len(game_dates) and h.le(game_dates[0].game_date++timedelta(days=2), latest_game.game_date) else latest_game.game_date))}">${h.icon('backward')}</a>
+			<a class="btn btn-light w-100${' disabled' if h.le(latest_game.game_date, game_dates[0].game_date) else ''}" href="${tg.url('/warmer/{}'.format(game_dates[0].game_date+timedelta(days=2) if len(game_dates) and h.le(game_dates[0].game_date++timedelta(days=2), latest_game.game_date) else latest_game.game_date))}">${h.icon('backward')}</a>
 		</div>
 		<div class="col-3">
-			<a class="btn btn-light w-100${' disabled' if h.ge(oldest_game.game_date, game_dates[1].game_date if h.gt(len(game_dates), 1) else oldest_game.game_date) else ''}" href="${tg.url('/{}'.format(game_dates[1].game_date-timedelta(days=1) if h.gt(len(game_dates), 1) else oldest_game.game_date))}">${h.icon('forward')}</a>
+			<a class="btn btn-light w-100${' disabled' if h.ge(oldest_game.game_date, game_dates[1].game_date if h.gt(len(game_dates), 1) else oldest_game.game_date) else ''}" href="${tg.url('/warmer/{}'.format(game_dates[1].game_date-timedelta(days=1) if h.gt(len(game_dates), 1) else oldest_game.game_date))}">${h.icon('forward')}</a>
 		</div>
 		<div class="col-3">
-			<a class="btn btn-light w-100${' disabled' if h.ge(oldest_game.game_date, game_dates[1].game_date if h.gt(len(game_dates), 1) else oldest_game.game_date) else ''}" href="${tg.url('/{}'.format(oldest_game.game_date))}">${h.icon('fast-forward')}</a>
+			<a class="btn btn-light w-100${' disabled' if h.ge(oldest_game.game_date, game_dates[1].game_date if h.gt(len(game_dates), 1) else oldest_game.game_date) else ''}" href="${tg.url('/warmer/{}'.format(oldest_game.game_date))}">${h.icon('fast-forward')}</a>
 		</div>
 	</div>
 

@@ -115,7 +115,8 @@ def assemble_warmergame_scoresheet(game_date, dbflush=True):
 
         prev_row = row
 
-    row.game_points = 0
+    if prev_row:
+        prev_row.game_points = 0
 
     if dbflush:
         DBSession.flush()

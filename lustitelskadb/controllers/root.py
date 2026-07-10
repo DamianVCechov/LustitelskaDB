@@ -144,8 +144,8 @@ class RootController(BaseController):
         comments = DBSession.query(model.WarmerGameResult).filter(model.WarmerGameResult.comment != None, model.WarmerGameResult.comment != '').order_by(func.random()).limit(100).all()
 
         game_dates = DBSession.query(model.WarmerGameResult.game_date)
-        if game and game.isdigit():
-            game_dates = game_dates.filter(model.GameReWarmerGameResultsult.game_date <= game)
+        if game and game.replace('-', '').isdigit():
+            game_dates = game_dates.filter(model.WarmerGameResult.game_date <= game)
         elif game and not game.isdigit():
             abort(404)
         game_dates = game_dates.order_by(model.WarmerGameResult.game_date.desc()).distinct().limit(2).all()
