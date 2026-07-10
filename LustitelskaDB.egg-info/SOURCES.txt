@@ -360,6 +360,7 @@ lustitelskadb/templates/administration/xtwitter/__init__.py
 lustitelskadb/templates/administration/xtwitter/index.xhtml
 lustitelskadb/templates/api/__init__.py
 lustitelskadb/templates/api/index.xhtml
+lustitelskadb/templates/api/warmer.xhtml
 lustitelskadb/templates/help/__init__.py
 lustitelskadb/templates/help/wednesday_challenge.xhtml
 lustitelskadb/templates/registration/__init__.py
