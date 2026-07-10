@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="${response.charset}" />
+
+<title>${getattr(tmpl_context, 'project_name', 'turbogears2')} | Last completed Warmer game for screenshot</title>
+<link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/bootstrap.min.css')}" />
+<link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/bootstrap-glyphicons.min.css')}" />
+<link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/bootstrap-icons.min.css')}" />
+<link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/style.css', params={'v': '20241205T0202'})}" />
+
+<py:block name="head"></py:block>
+</head>
+
+<body class="bg-body-tertiary">
+	<section class="container mt-3">
+		<h1 id="game-table" class="text-center" py:if="not game">No data :-(</h1>
+		<div id="game-table" class="row" py:if="game">
+			<div class="offset-2 col-lg-8">
+				<div class="table-responsive">
+					<table class="table table-sm table-hover">
+						<thead>
+							<tr class="table-dark text-center">
+								<th class="rounded-top" scope="col" colspan="6">
+									<div><span>Hall of fame</span> ${game[0].game_date}</div>
+								</th>
+							</tr>
+							<tr class="table-dark text-center">
+								<th scope="col" title="${_('Rank')}">${h.bicon('graph-up-arrow')}</th>
+								<th scope="col" title="${_('Clan')}">${h.bicon('shield')}</th>
+								<th scope="col" class="w-100" title="${_('Player')}">${h.bicon('person')}</th>
+								<th scope="col" title="${_('Game rows')}">${h.bicon('justify')}</th>
+							</tr>
+						</thead>
+						<tbody py:with="losers_divided=False; nochallengers_divided=False; dsq_divided=False">
+							<py:for each="idx, row in enumerate(game)">
+								<tr py:attrs="{'class': 'position-relative{}'.format({1: ' table-warning', 2: ' table-light', 3: ' table-success'}.get(row.game_rank, ''))}" title="${row.game_rank if row.game_rank is not None else '?'}. ${_('place')}, ${row.game_points if row.game_points != None else '?'} ${_('point(s)')} ${'{}: {}'.format(_('Clan'), getattr(getattr(getattr(row.user, 'clan_member', {}), 'clan', {}), 'name', '')) if getattr(getattr(getattr(row.user, 'clan_member', {}), 'clan', {}), 'name', '') else ''}">
+									<th scope="row" class="text-center">${Markup(h.badge('last', row.game_rank)) if h.eq(idx+1, len(game)) else Markup(h.badge(row.game_rank, row.game_rank)) if row.game_rank is not None else '?'}</th>
+									<td>${getattr(getattr(getattr(row.user, 'clan_member', {}), 'clan', {}), 'symbol', '')}</td>
+									<td py:attrs="{'class': 'text-center w-100'}">${row.user.display_name}<span py:if="row.comment"> ${h.bicon('chat-left-dots', color="muted")}</span></td>
+									<td py:attrs="{'class': 'text-center text-{} fw-bold'.format('success' if h.le(row.game_guesses, 25) else 'warning' if h.gt(row.game_guesses, 25) and h.le(row.game_guesses, 50) else 'primary' if h.gt(row.game_guesses, 50) and h.le(row.game_guesses, 75) else 'dark' if h.gt(row.game_guesses, 75) and h.le(row.game_guesses, 100) else 'danger')}">${row.game_guesses}</td>
+								</tr>
+							</py:for>
+						</tbody>
+						<tfoot>
+							<tr class="table-primary text-center">
+								<th scope="col" colspan="6"><span>Played players</span> ${len(game)}</th>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

@@ -18,7 +18,7 @@ try:
 except:
     from io import StringIO
 
-from lustitelskadb.lib.utils import HADEJSLOVA_STARTDATE, today_game_no
+from lustitelskadb.lib.utils import HADEJSLOVA_STARTDATE, today_game_no, today_warmergame_date
 
 try:
     unichr
@@ -66,6 +66,14 @@ class APIController(BaseController):
             game = game.order_by(model.GameResult.game_rows == None, model.GameResult.game_result_time == None, model.GameResult.wednesday_challenge.desc(), model.GameResult.game_result_time, model.GameResult.game_rows, model.GameResult.game_time.desc())
         else:
             game = game.order_by(model.GameResult.game_rows == None, model.GameResult.game_result_time == None, model.GameResult.game_result_time, model.GameResult.game_rows, model.GameResult.game_time.desc())
+
+        return dict(game=game.all())
+
+    @expose('lustitelskadb.templates.api.warmer')
+    def warmer(self, **kw):
+        """Display last completed Warmer game for screenshot"""
+        game = DBSession.query(model.WarmerGameResult).filter(model.WarmerGameResult.game_date == today_warmergame_date().date() - timedelta(days=1))
+        game = game.order_by(model.WarmerGameResult.game_guesses)
 
         return dict(game=game.all())
 
