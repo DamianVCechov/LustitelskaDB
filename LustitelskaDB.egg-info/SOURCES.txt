@@ -331,6 +331,7 @@ lustitelskadb/public/js/tinymce/themes/silver/theme.min.js
 lustitelskadb/templates/__init__.py
 lustitelskadb/templates/about.xhtml
 lustitelskadb/templates/detail.xhtml
+lustitelskadb/templates/detail_warmer.xhtml
 lustitelskadb/templates/error.xhtml
 lustitelskadb/templates/index.xhtml
 lustitelskadb/templates/libriciphers.xhtml
