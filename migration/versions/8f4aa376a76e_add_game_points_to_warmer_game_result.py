@@ -17,7 +17,7 @@ import sqlalchemy as sa
 def upgrade():
     op.add_column(
         'warmer_games_results',
-        sa.Column('game_points', sa.Boolean, nullable=False, index=True, default=0)
+        sa.Column('game_points', sa.Integer, nullable=False, index=True, default=0)
     )
 
 
