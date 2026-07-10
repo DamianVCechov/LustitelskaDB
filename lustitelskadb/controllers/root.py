@@ -287,6 +287,43 @@ class RootController(BaseController):
 
         return dict(page="detail", gameresult=gameresult, user_game_stats=user_game_stats, played_games=played_games, solved_games=solved_games, obtained_lanterns=obtained_lanterns, user_game_rank_stats=user_game_rank_stats, game_in_progress=today_game_no(), exist2day_result=exist2day_result, post_xid_exists=post_xid_exists)
 
+    @expose('lustitelskadb.templates.detail_warmer')
+    def detail_warmer(self, uid=None, *args, **kw):
+        """Detail of user Warmer game result."""
+        if not uid:
+            flash(_("Missing unique ID of user Warmer game result"))
+            return redirect('/')
+
+        gameresult = DBSession.query(model.WarmerGameResult).filter(model.WarmerGameResult.uid == uid).first()
+        if not gameresult:
+            flash(_("Requested user Warmer game result not found"))
+            return redirect('/')
+
+        user_game_stats = DBSession.query(
+            func.avg(model.WarmerGameResult.game_guesses).label('avg_guesses'),
+            func.avg(model.WarmerGameResult.game_rank).label('avg_rank'),
+            func.avg(model.WarmerGameResult.game_points).label('avg_points'),
+            func.sum(model.WarmerGameResult.game_points).label('sum_points')
+        ).filter(model.WarmerGameResult.user_id == gameresult.user_id, model.WarmerGameResult.game_date <= gameresult.game_date).first()
+
+        user_game_rank_stats = DBSession.query(
+            model.WarmerGameResult.game_rank,
+            func.count(model.WarmerGameResult.game_rank)
+        ).filter(model.WarmerGameResult.user_id == gameresult.user_id, model.WarmerGameResult.game_date <= gameresult.game_date).group_by(model.WarmerGameResult.game_rank).order_by(model.WarmerGameResult.game_points.desc(), model.WarmerGameResult.game_rank).all()
+
+        played_games = DBSession.query(model.WarmerGameResult).filter(model.WarmerGameResult.user_id == gameresult.user_id, model.WarmerGameResult.game_date <= gameresult.game_date).count()
+        obtained_lanterns = DBSession.query(model.WarmerGameResult).filter(model.WarmerGameResult.user_id == gameresult.user_id, model.WarmerGameResult.game_date <= gameresult.game_date, model.GameResult.game_points == 0).count()
+
+        user2day_result = DBSession.query(model.WarmerGameResult).filter(model.WarmerGameResult.user_id == request.identity['user'].user_id, model.WarmerGameResult.game_date == today_warmergame_date()).first()
+
+        # post_xid_exists = False
+        # previous_game = DBSession.query(model.Game).filter(model.Game.game_no == gameresult.game_no - 1).first()
+        #
+        # if previous_game and previous_game.post_xid:
+        #     post_xid_exists = True
+
+        return dict(page="detail", gameresult=gameresult, user_game_stats=user_game_stats, played_games=played_games, obtained_lanterns=obtained_lanterns, user_game_rank_stats=user_game_rank_stats, game_in_progress=today_game_no())
+
     @expose()
     def xauthorize(self, **kw):
         """Authorize via X/Twitter."""

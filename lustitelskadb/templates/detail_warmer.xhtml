@@ -1,0 +1,155 @@
+<html py:extends="master.xhtml" py:strip="True">
+<head py:block="head" py:strip="True">
+<title py:block="master_title">${getattr(tmpl_context, 'project_name', 'turbogears2')} | User game result detail</title>
+</head>
+
+<body py:block="body" py:strip="True">
+	<?py
+import math
+from aniso8601 import parse_datetime
+
+try:
+	ModuleNotFoundError
+except:
+	ModuleNotFoundError = ImportError
+
+try:
+	import ujson as json
+except (ImportError, ModuleNotFoundError, SyntaxError):
+	try:
+		import simplejson as json
+	except (ImportError, ModuleNotFoundError, SyntaxError):
+		import json
+
+HTMLBR = '<br>'
+GAMERANK_TABLE_ROWS = 11
+
+user_xtwitter = json.loads(gameresult.user.xuser.user_info or '{"data":{}}') if gameresult.user.xuser else {"data":{}}
+?>
+	<h1 class="d-inline-block bg-light p-1 rounded opacity-90">User game result detail</h1>
+
+	<?py '''div class="btn-toolbar mt-3 bg-light p-1 px-2 rounded opacity-90" role="toolbar" aria-label="Toolbar for user" py:if="tg.request.identity and gameresult.user.user_id == tg.request.identity['user'].user_id">
+		<div class="btn-group btn-group-lg me-2 my-1" role="group" aria-label="X/Twitter">
+			<a href="${tg.url('/xtwitter_share/{}'.format(gameresult.uid))}" target="_blank" class="btn btn-outline-secondary" title="${_('Share result to X/Twitter')}">${h.bicon('twitter-x')}<small>${h.bicon('file-text')}</small></a>
+			<a href="${tg.url('/xtwitter_share/{}'.format(gameresult.uid), params={'inreply': 1})}" target="_blank" class="btn btn-outline-secondary${'' if post_xid_exists else ' disabled'}" title="${_('Share result to public thread on X/Twitter')}">${h.bicon('twitter-x')}<small>${h.bicon('reply')}</small></a>
+		</div>
+		<div class="btn-group btn-group-lg me-2 my-1" role="group" aria-label="Bluesky">
+			<a href="${tg.url('/bluesky_share/{}'.format(gameresult.uid))}" target="_blank" class="btn btn-outline-secondary" title="${_('Share result to Bluesky')}">${h.bicon('bluesky')}<small>${h.bicon('file-text')}</small></a>
+			<a href="${tg.url('/bluesky_share/{}'.format(gameresult.uid), params={'inreply': 1})}" target="_blank" class="btn btn-outline-secondary disabled" title="${_('Share result to public thread on Bluesky')}">${h.bicon('bluesky')}<small>${h.bicon('reply')}</small></a>
+		</div>
+		<div class="btn-group btn-group-lg me-2 my-1" role="group" aria-label="Fediverse">
+			<a href="${tg.url('/fediverse_share/{}'.format(gameresult.uid))}" target="_blank" class="btn btn-outline-secondary disabled" title="${_('Share result to Fediverse')}">${h.bicon('mastodon')}<small>${h.bicon('file-text')}</small></a>
+			<a href="${tg.url('/fediverse_share/{}'.format(gameresult.uid), params={'inreply': 1})}" target="_blank" class="btn btn-outline-secondary disabled" title="${_('Share result to public thread on Fediverse')}">${h.bicon('mastodon')}<small>${h.bicon('reply')}</small></a>
+		</div>
+		<div class="btn-group btn-group-lg me-2 my-1" role="group" aria-label="Threads">
+			<a href="${tg.url('/threads_share/{}'.format(gameresult.uid))}" target="_blank" class="btn btn-outline-secondary" title="${_('Share result to Threads')}">${h.bicon('threads')}<small>${h.bicon('file-text')}</small></a>
+			<a href="${tg.url('/threads_share/{}'.format(gameresult.uid), params={'inreply': 1})}" target="_blank" class="btn btn-outline-secondary disabled" title="${_('Share result to public thread on Threads')}">${h.bicon('threads')}<small>${h.bicon('reply')}</small></a>
+		</div>
+		<div class="btn-group btn-group-lg me-2 my-1" role="group" aria-label="Facebook">
+			<a href="${tg.url('/facebook_share/{}'.format(gameresult.uid))}" target="_blank" class="btn btn-outline-secondary disabled" title="${_('Share result to Facebook')}">${h.bicon('facebook')}<small>${h.bicon('file-text')}</small></a>
+			<a href="${tg.url('/facebook_share/{}'.format(gameresult.uid), params={'inreply': 1})}" target="_blank" class="btn btn-outline-secondary disabled" title="${_('Share result to group on Facebook')}">${h.bicon('facebook')}<small>${h.bicon('reply')}</small></a>
+		</div>
+		<div class="btn-group btn-group-lg my-1" role="group" aria-label="Email">
+			<a href="${tg.url('/email_share/{}'.format(gameresult.uid))}" target="_blank" class="btn btn-outline-secondary disabled" title="${_('Share result via Email')}">${h.bicon('envelope-paper')}</a>
+			<a href="${tg.url('/email_invite')}" target="_blank" class="btn btn-outline-secondary disabled" title="${_('Invite new user to this web via Email')}">${h.bicon('envelope-paper-heart')}</a>
+		</div>
+	</div''' ?>
+
+	<div class="mt-5 bg-light p-2 rounded opacity-90">
+		<img class="rounded-circle float-start me-3" src="${user_xtwitter['data']['profile_image_url']}" alt="${user_xtwitter['data']['name']} @${user_xtwitter['data']['username']}" py:if="'profile_image_url' in user_xtwitter['data']" />
+		<h5 class="position-relative">
+			<span>${gameresult.user.xuser.display_name if gameresult.user.xuser else gameresult.user.display_name}</span> <span py:if="'protected' in user_xtwitter['data'] and user_xtwitter['data']['protected']">${h.icon('lock')}</span> <span py:if="'verified' in user_xtwitter['data'] and user_xtwitter['data']['verified']">${h.icon('certificate')}</span><br /> <span class="small text-muted">@${gameresult.user.xuser.user_name if gameresult.user.xuser else gameresult.user.user_name}</span> <a class="stretched-link" href="${'https://x.com/{}'.format(gameresult.user.xuser.user_name)}" target="_blank" py:if="gameresult.user.xuser"></a>
+		</h5>
+		<p class="lead" py:if="'description' in user_xtwitter['data']">${Markup(user_xtwitter['data']['description'].replace('\n', HTMLBR))}</p>
+		<p class="lead text-muted" py:if="gameresult.user.xuser">
+			<span class="text-nowrap ms-2" py:if="'location' in user_xtwitter['data']">${h.icon('map-marker')} ${user_xtwitter['data']['location']}</span> <span class="text-nowrap ms-2" py:if="'entities' in user_xtwitter['data'] and 'url' in user_xtwitter['data']['entities']">${h.icon('link')} <a class="text-decoration-none" href="${user_xtwitter['data']['entities']['url']['urls'][0]['expanded_url']}">${user_xtwitter['data']['entities']['url']['urls'][0]['display_url']}</a></span> <span class="text-nowrap ms-2" py:if="'created_at' in user_xtwitter['data']">${h.icon('calendar')} ${"{} {}".format(_('Joined'), parse_datetime(user_xtwitter['data']['created_at']).strftime("%d.%m.%Y %H:%M:%S"))}</span>
+		</p>
+		<p class="lead text-muted" py:if="'public_metrics' in user_xtwitter['data']">
+			<span class="text-dark fw-bold" py:if="'following_count' in user_xtwitter['data']['public_metrics']">${user_xtwitter['data']['public_metrics']['following_count']}</span> <span>Following</span> <span class="text-dark fw-bold ms-2" py:if="'followers_count' in user_xtwitter['data']['public_metrics']">${user_xtwitter['data']['public_metrics']['followers_count']}</span> <span>Followers</span>
+		</p>
+	</div>
+
+	<div class="d-flex flex-lg-row flex-column">
+		<div class="table-responsive">
+			<table class="table table-sm table-striped w-auto mt-5">
+				<thead>
+					<tr class="table-dark text-center">
+						<th class="rounded-top" scope="col" colspan="3">User statistics till this game</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">played</th>
+						<td></td>
+						<td class="text-end bg-light">${played_games} <span>games</span></td>
+					</tr>
+					<tr>
+						<th scope="row">sum of points</th>
+						<td></td>
+						<td class="text-end bg-light">${user_game_stats.sum_points}</td>
+					</tr>
+					<tr>
+						<th scope="row">game points</th>
+						<td></td>
+						<td class="text-end bg-light">${gameresult.game_points}</td>
+					</tr>
+					<tr>
+						<th scope="row">lanterns</th>
+						<td></td>
+						<td class="text-end bg-light">${obtained_lanterns} <span>pcs</span></td>
+					</tr>
+					<tr py:with="average=user_game_stats.avg_rank or 0; result=gameresult.game_rank">
+						<th scope="row">&#x2300; game rank</th>
+						<td>${h.bicon('arrow{}-right'.format('' if average == result else "-up" if h.gt(average, result) else "-down"))}</td>
+						<td class="text-end bg-light">${"{:0.0f}".format(average)} <span>place</span></td>
+					</tr>
+					<tr py:with="average=user_game_stats.avg_points or 0; result=gameresult.game_points">
+						<th scope="row">&#x2300; game points</th>
+						<td>${h.bicon('arrow{}-right'.format('' if average == result else "-down" if h.gt(average, result) else "-up"))}</td>
+						<td class="text-end bg-light">${"{:0.1f}".format(average)} <span>points</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="table-responsive ms-lg-3">
+			<table class="table table-sm table-striped w-auto mt-5">
+				<thead>
+					<tr class="table-dark text-center">
+						<th class="rounded-top" scope="col" colspan="${2 * math.ceil(len(user_game_rank_stats) / GAMERANK_TABLE_ROWS)}">Rank statistic</th>
+					</tr>
+					<tr class="table-dark text-center">
+						<py:for each="i in range(int(math.ceil(len(user_game_rank_stats) / GAMERANK_TABLE_ROWS)))">
+							<th scope="col">${h.bicon('graph-up-arrow')}</th>
+							<th scope="col">${h.bicon('calculator')}</th>
+						</py:for>
+					</tr>
+				</thead>
+				<tbody>
+					<tr py:for="row in range(GAMERANK_TABLE_ROWS)">
+						<py:for each="colgroup in range(0, int(math.ceil(len(user_game_rank_stats) / GAMERANK_TABLE_ROWS)) * GAMERANK_TABLE_ROWS, GAMERANK_TABLE_ROWS)">
+							<py:with vars="it=user_game_rank_stats[row+colgroup:row+colgroup+1]">
+								<th class="text-end${' bg-light' if (colgroup / GAMERANK_TABLE_ROWS) % 2 else ''}" scope="row">${'' if not len(it) else "{}.".format(it[0][0])}</th>
+								<td class="text-start${' bg-light' if (colgroup / GAMERANK_TABLE_ROWS) % 2 else ''}">${'' if not len(it) else "{}x".format(it[0][1])}</td>
+							</py:with>
+						</py:for>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="mt-5 bg-light rounded p-1 opacity-90 d-inline-block overflow-auto mw-100">
+		<div class="h1 display-1 fw-bold text-${'{}'.format('success' if h.le(gameresult.game_guesses, 25) else 'warning' if h.gt(gameresult.game_guesses, 25) and h.le(gameresult.game_guesses, 50) else 'primary' if h.gt(gameresult.game_guesses, 50) and h.le(gameresult.game_guesses, 75) else 'dark' if h.gt(gameresult.game_guesses, 75) and h.le(gameresult.game_guesses, 100) else 'danger')} p-3">${gameresult.game_guesses}</div>
+	</div>
+
+	<figure class="my-5 bg-light rounded p-5 opacity-90 text-center" py:if="gameresult.comment">
+		<blockquote class="blockquote">
+			<p class="fs-3">${gameresult.comment}</p>
+		</blockquote>
+		<figcaption class="blockquote-footer fs-5">
+			${gameresult.user.display_name} <cite title="${_('Game #')}${gameresult.game_date}">@${gameresult.user.user_name}</cite>
+		</figcaption>
+	</figure>
+</body>
+</html>
