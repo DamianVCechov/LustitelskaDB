@@ -125,7 +125,7 @@ def badge(rank, default=''):
 
 
 # Import some operators for using in templates, because of problematic using > and < chars
-from operator import lt, le, gt, ge
+from operator import lt, le, gt, ge, eq
 
 # Import commonly used helpers from WebHelpers2 and TG
 from tg.util.html import script_json_encode
