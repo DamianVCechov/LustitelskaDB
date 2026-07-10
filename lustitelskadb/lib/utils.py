@@ -97,7 +97,7 @@ def assemble_game_scoresheet(game_no, dbflush=True):
 
 def assemble_warmergame_scoresheet(game_date, dbflush=True):
     """Assemble Warmer Game Scoresheet."""
-    game = DBSession.query(model.WarmerGameResult).filter(model.WarmerGameResult.game_date== game_date)
+    game = DBSession.query(model.WarmerGameResult).filter(model.WarmerGameResult.game_date == game_date)
     game = game.order_by(model.WarmerGameResult.game_guesses)
 
     next_place = 1
