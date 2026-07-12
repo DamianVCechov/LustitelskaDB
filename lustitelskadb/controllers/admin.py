@@ -699,7 +699,7 @@ class AdministrationController(BaseController):
             flash(_(u"Something went wrong! Can't save Warmer game result to database!"), 'error')
             redirect('/')
 
-        assemble_warmergame_scoresheet(today)
+        assemble_warmergame_scoresheet(today.date())
 
         flash(l_(u"Your Warmer result has been successfully saved to database"))
 
