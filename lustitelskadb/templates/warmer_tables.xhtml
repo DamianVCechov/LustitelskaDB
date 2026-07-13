@@ -20,7 +20,7 @@
 					<thead>
 						<tr class="table-dark text-center">
 							<th class="rounded-top" scope="col" colspan="6">
-								<div><span py:if="game_dates[idx].game_date != game_in_progress">Hall of fame</span><span py:if="game_dates[idx].game_date == game_in_progress">Game in progress</span> ${game_dates[idx].game_date}</div>
+								<div>${h.icon('fire')} <span py:if="game_dates[idx].game_date != game_in_progress">Hall of fame</span><span py:if="game_dates[idx].game_date == game_in_progress">Game in progress</span> ${game_dates[idx].game_date}</div>
 							</th>
 						</tr>
 						<tr class="table-dark text-center">
