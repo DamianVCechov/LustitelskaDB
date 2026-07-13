@@ -48,7 +48,7 @@ if request.identity:
 else:
 	user_xtwitter = {"data":{}}
 
-page_name = value_of('page')
+page_name = value_of('page') or ''
 
 warmer_loader = '''
 <div id="loader">
