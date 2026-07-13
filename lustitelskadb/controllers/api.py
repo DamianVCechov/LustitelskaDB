@@ -197,7 +197,7 @@ class APIController(BaseController):
     @require(predicates.has_any_permission("api_manage", "api_manage_game", "api_manage_game_export"
                                            , msg=l_('Only for users with appropriate permissions')))
     def fetch_warmergame_data(self, game=None, convert=False, **kw):
-        """Export game data."""
+        """Export Warmer game data."""
         if game not in ('ongoing', 'final'):
             abort(status_code=422, detail="Missing game type to export")
 
@@ -300,6 +300,32 @@ class APIController(BaseController):
             game = model.Game(
                 game_no=game_no,
                 word=word
+            )
+            DBSession.add(game)
+            status_desc = "Word for game successfully added"
+        DBSession.flush()
+
+        return dict(status=0, status_msg="OK", status_desc=status_desc)
+
+    @expose('json')
+    @require(predicates.has_any_permission("api_manage", "api_manage_game", "api_manage_game_word",
+                                           msg=l_('Only for users with appropriate permissions')))
+    def set_warmergame_word(self, game_date='', word='', **kw):
+        """Set Warmer Game Word."""
+        if not game_date.replace('-', '').isdigit():
+            return dict(status=-1, status_msg="Error", status_desc="Game Date. isn't a date")
+
+        # if len(word) != 5:
+        #     return dict(status=-2, status_msg="Error", status_desc="Word isn't valid")
+
+        game = DBSession.query(model.WarmerGame).filter(model.WarmerGame.game_date == game_date).first()
+        if game:
+            game.word = word.upper()
+            status_desc = "Word for game successfully modified"
+        else:
+            game = model.Game(
+                game_date=game_date,
+                word=word.upper()
             )
             DBSession.add(game)
             status_desc = "Word for game successfully added"
