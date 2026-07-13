@@ -10,7 +10,7 @@ from lustitelskadb.lib.base import BaseController
 from lustitelskadb import model
 from lustitelskadb.model import DBSession
 
-from datetime import datetime, timedelta
+from datetime import datetime, time, timedelta
 import csv
 
 try:
@@ -190,6 +190,68 @@ class APIController(BaseController):
 
         # response.headerlist.append(('Content-Disposition', 'inline; filename=lustitelskadb_{}_game-{}.csv'.format(game, now)))
         response.headerlist.append(('Content-Disposition', 'attachment; filename=lustitelskadb_{}_game-{}.csv'.format(game, now)))
+
+        return csv_stream.getvalue()
+
+    @expose()
+    @require(predicates.has_any_permission("api_manage", "api_manage_game", "api_manage_game_export"
+                                           , msg=l_('Only for users with appropriate permissions')))
+    def fetch_warmergame_data(self, game=None, convert=False, **kw):
+        """Export game data."""
+        if game not in ('ongoing', 'final'):
+            abort(status_code=422, detail="Missing game type to export")
+
+        data_cols = (
+            ('game_rank', 'game_rank'),
+            ('user_name', ['user.xuser.user_name', 'user.user_name']),
+            ('game_guesses', 'game_guesses')
+        )
+
+        now = datetime.now()
+        td = timedelta(1)
+
+        game_in_progress = now.date() if now.time() >= time(3) else now.date() - td
+        game_date = game_in_progress - td if game == 'final' else game_in_progress
+
+        game_data = DBSession.query(model.WarmerGameResult).filter(model.WarmerGameResult.game_date == game_date)
+        game_data = game_data.order_by(model.WarmerGameResult.game_guesses)
+
+        csv_stream = StringIO()
+        csv_writer = csv.DictWriter(csv_stream, fieldnames=[r[0] for r in data_cols], dialect="excel")
+        csv_writer.writeheader()
+
+        for idx, row in enumerate(game_data.all()):
+            csv_row = {}.fromkeys([r[0] for r in data_cols])
+            for k, v in data_cols:
+                if isinstance(v, list):
+                    for i in v:
+                        if '.' in i:
+                            d = row
+                            for o in i.split('.'):
+                                d = getattr(d, o, {})
+                            if 'xuser' in i:
+                                csv_row[k] = encode(d, 'utf-8')
+                            else:
+                                csv_row[k] = encode(":{}".format(d), 'utf-8')
+                        if csv_row[k]:
+                            break
+                else:
+                    if '.' in v:
+                        d = row
+                        for o in i.split('.'):
+                            d = getattr(d, o, {})
+                        csv_row[k] = encode(d, 'utf-8')
+                    else:
+                        csv_row[k] = encode(getattr(row, v, ''), 'utf-8')
+            if asbool(convert):
+                csv_row['game_rank'] = encode(BADGE.get(row.game_rank, row.game_rank), 'utf-8')
+                csv_row['game_guesses'] = "{}".format(row.game_guesses)
+                if idx == len(game) - 1:
+                    csv_row['game_rank'] = encode(BADGE.get('last', row.game_rank), 'utf-8')
+            csv_writer.writerow(csv_row)
+
+        # response.headerlist.append(('Content-Disposition', 'inline; filename=lustitelskadb_{}_game-{}.csv'.format(game, now)))
+        response.headerlist.append(('Content-Disposition', 'attachment; filename=lustitelskadb_{}_warmergame-{}.csv'.format(game, now)))
 
         return csv_stream.getvalue()
 
