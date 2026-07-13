@@ -349,7 +349,7 @@ class APIController(BaseController):
             game.word = word.upper()
             status_desc = "Word for game successfully modified"
         else:
-            game = model.Game(
+            game = model.WarmerGame(
                 game_date=game_date,
                 word=word.upper()
             )
