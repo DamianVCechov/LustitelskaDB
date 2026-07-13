@@ -282,6 +282,32 @@ class APIController(BaseController):
         return dict(status=0, status_msg="OK", status_desc=status_desc)
 
     @expose('json')
+    @require(predicates.has_any_permission("api_manage", "api_manage_game", "api_manage_game_xpost"
+                                           , msg=l_('Only for users with appropriate permissions')))
+    def set_warmergame_xpost(self, game_date='', post_xid='', **kw):
+        """Set Warmer Game X post thread."""
+        if not game_date.isdigit():
+            return dict(status=-1, status_msg="Error", status_desc="Game Date. isn't a date")
+
+        if not post_xid.isdigit():
+            return dict(status=-2, status_msg="Error", status_desc="Post XID isn't digit")
+
+        game = DBSession.query(model.WarmerGame).filter(model.WarmerGame.game_date == game_date).first()
+        if game:
+            game.post_xid = post_xid
+            status_desc = "Post XID for game successfully modified"
+        else:
+            game = model.WarmerGame(
+                game_date=game_date,
+                post_xid=post_xid
+            )
+            DBSession.add(game)
+            status_desc = "Post XID for game successfully added"
+        DBSession.flush()
+
+        return dict(status=0, status_msg="OK", status_desc=status_desc)
+
+    @expose('json')
     @require(predicates.has_any_permission("api_manage", "api_manage_game", "api_manage_game_word",
                                            msg=l_('Only for users with appropriate permissions')))
     def set_game_word(self, game_no='', word='', **kw):

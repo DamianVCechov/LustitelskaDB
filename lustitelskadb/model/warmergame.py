@@ -8,7 +8,7 @@ Created on 8. 7. 2026
 '''
 
 from sqlalchemy import Table, ForeignKey, Column, func
-from sqlalchemy.types import Integer, SmallInteger, Unicode, Date, DateTime, UnicodeText
+from sqlalchemy.types import Integer, SmallInteger, Unicode, Date, DateTime, UnicodeText, String
 from sqlalchemy.orm import relationship, backref
 
 from lustitelskadb.model import DeclarativeBase, metadata, DBSession
@@ -28,7 +28,7 @@ class WarmerGame(DeclarativeBase):
     uid = Column(Integer, primary_key=True)
     game_date = Column(Date, nullable=False, unique=True, default=func.now(), server_default=func.now())
     word = Column(Unicode(32), nullable=True, index=True)
-
+    post_xid = Column(String(20), nullable=True)
     # Meta data
     created = Column(DateTime(timezone=True), server_default=func.now())
     updated = Column(DateTime(timezone=True), onupdate=func.now())
