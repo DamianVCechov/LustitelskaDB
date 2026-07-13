@@ -323,7 +323,7 @@ class RootController(BaseController):
         # if previous_game and previous_game.post_xid:
         #     post_xid_exists = True
 
-        return dict(page="detail", gameresult=gameresult, user_game_stats=user_game_stats, played_games=played_games, obtained_lanterns=obtained_lanterns, user_game_rank_stats=user_game_rank_stats, game_in_progress=today_game_no())
+        return dict(page="warmer-detail", gameresult=gameresult, user_game_stats=user_game_stats, played_games=played_games, obtained_lanterns=obtained_lanterns, user_game_rank_stats=user_game_rank_stats, game_in_progress=today_game_no())
 
     @expose()
     def xauthorize(self, **kw):
