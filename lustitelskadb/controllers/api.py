@@ -203,7 +203,9 @@ class APIController(BaseController):
 
         data_cols = (
             ('game_rank', 'game_rank'),
-            ('user_name', ['user.xuser.user_name', 'user.user_name']),
+            ('user_name', 'user.user_name'),
+            ('x_handle', 'user.xuser.user_name'),
+            ('at_proto_handle', 'user.atuser.user_name'),
             ('game_guesses', 'game_guesses')
         )
 
@@ -238,9 +240,9 @@ class APIController(BaseController):
                 else:
                     if '.' in v:
                         d = row
-                        for o in i.split('.'):
-                            d = getattr(d, o, {})
-                        csv_row[k] = encode(d, 'utf-8')
+                        for o in v.split('.'):
+                            d = getattr(d, o, None)
+                        csv_row[k] = encode(d, 'utf-8') if d else ''
                     else:
                         csv_row[k] = encode(getattr(row, v, ''), 'utf-8')
             if asbool(convert):
