@@ -91,7 +91,9 @@ class APIController(BaseController):
 
         data = [{
             'uid': item.uid,
-            'user_name': item.user.xuser.user_name if item.user.xuser else ":{}".format(item.user.user_name),
+            'user_name': item.user.user_name,
+            'x_handle': item.user.xuser.user_name if item.user.xuser else '',
+            'at_proto_handle': item.user.atuser.user_name if item.user.atuser else '',
             'display_name': item.user.xuser.display_name if item.user.xuser else item.user.display_name,
             'game': item.game_no,
             'time': item.game_time,
