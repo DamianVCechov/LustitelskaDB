@@ -246,7 +246,7 @@ class APIController(BaseController):
             if asbool(convert):
                 csv_row['game_rank'] = encode(BADGE.get(row.game_rank, row.game_rank), 'utf-8')
                 csv_row['game_guesses'] = "{}".format(row.game_guesses)
-                if idx == len(game) - 1:
+                if idx == game_data.count()-1:
                     csv_row['game_rank'] = encode(BADGE.get('last', row.game_rank), 'utf-8')
             csv_writer.writerow(csv_row)
 
