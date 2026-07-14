@@ -112,7 +112,7 @@ class APIController(BaseController):
         return dict(data=data, status_code=0, status_txt="OK", error=False, status_msg="New records found.")
 
     @expose()
-    @require(predicates.has_any_permission("manage", "api_manage", "api_manage_game", "api_manage_game_export"
+    @require(predicates.has_any_permission("api_manage", "api_manage_game", "api_manage_game_export"
                                            , msg=l_('Only for users with appropriate permissions')))
     def fetch_game_data(self, game=None, convert=False, **kw):
         """Export game data."""
