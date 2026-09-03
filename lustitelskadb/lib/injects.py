@@ -8,7 +8,7 @@ Created on 24. 8. 2024
 from tg import lurl
 from tw2.core import JSLink, JSSource
 
-__all__ = ['tinymce_link', 'tinymce_init', 'closing_deadline_jssrc', 'closing_deadline_warmer_jssrc', 'emojipicker_init_jssrc']
+__all__ = ['tinymce_link', 'tinymce_init', 'closing_deadline_jssrc', 'closing_deadline_warmer_jssrc', 'emojipicker_init_jssrc', 'lottie_multi_smile_js']
 
 tinymce_version = '6.8.3'
 
@@ -177,3 +177,39 @@ emojipicker_init_jssrc = JSSource(
         });
     '''
 )
+
+lottie_multi_smile_js = JSSource(
+    type="module",
+    template='kajiki:lustitelskadb.templates.tw2.core.jssource',
+    src='''
+import { DotLottie } from "https://esm.sh/@lottiefiles/dotlottie-web";
+
+const canvas = document.querySelector("#dotLottie-canvas");
+
+const src = "https://lottie.host/294b684d-d6b4-4116-ab35-85ef566d4379/VkGHcqcMUI.lottie";
+
+const dotLottie = new DotLottie({
+  canvas,
+  src,
+  loop: false,
+  autoplay: false
+});
+
+dotLottie.addEventListener("load", () => {
+  dotLottie.loadAnimation("glasses");
+  dotLottie.play();
+  //console.log("Animation 'glasses' was succesfully loaded and executed.");
+});
+
+// Hook after animation finish
+dotLottie.addEventListener("complete", () => {
+  canvas.style.transition = "transform 0.4s ease, opacity 0.4s ease";
+  canvas.style.opacity = "0";
+  canvas.style.transform = "scale(0)";
+
+  canvas.addEventListener("transitionend", () => {
+    dotLottie.destroy();
+    canvas.remove();
+  }, { once: true });
+});
+''')

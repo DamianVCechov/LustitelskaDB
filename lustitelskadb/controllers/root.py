@@ -56,7 +56,7 @@ from lustitelskadb.controllers.admin import AdministrationController
 from lustitelskadb.controllers.api import APIController
 
 import lustitelskadb.lib.forms as appforms
-from lustitelskadb.lib.injects import closing_deadline_jssrc, closing_deadline_warmer_jssrc, emojipicker_init_jssrc
+from lustitelskadb.lib.injects import closing_deadline_jssrc, closing_deadline_warmer_jssrc, emojipicker_init_jssrc, lottie_multi_smile_js
 from lustitelskadb.lib.utils import *
 
 __all__ = ['RootController']
@@ -135,6 +135,7 @@ class RootController(BaseController):
 
         closing_deadline_jssrc.inject()
         popover_titles_jssrc.inject()
+        lottie_multi_smile_js.inject()
 
         return dict(page='index', comments=comments, game_nums=game_nums, games=games, latest_game=latest_game, oldest_game=oldest_game, game_in_progress=game_in_progress)
 
@@ -171,6 +172,7 @@ class RootController(BaseController):
 
         closing_deadline_warmer_jssrc.inject()
         popover_titles_jssrc.inject()
+        lottie_multi_smile_js.inject()
 
         return dict(page='warmer', comments=comments, game_dates=game_dates, games=games, latest_game=latest_game, oldest_game=oldest_game, game_in_progress=game_in_progress)
 
