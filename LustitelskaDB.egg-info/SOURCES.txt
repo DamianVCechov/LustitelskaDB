@@ -328,6 +328,12 @@ lustitelskadb/public/js/tinymce/skins/ui/tinymce-5-dark/skin.min.css
 lustitelskadb/public/js/tinymce/skins/ui/tinymce-5-dark/skin.shadowdom.js
 lustitelskadb/public/js/tinymce/skins/ui/tinymce-5-dark/skin.shadowdom.min.css
 lustitelskadb/public/js/tinymce/themes/silver/theme.min.js
+lustitelskadb/public/media/attachments/76f615b2-aaf0-11f1-8000-08bfb8322f3f/Screenshot_20260907_231450.webp
+lustitelskadb/public/media/attachments/76f615b2-aaf0-11f1-8000-08bfb8322f3f/thumb.webp
+lustitelskadb/public/media/attachments/76f615b3-aaf0-11f1-8000-08bfb8322f3f/image.webp
+lustitelskadb/public/media/attachments/76f615b3-aaf0-11f1-8000-08bfb8322f3f/thumb.webp
+lustitelskadb/public/media/attachments/b4f00054-ab0d-11f1-8000-08bfb8322f3f/image.webp
+lustitelskadb/public/media/attachments/b4f00054-ab0d-11f1-8000-08bfb8322f3f/thumb.webp
 lustitelskadb/templates/__init__.py
 lustitelskadb/templates/about.xhtml
 lustitelskadb/templates/detail.xhtml
@@ -342,6 +348,7 @@ lustitelskadb/templates/ranking_points.xhtml
 lustitelskadb/templates/rankings_rows.xhtml
 lustitelskadb/templates/sns.xhtml
 lustitelskadb/templates/template.xhtml.template
+lustitelskadb/templates/warmer_newresult.xhtml
 lustitelskadb/templates/warmer_tables.xhtml
 lustitelskadb/templates/wednesday_challenge.xhtml
 lustitelskadb/templates/xdenied.xhtml
@@ -362,6 +369,7 @@ lustitelskadb/templates/api/__init__.py
 lustitelskadb/templates/api/index.xhtml
 lustitelskadb/templates/api/warmer.xhtml
 lustitelskadb/templates/help/__init__.py
+lustitelskadb/templates/help/warmer_newresult.xhtml
 lustitelskadb/templates/help/wednesday_challenge.xhtml
 lustitelskadb/templates/registration/__init__.py
 lustitelskadb/templates/registration/complete.xhtml
@@ -399,6 +407,7 @@ migration/versions/8d930c69a0a5_enlarged_libriciphers_description_and_.py
 migration/versions/8f4aa376a76e_add_game_points_to_warmer_game_result.py
 migration/versions/a00aefdc7189_display_name_changed_to_non_unique.py
 migration/versions/a01becafe8f7_create_local_accounts_if_does_not_exists.py
+migration/versions/a12f3e8d3ce6_added_warmer_game_result_screenshots_.py
 migration/versions/b3c0eaa7022f_modified_word_in_game_table.py
 migration/versions/c62b9dd1670c_add_post_xid_to_warmer_game.py
 migration/versions/da0888f6a8ae_initial_scheme.py
