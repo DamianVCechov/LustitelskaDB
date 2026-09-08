@@ -7,9 +7,10 @@ Created on 8. 7. 2026
 @author: jarda
 '''
 
-from sqlalchemy import Table, ForeignKey, Column, func
+from sqlalchemy import Table, ForeignKey, Column, event, func
 from sqlalchemy.types import Integer, SmallInteger, Unicode, Date, DateTime, UnicodeText, String
 from sqlalchemy.orm import relationship, backref
+
 from tgext.datahelpers.fields import Attachment, AttachedImage
 
 from lustitelskadb.model import DeclarativeBase, metadata, DBSession
@@ -61,6 +62,12 @@ class WarmerGameResult(DeclarativeBase):
     # Meta data
     created = Column(DateTime(timezone=True), server_default=func.now())
     updated = Column(DateTime(timezone=True), onupdate=func.now())
+    # Relations
+    warmer_screenshots = relationship(
+        'WarmerGameScreenshots',
+        back_populates='result',
+        cascade='all, delete-orphan'
+    )
 
 
 class WarmerGameScreenshots(DeclarativeBase):
@@ -74,5 +81,14 @@ class WarmerGameScreenshots(DeclarativeBase):
 
     uid = Column(Integer, primary_key=True)
     result_id = Column(Integer, ForeignKey('warmer_games_results.uid'), index=True)
-    result = relationship('WarmerGameResult', backref=backref('warmer_screenshots'))
+    result = relationship(
+        'WarmerGameResult',
+        back_populates='warmer_screenshots'
+    )
     screenshot = Column(Attachment(ScreenShotAttachedImage))
+
+
+@event.listens_for(WarmerGameScreenshots, 'after_delete')
+def _delete_warmer_game_screenshot(mapper, connection, target):
+    if target.screenshot is not None:
+        target.screenshot.unlink()
