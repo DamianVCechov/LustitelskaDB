@@ -1,18 +1,18 @@
-Babel
+TurboGears2>=2.4.0
 Beaker>=1.8.0
 Kajiki>=0.6.3
-TurboGears2>=2.4.0
-WebHelpers2
+zope.sqlalchemy>=1.1
+sqlalchemy
 alembic
 repoze.who
+tw2.forms
+tw2.dynforms
+tgext.admin>=0.6.1
+WebHelpers2
 requests
 requests_oauthlib
-sqlalchemy
-tgext.admin>=0.6.1
-tw2.dynforms
-tw2.forms
 tweepy
-zope.sqlalchemy>=1.1
+Babel
 
 [:python_version < "3.4"]
 pathlib
@@ -22,6 +22,6 @@ ujson
 
 [testing]
 WebTest>=1.2.3
+nose
 coverage
 gearbox
-nose
