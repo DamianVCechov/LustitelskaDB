@@ -283,11 +283,7 @@ class FilePondField(twf.FileField):
             attrs['data-max-files'] = str(self.max_files)
 
         label_idle = str(self.label_idle).format(
-            browse=(
-                '<span class="filepond--label-action">'
-                f'{self.label_browse}'
-                '</span>'
-            )
+            browse='<span class="filepond--label-action">{}</span>'.format(self.label_browse)
         )
 
         attrs.update({
