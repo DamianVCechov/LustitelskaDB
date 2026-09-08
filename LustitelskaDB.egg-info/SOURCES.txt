@@ -377,6 +377,8 @@ lustitelskadb/templates/registration/register.xhtml
 lustitelskadb/templates/resetpassword/__init__.py
 lustitelskadb/templates/resetpassword/change_password.xhtml
 lustitelskadb/templates/resetpassword/index.xhtml
+lustitelskadb/templates/snippets/__init__.py
+lustitelskadb/templates/snippets/dotlottie_animation.xhtml
 lustitelskadb/templates/tgext/__init__.py
 lustitelskadb/templates/tgext/admin/__init__.py
 lustitelskadb/templates/tgext/admin/bootstrap_grouped_index.xhtml
