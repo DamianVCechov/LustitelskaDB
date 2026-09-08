@@ -17,6 +17,29 @@ from pathlib import Path
 
 from PIL import Image
 
+
+def encode(obj, code):
+    """
+    Encode Python2 + Python 3 compatibility function.
+    """
+    try:
+        unicode
+        return obj.encode(code)
+    except:
+        return obj
+
+
+def decode(obj, code):
+    """
+    Decode Python2 + Python 3 compatibility function
+    """
+
+    if hasattr(obj, 'decode'):
+        return obj.decode(code)
+    else:
+        return obj
+
+
 __all__ = (
     'assemble_game_scoresheet', 'assemble_warmergame_scoresheet', 'today_game_no', 'today_warmergame_date',
     'user_rank_hours_offset', 'image_to_webp'
@@ -49,8 +72,8 @@ class NamedBytesIO(BytesIO):
 
 
 def image_to_webp(upload, quality=85, lossless=False, method=4):
-    filename = Path(upload.filename).stem + '.webp'
-    output = NamedBytesIO(filename)
+    filename = Path(encode(upload.filename, 'utf-8')).stem + '.webp'
+    output = NamedBytesIO(decode(filename, 'utf-8'))
 
     upload.file.seek(0)
 
