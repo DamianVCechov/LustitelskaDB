@@ -44,7 +44,7 @@ HADEJSLOVA_STARTDATE = datetime(2022, 1, 14, 18)
 
 class NamedBytesIO(BytesIO):
     def __init__(self, name):
-        super().__init__()
+        super(NamedBytesIO, self).__init__()
         self.name = name
 
 

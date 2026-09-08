@@ -38,6 +38,12 @@ try:
 except NameError:
     ModuleNotFoundError = ImportError
 
+# Another Python 2.7 compatibility hack
+try:
+    unicode
+except (NameError):
+    unicode = str
+
 try:
     from webhelpers2 import html
 except (ImportError, ModuleNotFoundError, SyntaxError):
@@ -127,7 +133,7 @@ class MimeTypeValidator(FancyValidator):
                 return
 
         raise FEInvalid(
-            str(self.error_message),
+            unicode(self.error_message),
             value,
             state
         )
@@ -280,9 +286,9 @@ class FilePondField(twf.FileField):
         attrs['data-filepond'] = 'true'
 
         if self.max_files is not None:
-            attrs['data-max-files'] = str(self.max_files)
+            attrs['data-max-files'] = unicode(self.max_files)
 
-        label_idle = str(self.label_idle).format(
+        label_idle = unicode(self.label_idle).format(
             browse='<span class="filepond--label-action">{}</span>'.format(self.label_browse)
         )
 
@@ -291,78 +297,78 @@ class FilePondField(twf.FileField):
                 label_idle,
 
             'data-filepond-label-invalid-field':
-                str(self.label_invalid_field),
+                unicode(self.label_invalid_field),
 
             'data-filepond-label-file-waiting-for-size':
-                str(self.label_file_waiting_for_size),
+                unicode(self.label_file_waiting_for_size),
 
             'data-filepond-label-file-size-not-available':
-                str(self.label_file_size_not_available),
+                unicode(self.label_file_size_not_available),
 
             'data-filepond-label-file-loading':
-                str(self.label_file_loading),
+                unicode(self.label_file_loading),
 
             'data-filepond-label-file-load-error':
-                str(self.label_file_load_error),
+                unicode(self.label_file_load_error),
 
             'data-filepond-label-file-processing':
-                str(self.label_file_processing),
+                unicode(self.label_file_processing),
 
             'data-filepond-label-file-processing-complete':
-                str(self.label_file_processing_complete),
+                unicode(self.label_file_processing_complete),
 
             'data-filepond-label-file-processing-aborted':
-                str(self.label_file_processing_aborted),
+                unicode(self.label_file_processing_aborted),
 
             'data-filepond-label-file-processing-error':
-                str(self.label_file_processing_error),
+                unicode(self.label_file_processing_error),
 
             'data-filepond-label-file-processing-revert-error':
-                str(self.label_file_processing_revert_error),
+                unicode(self.label_file_processing_revert_error),
 
             'data-filepond-label-file-remove-error':
-                str(self.label_file_remove_error),
+                unicode(self.label_file_remove_error),
 
             'data-filepond-label-tap-to-cancel':
-                str(self.label_tap_to_cancel),
+                unicode(self.label_tap_to_cancel),
 
             'data-filepond-label-tap-to-retry':
-                str(self.label_tap_to_retry),
+                unicode(self.label_tap_to_retry),
 
             'data-filepond-label-tap-to-undo':
-                str(self.label_tap_to_undo),
+                unicode(self.label_tap_to_undo),
 
             'data-filepond-label-button-remove-item':
-                str(self.label_button_remove_item),
+                unicode(self.label_button_remove_item),
 
             'data-filepond-label-button-abort-item-load':
-                str(self.label_button_abort_item_load),
+                unicode(self.label_button_abort_item_load),
 
             'data-filepond-label-button-retry-item-load':
-                str(self.label_button_retry_item_load),
+                unicode(self.label_button_retry_item_load),
 
             'data-filepond-label-button-abort-item-processing':
-                str(self.label_button_abort_item_processing),
+                unicode(self.label_button_abort_item_processing),
 
             'data-filepond-label-button-undo-item-processing':
-                str(self.label_button_undo_item_processing),
+                unicode(self.label_button_undo_item_processing),
 
             'data-filepond-label-button-retry-item-processing':
-                str(self.label_button_retry_item_processing),
+                unicode(self.label_button_retry_item_processing),
 
             'data-filepond-label-button-process-item':
-                str(self.label_button_process_item),
+                unicode(self.label_button_process_item),
 
             'data-filepond-label-file-type-not-allowed':
-                str(self.label_file_type_not_allowed),
+                unicode(self.label_file_type_not_allowed),
 
             'data-filepond-file-validate-type-label-expected-types':
-                str(self.file_validate_type_label_expected_types)
+                unicode(self.file_validate_type_label_expected_types)
         })
 
         self.attrs = attrs
 
-        super().prepare()
+        super(FilePondField, self).prepare()
 
 
 class ResultForm(twf.Form):
