@@ -544,7 +544,8 @@ class WarmerResultForm(twf.Form):
 
 
 class WarmerResultAdminForm(twf.Form):
-    class child(WarmerResultForm.child):
+    class child(twf.ListLayout):
+        css_class = 'list-unstyled bg-light p-3 rounded'
 
         user_id = twf.SingleSelectField(
             label=l_("User"),
