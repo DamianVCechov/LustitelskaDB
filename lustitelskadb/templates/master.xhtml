@@ -303,7 +303,11 @@ app_jssrc.inject()
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item"><a class="nav-link${' active' if tg.request.url == tg.url('/', qualified=True) else ''}" aria-current="page" href="${tg.url('/')}">${h.icon('home')}</a></li>
-					<li class="nav-item"><a class="nav-link${' active' if tg.request.url.startswith(tg.url('/newresult', qualified=True)) else ''}" href="${tg.url('/newresult')}" aria-disabled="false">New result</a></li>
+					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span>New result</span></a>
+						<ul class="dropdown-menu bg-success">
+							<li><a class="dropdown-item${' active' if tg.request.url.startswith(tg.url('/newresult', qualified=True)) else ''}" href="${tg.url('/newresult')}">${h.bicon('trophy')} <span>Czech Wordle Game</span></a></li>
+							<li><a class="dropdown-item${' active' if tg.request.url.startswith(tg.url('/warmer_newresult', qualified=True)) else ''}" href="${tg.url('/warmer_newresult')}">${h.icon('fire')} <span>Warmer Game</span></a></li>
+						</ul></li>
 					<li class="nav-item"><a class="nav-link${' active' if tg.request.url.startswith(tg.url('/wednesday_challenge', qualified=True)) else ''}" href="${tg.url('/wednesday_challenge')}" aria-disabled="false">Wednesday challenge</a></li>
 					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span>Rankings</span></a>
 						<ul class="dropdown-menu bg-success">

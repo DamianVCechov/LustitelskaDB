@@ -10,10 +10,16 @@ Created on 8. 7. 2026
 from sqlalchemy import Table, ForeignKey, Column, func
 from sqlalchemy.types import Integer, SmallInteger, Unicode, Date, DateTime, UnicodeText, String
 from sqlalchemy.orm import relationship, backref
+from tgext.datahelpers.fields import Attachment, AttachedImage
 
 from lustitelskadb.model import DeclarativeBase, metadata, DBSession
 
-__all__ = ['WarmerGame', 'WarmerGameResult']
+__all__ = ['WarmerGame', 'WarmerGameResult', 'WarmerGameScreenshots']
+
+
+class ScreenShotAttachedImage(AttachedImage):
+    thumbnail_size = (320, 320)
+    thumbnail_format = 'webp'
 
 
 class WarmerGame(DeclarativeBase):
@@ -21,8 +27,8 @@ class WarmerGame(DeclarativeBase):
 
     __tablename__ = 'warmer_games'
     __table_args__ = {
-                      'mysql_engine': 'InnoDB',
-                      'mysql_charset': 'utf8mb4'
+        'mysql_engine': 'InnoDB',
+        'mysql_charset': 'utf8mb4'
     }
 
     uid = Column(Integer, primary_key=True)
@@ -39,8 +45,8 @@ class WarmerGameResult(DeclarativeBase):
 
     __tablename__ = 'warmer_games_results'
     __table_args__ = {
-                      'mysql_engine': 'InnoDB',
-                      'mysql_charset': 'utf8mb4'
+        'mysql_engine': 'InnoDB',
+        'mysql_charset': 'utf8mb4'
     }
 
     uid = Column(Integer, primary_key=True)
@@ -55,3 +61,18 @@ class WarmerGameResult(DeclarativeBase):
     # Meta data
     created = Column(DateTime(timezone=True), server_default=func.now())
     updated = Column(DateTime(timezone=True), onupdate=func.now())
+
+
+class WarmerGameScreenshots(DeclarativeBase):
+    """Warmer Games screenshots"""
+
+    __tablename__ = 'warmer_games_screenshots'
+    __table_args__ = {
+        'mysql_engine': 'InnoDB',
+        'mysql_chatset': 'utf8mb4'
+    }
+
+    uid = Column(Integer, primary_key=True)
+    result_id = Column(Integer, ForeignKey('warmer_games_results.uid'), index=True)
+    result = relationship('WarmerGameResult', backref=backref('warmer_screenshots'))
+    screenshot = Column(Attachment(ScreenShotAttachedImage))

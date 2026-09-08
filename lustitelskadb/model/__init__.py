@@ -64,11 +64,11 @@ from lustitelskadb.model.clan import Clan, ClanMember
 from lustitelskadb.model.libriciphers import LibriCipher
 from lustitelskadb.model.sns import XTwitter, Atmosphere
 from lustitelskadb.model.game import Game, GameResult, WednesdayChallengeWord
-from lustitelskadb.model.warmergame import WarmerGame, WarmerGameResult
+from lustitelskadb.model.warmergame import WarmerGame, WarmerGameResult, WarmerGameScreenshots
 
 
 __all__ = (
     'User', 'Group', 'Permission', 'Clan', 'ClanMember', 'LibriCipher',
     'XTwitter', 'Atmosphere', 'Game', 'GameResult', 'WednesdayChallengeWord',
-    'WarmerGame', 'WarmerGameResult'
+    'WarmerGame', 'WarmerGameResult', 'WarmerGameScreenshots'
 )

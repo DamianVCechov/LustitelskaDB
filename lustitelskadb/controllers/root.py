@@ -2,6 +2,7 @@
 """Main Controller"""
 
 import logging
+
 log = logging.getLogger(__name__)
 
 from tg import expose, flash, require, url, lurl, abort, response
@@ -56,8 +57,13 @@ from lustitelskadb.controllers.admin import AdministrationController
 from lustitelskadb.controllers.api import APIController
 
 import lustitelskadb.lib.forms as appforms
-from lustitelskadb.lib.injects import closing_deadline_jssrc, closing_deadline_warmer_jssrc, emojipicker_init_jssrc, lottie_multi_smile_js
-from lustitelskadb.lib.utils import *
+from lustitelskadb.lib.injects import (
+    closing_deadline_jssrc, closing_deadline_warmer_jssrc, emojipicker_init_jssrc, lottie_multi_smile_js, modal_screenshot_show_js
+)
+from lustitelskadb.lib.utils import (
+    assemble_game_scoresheet, assemble_warmergame_scoresheet, today_game_no, today_warmergame_date,
+    user_rank_hours_offset, image_to_webp
+)
 
 __all__ = ['RootController']
 
@@ -94,7 +100,7 @@ class RootController(BaseController):
             symbol_next=u"›",
             dotdot_attr={'class': 'page-item'},
             link_attr={'class': 'page-link'},
-            curpage_attr={'class':'page-item active', 'aria-current': 'page'},
+            curpage_attr={'class': 'page-item active', 'aria-current': 'page'},
             page_link_template=u'<li class="page-item"><a%s>%s</a></li>',
             page_plain_template=u'<li%s><a class="page-link">%s</a></li>'
         )
@@ -317,7 +323,11 @@ class RootController(BaseController):
         played_games = DBSession.query(model.WarmerGameResult).filter(model.WarmerGameResult.user_id == gameresult.user_id, model.WarmerGameResult.game_date <= gameresult.game_date).count()
         obtained_lanterns = DBSession.query(model.WarmerGameResult).filter(model.WarmerGameResult.user_id == gameresult.user_id, model.WarmerGameResult.game_date <= gameresult.game_date, model.GameResult.game_points == 0).count()
 
-        user2day_result = DBSession.query(model.WarmerGameResult).filter(model.WarmerGameResult.user_id == request.identity['user'].user_id, model.WarmerGameResult.game_date == today_warmergame_date()).first()
+        if request.identity:
+            user2day_result = DBSession.query(model.WarmerGameResult).filter(model.WarmerGameResult.user_id == request.identity['user'].user_id, model.WarmerGameResult.game_date == today_warmergame_date().date()).first()
+            exist2day_result = True if user2day_result else False
+        else:
+            exist2day_result = False
 
         # post_xid_exists = False
         # previous_game = DBSession.query(model.Game).filter(model.Game.game_no == gameresult.game_no - 1).first()
@@ -325,7 +335,9 @@ class RootController(BaseController):
         # if previous_game and previous_game.post_xid:
         #     post_xid_exists = True
 
-        return dict(page="warmer-detail", gameresult=gameresult, user_game_stats=user_game_stats, played_games=played_games, obtained_lanterns=obtained_lanterns, user_game_rank_stats=user_game_rank_stats, game_in_progress=today_game_no())
+        modal_screenshot_show_js.inject()
+
+        return dict(page="warmer-detail", gameresult=gameresult, user_game_stats=user_game_stats, played_games=played_games, obtained_lanterns=obtained_lanterns, user_game_rank_stats=user_game_rank_stats, game_in_progress=today_game_no(), exist2day_result=exist2day_result)
 
     @expose()
     def xauthorize(self, **kw):
@@ -382,7 +394,7 @@ class RootController(BaseController):
             flash(_(u"Unknown type of OAuth in config"), 'error')
 
             if session.has_key('xauthorized.redirect.url'):
-                del(session['xauthorized.redirect.url'])
+                del (session['xauthorized.redirect.url'])
                 session.save()
 
             return redirect('/')
@@ -471,8 +483,8 @@ class RootController(BaseController):
 
         session['me_on_xtwitter'] = response.json()
         if config.get('xtwitter.oauth.type', 'oauth1').lower() == 'oauth1':
-            del(session['resource_owner_key'])
-            del(session['resource_owner_secret'])
+            del (session['resource_owner_key'])
+            del (session['resource_owner_secret'])
             session.save()
 
         xuser = DBSession.query(model.XTwitter).filter(model.XTwitter.xid == session['me_on_xtwitter']['data']['id']).first()
@@ -616,6 +628,78 @@ class RootController(BaseController):
 
         return redirect('/detail/{}'.format(game_result.uid))
 
+    @expose('lustitelskadb.templates.warmer_newresult')
+    @require(predicates.not_anonymous(msg=l_('Only for users with appropriate permissions')))
+    def warmer_newresult(self, **kw):
+        """Handle page with registering new user warmer game result."""
+        tmpl_context.form = appforms.WarmerResultForm()
+
+        if request.validation.errors:
+            tmpl_context.form.value = kw
+            tmpl_context.form.error_msg = l_("Form filled with errors!")
+            for key, value in request.validation.errors.items():
+                if value:
+                    getattr(tmpl_context.form.child.children, key).error_msg = value
+        else:
+            tmpl_context.form.value = dict()
+
+        emoji_picker_jslnk = twc.JSLink(
+            location="bodybottom",
+            type="module",
+            link="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js",
+            template='kajiki:lustitelskadb.templates.tw2.core.jslink'
+        )
+
+        emoji_picker_jslnk.inject()
+        emojipicker_init_jssrc.inject()
+
+        return dict(page='newresult')
+
+    @expose()
+    @require(predicates.not_anonymous(msg=l_('Only for users with appropriate permissions')))
+    @validate(form=appforms.WarmerResultForm(), error_handler=warmer_newresult)
+    def save_warmer_result(self, **kw):
+        """Save result."""
+        today_game = today_warmergame_date().date()
+
+        warmer_game_result = DBSession.query(model.WarmerGameResult)
+        warmer_game_result = warmer_game_result.filter(
+            model.WarmerGameResult.game_date == today_game,
+            model.WarmerGameResult.user == request.identity['user']
+        ).first()
+
+        if warmer_game_result:
+            flash(_(u"Result of this user game is already in database"), 'warning')
+            redirect('/')
+
+        warmer_game_result = model.WarmerGameResult(
+            user=request.identity['user'],
+            game_date=today_game,
+            game_guesses=kw.get('game_guesses') if kw.get('game_guesses') else None,
+            comment=kw.get('comment') if kw.get('comment') else None
+        )
+
+        for upload in kw['game_screenshots']:
+            warmer_game_result.warmer_screenshots.append(
+                model.WarmerGameScreenshots(
+                    screenshot=image_to_webp(upload, lossless=True, method=6)
+                )
+            )
+
+        DBSession.add(warmer_game_result)
+        try:
+            DBSession.flush()
+            DBSession.refresh(warmer_game_result)
+        except Exception as e:
+            flash(_(u"Something went wrong! Can't save Warmer game result to database!"), 'error')
+            redirect('/')
+
+        assemble_warmergame_scoresheet(today_game)
+
+        flash(l_(u"Your result with screenshots has been successfully saved to database"))
+
+        return redirect('/detail_warmer/{}'.format(warmer_game_result.uid))
+
     @expose('lustitelskadb.templates.wednesday_challenge')
     def wednesday_challenge(self, **kw):
         """Handle page with words for next comming Wednesday challenge."""
@@ -641,7 +725,7 @@ class RootController(BaseController):
             elif predicates.not_anonymous() and wednesday_challenge_words_window():
                 user_result_in_monday_game = DBSession.query(model.GameResult, model.User).join(model.User, model.User.user_id == model.GameResult.user_id).filter(model.GameResult.game_no == today_game_no() - 1, model.User.user_id == request.identity['user'].user_id).first()
                 last_monday_game_rank = DBSession.query(model.GameResult).filter(model.GameResult.game_no == today_game_no() - 1).order_by(model.GameResult.game_rank.desc(), model.GameResult.uid.desc()).first()
-                if user_result_in_monday_game and last_monday_game_rank and last_monday_game_rank.game_rank != user_result_in_monday_game[0].game_rank and game_no_start_date(today_game_no()) + timedelta(hours=user_rank_hours_offset.get(user_result_in_monday_game[0].game_rank, 24)) <= datetime.now():
+                if user_result_in_monday_game and last_monday_game_rank and last_monday_game_rank.game_rank != user_result_in_monday_game[0].game_rank and game_no_start_date(today_game_no()) + timedelta(hours=user_rank_hours_offset.get(user_result_in_monday_game[0].game_rank,24)) <= datetime.now():
                     wc_words_form_open = True
                 elif user_result_in_monday_game and last_monday_game_rank and last_monday_game_rank.game_rank > 0 and last_monday_game_rank.game_rank != user_result_in_monday_game[0].game_rank and game_no_start_date(today_game_no()) + timedelta(hours=23) <= datetime.now():
                     wc_words_form_open = True

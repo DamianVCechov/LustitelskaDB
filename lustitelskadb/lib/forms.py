@@ -8,10 +8,13 @@ Created on 23. 8. 2024
 '''
 
 import logging
+
 log = logging.getLogger(__name__)
 
 from tg import url, lurl
 from tg.i18n import ugettext as _, lazy_ugettext as l_
+
+import magic
 
 import tw2.core as twc
 import tw2.forms as twf
@@ -20,6 +23,14 @@ import tw2.dynforms as twd
 from registration.lib.validators import UniqueEmailValidator, UniqueUserValidator
 from resetpassword.lib.validators import RegisteredUserValidator
 from formencode import validators
+from formencode.compound import Pipe as FEPipe
+from formencode.api import FancyValidator, Invalid as FEInvalid, NoDefault as FENoDefault
+from formencode.foreach import ForEach as FEForEach
+
+from lustitelskadb.lib.injects import (
+    filepond_image_preview_css, filepond_image_preview_js, filepond_file_validate_type_js, filepond_css, filepond_js,
+    filepond_init
+)
 
 # Python 2.7 compatibility hack
 try:
@@ -42,10 +53,324 @@ __all__ = (
 )
 
 
+def MultipleFileUpload(
+        required=False,
+        file_validator=None,
+        max_files=None,
+        max_files_error=u'You can upload a maximum of %(maxLength)i files'
+):
+    upload_validator = validators.FieldStorageUploadConverter(
+        not_empty=True
+    )
+
+    if file_validator is not None:
+        upload_validator = FEPipe(
+            upload_validator,
+            file_validator
+        )
+
+    kwargs = {
+        'convert_to_list': True,
+    }
+
+    if required:
+        kwargs.update({
+            'not_empty': True,
+            'if_missing': FENoDefault,
+        })
+
+    validator = FEForEach(
+        upload_validator,
+        **kwargs
+    )
+
+    if max_files is not None:
+        validator = FEPipe(
+            validator,
+            validators.MaxLength(
+                max_files,
+                messages={
+                    'tooLong': max_files_error
+                }
+            )
+        )
+
+    return validator
+
+
+class MimeTypeValidator(FancyValidator):
+    allowed_types = (
+        'image/*',
+    )
+    error_message = 'Invalid file type'
+
+    def _validate_python(self, value, state):
+        position = value.file.tell()
+
+        try:
+            value.file.seek(0)
+            data = value.file.read(2048)
+
+            mime_type = magic.from_buffer(data, mime=True)
+
+        finally:
+            value.file.seek(position)
+
+        for allowed_type in self.allowed_types:
+            if allowed_type.endswith('/*'):
+                prefix = allowed_type[:-1]
+
+                if mime_type.startswith(prefix):
+                    return
+
+            elif mime_type == allowed_type:
+                return
+
+        raise FEInvalid(
+            str(self.error_message),
+            value,
+            state
+        )
+
+
+class FilePondField(twf.FileField):
+    max_files = twc.Param(
+        'Maximum number of files',
+        default=None
+    )
+
+    label_idle = twc.Param(
+        'FilePond idle label',
+        default='Drag & Drop your files or {browse}'
+    )
+
+    label_browse = twc.Param(
+        'FilePond browse label',
+        default='Browse'
+    )
+
+    label_invalid_field = twc.Param(
+        'Invalid field label',
+        default='Field contains invalid files'
+    )
+
+    label_file_waiting_for_size = twc.Param(
+        'Waiting for file size label',
+        default='Waiting for size'
+    )
+
+    label_file_size_not_available = twc.Param(
+        'File size unavailable label',
+        default='Size not available'
+    )
+
+    label_file_loading = twc.Param(
+        'File loading label',
+        default='Loading'
+    )
+
+    label_file_load_error = twc.Param(
+        'File load error label',
+        default='Error during load'
+    )
+
+    label_file_processing = twc.Param(
+        'File processing label',
+        default='Uploading'
+    )
+
+    label_file_processing_complete = twc.Param(
+        'File processing complete label',
+        default='Upload complete'
+    )
+
+    label_file_processing_aborted = twc.Param(
+        'File processing aborted label',
+        default='Upload cancelled'
+    )
+
+    label_file_processing_error = twc.Param(
+        'File processing error label',
+        default='Error during upload'
+    )
+
+    label_file_processing_revert_error = twc.Param(
+        'File processing revert error label',
+        default='Error during revert'
+    )
+
+    label_file_remove_error = twc.Param(
+        'File remove error label',
+        default='Error during remove'
+    )
+
+    label_tap_to_cancel = twc.Param(
+        'Tap to cancel label',
+        default='tap to cancel'
+    )
+
+    label_tap_to_retry = twc.Param(
+        'Tap to retry label',
+        default='tap to retry'
+    )
+
+    label_tap_to_undo = twc.Param(
+        'Tap to undo label',
+        default='tap to undo'
+    )
+
+    label_button_remove_item = twc.Param(
+        'Remove item button label',
+        default='Remove'
+    )
+
+    label_button_abort_item_load = twc.Param(
+        'Abort item load button label',
+        default='Abort'
+    )
+
+    label_button_retry_item_load = twc.Param(
+        'Retry item load button label',
+        default='Retry'
+    )
+
+    label_button_abort_item_processing = twc.Param(
+        'Abort item processing button label',
+        default='Cancel'
+    )
+
+    label_button_undo_item_processing = twc.Param(
+        'Undo item processing button label',
+        default='Undo'
+    )
+
+    label_button_retry_item_processing = twc.Param(
+        'Retry item processing button label',
+        default='Retry'
+    )
+
+    label_button_process_item = twc.Param(
+        'Process item button label',
+        default='Upload'
+    )
+
+    label_file_type_not_allowed = twc.Param(
+        'Invalid file type label',
+        default='File of invalid type'
+    )
+
+    file_validate_type_label_expected_types = twc.Param(
+        'Expected file types label',
+        default='Expects {allButLastType} or {lastType}'
+    )
+
+    resources = [
+        filepond_css,
+        filepond_image_preview_css,
+
+        filepond_js,
+        filepond_image_preview_js,
+        filepond_file_validate_type_js,
+
+        filepond_init
+    ]
+
+    def prepare(self):
+        attrs = dict(self.attrs or {})
+        attrs['data-filepond'] = 'true'
+
+        if self.max_files is not None:
+            attrs['data-max-files'] = str(self.max_files)
+
+        label_idle = str(self.label_idle).format(
+            browse=(
+                '<span class="filepond--label-action">'
+                f'{self.label_browse}'
+                '</span>'
+            )
+        )
+
+        attrs.update({
+            'data-filepond-label-idle':
+                label_idle,
+
+            'data-filepond-label-invalid-field':
+                str(self.label_invalid_field),
+
+            'data-filepond-label-file-waiting-for-size':
+                str(self.label_file_waiting_for_size),
+
+            'data-filepond-label-file-size-not-available':
+                str(self.label_file_size_not_available),
+
+            'data-filepond-label-file-loading':
+                str(self.label_file_loading),
+
+            'data-filepond-label-file-load-error':
+                str(self.label_file_load_error),
+
+            'data-filepond-label-file-processing':
+                str(self.label_file_processing),
+
+            'data-filepond-label-file-processing-complete':
+                str(self.label_file_processing_complete),
+
+            'data-filepond-label-file-processing-aborted':
+                str(self.label_file_processing_aborted),
+
+            'data-filepond-label-file-processing-error':
+                str(self.label_file_processing_error),
+
+            'data-filepond-label-file-processing-revert-error':
+                str(self.label_file_processing_revert_error),
+
+            'data-filepond-label-file-remove-error':
+                str(self.label_file_remove_error),
+
+            'data-filepond-label-tap-to-cancel':
+                str(self.label_tap_to_cancel),
+
+            'data-filepond-label-tap-to-retry':
+                str(self.label_tap_to_retry),
+
+            'data-filepond-label-tap-to-undo':
+                str(self.label_tap_to_undo),
+
+            'data-filepond-label-button-remove-item':
+                str(self.label_button_remove_item),
+
+            'data-filepond-label-button-abort-item-load':
+                str(self.label_button_abort_item_load),
+
+            'data-filepond-label-button-retry-item-load':
+                str(self.label_button_retry_item_load),
+
+            'data-filepond-label-button-abort-item-processing':
+                str(self.label_button_abort_item_processing),
+
+            'data-filepond-label-button-undo-item-processing':
+                str(self.label_button_undo_item_processing),
+
+            'data-filepond-label-button-retry-item-processing':
+                str(self.label_button_retry_item_processing),
+
+            'data-filepond-label-button-process-item':
+                str(self.label_button_process_item),
+
+            'data-filepond-label-file-type-not-allowed':
+                str(self.label_file_type_not_allowed),
+
+            'data-filepond-file-validate-type-label-expected-types':
+                str(self.file_validate_type_label_expected_types)
+        })
+
+        self.attrs = attrs
+
+        super().prepare()
+
+
 class ResultForm(twf.Form):
-
     class child(twf.ListLayout):
-
         css_class = 'list-unstyled bg-light p-3 rounded'
 
         game_result = twf.TextArea(
@@ -98,7 +423,6 @@ class ResultForm(twf.Form):
 
 
 class ResultAdminForm(twf.Form):
-
     class child(ResultForm.child):
 
         user_id = twf.SingleSelectField(
@@ -130,9 +454,7 @@ class ResultAdminForm(twf.Form):
 
 
 class WarmerResultForm(twf.Form):
-
     class child(twf.ListLayout):
-
         css_class = 'list-unstyled bg-light p-3 rounded'
 
         game_guesses = twf.NumberField(
@@ -145,6 +467,59 @@ class WarmerResultForm(twf.Form):
             required=True,
             autofocus=True,
             css_class="form-control font-monospace fs-4 my-3"
+        )
+
+        game_screenshots = FilePondField(
+            label=l_(u'Game Screenshots'),
+            help_text=l_(u'Upload game screenshots (mandatory)'),
+
+            label_idle=l_(u'Drag & Drop your files or {browse}'),
+            label_browse=l_(u'Browse'),
+
+            label_invalid_field=l_(u'Field contains invalid files'),
+
+            label_file_waiting_for_size=l_(u'Waiting for size'),
+            label_file_size_not_available=l_(u'Size not available'),
+            label_file_loading=l_(u'Loading'),
+            label_file_load_error=l_(u'Error during load'),
+
+            label_file_processing=l_(u'Uploading'),
+            label_file_processing_complete=l_(u'Upload complete'),
+            label_file_processing_aborted=l_(u'Upload cancelled'),
+            label_file_processing_error=l_(u'Error during upload'),
+            label_file_processing_revert_error=l_(u'Error during revert'),
+            label_file_remove_error=l_(u'Error during remove'),
+
+            label_tap_to_cancel=l_(u'tap to cancel'),
+            label_tap_to_retry=l_(u'tap to retry'),
+            label_tap_to_undo=l_(u'tap to undo'),
+
+            label_button_remove_item=l_(u'Remove'),
+            label_button_abort_item_load=l_(u'Abort'),
+            label_button_retry_item_load=l_(u'Retry'),
+            label_button_abort_item_processing=l_(u'Cancel'),
+            label_button_undo_item_processing=l_(u'Undo'),
+            label_button_retry_item_processing=l_(u'Retry'),
+            label_button_process_item=l_(u'Upload'),
+
+            label_file_type_not_allowed=l_(u'File of invalid type'),
+            file_validate_type_label_expected_types=l_(u'Only image files are allowed'),
+
+            validator=MultipleFileUpload(
+                required=True,
+                max_files=10,
+                max_files_error=l_(u'You can upload a maximum of %(maxLength)i files'),
+                file_validator=MimeTypeValidator(
+                    allowed_types=('image/*',),
+                    error_message=l_(u'Only image files are allowed')
+                )
+            ),
+            required=True,
+            attrs={
+                'multiple': True,
+                'accept': 'image/*'
+            },
+            css_class="form-control fs-4 my-3"
         )
 
         comment = twf.TextArea(
@@ -173,7 +548,6 @@ class WarmerResultForm(twf.Form):
 
 
 class WarmerResultAdminForm(twf.Form):
-
     class child(WarmerResultForm.child):
 
         user_id = twf.SingleSelectField(
@@ -186,15 +560,73 @@ class WarmerResultAdminForm(twf.Form):
             css_class="form-select noto-color-emoji-regular"
         )
 
-        @classmethod
-        def post_define(cls):
-            if not getattr(cls, 'children', None):
-                return
+        game_screenshots = FilePondField(
+            label=l_(u'Game Screenshots'),
+            help_text=l_(u'Upload game screenshots (mandatory)'),
 
-            for i, w in enumerate(cls.children):
-                if getattr(w, 'id', None) == 'user_id':
-                    cls.children.insert(0, cls.children.pop(i))
-                    break
+            label_idle=l_(u'Drag & Drop your files or {browse}'),
+            label_browse=l_(u'Browse'),
+
+            label_invalid_field=l_(u'Field contains invalid files'),
+
+            label_file_waiting_for_size=l_(u'Waiting for size'),
+            label_file_size_not_available=l_(u'Size not available'),
+            label_file_loading=l_(u'Loading'),
+            label_file_load_error=l_(u'Error during load'),
+
+            label_file_processing=l_(u'Uploading'),
+            label_file_processing_complete=l_(u'Upload complete'),
+            label_file_processing_aborted=l_(u'Upload cancelled'),
+            label_file_processing_error=l_(u'Error during upload'),
+            label_file_processing_revert_error=l_(u'Error during revert'),
+            label_file_remove_error=l_(u'Error during remove'),
+
+            label_tap_to_cancel=l_(u'tap to cancel'),
+            label_tap_to_retry=l_(u'tap to retry'),
+            label_tap_to_undo=l_(u'tap to undo'),
+
+            label_button_remove_item=l_(u'Remove'),
+            label_button_abort_item_load=l_(u'Abort'),
+            label_button_retry_item_load=l_(u'Retry'),
+            label_button_abort_item_processing=l_(u'Cancel'),
+            label_button_undo_item_processing=l_(u'Undo'),
+            label_button_retry_item_processing=l_(u'Retry'),
+            label_button_process_item=l_(u'Upload'),
+
+            label_file_type_not_allowed=l_(u'File of invalid type'),
+            file_validate_type_label_expected_types=l_(u'Only image files are allowed'),
+
+            validator=MultipleFileUpload(
+                max_files=10,
+                max_files_error=l_(u'You can upload a maximum of %(maxLength)i files'),
+                file_validator=MimeTypeValidator(
+                    allowed_types=('image/*',),
+                    error_message=l_(u'Only image files are allowed')
+                )
+            ),
+            attrs={
+                'multiple': True,
+                'accept': 'image/*'
+            },
+            css_class="form-control fs-4 my-3"
+        )
+
+        comment = twf.TextArea(
+            label=l_(u'Comments'),
+            help_text=l_(u'Please Enter any comments (optional)'),
+            placeholder=l_(u'Comments'),
+            validator=validators.ByteString(),
+            required=False,
+            rows=5,
+            css_class="form-control fs-4 my-3 noto-color-emoji-regular"
+        )
+
+        emoji_picker = twf.LinkField(
+            label=html.literal('<div class="emoji-picker-tooltip" role="tooltip"><emoji-picker></emoji-picker></div>'),
+            text=html.literal('<i class="bi bi-emoji-smile"></i>'),
+            css_class="btn btn-outline-secondary",
+            link="#"
+        )
 
     action = lurl('/admin/save_warmer_result')
 
@@ -205,9 +637,7 @@ class WarmerResultAdminForm(twf.Form):
 
 
 class WednesdayChallengeWordsForm(twf.Form):
-
     class child(twf.ListLayout):
-
         css_class = 'list-unstyled bg-light p-3 rounded'
 
         first_word = twf.TextField(
@@ -269,9 +699,7 @@ class WednesdayChallengeWordsForm(twf.Form):
 
 
 class LibriCipherForm(twf.Form):
-
     class child(twf.ListLayout):
-
         css_class = 'list-unstyled bg-light p-3'
 
         uid = twf.HiddenField()
@@ -324,9 +752,7 @@ class LibriCipherForm(twf.Form):
 
 
 class XTwitterPostForm(twd.CustomisedForm):
-
     class child(twf.ListLayout):
-
         css_class = 'list-unstyled bg-light p-3'
 
         text = twf.TextArea(
@@ -363,9 +789,7 @@ class XTwitterPostForm(twd.CustomisedForm):
 
 
 class LegacyDataImportForm(twf.Form):
-
     class child(twf.ListLayout):
-
         css_class = 'list-unstyled bg-light p-3'
 
         csv_file = twf.FileField(
@@ -384,16 +808,15 @@ class LegacyDataImportForm(twf.Form):
 
 
 class UserRegistration(twf.Form):
-
     css_class = 'clearfix'
 
     class child(twf.TableLayout):
-
         css_class = 'table table-borderless'
 
         user_name = twf.TextField(
             label=l_('User Name'),
-            help_text=l_(u"Allowed characters are a-z and A-Z (basic latin), 0-9, dot, underscore, minus and plus. First character can't be dot or plus"),
+            help_text=l_(
+                u"Allowed characters are a-z and A-Z (basic latin), 0-9, dot, underscore, minus and plus. First character can't be dot or plus"),
             validator=UniqueUserValidator(not_empty=True),
             css_class="form-control",
             placeholder=l_('User Name'),
@@ -402,7 +825,8 @@ class UserRegistration(twf.Form):
 
         email_address = twf.TextField(
             label=l_('Email'),
-            help_text=l_(u"Your email for sending confirmation link and for the possibility of resetting a forgotten password"),
+            help_text=l_(
+                u"Your email for sending confirmation link and for the possibility of resetting a forgotten password"),
             validator=UniqueEmailValidator(not_empty=True),
             css_class="form-control",
             placeholder=l_('Email')
@@ -435,11 +859,9 @@ class UserRegistration(twf.Form):
 
 
 class NewPasswordForm(twf.Form):
-
     css_class = 'clearfix'
 
     class child(twf.TableLayout):
-
         css_class = 'table table-borderless'
 
         data = twf.HiddenField()
@@ -468,9 +890,7 @@ class NewPasswordForm(twf.Form):
 
 
 class ResetPasswordForm(twf.Form):
-
     class child(twf.TableLayout):
-
         css_class = 'table table-borderless'
 
         email_address = twf.TextField(
@@ -488,9 +908,7 @@ class ResetPasswordForm(twf.Form):
 
 
 class UserProfileEditForm(twf.Form):
-
     class child(twf.TableLayout):
-
         css_class = 'table table-borderless'
 
         email_address = twf.TextField(
@@ -516,9 +934,7 @@ class UserProfileEditForm(twf.Form):
 
 
 class UserProfileChangePasswordForm(twf.Form):
-
     class child(twf.TableLayout):
-
         css_class = 'table table-borderless'
 
         password = twf.PasswordField(

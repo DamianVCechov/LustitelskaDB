@@ -12,7 +12,15 @@ from lustitelskadb.model import DBSession
 
 from datetime import datetime, time, timedelta
 
-__all__ = ('assemble_game_scoresheet', 'assemble_warmergame_scoresheet', 'today_game_no', 'today_warmergame_date', 'user_rank_hours_offset')
+from io import BytesIO
+from pathlib import Path
+
+from PIL import Image
+
+__all__ = (
+    'assemble_game_scoresheet', 'assemble_warmergame_scoresheet', 'today_game_no', 'today_warmergame_date',
+    'user_rank_hours_offset', 'image_to_webp'
+)
 
 scoring = {
     0: 0,
@@ -32,6 +40,33 @@ user_rank_hours_offset = {
 }
 
 HADEJSLOVA_STARTDATE = datetime(2022, 1, 14, 18)
+
+
+class NamedBytesIO(BytesIO):
+    def __init__(self, name):
+        super().__init__()
+        self.name = name
+
+
+def image_to_webp(upload, quality=85, lossless=False, method=4):
+    filename = Path(upload.filename).stem + '.webp'
+    output = NamedBytesIO(filename)
+
+    upload.file.seek(0)
+
+    with Image.open(upload.file).convert("RGBA") as image:
+        image.save(
+            output,
+            format='WEBP',
+            quality=quality,
+            lossless=lossless,
+            method=method
+        )
+
+    output.seek(0)
+    upload.file.seek(0)
+
+    return output
 
 
 def assemble_game_scoresheet(game_no, dbflush=True):

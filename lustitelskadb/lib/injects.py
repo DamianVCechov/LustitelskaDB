@@ -6,9 +6,17 @@ Created on 24. 8. 2024
 '''
 
 from tg import lurl
-from tw2.core import JSLink, JSSource
+from tw2.core import JSLink, JSSource, CSSLink
 
-__all__ = ['tinymce_link', 'tinymce_init', 'closing_deadline_jssrc', 'closing_deadline_warmer_jssrc', 'emojipicker_init_jssrc', 'lottie_multi_smile_js']
+__all__ = [
+    'tinymce_link', 'tinymce_init',
+    'closing_deadline_jssrc', 'closing_deadline_warmer_jssrc',
+    'emojipicker_init_jssrc', 'lottie_multi_smile_js',
+    'filepond_image_preview_css', 'filepond_image_preview_js',
+    'filepond_file_validate_type_js',
+    'filepond_css', 'filepond_js', 'filepond_init',
+    'modal_screenshot_show_js'
+]
 
 tinymce_version = '6.8.3'
 
@@ -136,7 +144,6 @@ $(() => {
     setClosingProgressBar();
 });'''
 
-
 closing_deadline_jssrc = JSSource(src=closing_deadline_source.replace('{{deadline}}', '18'))
 closing_deadline_warmer_jssrc = JSSource(src=closing_deadline_source.replace('{{deadline}}', '3'))
 
@@ -212,4 +219,150 @@ dotLottie.addEventListener("complete", () => {
     canvas.remove();
   }, { once: true });
 });
+''')
+
+filepond_css = CSSLink(
+    link='https://cdn.jsdelivr.net/npm/filepond@4.32.12/dist/filepond.min.css'
+)
+
+filepond_js = JSLink(
+    link='https://cdn.jsdelivr.net/npm/filepond@4.32.12/dist/filepond.min.js',
+    location='bodybottom'
+)
+
+filepond_image_preview_css = CSSLink(
+    link='https://cdn.jsdelivr.net/npm/filepond-plugin-image-preview@4.6.12/dist/filepond-plugin-image-preview.min.css'
+)
+
+filepond_image_preview_js = JSLink(
+    link='https://cdn.jsdelivr.net/npm/filepond-plugin-image-preview@4.6.12/dist/filepond-plugin-image-preview.min.js',
+    location='bodybottom'
+)
+
+filepond_file_validate_type_js = JSLink(
+    link='https://cdn.jsdelivr.net/npm/filepond-plugin-file-validate-type@1.2.9/dist/filepond-plugin-file-validate-type.min.js',
+    location='bodybottom'
+)
+
+filepond_init = JSSource(
+    location='bodybottom',
+    src=r'''
+(function () {
+    function initFilePond() {
+        FilePond.registerPlugin(
+            FilePondPluginImagePreview,
+            FilePondPluginFileValidateType
+        );
+
+        document
+            .querySelectorAll('input[type="file"][data-filepond]')
+            .forEach(function (input) {
+                if (FilePond.find(input)) {
+                    return;
+                }
+
+                FilePond.create(input, {
+                    storeAsFile: true,
+                    credits: false,
+
+                    labelIdle:
+                        input.dataset.filepondLabelIdle,
+                
+                    labelInvalidField:
+                        input.dataset.filepondLabelInvalidField,
+                
+                    labelFileWaitingForSize:
+                        input.dataset.filepondLabelFileWaitingForSize,
+                
+                    labelFileSizeNotAvailable:
+                        input.dataset.filepondLabelFileSizeNotAvailable,
+                
+                    labelFileLoading:
+                        input.dataset.filepondLabelFileLoading,
+                
+                    labelFileLoadError:
+                        input.dataset.filepondLabelFileLoadError,
+                
+                    labelFileProcessing:
+                        input.dataset.filepondLabelFileProcessing,
+                
+                    labelFileProcessingComplete:
+                        input.dataset.filepondLabelFileProcessingComplete,
+                
+                    labelFileProcessingAborted:
+                        input.dataset.filepondLabelFileProcessingAborted,
+                
+                    labelFileProcessingError:
+                        input.dataset.filepondLabelFileProcessingError,
+                
+                    labelFileProcessingRevertError:
+                        input.dataset.filepondLabelFileProcessingRevertError,
+                
+                    labelFileRemoveError:
+                        input.dataset.filepondLabelFileRemoveError,
+                
+                    labelTapToCancel:
+                        input.dataset.filepondLabelTapToCancel,
+                
+                    labelTapToRetry:
+                        input.dataset.filepondLabelTapToRetry,
+                
+                    labelTapToUndo:
+                        input.dataset.filepondLabelTapToUndo,
+                
+                    labelButtonRemoveItem:
+                        input.dataset.filepondLabelButtonRemoveItem,
+                
+                    labelButtonAbortItemLoad:
+                        input.dataset.filepondLabelButtonAbortItemLoad,
+                
+                    labelButtonRetryItemLoad:
+                        input.dataset.filepondLabelButtonRetryItemLoad,
+                
+                    labelButtonAbortItemProcessing:
+                        input.dataset.filepondLabelButtonAbortItemProcessing,
+                
+                    labelButtonUndoItemProcessing:
+                        input.dataset.filepondLabelButtonUndoItemProcessing,
+                
+                    labelButtonRetryItemProcessing:
+                        input.dataset.filepondLabelButtonRetryItemProcessing,
+                
+                    labelButtonProcessItem:
+                        input.dataset.filepondLabelButtonProcessItem,
+
+                    labelFileTypeNotAllowed:
+                        input.dataset.filepondLabelFileTypeNotAllowed,
+                
+                    fileValidateTypeLabelExpectedTypes:
+                        input.dataset.filepondFileValidateTypeLabelExpectedTypes
+                });
+            });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initFilePond);
+    } else {
+        initFilePond();
+    }
+})();
+'''
+)
+
+modal_screenshot_show_js = JSSource(
+    location='bodybottom',
+    src=r'''
+const screenshotModal = document.getElementById('screenshotModal')
+if (screenshotModal) {
+    screenshotModal.addEventListener('show.bs.modal', event => {
+        const button = event.relatedTarget;
+        const screenshot_url = button.getAttribute('data-bs-screenshot-url');
+        const screenshot_name = button.getAttribute('data-bs-screenshot-name');
+        const modalSsUrl = screenshotModal.querySelector('.modal-screenshot-url');
+        const modalSsName = screenshotModal.querySelector('.modal-screenshot-name');
+
+        modalSsUrl.src = screenshot_url;
+        modalSsName.textContent = screenshot_name;
+    });
+}
 ''')

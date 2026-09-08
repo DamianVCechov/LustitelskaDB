@@ -34,7 +34,7 @@ import tw2.core as twc
 import tw2.forms as twf
 
 from lustitelskadb.lib.injects import closing_deadline_jssrc, emojipicker_init_jssrc
-from lustitelskadb.lib.utils import today_game_no
+from lustitelskadb.lib.utils import today_game_no, today_warmergame_date, image_to_webp
 
 __all__ = ['AdministrationController']
 
@@ -670,12 +670,11 @@ class AdministrationController(BaseController):
     @validate(form=appforms.WarmerResultAdminForm(), error_handler=result)
     def save_warmer_result(self, **kw):
         """Save Warmer result."""
-        now = datetime.now()
-        today = datetime.today() if now.time() >= time(3, 0) else datetime.today() - timedelta(days=1)
+        today_game = today_warmergame_date().date()
 
         warmer_game_result = DBSession.query(model.WarmerGameResult)
         warmer_game_result = warmer_game_result.filter(
-            model.WarmerGameResult.game_date == today.date(),
+            model.WarmerGameResult.game_date == today_game,
             model.WarmerGameResult.user_id == kw.get('user_id')
         ).first()
 
@@ -685,10 +684,18 @@ class AdministrationController(BaseController):
 
         warmer_game_result = model.WarmerGameResult(
             user_id=kw.get('user_id', None),
-            game_date=today.date(),
+            game_date=today_game,
             game_guesses=kw.get('game_guesses', None),
             comment=kw.get('comment', None) if kw.get('comment', None) else None
         )
+
+        if kw['game_screenshots']:
+            for upload in kw['game_screenshots']:
+                warmer_game_result.warmer_screenshots.append(
+                    model.WarmerGameScreenshots(
+                        screenshot=image_to_webp(upload, lossless=True, method=6)
+                    )
+                )
 
         DBSession.add(warmer_game_result)
 
@@ -699,7 +706,7 @@ class AdministrationController(BaseController):
             flash(_(u"Something went wrong! Can't save Warmer game result to database!"), 'error')
             redirect('/')
 
-        assemble_warmergame_scoresheet(today.date())
+        assemble_warmergame_scoresheet(today_game)
 
         flash(l_(u"Your Warmer result has been successfully saved to database"))
 
