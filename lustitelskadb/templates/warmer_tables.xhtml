@@ -13,16 +13,6 @@
 			<a class="btn btn-light btn-lg w-100 fs-4" href="http://prihorivahori.cz" target="_blank">${h.bicon('controller')} <span class="mx-2">Play the current game</span>${h.icon('fire')} ${h.bicon('box-arrow-up-right')}</a>
 		</div>
 	</div>
-	<canvas id="dotLottie-canvas" class="position-fixed"></canvas>
-	<style>
-		canvas#dotLottie-canvas {
-			left: 0;
-			top: 0;
-			width: 100vw;
-			height: 100vh;
-			z-index: 1000000;
-		}
-	</style>
 	<div class="row pt-1" py:if="games">
 		<div class="col-lg-6" py:for="idx, game in enumerate(games)">
 			<div class="table-responsive">
@@ -100,5 +90,6 @@
 			<span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="visually-hidden">Next</span>
 		</button>
 	</div>
+	<py:include href="lustitelskadb.templates.snippets.dotlottie_animation"/>
 </body>
 </html>
