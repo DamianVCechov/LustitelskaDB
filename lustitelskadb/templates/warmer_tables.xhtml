@@ -77,8 +77,9 @@
 						<p class="text-center fs-3">${item.comment}</p>
 					</blockquote>
 					<figcaption class="blockquote-footer text-center fs-5">
-						${item.user.display_name} <cite title="${_('Game #')}${item.game_date}">@${item.user.user_name}</cite>
+						${item.user.display_name} <cite title="${_('Game #')}${item.game_date}">@${item.user.user_name} ${item.created.strftime('%-d.%-m.%Y')}</cite>
 					</figcaption>
+					<a href="${tg.url('/detail_warmer/{}'.format(item.uid))}" class="stretched-link"></a>
 				</figure>
 			</div>
 		</div>
