@@ -198,13 +198,13 @@ const src = "https://lottie.host/294b684d-d6b4-4116-ab35-85ef566d4379/VkGHcqcMUI
 const dotLottie = new DotLottie({
   canvas,
   src,
-  animationId: "glasses",
   loop: false,
   autoplay: false
 });
 
 dotLottie.addEventListener("load", () => {
   dotLottie.loadAnimation("glasses");
+  canvas.classList.remove("invisible");
   dotLottie.play();
   //console.log("Animation 'glasses' was succesfully loaded and executed.");
 });
