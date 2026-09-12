@@ -143,7 +143,7 @@ user_xtwitter = json.loads(gameresult.user.xuser.user_info or '{"data":{}}') if 
     <div class="h1 display-1 fw-bold text-${'{}'.format('success' if h.le(gameresult.game_guesses, 25) else 'warning' if h.gt(gameresult.game_guesses, 25) and h.le(gameresult.game_guesses, 50) else 'primary' if h.gt(gameresult.game_guesses, 50) and h.le(gameresult.game_guesses, 75) else 'dark' if h.gt(gameresult.game_guesses, 75) and h.le(gameresult.game_guesses, 100) else 'danger')} p-3">${gameresult.game_guesses}</div>
 </div>
 
-<div class="row" py:if="exist2day_result">
+<div class="row" py:if="game_in_progress.date() != gameresult.game_date or exist2day_result">
     <div class="col-lg-3 col-md-4 col-sm-12 mt-3" py:for="game_screenshot in gameresult.warmer_screenshots">
         <div class="card w-100 h-100">
             <img src="${tg.url(game_screenshot.screenshot.thumb_url)}" class="card-img-top img-responsive object-fit-cover" style="max-height: 320px;" alt="${game_screenshot.screenshot.filename}"/>

@@ -337,7 +337,7 @@ class RootController(BaseController):
 
         modal_screenshot_show_js.inject()
 
-        return dict(page="warmer-detail", gameresult=gameresult, user_game_stats=user_game_stats, played_games=played_games, obtained_lanterns=obtained_lanterns, user_game_rank_stats=user_game_rank_stats, game_in_progress=today_game_no(), exist2day_result=exist2day_result)
+        return dict(page="warmer-detail", gameresult=gameresult, user_game_stats=user_game_stats, played_games=played_games, obtained_lanterns=obtained_lanterns, user_game_rank_stats=user_game_rank_stats, game_in_progress=today_warmergame_date(), exist2day_result=exist2day_result)
 
     @expose()
     def xauthorize(self, **kw):
