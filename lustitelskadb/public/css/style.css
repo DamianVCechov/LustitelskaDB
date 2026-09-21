@@ -5,7 +5,6 @@
 		url("../fonts/NotoColorEmoji.woff") format("woff"),
 		url("../fonts/NotoColorEmoji.otf") format("opentype"),
 		url("../fonts/NotoColorEmoji.ttf") format("truetype");
-	unicode-range: U+1F000-1FAFF;
 }
 
 @font-face{
@@ -27,12 +26,12 @@
 }
 
 :root {
-	--bs-font-sans-serif: "Noto Sans", "Noto Color Emoji", sans-serif;
+	--bs-font-sans-serif: "Noto Sans", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
 	--bs-font-monospace: "Noto Sans Mono", monospace;
 }
 
 emoji-picker {
-	--emoji-font-family: "Noto Color Emoji";
+	--emoji-font-family: "Apple Color Emoji", "Noto Color Emoji";
 }
 
 /*.noto-color-emoji-regular {
