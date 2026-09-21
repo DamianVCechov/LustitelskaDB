@@ -563,6 +563,18 @@ class WarmerResultAdminForm(twf.Form):
             css_class="form-select noto-color-emoji-regular"
         )
 
+        game_guesses = twf.NumberField(
+            label=l_(u'Game guesses'),
+            help_text=l_(u'Please Enter your game guesses (required)'),
+            placeholder=l_(u'Game guesses'),
+            validator=validators.Int(min=1),
+            min=1,
+            max=32767,
+            required=True,
+            autofocus=True,
+            css_class="form-control font-monospace fs-4 my-3"
+        )
+
         game_screenshots = FilePondField(
             label=l_(u'Game Screenshots'),
             help_text=l_(u'Upload game screenshots (mandatory)'),
