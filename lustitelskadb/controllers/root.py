@@ -58,7 +58,7 @@ from lustitelskadb.controllers.api import APIController
 
 import lustitelskadb.lib.forms as appforms
 from lustitelskadb.lib.injects import (
-    closing_deadline_jssrc, closing_deadline_warmer_jssrc, emojipicker_init_jssrc, lottie_multi_smile_js, modal_screenshot_show_js
+    closing_deadline_jssrc, closing_deadline_warmer_jssrc, emojipicker_init_jssrc, dotlottie_source, modal_screenshot_show_js
 )
 from lustitelskadb.lib.utils import (
     assemble_game_scoresheet, assemble_warmergame_scoresheet, today_game_no, today_warmergame_date,
@@ -141,6 +141,11 @@ class RootController(BaseController):
 
         closing_deadline_jssrc.inject()
         popover_titles_jssrc.inject()
+        lottie_multi_smile_js = twc.JSSource(
+            type="module",
+            template='kajiki:lustitelskadb.templates.tw2.core.jssource',
+            src=dotlottie_source % dict(dotlottie_lib_url=('/js/dotlottie'), dotlottie_anim_url=url('/assets/dotlottie/animations'))
+        )
         lottie_multi_smile_js.inject()
 
         return dict(page='index', comments=comments, game_nums=game_nums, games=games, latest_game=latest_game, oldest_game=oldest_game, game_in_progress=game_in_progress)
@@ -178,6 +183,11 @@ class RootController(BaseController):
 
         closing_deadline_warmer_jssrc.inject()
         popover_titles_jssrc.inject()
+        lottie_multi_smile_js = twc.JSSource(
+            type="module",
+            template='kajiki:lustitelskadb.templates.tw2.core.jssource',
+            src=dotlottie_source % dict(dotlottie_lib_url=url('/js/dotlottie'), dotlottie_anim_url=url('/assets/dotlottie/animations'))
+        )
         lottie_multi_smile_js.inject()
 
         return dict(page='warmer', comments=comments, game_dates=game_dates, games=games, latest_game=latest_game, oldest_game=oldest_game, game_in_progress=game_in_progress)
