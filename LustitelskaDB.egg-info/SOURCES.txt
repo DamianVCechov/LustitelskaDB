@@ -49,6 +49,7 @@ lustitelskadb/model/model.py.template
 lustitelskadb/model/sns.py
 lustitelskadb/model/warmergame.py
 lustitelskadb/public/favicon.ico
+lustitelskadb/public/assets/dotlottie/animations/VkGHcqcMUI.lottie
 lustitelskadb/public/css/bootstrap-glyphicons.css
 lustitelskadb/public/css/bootstrap-glyphicons.min.css
 lustitelskadb/public/css/bootstrap-grid.css
@@ -139,6 +140,8 @@ lustitelskadb/public/js/jquery-3.7.1.min.map
 lustitelskadb/public/js/popper-2.11.8.js
 lustitelskadb/public/js/popper-2.11.8.js.map
 lustitelskadb/public/js/popper-2.11.8.min.js
+lustitelskadb/public/js/dotlottie/dotlottie-player.wasm
+lustitelskadb/public/js/dotlottie/dotlottie.js
 lustitelskadb/public/js/tinymce/license.txt
 lustitelskadb/public/js/tinymce/tinymce.d.ts
 lustitelskadb/public/js/tinymce/tinymce.min.js
